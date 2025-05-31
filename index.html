@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FixMyTech.no - IT-hjelp og teknologiløsninger</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #0f172a;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --light-gray: #e2e8f0;
+      --success: #10b981;
+      --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      color: var(--secondary);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      padding: 0 1.5rem;
+    }
+
+    header {
+      width: 100%;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--secondary);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--secondary);
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      padding: 6rem 0 4rem;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      color: var(--gray);
+      margin-bottom: 2.5rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      margin: 1rem 0;
+      box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 15px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .services {
+      padding: 5rem 0;
+      background: white;
+      width: 100%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    .section-title p {
+      color: var(--gray);
+      max-width: 600px;
+      margin: 2rem auto 0;
+      font-size: 1.1rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+      border: 1px solid var(--light-gray);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .card-icon {
+      height: 200px;
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 4rem;
+      color: white;
+    }
+
+    .card-content {
+      padding: 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary-dark);
+    }
+
+    .card-content ul {
+      list-style: none;
+      margin-top: 1rem;
+      flex: 1;
+    }
+
+    .card-content li {
+      padding: 0.75rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    .card-content li:last-child {
+      border-bottom: none;
+    }
+
+    .card-content li i {
+      color: var(--primary);
+      margin-top: 0.25rem;
+    }
+
+    .usb-section {
+      padding: 5rem 0;
+      width: 100%;
+      background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+    }
+
+    .usb-container {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .usb-content {
+      flex: 1;
+    }
+
+    .usb-content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .usb-content p {
+      margin-bottom: 1.5rem;
+      color: var(--gray);
+      font-size: 1.1rem;
+    }
+
+    .usb-features {
+      list-style: none;
+      margin: 2rem 0;
+    }
+
+    .usb-features li {
+      padding: 0.75rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .usb-features li i {
+      color: var(--success);
+      margin-top: 0.25rem;
+    }
+
+    .price-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .disclaimer {
+      background: #fff8e1;
+      border-left: 4px solid #ffc107;
+      padding: 1rem;
+      border-radius: 4px;
+      margin: 1.5rem 0;
+      font-size: 0.9rem;
+    }
+
+    .usb-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .usb-image::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: var(--primary);
+      border-radius: 16px;
+      transform: rotate(-5deg);
+      z-index: -1;
+    }
+
+    .usb-image-content {
+      width: 100%;
+      height: 350px;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    .usb-image-content i {
+      font-size: 5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+
+    .tools-section {
+      padding: 5rem 0;
+      width: 100%;
+      background: white;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .tool-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+      border: 1px solid var(--light-gray);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .tool-icon {
+      height: 200px;
+      background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 4rem;
+      color: white;
+    }
+
+    .tool-content {
+      padding: 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tool-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #047857;
+    }
+
+    .tool-content p {
+      margin-bottom: 1.5rem;
+      color: var(--gray);
+      flex: 1;
+    }
+
+    .contact {
+      padding: 5rem 0;
+      width: 100%;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    }
+
+    .contact-container {
+      display: flex;
+      gap: 3rem;
+      align-items: flex-start;
+    }
+
+    .contact-info {
+      flex: 1;
+    }
+
+    .contact-info h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-info p {
+      color: var(--gray);
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+
+    .info-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 2rem;
+    }
+
+    .info-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .info-card h3 i {
+      color: var(--primary);
+      font-size: 1.5rem;
+    }
+
+    .pricing {
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .pricing h4 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing p {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    form {
+      flex: 1;
+      background: white;
+      border-radius: 16px;
+      box-shadow: var(--card-shadow);
+      padding: 2.5rem;
+      max-width: 600px;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid var(--light-gray);
+      border-radius: 10px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    button[type="submit"] {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      width: 100%;
+      box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3);
+    }
+
+    button[type="submit"]:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 15px rgba(37, 99, 235, 0.3);
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+
+    .checkbox-group input {
+      width: auto;
+      margin-top: 0.25rem;
+    }
+
+    footer {
+      background: var(--secondary);
+      color: white;
+      padding: 4rem 0 2rem;
+      width: 100%;
+      text-align: center;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--light);
+    }
+
+    .footer-logo span {
+      color: var(--primary);
+    }
+
+    .copyright {
+      opacity: 0.7;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      width: 100%;
+    }
+
+    @media (max-width: 992px) {
+      .usb-container, .contact-container {
+        flex-direction: column;
+      }
+      
+      .usb-image {
+        order: -1;
+        margin-bottom: 3rem;
+      }
+      
+      .hero h1 {
+        font-size: 2.75rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      
+      nav ul {
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .hero {
+        padding: 4rem 0 2rem;
+      }
+      
+      .hero h1 {
+        font-size: 2.25rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-content">
+      <a href="#" class="logo">
+        <i class="fas fa-tools"></i>
+        <span>FixMyTech</span>.no
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#services">Tjenester</a></li>
+          <li><a href="#usb">USB-installasjon</a></li>
+          <li><a href="#tools">Våre verktøy</a></li>
+          <li><a href="#contact">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Profesjonell IT-hjelp for <span>din hverdag</span></h1>
+        <p>FixMyTech.no leverer pålitelige IT-løsninger for både privatpersoner og bedrifter. Vi løser alt fra enkle programvarefeil til komplekse nettverksproblemer.</p>
+        
+        <div class="hero-badge">
+          <i class="fas fa-badge-check"></i>
+          Kun betaling hvis problemet løses - 550,- per time
+        </div>
+        
+        <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
+          <a href="#contact" class="btn">Få hjelp nå</a>
+          <a href="#services" class="btn btn-outline">Se våre tjenester</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-title">
+          <h2>Våre IT-tjenester</h2>
+          <p>Vi løser et bredt spekter av IT-problemer for våre kunder. Her er noen av våre mest populære tjenester:</p>
+        </div>
+        
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="card-icon">
+              <i class="fas fa-network-wired"></i>
+            </div>
+            <div class="card-content">
+              <h3>Nettverk & Internett</h3>
+              <ul>
+                <li><i class="fas fa-check"></i> Trådløse nettverksproblemer</li>
+                <li><i class="fas fa-check"></i> Internettkoblingsfeil</li>
+                <li><i class="fas fa-check"></i> Ruterkonfigurasjon</li>
+                <li><i class="fas fa-check"></i> Nettverkssikkerhet</li>
+                <li><i class="fas fa-check"></i> VPN-oppsett</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="service-card">
+            <div class="card-icon">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <div class="card-content">
+              <h3>Programvare & Systemer</h3>
+              <ul>
+                <li><i class="fas fa-check"></i> Programvarefeil og krasj</li>
+                <li><i class="fas fa-check"></i> Virus og skadevarefjerning</li>
+                <li><i class="fas fa-check"></i> Systemoptimalisering</li>
+                <li><i class="fas fa-check"></i> Operativsystemoppgradering</li>
+                <li><i class="fas fa-check"></i> Sikkerhetskopiering</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="service-card">
+            <div class="card-icon">
+              <i class="fas fa-plug"></i>
+            </div>
+            <div class="card-content">
+              <h3>Maskinvare & Utstyr</h3>
+              <ul>
+                <li><i class="fas fa-check"></i> PC-reparasjon</li>
+                <li><i class="fas fa-check"></i> Skjermfeil og grafikkproblemer</li>
+                <li><i class="fas fa-check"></i> Strømforsyningsfeil</li>
+                <li><i class="fas fa-check"></i> Lagringsfeil (HDD/SSD)</li>
+                <li><i class="fas fa-check"></i> Bærbare PC-problemer</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="usb-section" id="usb">
+      <div class="container usb-container">
+        <div class="usb-content">
+          <h2>Installasjons USB-er</h2>
+          <p>Kjøp praktiske USB-installasjonsenheter fra FixMyTech.no for en enkel og rask systemoppsett. Disse USB-ene inneholder alt du trenger for en problemfri installasjon.</p>
+          
+          <ul class="usb-features">
+            <li><i class="fas fa-check-circle"></i> Forhåndskonfigurert med valgt operativsystem</li>
+            <li><i class="fas fa-check-circle"></i> Inkluderer nødvendige drivere og verktøy</li>
+            <li><i class="fas fa-check-circle"></i> Enkel plug-and-play installasjon</li>
+            <li><i class="fas fa-check-circle"></i> Optimalisert for rask og stabil installasjon</li>
+            <li><i class="fas fa-check-circle"></i> Perfekt for nyoppsett eller systemgjenoppretting</li>
+          </ul>
+          
+          <div class="price-tag">
+            <i class="fas fa-tag"></i>
+            <span>980,- per enhet</span>
+          </div>
+          
+          <p><i class="fas fa-shipping-fast"></i> Frakt: 59,- (Norge) | 99,- (Internasjonalt)</p>
+          
+          <div class="disclaimer">
+            <p><strong>Viktig juridisk merknad:</strong> USB-ene inneholder kun installasjonsmedier og ingen lisensierte operativsystemer. Kunden må selv skaffe gyldig lisens for eventuelle kommersielle operativsystemer. Linux-distribusjoner er åpen kildekode og krever ingen lisens.</p>
+          </div>
+          
+          <a href="#contact" class="btn" style="margin-top: 1rem;">Bestill nå</a>
+        </div>
+        
+        <div class="usb-image">
+          <div class="usb-image-content">
+            <i class="fas fa-usb"></i>
+            <h3>FixMyTech Installer USB</h3>
+            <p>Velg mellom Windows eller Linux-installasjon</p>
+            <p>32GB høyhastighets USB 3.0</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="tools-section" id="tools">
+      <div class="container">
+        <div class="section-title">
+          <h2>Våre gratis verktøy</h2>
+          <p>Utforsk vårt utvalg av gratis nettverksverktøy utviklet for å forenkle din digitale hverdag:</p>
+        </div>
+        
+        <div class="tools-grid">
+          <a href="https://free-image-toolkit.com" target="_blank" class="tool-card">
+            <div class="tool-icon">
+              <i class="fas fa-image"></i>
+            </div>
+            <div class="tool-content">
+              <h3>Free Image Toolkit</h3>
+              <p>Komplett løsning for bileredigering og konvertering. Optimaliser bilder for nettet, rediger metadata og konverter mellom formater.</p>
+              <span class="btn btn-outline" style="align-self: flex-start;">Besøk verktøyet</span>
+            </div>
+          </a>
+          
+          <a href="https://free-video-toolkit.com" target="_blank" class="tool-card">
+            <div class="tool-icon">
+              <i class="fas fa-video"></i>
+            </div>
+            <div class="tool-content">
+              <h3>Free Video Toolkit</h3>
+              <p>Kraftfull videoredigering online. Konverter videoformater, komprimer filer, rediger klipp og legg til effekter uten programvare.</p>
+              <span class="btn btn-outline" style="align-self: flex-start;">Besøk verktøyet</span>
+            </div>
+          </a>
+          
+          <a href="https://free-ean-maker.com" target="_blank" class="tool-card">
+            <div class="tool-icon">
+              <i class="fas fa-barcode"></i>
+            </div>
+            <div class="tool-content">
+              <h3>Free EAN Maker</h3>
+              <p>Generer EAN-strekkoder for ditt produktlager. Lag strekkoder i forskjellige formater og eksporter for utskrift eller digital bruk.</p>
+              <span class="btn btn-outline" style="align-self: flex-start;">Besøk verktøyet</span>
+            </div>
+          </a>
+          
+          <a href="https://free-qr-maker.com" target="_blank" class="tool-card">
+            <div class="tool-icon">
+              <i class="fas fa-qrcode"></i>
+            </div>
+            <div class="tool-content">
+              <h3>Free QR Maker</h3>
+              <p>Lag QR-koder for lenker, kontaktinformasjon, WiFi-tilgang og mer. Tilpass design og last ned i høy kvalitet.</p>
+              <span class="btn btn-outline" style="align-self: flex-start;">Besøk verktøyet</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+    
+    <section class="contact" id="contact">
+      <div class="container contact-container">
+        <div class="contact-info">
+          <h2>Kontakt FixMyTech.no</h2>
+          <p>Send oss en melding så svarer vi deg så raskt som mulig, vanligvis innen 24 timer.</p>
+          
+          <div class="info-card">
+            <h3><i class="fas fa-handshake"></i> Vår arbeidsprosess</h3>
+            <p>1. Du kontakter oss og beskriver problemet</p>
+            <p>2. Vi avtaler løsningsstrategi og pris</p>
+            <p>3. Vi løser problemet (fjernhjelp eller reparasjon)</p>
+            <p>4. Du betaler kun hvis problemet er løst</p>
+          </div>
+          
+          <div class="pricing">
+            <h4>Pris per time</h4>
+            <p>550,- NOK</p>
+            <p>Kun betaling hvis problemet løses!</p>
+          </div>
+        </div>
+        
+        <form action="#" method="POST" id="contact-form">
+          <div class="form-group">
+            <label for="name">Navn</label>
+            <input type="text" id="name" name="Navn" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">E-post</label>
+            <input type="email" id="email" name="E-post" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="service-type">Hva trenger du hjelp med?</label>
+            <select id="service-type" name="service-type" required>
+              <option value="">Velg en tjeneste...</option>
+              <option value="network">Nettverk & Internett</option>
+              <option value="software">Programvare & Systemer</option>
+              <option value="hardware">Maskinvare & Utstyr</option>
+              <option value="usb">Bestille USB-installasjon</option>
+              <option value="other">Annet</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Beskriv problemet ditt</label>
+            <textarea id="message" name="Beskjed" required placeholder="Beskriv problemet så detaljert som mulig. Inkluder gjerne hvilken type utstyr, programvare og hva du har prøvd så langt. Hvis det gjelder maskinvare, angi hvilken type utstyr det er snakk om."></textarea>
+          </div>
+          
+          <div class="checkbox-group">
+            <input type="checkbox" id="agreement" name="agreement" required>
+            <label for="agreement">Jeg forstår at jeg kun betaler hvis problemet løses</label>
+          </div>
+          
+          <div class="form-group">
+            <button type="submit">Send forespørsel</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-logo">
+        <span>FixMyTech</span>.no
+      </div>
+      <p>Din pålitelige partner for IT-løsninger</p>
+      
+      <div class="copyright">
+        &copy; 2025 FixMyTech.no. Alle rettigheter reservert.<br>
+        USB-installasjonsenheter inneholder kun installasjonsmedier, ikke lisensierte operativsystemer.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form values
+      const name = document.getElementById('name').value;
+      const serviceType = document.getElementById('service-type').value;
+      
+      // Prepare service type text
+      let serviceText = '';
+      switch(serviceType) {
+        case 'network': serviceText = 'Nettverk & Internett'; break;
+        case 'software': serviceText = 'Programvare & Systemer'; break;
+        case 'hardware': serviceText = 'Maskinvare & Utstyr'; break;
+        case 'usb': serviceText = 'Bestilling av USB-installasjon'; break;
+        default: serviceText = 'Annet';
+      }
+      
+      // Show success message
+      alert(`Takk for din henvendelse, ${name}!\n\nVi har mottatt din forespørsel om hjelp med ${serviceText}.\n\nVårt team vil kontakte deg innen 24 timer for å diskutere løsningen.`);
+      
+      // Reset the form
+      this.reset();
+    });
+  </script>
+</body>
+</html>
