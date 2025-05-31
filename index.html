@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FixMyTech.no - IT-hjelp og teknologiløsninger</title>
+  <title>FixMyTech.no - IT-løsninger for din digitale hverdag</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
@@ -173,10 +173,66 @@
       color: var(--primary);
     }
 
-    .services {
-      padding: 5rem 0;
-      background: white;
+    .btn-shop {
+      background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+    }
+
+    .tabs-container {
+      margin: 3rem 0;
       width: 100%;
+    }
+
+    .tabs-header {
+      display: flex;
+      justify-content: center;
+      border-bottom: 2px solid var(--light-gray);
+      margin-bottom: 2rem;
+    }
+
+    .tab-btn {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+      color: var(--gray);
+    }
+
+    .tab-btn.active {
+      color: var(--primary);
+    }
+
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    .tab-btn:hover:not(.active) {
+      color: var(--primary-dark);
+    }
+
+    .tab-content {
+      display: none;
+      padding: 2rem 0;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .section-title {
@@ -280,48 +336,62 @@
       margin-top: 0.25rem;
     }
 
-    .usb-section {
-      padding: 5rem 0;
+    .shop-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
       width: 100%;
-      background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+      margin-top: 3rem;
     }
 
-    .usb-container {
+    .product-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+      border: 1px solid var(--light-gray);
       display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-image {
+      height: 200px;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      display: flex;
+      justify-content: center;
       align-items: center;
-      gap: 3rem;
+      color: white;
     }
 
-    .usb-content {
+    .product-image i {
+      font-size: 5rem;
+      color: var(--primary);
+    }
+
+    .product-content {
+      padding: 2rem;
       flex: 1;
+      display: flex;
+      flex-direction: column;
     }
 
-    .usb-content h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
+    .product-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--secondary);
     }
 
-    .usb-content p {
+    .product-content p {
       margin-bottom: 1.5rem;
       color: var(--gray);
-      font-size: 1.1rem;
-    }
-
-    .usb-features {
-      list-style: none;
-      margin: 2rem 0;
-    }
-
-    .usb-features li {
-      padding: 0.75rem 0;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-    }
-
-    .usb-features li i {
-      color: var(--success);
-      margin-top: 0.25rem;
+      flex: 1;
     }
 
     .price-tag {
@@ -346,101 +416,58 @@
       font-size: 0.9rem;
     }
 
-    .usb-image {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      position: relative;
-    }
-
-    .usb-image::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: var(--primary);
-      border-radius: 16px;
-      transform: rotate(-5deg);
-      z-index: -1;
-    }
-
-    .usb-image-content {
-      width: 100%;
-      height: 350px;
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      border-radius: 16px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      padding: 2rem;
-      text-align: center;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    }
-
-    .usb-image-content i {
-      font-size: 5rem;
-      margin-bottom: 1.5rem;
-      color: var(--primary);
-    }
-
-    .tools-section {
-      padding: 5rem 0;
-      width: 100%;
-      background: white;
-    }
-
     .tools-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 800px;
+      margin: 2rem auto;
     }
 
-    .tool-card {
-      background: white;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: var(--card-shadow);
-      transition: var(--transition);
-      border: 1px solid var(--light-gray);
+    .tool-item {
       display: flex;
       flex-direction: column;
+      padding: 2rem;
+      background: white;
+      border-radius: 16px;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+      text-decoration: none;
+      color: var(--secondary);
+      border: 1px solid var(--light-gray);
+      text-align: center;
       height: 100%;
     }
 
-    .tool-card:hover {
+    .tool-item:hover {
       transform: translateY(-5px);
       box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.1);
+      border-color: var(--primary);
     }
 
     .tool-icon {
-      height: 200px;
-      background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+      width: 80px;
+      height: 80px;
       display: flex;
-      justify-content: center;
       align-items: center;
-      font-size: 4rem;
+      justify-content: center;
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      border-radius: 50%;
       color: white;
+      font-size: 2.5rem;
+      margin: 0 auto 1.5rem;
     }
 
-    .tool-content {
-      padding: 2rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
+    .tool-info h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+      color: var(--secondary);
     }
 
-    .tool-content h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: #047857;
-    }
-
-    .tool-content p {
-      margin-bottom: 1.5rem;
+    .tool-info p {
+      font-size: 1rem;
       color: var(--gray);
-      flex: 1;
     }
 
     .contact {
@@ -610,16 +637,12 @@
       padding-top: 1.5rem;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       width: 100%;
+      font-size: 0.9rem;
     }
 
     @media (max-width: 992px) {
-      .usb-container, .contact-container {
+      .contact-container {
         flex-direction: column;
-      }
-      
-      .usb-image {
-        order: -1;
-        margin-bottom: 3rem;
       }
       
       .hero h1 {
@@ -650,6 +673,16 @@
       .section-title h2 {
         font-size: 2rem;
       }
+      
+      .tabs-header {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .tab-btn {
+        width: 100%;
+        text-align: center;
+      }
     }
   </style>
 </head>
@@ -662,9 +695,9 @@
       </a>
       <nav>
         <ul>
-          <li><a href="#services">Tjenester</a></li>
-          <li><a href="#usb">USB-installasjon</a></li>
-          <li><a href="#tools">Våre verktøy</a></li>
+          <li><a href="#tjenester">Tjenester</a></li>
+          <li><a href="#butikk">Butikk</a></li>
+          <li><a href="#verktoy">Verktøy</a></li>
           <li><a href="#contact">Kontakt</a></li>
         </ul>
       </nav>
@@ -684,13 +717,19 @@
         
         <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
           <a href="#contact" class="btn">Få hjelp nå</a>
-          <a href="#services" class="btn btn-outline">Se våre tjenester</a>
+          <a href="#tjenester" class="btn btn-outline">Se våre tjenester</a>
         </div>
       </div>
     </section>
 
-    <section class="services" id="services">
-      <div class="container">
+    <div class="container tabs-container">
+      <div class="tabs-header">
+        <button class="tab-btn active" data-tab="tjenester">Tjenester</button>
+        <button class="tab-btn" data-tab="butikk">Butikk</button>
+        <button class="tab-btn" data-tab="verktoy">Våre digitale løsninger</button>
+      </div>
+      
+      <div id="tjenester" class="tab-content active">
         <div class="section-title">
           <h2>Våre IT-tjenester</h2>
           <p>Vi løser et bredt spekter av IT-problemer for våre kunder. Her er noen av våre mest populære tjenester:</p>
@@ -746,107 +785,124 @@
           </div>
         </div>
       </div>
-    </section>
-    
-    <section class="usb-section" id="usb">
-      <div class="container usb-container">
-        <div class="usb-content">
-          <h2>Installasjons USB-er</h2>
-          <p>Kjøp praktiske USB-installasjonsenheter fra FixMyTech.no for en enkel og rask systemoppsett. Disse USB-ene inneholder alt du trenger for en problemfri installasjon.</p>
-          
-          <ul class="usb-features">
-            <li><i class="fas fa-check-circle"></i> Forhåndskonfigurert med valgt operativsystem</li>
-            <li><i class="fas fa-check-circle"></i> Inkluderer nødvendige drivere og verktøy</li>
-            <li><i class="fas fa-check-circle"></i> Enkel plug-and-play installasjon</li>
-            <li><i class="fas fa-check-circle"></i> Optimalisert for rask og stabil installasjon</li>
-            <li><i class="fas fa-check-circle"></i> Perfekt for nyoppsett eller systemgjenoppretting</li>
-          </ul>
-          
-          <div class="price-tag">
-            <i class="fas fa-tag"></i>
-            <span>980,- per enhet</span>
-          </div>
-          
-          <p><i class="fas fa-shipping-fast"></i> Frakt: 59,- (Norge) | 99,- (Internasjonalt)</p>
-          
-          <div class="disclaimer">
-            <p><strong>Viktig juridisk merknad:</strong> USB-ene inneholder kun installasjonsmedier og ingen lisensierte operativsystemer. Kunden må selv skaffe gyldig lisens for eventuelle kommersielle operativsystemer. Linux-distribusjoner er åpen kildekode og krever ingen lisens.</p>
-          </div>
-          
-          <a href="#contact" class="btn" style="margin-top: 1rem;">Bestill nå</a>
+      
+      <div id="butikk" class="tab-content">
+        <div class="section-title">
+          <h2>Vår Butikk</h2>
+          <p>Utforsk vårt utvalg av praktiske IT-produkter som forenkler din digitale hverdag</p>
         </div>
         
-        <div class="usb-image">
-          <div class="usb-image-content">
-            <i class="fas fa-usb"></i>
-            <h3>FixMyTech Installer USB</h3>
-            <p>Velg mellom Windows eller Linux-installasjon</p>
-            <p>32GB høyhastighets USB 3.0</p>
+        <div class="shop-grid">
+          <div class="product-card">
+            <div class="product-image">
+              <i class="fas fa-usb"></i>
+            </div>
+            <div class="product-content">
+              <h3>Windows Installer USB</h3>
+              <p>En praktisk USB for rask og enkel installasjon av Windows. Inneholder alt du trenger for en problemfri installasjon.</p>
+              <ul>
+                <li><i class="fas fa-check-circle"></i> Forhåndskonfigurert med Windows-installasjon</li>
+                <li><i class="fas fa-check-circle"></i> Inkluderer nødvendige drivere</li>
+                <li><i class="fas fa-check-circle"></i> 32GB høyhastighets USB 3.0</li>
+              </ul>
+              
+              <div class="price-tag">
+                <i class="fas fa-tag"></i>
+                <span>980,-</span>
+              </div>
+              
+              <a href="#contact" class="btn btn-shop">Bestill nå</a>
+            </div>
+          </div>
+          
+          <div class="product-card">
+            <div class="product-image">
+              <i class="fab fa-linux"></i>
+            </div>
+            <div class="product-content">
+              <h3>Linux Installer USB</h3>
+              <p>Enkel installasjon av Linux-distribusjoner. Velg mellom Ubuntu, Fedora eller Mint. Perfekt for utviklere og entusiaster.</p>
+              <ul>
+                <li><i class="fas fa-check-circle"></i> Velg din favoritt-distribusjon</li>
+                <li><i class="fas fa-check-circle"></i> Inkluderer nødvendige verktøy</li>
+                <li><i class="fas fa-check-circle"></i> 32GB høyhastighets USB 3.0</li>
+              </ul>
+              
+              <div class="price-tag">
+                <i class="fas fa-tag"></i>
+                <span>980,-</span>
+              </div>
+              
+              <a href="#contact" class="btn btn-shop">Bestill nå</a>
+            </div>
           </div>
         </div>
+        
+        <div class="disclaimer">
+          <p><strong>Viktig juridisk merknad:</strong> USB-ene inneholder kun installasjonsmedier og ingen lisensierte operativsystemer. Kunden må selv skaffe gyldig lisens for eventuelle kommersielle operativsystemer. Linux-distribusjoner er åpen kildekode og krever ingen lisens.</p>
+        </div>
       </div>
-    </section>
-    
-    <section class="tools-section" id="tools">
-      <div class="container">
+      
+      <div id="verktoy" class="tab-content">
         <div class="section-title">
-          <h2>Våre gratis verktøy</h2>
-          <p>Utforsk vårt utvalg av gratis nettverksverktøy utviklet for å forenkle din digitale hverdag:</p>
+          <h2>Våre digitale løsninger</h2>
+          <p>Se eksempler på skreddersydde løsninger vi har utviklet for våre kunder</p>
         </div>
         
         <div class="tools-grid">
-          <a href="https://free-image-toolkit.com" target="_blank" class="tool-card">
+          <a href="https://free-image-toolkit.com" target="_blank" class="tool-item">
             <div class="tool-icon">
               <i class="fas fa-image"></i>
             </div>
-            <div class="tool-content">
-              <h3>Free Image Toolkit</h3>
-              <p>Komplett løsning for bileredigering og konvertering. Optimaliser bilder for nettet, rediger metadata og konverter mellom formater.</p>
-              <span class="btn btn-outline" style="align-self: flex-start;">Besøk verktøyet</span>
+            <div class="tool-info">
+              <h3>Bileredigeringsverktøy</h3>
+              <p>Komplett løsning for bileredigering, konvertering og optimalisering for nettet</p>
             </div>
           </a>
           
-          <a href="https://free-video-toolkit.com" target="_blank" class="tool-card">
+          <a href="https://free-video-toolkit.com" target="_blank" class="tool-item">
             <div class="tool-icon">
               <i class="fas fa-video"></i>
             </div>
-            <div class="tool-content">
-              <h3>Free Video Toolkit</h3>
-              <p>Kraftfull videoredigering online. Konverter videoformater, komprimer filer, rediger klipp og legg til effekter uten programvare.</p>
-              <span class="btn btn-outline" style="align-self: flex-start;">Besøk verktøyet</span>
+            <div class="tool-info">
+              <h3>Videoredigeringsplattform</h3>
+              <p>Kraftfull videoredigering online med konvertering og effektverktøy</p>
             </div>
           </a>
           
-          <a href="https://free-ean-maker.com" target="_blank" class="tool-card">
+          <a href="https://free-ean-maker.com" target="_blank" class="tool-item">
             <div class="tool-icon">
               <i class="fas fa-barcode"></i>
             </div>
-            <div class="tool-content">
-              <h3>Free EAN Maker</h3>
-              <p>Generer EAN-strekkoder for ditt produktlager. Lag strekkoder i forskjellige formater og eksporter for utskrift eller digital bruk.</p>
-              <span class="btn btn-outline" style="align-self: flex-start;">Besøk verktøyet</span>
+            <div class="tool-info">
+              <h3>Strekkodegenerator</h3>
+              <p>Generer EAN-strekkoder for produkter og lageradministrasjon</p>
             </div>
           </a>
           
-          <a href="https://free-qr-maker.com" target="_blank" class="tool-card">
+          <a href="https://free-qr-maker.com" target="_blank" class="tool-item">
             <div class="tool-icon">
               <i class="fas fa-qrcode"></i>
             </div>
-            <div class="tool-content">
-              <h3>Free QR Maker</h3>
-              <p>Lag QR-koder for lenker, kontaktinformasjon, WiFi-tilgang og mer. Tilpass design og last ned i høy kvalitet.</p>
-              <span class="btn btn-outline" style="align-self: flex-start;">Besøk verktøyet</span>
+            <div class="tool-info">
+              <h3>QR-kodeverktøy</h3>
+              <p>Lag QR-koder for lenker, kontaktinformasjon og mer</p>
             </div>
           </a>
         </div>
       </div>
-    </section>
+    </div>
     
     <section class="contact" id="contact">
       <div class="container contact-container">
         <div class="contact-info">
           <h2>Kontakt FixMyTech.no</h2>
           <p>Send oss en melding så svarer vi deg så raskt som mulig, vanligvis innen 24 timer.</p>
+          
+          <div class="info-card">
+            <h3><i class="fas fa-envelope"></i> E-post</h3>
+            <p>kontakt@fixmytech.no</p>
+          </div>
           
           <div class="info-card">
             <h3><i class="fas fa-handshake"></i> Vår arbeidsprosess</h3>
@@ -863,7 +919,7 @@
           </div>
         </div>
         
-        <form action="#" method="POST" id="contact-form">
+        <form action="mailto:kontakt@fixmytech.no" method="POST" enctype="text/plain" id="contact-form">
           <div class="form-group">
             <label for="name">Navn</label>
             <input type="text" id="name" name="Navn" required>
@@ -881,7 +937,7 @@
               <option value="network">Nettverk & Internett</option>
               <option value="software">Programvare & Systemer</option>
               <option value="hardware">Maskinvare & Utstyr</option>
-              <option value="usb">Bestille USB-installasjon</option>
+              <option value="shop">Produktbestilling fra butikk</option>
               <option value="other">Annet</option>
             </select>
           </div>
@@ -910,6 +966,7 @@
         <span>FixMyTech</span>.no
       </div>
       <p>Din pålitelige partner for IT-løsninger</p>
+      <p>E-post: kontakt@fixmytech.no</p>
       
       <div class="copyright">
         &copy; 2025 FixMyTech.no. Alle rettigheter reservert.<br>
@@ -919,28 +976,50 @@
   </footer>
 
   <script>
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
+    // Tab functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabContents = document.querySelectorAll('.tab-content');
       
-      // Get form values
-      const name = document.getElementById('name').value;
-      const serviceType = document.getElementById('service-type').value;
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Remove active class from all buttons and contents
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabContents.forEach(c => c.classList.remove('active'));
+          
+          // Add active class to clicked button
+          btn.classList.add('active');
+          
+          // Show corresponding content
+          const tabId = btn.getAttribute('data-tab');
+          document.getElementById(tabId).classList.add('active');
+        });
+      });
       
-      // Prepare service type text
-      let serviceText = '';
-      switch(serviceType) {
-        case 'network': serviceText = 'Nettverk & Internett'; break;
-        case 'software': serviceText = 'Programvare & Systemer'; break;
-        case 'hardware': serviceText = 'Maskinvare & Utstyr'; break;
-        case 'usb': serviceText = 'Bestilling av USB-installasjon'; break;
-        default: serviceText = 'Annet';
-      }
-      
-      // Show success message
-      alert(`Takk for din henvendelse, ${name}!\n\nVi har mottatt din forespørsel om hjelp med ${serviceText}.\n\nVårt team vil kontakte deg innen 24 timer for å diskutere løsningen.`);
-      
-      // Reset the form
-      this.reset();
+      // Contact form submission
+      document.getElementById('contact-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form values
+        const name = document.getElementById('name').value;
+        const serviceType = document.getElementById('service-type').value;
+        
+        // Prepare service type text
+        let serviceText = '';
+        switch(serviceType) {
+          case 'network': serviceText = 'Nettverk & Internett'; break;
+          case 'software': serviceText = 'Programvare & Systemer'; break;
+          case 'hardware': serviceText = 'Maskinvare & Utstyr'; break;
+          case 'shop': serviceText = 'Produktbestilling fra butikk'; break;
+          default: serviceText = 'Annet';
+        }
+        
+        // Show success message
+        alert(`Takk for din henvendelse, ${name}!\n\nVi har mottatt din forespørsel om hjelp med ${serviceText}.\n\nVårt team vil kontakte deg innen 24 timer for å diskutere løsningen.`);
+        
+        // Reset the form
+        this.reset();
+      });
     });
   </script>
 </body>
