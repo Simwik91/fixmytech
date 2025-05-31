@@ -517,24 +517,6 @@
       font-size: 1.5rem;
     }
 
-    .pricing {
-      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-      border-radius: 16px;
-      padding: 1.5rem;
-      text-align: center;
-    }
-
-    .pricing h4 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .pricing p {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--primary-dark);
-    }
-
     form {
       flex: 1;
       background: white;
@@ -592,18 +574,6 @@
     button[type="submit"]:hover {
       transform: translateY(-3px);
       box-shadow: 0 10px 15px rgba(37, 99, 235, 0.3);
-    }
-
-    .checkbox-group {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      margin: 1.5rem 0;
-    }
-
-    .checkbox-group input {
-      width: auto;
-      margin-top: 0.25rem;
     }
 
     footer {
@@ -900,22 +870,11 @@
           <p>Send oss en melding så svarer vi deg så raskt som mulig, vanligvis innen 24 timer.</p>
           
           <div class="info-card">
-            <h3><i class="fas fa-envelope"></i> E-post</h3>
-            <p>kontakt@fixmytech.no</p>
-          </div>
-          
-          <div class="info-card">
             <h3><i class="fas fa-handshake"></i> Vår arbeidsprosess</h3>
             <p>1. Du kontakter oss og beskriver problemet</p>
-            <p>2. Vi avtaler løsningsstrategi og pris</p>
+            <p>2. Vi avtaler løsningsstrategi og forventet timebruk</p>
             <p>3. Vi løser problemet (fjernhjelp eller reparasjon)</p>
             <p>4. Du betaler kun hvis problemet er løst</p>
-          </div>
-          
-          <div class="pricing">
-            <h4>Pris per time</h4>
-            <p>550,- NOK</p>
-            <p>Kun betaling hvis problemet løses!</p>
           </div>
         </div>
         
@@ -947,11 +906,6 @@
             <textarea id="message" name="Beskjed" required placeholder="Beskriv problemet så detaljert som mulig. Inkluder gjerne hvilken type utstyr, programvare og hva du har prøvd så langt. Hvis det gjelder maskinvare, angi hvilken type utstyr det er snakk om."></textarea>
           </div>
           
-          <div class="checkbox-group">
-            <input type="checkbox" id="agreement" name="agreement" required>
-            <label for="agreement">Jeg forstår at jeg kun betaler hvis problemet løses</label>
-          </div>
-          
           <div class="form-group">
             <button type="submit">Send forespørsel</button>
           </div>
@@ -965,18 +919,16 @@
       <div class="footer-logo">
         <span>FixMyTech</span>.no
       </div>
-      <p>Din pålitelige partner for IT-løsninger</p>
-      <p>E-post: kontakt@fixmytech.no</p>
+      <p>Profesjonell IT-hjelp for din hverdag</p>
       
       <div class="copyright">
-        &copy; 2025 FixMyTech.no. Alle rettigheter reservert.<br>
-        USB-installasjonsenheter inneholder kun installasjonsmedier, ikke lisensierte operativsystemer.
+        &copy; 2025 FixMyTech.no. Alle rettigheter reservert.
       </div>
     </div>
   </footer>
 
   <script>
-    // Tab functionality
+    // Tab functionality with scrolling
     document.addEventListener('DOMContentLoaded', function() {
       const tabBtns = document.querySelectorAll('.tab-btn');
       const tabContents = document.querySelectorAll('.tab-content');
@@ -992,7 +944,18 @@
           
           // Show corresponding content
           const tabId = btn.getAttribute('data-tab');
-          document.getElementById(tabId).classList.add('active');
+          const tabElement = document.getElementById(tabId);
+          tabElement.classList.add('active');
+          
+          // Scroll to the tabs container with offset for header
+          const tabsContainer = document.querySelector('.tabs-container');
+          const headerHeight = document.querySelector('header').offsetHeight;
+          const offset = 20; // Additional offset
+          
+          window.scrollTo({
+            top: tabsContainer.offsetTop - headerHeight - offset,
+            behavior: 'smooth'
+          });
         });
       });
       
