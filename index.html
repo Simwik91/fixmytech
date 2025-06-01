@@ -868,6 +868,92 @@
     .contact-form-header p {
       color: var(--gray);
     }
+    
+    /* New process section */
+    .process-section {
+      text-align: center;
+      margin: 4rem 0 2rem;
+      background: white;
+      border-radius: 16px;
+      box-shadow: var(--card-shadow);
+      padding: 3rem 2rem;
+    }
+    
+    .process-section h3 {
+      font-size: 2rem;
+      margin-bottom: 3rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .process-section h3::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    
+    .step {
+      background: #f8fafc;
+      border-radius: 16px;
+      padding: 2rem;
+      position: relative;
+      border: 1px solid var(--light-gray);
+      transition: var(--transition);
+    }
+    
+    .step:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .step-number {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3);
+    }
+    
+    .step h4 {
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary-dark);
+      font-size: 1.3rem;
+    }
+    
+    .step p {
+      color: var(--gray);
+      line-height: 1.7;
+    }
+    
+    .step-icon {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
   </style>
 </head>
 <body>
@@ -979,9 +1065,42 @@
           </div>
         </div>
         
-        <div class="pricing-note">
-          <p><strong>Vi tar 590,- per time.</strong></p> 
-          <p>Du betaler kun hvis problemet løses (fraktkostnader og en evt. destruksjonsavgift på 500,- tilkommer hvis vi ikke kan reparere enheten og du ber oss om å kvitte oss med utstyret).</p>
+        <!-- New process section -->
+        <div class="process-section">
+          <h3>Slik fungerer det</h3>
+          <div class="process-steps">
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-icon">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <h4>Send inn henvendelsen din</h4>
+              <p>Fyll ut kontaktskjemaet med detaljer om hva du trenger hjelp med. Vi trenger en beskrivelse av problemet, type utstyr og hva du allerede har prøvd.</p>
+            </div>
+            
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <h4>Vi kontakter deg</h4>
+              <p>Vårt team vil kontakte deg innen 24 timer for å diskutere løsninger og avtale videre fremgangsmåte. Vi finner ut sammen hvordan vi best kan hjelpe deg.</p>
+            </div>
+            
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-icon">
+                <i class="fas fa-tools"></i>
+              </div>
+              <h4>Løsning av problemet</h4>
+              <p>Hvis det er maskinvare, sender du utstyret til oss for undersøkelse og reparasjon. For programvare-problemer hjelper vi deg via fjernstyring. Du betaler kun hvis problemet løses.</p>
+            </div>
+          </div>
+          
+          <div class="pricing-note">
+            <p><strong>Vårt timepris for privatpersoner er 590,- per time.</strong></p> 
+            <p>Du betaler kun hvis problemet er løst, med unntak av eventuelle fraktkostnader og en evt. destruksjonsavgift på 500,- hvis vi ikke kan reparere enheten og du ber oss om å kvitte oss med utstyret.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -1102,25 +1221,10 @@
               </ul>
             </div>
           </div>
-          
-          <div class="service-card">
-            <div class="card-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
-              <i class="fas fa-lock"></i>
-            </div>
-            <div class="card-content">
-              <h3>Datasikkerhet</h3>
-              <ul>
-                <li><i class="fas fa-check"></i> Kryptert lagring for beskyttelse</li>
-                <li><i class="fas fa-check"></i> Tofaktorautentisering</li>
-                <li><i class="fas fa-check"></i> Regelmessig sikkerhetsoppdateringer</li>
-              </ul>
-            </div>
-          </div>
         </div>
         
         <div class="pricing-note">
-          <p><strong>Vi tilbyr backuptjenester for både privatpersoner og bedrifter.</strong></p> 
-          <p>Kontakt oss for en tilpasset løsning som beskytter dine viktige data mot tap og skade.</p>
+          <p><strong>Vi tilbyr backuptjenester for både privatpersoner og bedrifter.</strong> Kontakt oss for en tilpasset løsning som beskytter dine viktige data mot tap og skade.</p>
         </div>
       </div>
     </div>
@@ -1139,7 +1243,7 @@
               <i class="fas fa-image"></i>
             </div>
             <div class="tool-info">
-              <h3>Bileredigerings</h3>
+              <h3>Bileredigeringsverktøy</h3>
               <p>Bileredigering, konvertering og optimalisering</p>
             </div>
           </a>
@@ -1149,7 +1253,7 @@
               <i class="fas fa-video"></i>
             </div>
             <div class="tool-info">
-              <h3>Videoredigering</h3>
+              <h3>Videoredigeringsverktøy</h3>
               <p>Videoredigering med konvertering og effekter</p>
             </div>
           </a>
@@ -1186,11 +1290,12 @@
         
         <div class="contact-form-container">
           <div class="contact-form-header">
-            <p>Fyll ut skjemaet under så kontakter vi deg innen 24 timer</p>
+            <h3>Få IT-hjelp i dag</h3>
+            <p>Fyll ut skjemaet under så kontakter vi deg for en løsning</p>
           </div>
           
           <div class="form-tabs">
-            <div class="form-tab active" data-form="privat-form">Privat</div>
+            <div class="form-tab active" data-form="privat-form">Privatperson</div>
             <div class="form-tab business" data-form="bedrift-form">Bedrift</div>
           </div>
           
