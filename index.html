@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FixMyTech.no - IT-løsninger for privatpersoner og bedrifter</title>
+  <meta name="description" content="Profesjonell IT-hjelp for både privatpersoner og bedrifter. Løser alt fra enkle programvarefeil til komplekse nettverksproblemer og sikkerhetskopiering.">
+  <meta name="keywords" content="IT-support, IT-hjelp, PC-reparasjon, nettverkshjelp, datasikkerhet, backup, skylagring, bedrifts-IT, Office 365, API-integrasjon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -812,6 +814,60 @@
       flex: 1;
       text-align: center;
     }
+
+    /* Improved form tabs */
+    .form-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .form-tab {
+      padding: 1rem 2rem;
+      background: white;
+      border: 2px solid var(--light-gray);
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+    }
+    
+    .form-tab.active {
+      border-color: var(--primary);
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(29, 78, 216, 0.1) 100%);
+    }
+    
+    .form-tab.business.active {
+      border-color: var(--business);
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+    }
+
+    /* New form styling */
+    .contact-form-container {
+      background: white;
+      border-radius: 16px;
+      box-shadow: var(--card-shadow);
+      padding: 2.5rem;
+      max-width: 800px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .contact-form-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .contact-form-header h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-form-header p {
+      color: var(--gray);
+    }
   </style>
 </head>
 <body>
@@ -828,6 +884,7 @@
           <ul>
             <li><a href="#privat">Privat</a></li>
             <li><a href="#bedrift">Bedrifter</a></li>
+            <li><a href="#backup">Sikkerhetskopi</a></li>
             <li><a href="#verktoy">Digitale verktøy</a></li>
             <li><a href="#contact">Kontakt</a></li>
           </ul>
@@ -842,17 +899,8 @@
         <h1>Profesjonell IT-hjelp for <span>din digitale hverdag</span></h1>
         <p>FixMyTech.no leverer pålitelige IT-løsninger for både privatpersoner og bedrifter. Vi løser alt fra enkle programvarefeil til komplekse nettverksproblemer.</p>
         
-        <div class="segment-tabs">
-          <a href="#privat" class="segment-tab active">
-            <i class="fas fa-user"></i>
-            <h3>Privat</h3>
-            <div class="pricing-badge">590,- per time</div>
-          </a>
-          <a href="#bedrift" class="segment-tab business">
-            <i class="fas fa-building"></i>
-            <h3>Bedrifter</h3>
-            <div class="pricing-badge business-badge">Tilpassede priser</div>
-          </a>
+        <div style="text-align: center; margin-top: 2rem;">
+          <a href="#contact" class="btn">Få hjelp nå</a>
         </div>
       </div>
     </section>
@@ -936,60 +984,6 @@
         </div>
       </div>
     </section>
-    
-    <!-- Backup Section -->
-    <div class="backup-section">
-      <div class="container">
-        <div class="section-title">
-          <h2>Viktigheten av sikkerhetskopiering</h2>
-          <p>Beskytt dine viktige data mot tap og skade</p>
-        </div>
-        
-        <div class="services-grid">
-          <div class="service-card">
-            <div class="card-icon" style="background: linear-gradient(135deg, #10b981 0%, #047857 100%);">
-              <i class="fas fa-shield-alt"></i>
-            </div>
-            <div class="card-content">
-              <h3>Beskyttelse mot datatap</h3>
-              <ul>
-                <li><i class="fas fa-check"></i> Sikkerhetskopier data regelmessig</li>
-                <li><i class="fas fa-check"></i> Beskytt mot virus og ransomware</li>
-                <li><i class="fas fa-check"></i> Gjenopprett filer etter uhell</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div class="service-card">
-            <div class="card-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
-              <i class="fas fa-cloud-upload-alt"></i>
-            </div>
-            <div class="card-content">
-              <h3>Skylagringsløsninger</h3>
-              <ul>
-                <li><i class="fas fa-check"></i> Sikker lagring i skyen</li>
-                <li><i class="fas fa-check"></i> Tilgang fra alle enheter</li>
-                <li><i class="fas fa-check"></i> Automatisk synkronisering</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div class="service-card">
-            <div class="card-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
-              <i class="fas fa-lock"></i>
-            </div>
-            <div class="card-content">
-              <h3>Datasikkerhet</h3>
-              <ul>
-                <li><i class="fas fa-check"></i> Kryptert lagring for beskyttelse</li>
-                <li><i class="fas fa-check"></i> Tofaktorautentisering</li>
-                <li><i class="fas fa-check"></i> Regelmessig sikkerhetsoppdateringer</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- Bedrifter Section -->
     <section id="bedrift" class="service-section" style="background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%); padding: 4rem 0;">
@@ -1070,6 +1064,64 @@
         </div>
       </div>
     </section>
+    
+    <!-- Backup Section -->
+    <div id="backup" class="backup-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Viktigheten av sikkerhetskopiering</h2>
+          <p>Beskytt dine viktige data mot tap og skade</p>
+        </div>
+        
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="card-icon" style="background: linear-gradient(135deg, #10b981 0%, #047857 100%);">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="card-content">
+              <h3>Beskyttelse mot datatap</h3>
+              <ul>
+                <li><i class="fas fa-check"></i> Sikkerhetskopier data regelmessig</li>
+                <li><i class="fas fa-check"></i> Beskytt mot virus og ransomware</li>
+                <li><i class="fas fa-check"></i> Gjenopprett filer etter uhell</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="service-card">
+            <div class="card-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+              <i class="fas fa-cloud-upload-alt"></i>
+            </div>
+            <div class="card-content">
+              <h3>Skylagringsløsninger</h3>
+              <ul>
+                <li><i class="fas fa-check"></i> Sikker lagring i skyen</li>
+                <li><i class="fas fa-check"></i> Tilgang fra alle enheter</li>
+                <li><i class="fas fa-check"></i> Automatisk synkronisering</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="service-card">
+            <div class="card-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+              <i class="fas fa-lock"></i>
+            </div>
+            <div class="card-content">
+              <h3>Datasikkerhet</h3>
+              <ul>
+                <li><i class="fas fa-check"></i> Kryptert lagring for beskyttelse</li>
+                <li><i class="fas fa-check"></i> Tofaktorautentisering</li>
+                <li><i class="fas fa-check"></i> Regelmessig sikkerhetsoppdateringer</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="pricing-note">
+          <p><strong>Vi tilbyr sikkerhetskopieringstjenester for både privatpersoner og bedrifter.</strong> Kontakt oss for en tilpasset løsning som beskytter dine viktige data mot tap og skade.</p>
+        </div>
+      </div>
+    </div>
 
     <!-- Digitale verktøy Section -->
     <section id="verktoy" class="service-section">
@@ -1124,115 +1176,98 @@
     </section>
     
     <section class="contact" id="contact">
-      <div class="container contact-container">
-        <div class="contact-info">
-          <h2>Kontakt FixMyTech.no</h2>
-          <p>Send oss en melding så svarer vi deg så raskt som mulig, vanligvis innen 24 timer.</p>
+      <div class="container">
+        <div class="section-title">
+          <h2>Kontakt oss</h2>
+          <p>Send oss en melding så svarer vi deg så raskt som mulig</p>
         </div>
         
-        <div class="contact-forms">
-          <div class="segment-tabs">
-            <button class="segment-tab active" data-segment="privat-form">For privatpersoner</button>
-            <button class="segment-tab business" data-segment="bedrift-form">For bedrifter</button>
+        <div class="contact-form-container">
+          <div class="contact-form-header">
+            <h3>Få IT-hjelp i dag</h3>
+            <p>Fyll ut skjemaet under så kontakter vi deg for en løsning</p>
           </div>
           
-          <div id="privat-form" class="segment-content active">
-            <div class="info-card">
-              <h3><i class="fas fa-handshake"></i> Vår arbeidsprosess</h3>
-              <p>1. Du kontakter oss og beskriver problemet</p>
-              <p>2. Vi avtaler løsningsstrategi og forventet timebruk. Vi bruker aldri mer enn én time utover det avtalte uten videre avtale.</p>
-              <p>3. Vi løser problemet (fjernhjelp eller reparasjon)</p>
-              <p>4. Du betaler kun hvis problemet er løst. Ved reparasjon av maskinvare kan det tilkomme fraktkostnader. Hvis vi ikke kan reparere enheten og du ber oss om å kvitte oss med den, tar vi en destruksjonsavgift på 500,-.</p>
+          <div class="form-tabs">
+            <div class="form-tab active" data-form="privat-form">Privatperson</div>
+            <div class="form-tab business" data-form="bedrift-form">Bedrift</div>
+          </div>
+          
+          <form id="privat-form" action="mailto:privat@fixmytech.no" method="POST" enctype="text/plain">
+            <div class="form-group">
+              <label for="privat-name">Navn</label>
+              <input type="text" id="privat-name" name="Navn" required>
             </div>
             
-            <form action="mailto:privat@fixmytech.no" method="POST" enctype="text/plain">
-              <div class="form-header">
-                <h3>Privat henvendelse</h3>
-                <p>Fyll ut skjemaet for rask IT-hjelp til privatpersoner</p>
-              </div>
-              
-              <div class="form-group">
-                <label for="privat-name">Navn</label>
-                <input type="text" id="privat-name" name="Navn" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="privat-email">E-post</label>
-                <input type="email" id="privat-email" name="E-post" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="privat-service">Hva trenger du hjelp med?</label>
-                <select id="privat-service" name="service-type" required>
-                  <option value="">Velg en tjeneste...</option>
-                  <option value="network">Nettverk & Internett</option>
-                  <option value="software">Programvare & Systemer</option>
-                  <option value="hardware">Maskinvare & Utstyr</option>
-                  <option value="backup">Backup & Skylagring</option>
-                  <option value="other">Annet</option>
-                </select>
-              </div>
-              
-              <div class="form-group">
-                <label for="privat-message">Beskriv problemet ditt</label>
-                <textarea id="privat-message" name="Beskjed" required placeholder="Beskriv problemet så detaljert som mulig. Inkluder gjerne hvilken type utstyr, programvare og hva du har prøvd så langt."></textarea>
-              </div>
-              
-              <div class="form-group">
-                <button type="submit">Send privat henvendelse</button>
-              </div>
-            </form>
-          </div>
+            <div class="form-group">
+              <label for="privat-email">E-post</label>
+              <input type="email" id="privat-email" name="E-post" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="privat-service">Hva trenger du hjelp med?</label>
+              <select id="privat-service" name="service-type" required>
+                <option value="">Velg en tjeneste...</option>
+                <option value="network">Nettverk & Internett</option>
+                <option value="software">Programvare & Systemer</option>
+                <option value="hardware">Maskinvare & Utstyr</option>
+                <option value="backup">Backup & Skylagring</option>
+                <option value="other">Annet</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="privat-message">Beskriv problemet ditt</label>
+              <textarea id="privat-message" name="Beskjed" required placeholder="Beskriv problemet så detaljert som mulig. Inkluder gjerne hvilken type utstyr, programvare og hva du har prøvd så langt."></textarea>
+            </div>
+            
+            <div class="form-group">
+              <button type="submit">Send henvendelse</button>
+            </div>
+          </form>
           
-          <div id="bedrift-form" class="segment-content">
-            <form action="mailto:bedrift@fixmytech.no" method="POST" enctype="text/plain">
-              <div class="form-header">
-                <h3>Bedriftshenvendelse</h3>
-                <p>Fyll ut skjemaet for tilpassede IT-løsninger til bedrifter</p>
-              </div>
-              
-              <div class="form-group">
-                <label for="bedrift-name">Bedriftsnavn</label>
-                <input type="text" id="bedrift-name" name="Bedriftsnavn" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="bedrift-contact">Kontaktperson</label>
-                <input type="text" id="bedrift-contact" name="Kontaktperson" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="bedrift-email">E-post</label>
-                <input type="email" id="bedrift-email" name="E-post" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="bedrift-phone">Telefon</label>
-                <input type="tel" id="bedrift-phone" name="Telefon" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="bedrift-service">Hva trenger bedriften hjelp med?</label>
-                <select id="bedrift-service" name="service-type" required>
-                  <option value="">Velg en tjeneste...</option>
-                  <option value="network">Nettverk & Infrastruktur</option>
-                  <option value="office">Office 365-løsninger</option>
-                  <option value="website">Nettside & Domene</option>
-                  <option value="api">API & JSON-tjenester</option>
-                  <option value="other">Annet</option>
-                </select>
-              </div>
-              
-              <div class="form-group">
-                <label for="bedrift-message">Beskriv bedriftens behov</label>
-                <textarea id="bedrift-message" name="Beskjed" required placeholder="Beskriv bedriftens behov så detaljert som mulig. Inkluder gjerne størrelse på bedrift og spesifikke utfordringer."></textarea>
-              </div>
-              
-              <div class="form-group">
-                <button type="submit" class="btn-business">Send bedriftshenvendelse</button>
-              </div>
-            </form>
-          </div>
+          <form id="bedrift-form" action="mailto:bedrift@fixmytech.no" method="POST" enctype="text/plain" style="display: none;">
+            <div class="form-group">
+              <label for="bedrift-name">Bedriftsnavn</label>
+              <input type="text" id="bedrift-name" name="Bedriftsnavn" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="bedrift-contact">Kontaktperson</label>
+              <input type="text" id="bedrift-contact" name="Kontaktperson" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="bedrift-email">E-post</label>
+              <input type="email" id="bedrift-email" name="E-post" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="bedrift-phone">Telefon</label>
+              <input type="tel" id="bedrift-phone" name="Telefon" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="bedrift-service">Hva trenger bedriften hjelp med?</label>
+              <select id="bedrift-service" name="service-type" required>
+                <option value="">Velg en tjeneste...</option>
+                <option value="network">Nettverk & Infrastruktur</option>
+                <option value="office">Office 365-løsninger</option>
+                <option value="website">Nettside & Domene</option>
+                <option value="api">API & JSON-tjenester</option>
+                <option value="other">Annet</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="bedrift-message">Beskriv bedriftens behov</label>
+              <textarea id="bedrift-message" name="Beskjed" required placeholder="Beskriv bedriftens behov så detaljert som mulig. Inkluder gjerne størrelse på bedrift og spesifikke utfordringer."></textarea>
+            </div>
+            
+            <div class="form-group">
+              <button type="submit" class="btn-business">Send henvendelse</button>
+            </div>
+          </form>
         </div>
       </div>
     </section>
@@ -1243,7 +1278,7 @@
       <div class="footer-logo">
         <span>FixMyTech</span>.no
       </div>
-      <p>Profesjonell IT-hjelp for privatpersoner og bedrifter</p>
+      <p>Profesjonell IT-hjelp</p>
       
       <div class="copyright">
         &copy; 2025 FixMyTech.no. Alle rettigheter reservert.
@@ -1253,52 +1288,27 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Segment tabs functionality
-      const segmentTabs = document.querySelectorAll('.segment-tab');
-      segmentTabs.forEach(tab => {
+      // Form tabs functionality
+      const formTabs = document.querySelectorAll('.form-tab');
+      const forms = document.querySelectorAll('form');
+      
+      formTabs.forEach(tab => {
         tab.addEventListener('click', () => {
           // Remove active class from all tabs
-          segmentTabs.forEach(t => t.classList.remove('active'));
+          formTabs.forEach(t => t.classList.remove('active'));
           
           // Add active class to clicked tab
           tab.classList.add('active');
           
-          // Scroll to the relevant section
-          const segment = tab.getAttribute('data-segment');
-          if(segment) {
-            const targetSection = document.getElementById(segment);
-            if (targetSection) {
-              const headerHeight = document.querySelector('header').offsetHeight;
-              const offset = 20;
-              
-              window.scrollTo({
-                top: targetSection.offsetTop - headerHeight - offset,
-                behavior: 'smooth'
-              });
-            }
+          // Hide all forms
+          forms.forEach(form => form.style.display = 'none');
+          
+          // Show corresponding form
+          const formId = tab.getAttribute('data-form');
+          const formElement = document.getElementById(formId);
+          if (formElement) {
+            formElement.style.display = 'block';
           }
-        });
-      });
-      
-      // Contact form segment tabs functionality
-      const contactSegmentTabs = document.querySelectorAll('.contact-forms .segment-tab');
-      const contactSegmentContents = document.querySelectorAll('.segment-content');
-      
-      contactSegmentTabs.forEach(tab => {
-        tab.addEventListener('click', (e) => {
-          e.preventDefault();
-          
-          // Remove active class from all tabs and contents
-          contactSegmentTabs.forEach(t => t.classList.remove('active'));
-          contactSegmentContents.forEach(c => c.classList.remove('active'));
-          
-          // Add active class to clicked tab
-          tab.classList.add('active');
-          
-          // Show corresponding content
-          const segment = tab.getAttribute('data-segment');
-          const segmentElement = document.getElementById(segment);
-          segmentElement.classList.add('active');
         });
       });
       
@@ -1324,7 +1334,7 @@
       });
       
       // Private form submission
-      document.querySelector('#privat-form form').addEventListener('submit', function(e) {
+      document.querySelector('#privat-form').addEventListener('submit', function(e) {
         e.preventDefault();
         
         // Get form values
@@ -1349,7 +1359,7 @@
       });
       
       // Business form submission
-      document.querySelector('#bedrift-form form').addEventListener('submit', function(e) {
+      document.querySelector('#bedrift-form').addEventListener('submit', function(e) {
         e.preventDefault();
         
         // Get form values
