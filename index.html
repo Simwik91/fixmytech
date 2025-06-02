@@ -286,7 +286,7 @@
 
     .tab-btn {
       padding: 1rem 1.5rem;
-      font-size: 1.1rem;
+      font-size Six: 1.1rem;
       font-weight: 600;
       background: transparent;
       border: none;
@@ -372,7 +372,6 @@
       font-size: 1.1rem;
     }
 
-    /* Two-column layout for services */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -587,7 +586,7 @@
       padding: 2rem;
       max-width: 600px;
       width: 100%;
-      margin: 0 auto; /* Center the form */
+      margin: 0 auto;
     }
 
     .form-group {
@@ -646,43 +645,44 @@
       padding: 4rem 0 2rem;
       width: 100%;
       text-align: center;
+      min-height: 200px; /* Added minimum height */
     }
 
     .footer-content {
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
+      justify-content: center;
+      gap: 1.5rem;
     }
 
     .footer-logo {
       font-size: 2rem;
       font-weight: 700;
-      margin-bottom: 1.5rem;
       color: var(--light);
-      width: 100%;
+      transition: var(--transition); /* Added for interactivity */
+    }
+
+    .footer-logo:hover {
+      transform: scale(1.05); /* Added hover effect */
     }
 
     .footer-logo span {
       color: var(--primary);
     }
-    
+
     .footer-tagline {
-      width: 100%;
-      margin-bottom: 1.5rem;
       font-size: 1.1rem;
+      opacity: 0.9;
     }
 
     .copyright {
+      font-size: 0.9rem;
       opacity: 0.7;
-      margin-top: 2rem;
       padding-top: 1.5rem;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
-      width: 100%;
-      font-size: 0.9rem;
     }
-    
-    /* Added for tab indicators */
+
     .tab-indicator {
       position: absolute;
       bottom: -2px;
@@ -692,25 +692,23 @@
       border-radius: 2px;
       transition: var(--transition);
     }
-    
-    /* Scroll snapping for tabs */
+
     .tabs-header {
       scrollbar-width: none;
       -ms-overflow-style: none;
     }
-    
+
     .tabs-header::-webkit-scrollbar {
       display: none;
     }
-    
-    /* New backup section */
+
     .backup-section {
       background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
       padding: 4rem 0;
       margin: 4rem 0;
       border-radius: 16px;
     }
-    
+
     .pricing-note {
       text-align: center;
       max-width: 800px;
@@ -721,19 +719,18 @@
       box-shadow: var(--card-shadow);
       font-size: 1.1rem;
     }
-    
+
     .pricing-note strong {
       color: var(--primary);
     }
-    
-    /* Pricing section */
+
     .pricing-section {
       background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
       padding: 4rem 0;
       border-radius: 16px;
       margin: 4rem 0;
     }
-    
+
     .pricing-cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -741,7 +738,7 @@
       max-width: 800px;
       margin: 0 auto;
     }
-    
+
     .pricing-card {
       background: white;
       border-radius: 16px;
@@ -753,31 +750,31 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     .pricing-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
       border-color: var(--primary);
     }
-    
+
     .price-tag {
       font-size: 2.5rem;
       font-weight: 700;
       margin: 1.5rem 0;
       color: var(--primary);
     }
-    
+
     .price-tag span {
       font-size: 1rem;
       color: var(--gray);
     }
-    
+
     .pricing-card ul {
       list-style: none;
       text-align: left;
       margin: 2rem 0;
     }
-    
+
     .pricing-card li {
       padding: 0.75rem 0;
       border-bottom: 1px solid var(--light-gray);
@@ -785,32 +782,30 @@
       align-items: center;
       gap: 0.75rem;
     }
-    
+
     .pricing-card li:last-child {
       border-bottom: none;
     }
-    
+
     .pricing-card li i {
       color: var(--success);
       font-size: 1.2rem;
     }
-    
-    /* PROCESS STEPS - FIXED LAYOUT */
+
     .process-steps {
       display: grid;
-      grid-template-columns: repeat(2, 1fr); /* Two columns */
+      grid-template-columns: repeat(2, 1fr);
       gap: 2rem;
       max-width: 1000px;
       margin: 4rem auto 0;
     }
-    
-    /* Mobile layout */
+
     @media (max-width: 650px) {
       .process-steps {
-        grid-template-columns: 1fr; /* Single column on mobile */
+        grid-template-columns: 1fr;
       }
     }
-    
+
     .step-card {
       background: white;
       border-radius: 16px;
@@ -822,12 +817,12 @@
       transition: var(--transition);
       border: 2px solid var(--light-gray);
     }
-    
+
     .step-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 15px 25px -5px rgba(0,0,0,0.1);
     }
-    
+
     .step-number {
       position: absolute;
       top: -25px;
@@ -845,13 +840,13 @@
       font-weight: 700;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
-    
+
     .step-card h3 {
       font-size: 1.5rem;
       margin-bottom: 1rem;
       color: var(--primary);
     }
-    
+
     .disclaimer {
       background: white;
       border-radius: 16px;
@@ -862,16 +857,15 @@
       text-align: center;
       border-left: 4px solid var(--warning);
     }
-    
+
     .disclaimer p {
       font-size: 1.1rem;
     }
-    
+
     .disclaimer strong {
       color: var(--warning);
     }
-    
-    /* Responsive adjustments */
+
     @media (max-width: 768px) {
       .pricing-cards {
         grid-template-columns: 1fr;
@@ -885,8 +879,7 @@
         font-size: 1rem;
       }
     }
-    
-    /* Additional fee notice */
+
     .additional-fee {
       background: white;
       border-radius: 16px;
@@ -897,12 +890,11 @@
       text-align: center;
       border-top: 4px solid var(--warning);
     }
-    
+
     .additional-fee p {
       font-size: 1.1rem;
     }
 
-    /* Centering for contact form section */
     .contact-form-container {
       max-width: 800px;
       margin: 0 auto;
@@ -928,7 +920,7 @@
         <nav>
           <ul>
             <li><a href="#tjenester">Våre tjenester</a></li>
-            <li><a href="#pris">Pris</a></li> <!-- Changed to Pris -->
+            <li><a href="#pris">Pris</a></li>
             <li><a href="#verktoy">Digitale verktøy</a></li>
             <li><a href="#contact">Kontakt</a></li>
           </ul>
@@ -949,7 +941,6 @@
       </div>
     </section>
 
-    <!-- Våre tjenester Section -->
     <section id="tjenester" class="service-section">
       <div class="container">
         <div class="section-title">
@@ -1031,7 +1022,6 @@
             </div>
             
             <div class="services-grid">
-              <!-- Combined into two cards -->
               <div class="service-card">
                 <div class="card-icon" style="background: linear-gradient(135deg, #10b981 0%, #047857 100%);">
                   <i class="fas fa-shield-alt"></i>
@@ -1124,7 +1114,6 @@
       </div>
     </section>
 
-    <!-- Digitale verktøy Section -->
     <section id="verktoy" class="service-section">
       <div class="container">
         <div class="section-title">
@@ -1230,16 +1219,14 @@
         <span>FixMyTech</span>.no
       </div>
       <p class="footer-tagline">Profesjonell IT-hjelp</p>
-      
       <div class="copyright">
-        &copy; 2025 FixMyTech.no. Alle rettigheter reservert.
+        © 2025 FixMyTech.no. Alle rettigheter reservert.
       </div>
     </div>
   </footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Smooth scrolling for navigation links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           e.preventDefault();
@@ -1260,15 +1247,12 @@
         });
       });
       
-      // Contact form submission
       document.querySelector('#contact-form').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Get form values
         const name = document.getElementById('name').value;
         const serviceType = document.getElementById('service').value;
         
-        // Prepare service type text
         let serviceText = '';
         switch(serviceType) {
           case 'network': serviceText = 'Nettverk & Internett'; break;
@@ -1278,10 +1262,8 @@
           default: serviceText = 'Annet';
         }
         
-        // Show success message
         alert(`Takk for din henvendelse, ${name}!\n\nVi har mottatt din forespørsel om hjelp med ${serviceText}.\n\nVårt team vil kontakte deg innen 24 timer for å diskutere løsninger.`);
         
-        // Reset the form
         this.reset();
       });
     });
