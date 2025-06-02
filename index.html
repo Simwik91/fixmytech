@@ -652,6 +652,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      text-align: center;
     }
 
     .footer-logo {
@@ -659,10 +660,17 @@
       font-weight: 700;
       margin-bottom: 1.5rem;
       color: var(--light);
+      width: 100%;
     }
 
     .footer-logo span {
       color: var(--primary);
+    }
+    
+    .footer-tagline {
+      width: 100%;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
     }
 
     .copyright {
@@ -787,12 +795,20 @@
       font-size: 1.2rem;
     }
     
+    /* PROCESS STEPS - FIXED LAYOUT */
     .process-steps {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(2, 1fr); /* Two columns */
       gap: 2rem;
       max-width: 1000px;
       margin: 4rem auto 0;
+    }
+    
+    /* Mobile layout */
+    @media (max-width: 650px) {
+      .process-steps {
+        grid-template-columns: 1fr; /* Single column on mobile */
+      }
     }
     
     .step-card {
@@ -803,6 +819,13 @@
       text-align: center;
       position: relative;
       padding-top: 4rem;
+      transition: var(--transition);
+      border: 2px solid var(--light-gray);
+    }
+    
+    .step-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 25px -5px rgba(0,0,0,0.1);
     }
     
     .step-number {
@@ -820,6 +843,7 @@
       justify-content: center;
       font-size: 1.5rem;
       font-weight: 700;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
     
     .step-card h3 {
@@ -1065,7 +1089,7 @@
         </div>
         
         <div class="additional-fee">
-          <p><strong>Merk:</strong> Fraktkostnader og evt. destruksjonsavgift på 500,- tilkommer hvis vi ikke kan reparere enheten og du ber oss om å kvitte oss med utstyret.</p>
+          <p><strong>Merk:</strong> Sendes Hardware til oss vil fraktkostnader og evt. destruksjonsavgift på 500,- tilkomme hvis vi ikke kan reparere enheten og du ber oss om å kvitte oss med utstyret.</p>
         </div>
         
         <div class="process-steps">
@@ -1205,7 +1229,7 @@
       <div class="footer-logo">
         <span>FixMyTech</span>.no
       </div>
-      <p>Profesjonell IT-hjelp</p>
+      <p class="footer-tagline">Profesjonell IT-hjelp</p>
       
       <div class="copyright">
         &copy; 2025 FixMyTech.no. Alle rettigheter reservert.
