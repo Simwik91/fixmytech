@@ -78,7 +78,7 @@
       align-items: center;
       gap: 0.75rem;
       font-size: 1.8rem;
-      font-weight: Conti 700;
+      font-weight: 700;
       color: var(--primary);
       text-decoration: none;
       transition: var(--transition);
@@ -905,6 +905,59 @@
       text-align: center;
       margin-bottom: 2rem;
     }
+
+    /* New styles for notification */
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+      max-width: 400px;
+      z-index: 1000;
+      display: none;
+      border-left: 4px solid var(--success);
+      animation: slideIn 0.5s ease forwards;
+    }
+
+    .notification.show {
+      display: block;
+    }
+
+    .notification-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .notification-header i {
+      color: var(--success);
+      font-size: 1.5rem;
+    }
+
+    .notification-header h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--secondary);
+    }
+
+    .notification p {
+      color: var(--gray);
+      font-size: 1rem;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(100%); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideOut {
+      from { opacity: 1; transform: translateX(0); }
+      to { opacity: 0; transform: translateX(100%); }
+    }
   </style>
 </head>
 <body>
@@ -930,6 +983,15 @@
   </header>
 
   <main>
+    <!-- Notification element -->
+    <div class="notification" id="notification">
+      <div class="notification-header">
+        <i class="fas fa-check-circle"></i>
+        <h3>Takk for din henvendelse!</h3>
+      </div>
+      <p id="notification-message"></p>
+    </div>
+
     <section class="hero">
       <div class="container">
         <h1>Profesjonell IT-hjelp for <span>din digitale hverdag</span></h1>
@@ -1227,6 +1289,7 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Smooth scrolling for anchor links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           e.preventDefault();
@@ -1247,6 +1310,7 @@
         });
       });
       
+      // Form submission handling
       document.querySelector('#contact-form').addEventListener('submit', function(e) {
         e.preventDefault();
         
@@ -1262,7 +1326,20 @@
           default: serviceText = 'Annet';
         }
         
-        alert(`Takk for din henvendelse, ${name}!\n\nVi har mottatt din forespørsel om hjelp med ${serviceText}.\n\nVårt team vil kontakte deg innen 24 timer for å diskutere løsninger.`);
+        const notification = document.getElementById('notification');
+        const notificationMessage = document.getElementById('notification-message');
+        notificationMessage.innerHTML = `Takk for din henvendelse, ${name}! Vi har mottatt din forespørsel om hjelp med ${serviceText}. Vårt team vil kontakte deg innen 24 timer for å diskutere løsninger.`;
+        
+        notification.classList.add('show');
+        
+        // Hide notification after 5 seconds
+        setTimeout(() => {
+          notification.style.animation = 'slideOut 0.5s ease forwards';
+          setTimeout(() => {
+            notification.classList.remove('show');
+            notification.style.animation = '';
+          }, 500);
+        }, 5000);
         
         this.reset();
       });
