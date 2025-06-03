@@ -1618,20 +1618,20 @@
         </div>
         
         <div class="contact-form-container">
-          <form id="contact-form" action="mailto:kontakt@fixmytech.no" method="POST" enctype="text/plain">
+          <form id="contact-form" action="https://formspree.io/f/mwpbkjdd" method="POST">
             <div class="form-group">
               <label for="name">Navn</label>
-              <input type="text" id="name" name="Navn" required aria-label="Ditt navn">
+              <input type="text" id="name" name="name" required aria-label="Ditt navn">
             </div>
             
             <div class="form-group">
               <label for="email">E-post</label>
-              <input type="email" id="email" name="E-post" required aria-label="Din e-postadresse">
+              <input type="email" id="email" name="email" required aria-label="Din e-postadresse">
             </div>
             
             <div class="form-group">
               <label for="service-type">Hva trenger du hjelp med?</label>
-              <select id="service-type" name="service-type" required aria-label="Velg type IT-tjeneste">
+              <select id="service-type" name="service" required aria-label="Velg type IT-tjeneste">
                 <option value="">Velg en tjeneste...</option>
                 <option value="network">Nettverk & Internett</option>
                 <option value="software">Programvare & Systemer</option>
@@ -1647,8 +1647,15 @@
             
             <div class="form-group">
               <label for="message">Beskriv behovet ditt</label>
-              <textarea id="message" name="Beskjed" required aria-label="Beskrivelse av ditt IT-behov" placeholder="Beskriv problemet eller behovet ditt, f.eks. 'Wi-Fi kobler ikke til', 'trenger backup-oppsett', eller 'PC starter ikke'. Inkluder detaljer om utstyr eller feilmeldinger for raskere hjelp."></textarea>
+              <textarea id="message" name="message" required aria-label="Beskrivelse av ditt IT-behov" placeholder="Beskriv problemet eller behovet ditt, f.eks. 'Wi-Fi kobler ikke til', 'trenger backup-oppsett', eller 'PC starter ikke'. Inkluder detaljer om utstyr eller feilmeldinger for raskere hjelp."></textarea>
             </div>
+            
+            <div style="display: none;">
+              <label for="website">Website (leave blank)</label>
+              <input type="text" id="website" name="_gotcha">
+            </div>
+            
+            <input type="hidden" name="_replyto" value="{{email}}">
             
             <div class="form-group">
               <button type="submit" aria-label="Send henvendelse">Send henvendelse</button>
@@ -1692,11 +1699,16 @@
         });
       });
       
-      document.querySelector('#contact-form').addEventListener('submit', function(e) {
+      const form = document.getElementById('contact-form');
+      const notification = document.getElementById('notification');
+      const notificationMessage = document.getElementById('notification-message');
+
+      form.addEventListener('submit', async function(e) {
         e.preventDefault();
-        
-        const name = document.getElementById('name').value;
-        const serviceType = document.getElementById('service-type').value;
+
+        const formData = new FormData(form);
+        const name = formData.get('name');
+        const serviceType = formData.get('service');
         
         let serviceText = '';
         switch(serviceType) {
@@ -1710,25 +1722,47 @@
           case 'cybersecurity': serviceText = 'Cybersikkerhet'; break;
           default: serviceText = 'Annet';
         }
-        
-        const notification = document.getElementById('notification');
-        const notificationMessage = document.getElementById('notification-message');
-        notificationMessage.innerHTML = `Takk, ${name}! Din forespørsel om ${serviceText} er mottatt. Hvis du har sendt utstyr til oss, kontakter vi deg normalt innen 24 timer.`;
-        
-        notification.classList.add('show');
-        
-        setTimeout(() => {
-          notification.style.animation = 'slideOut 0.5s ease forwards';
+
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+
+          if (response.ok) {
+            notificationMessage.innerHTML = `Takk, ${name}! Din forespørsel om ${serviceText} er mottatt. Vi kontakter deg normalt innen 24 timer.`;
+            notification.classList.add('show');
+            form.reset();
+
+            setTimeout(() => {
+              notification.style.animation = 'slideOut 0.5s ease forwards';
+              setTimeout(() => {
+                notification.classList.remove('show');
+                notification.style.animation = '';
+              }, 500);
+            }, 5000);
+          } else {
+            throw new Error('Form submission failed');
+          }
+        } catch (error) {
+          notificationMessage.innerHTML = `Det oppstod en feil ved sending av skjemaet. Prøv igjen senere eller kontakt oss direkte på kontakt@fixmytech.no.`;
+          notification.style.borderLeftColor = 'var(--warning)';
+          notification.classList.add('show');
+
           setTimeout(() => {
-            notification.classList.remove('show');
-            notification.style.animation = '';
-          }, 500);
-        }, 5000);
-        
-        this.reset();
+            notification.style.animation = 'slideOut 0.5s ease forwards';
+            setTimeout(() => {
+              notification.classList.remove('show');
+              notification.style.animation = '';
+              notification.style.borderLeftColor = 'var(--success)';
+            }, 500);
+          }, 5000);
+        }
       });
     });
   </script>
 </body>
 </html>
-```
