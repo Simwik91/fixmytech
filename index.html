@@ -1280,6 +1280,8 @@
                 <a href="#tjenester" aria-label="Backup og Skylagring"><i class="fas fa-cloud"></i>Backup & Skylagring</a>
                 <a href="#tjenester" aria-label="API og Integrasjoner"><i class="fas fa-code"></i>API & Integrasjoner</a>
                 <a href="#tjenester" aria-label="Webutvikling"><i class="fas fa-globe"></i>Webutvikling</a>
+                <a href="#tjenester" aria-label="Office 365 og Azure-tjenester"><i class="fas fa-cloud"></i>Office 365 & Azure</a>
+                <a href="#tjenester" aria-label="Cybersikkerhet"><i class="fas fa-shield-alt"></i>Cybersikkerhet</a>
               </div>
             </li>
             <li class="dropdown">
@@ -1288,7 +1290,7 @@
                 <a href="https://free-image-toolkit.com" target="_blank" aria-label="Gå til bilderedigeringsverktøy"><i class="fas fa-image"></i>Bilderedigering</a>
                 <a href="https://free-video-toolkit.com" target="_blank" aria-label="Gå til videoredigeringsverktøy"><i class="fas fa-video"></i>Videoredigering</a>
                 <a href="https://free-ean-maker.com" target="_blank" aria-label="Gå til EAN-generator"><i class="fas fa-barcode"></i>EAN-generator</a>
-                <a href="https://free-qr-maker.com" target="_blank" aria-label="Gå til QR-kodegenerator"><i class="fas fa-qrcode"></i>QR-kodegenerator</a>
+                <a href="https://free-qr-maker.com" target="_blank" aria-label="Gå til QR-generator"><i class="fas fa-qrcode"></i>QR-generator</a>
               </div>
             </li>
             <li><a href="#pris" aria-label="Gå til Pris">Pris</a></li>
@@ -1421,6 +1423,40 @@
               </ul>
             </div>
           </div>
+          
+          <div class="service-card">
+            <div class="card-icon">
+              <i class="fas fa-cloud"></i>
+            </div>
+            <div class="card-content">
+              <h3>Office 365 og Azure-tjenester</h3>
+              <ul>
+                <li><i class="fas fa-check"></i> Implementering og oppsett av Office 365</li>
+                <li><i class="fas fa-check"></i> Migrering til Office 365</li>
+                <li><i class="fas fa-check"></i> Brukeropplæring på Office 365</li>
+                <li><i class="fas fa-check"></i> Feilsøking og support for Office 365</li>
+                <li><i class="fas fa-check"></i> Oppsett og administrasjon av Azure-tjenester</li>
+                <li><i class="fas fa-check"></i> Sikkerhet og overholdelse i Azure</li>
+                <li><i class="fas fa-check"></i> Integrasjon av Azure med andre tjenester</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="service-card">
+            <div class="card-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="card-content">
+              <h3>Cybersikkerhet</h3>
+              <ul>
+                <li><i class="fas fa-check"></i> Risikovurdering og sårbarhetsscanning</li>
+                <li><i class="fas fa-check"></i> Implementering av brannmur og intrusjonsdeteksjon</li>
+                <li><i class="fas fa-check"></i> Opplæring av ansatte i cybersikkerhet</li>
+                <li><i class="fas fa-check"></i> Planlegging av hendelsesrespons</li>
+                <li><i class="fas fa-check"></i> Overholdelse av databeskyttelsesforskrifter</li>
+              </ul>
+            </div>
+          </div>
         </div>
         
         <div class="backup-section">
@@ -1506,12 +1542,12 @@
             </div>
           </a>
           
-          <a href="https://free-qr-maker.com" target="_blank" class="tool-item" aria-label="Gå til QR-kodegenerator">
+          <a href="https://free-qr-maker.com" target="_blank" class="tool-item" aria-label="Gå til QR-generator">
             <div class="tool-icon">
               <i class="fas fa-qrcode"></i>
             </div>
             <div class="tool-info">
-              <h3>QR-kodegenerator</h3>
+              <h3>QR-generator</h3>
               <p>Lag QR-koder for lenker og kontakter.</p>
             </div>
           </a>
@@ -1603,6 +1639,8 @@
                 <option value="backup">Backup & Skylagring</option>
                 <option value="api">API & Integrasjoner</option>
                 <option value="web">Webutvikling</option>
+                <option value="office365">Office 365 & Azure</option>
+                <option value="cybersecurity">Cybersikkerhet</option>
                 <option value="other">Annet</option>
               </select>
             </div>
@@ -1668,6 +1706,8 @@
           case 'backup': serviceText = 'Backup & Skylagring'; break;
           case 'api': serviceText = 'API & Integrasjoner'; break;
           case 'web': serviceText = 'Webutvikling'; break;
+          case 'office365': serviceText = 'Office 365 & Azure-tjenester'; break;
+          case 'cybersecurity': serviceText = 'Cybersikkerhet'; break;
           default: serviceText = 'Annet';
         }
         
@@ -1691,3 +1731,4 @@
   </script>
 </body>
 </html>
+```
