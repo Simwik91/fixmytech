@@ -140,6 +140,47 @@
       width: 100%;
     }
 
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: white;
+      min-width: 200px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+      border-radius: 8px;
+      border: 1px solid var(--light-gray);
+    }
+
+    .dropdown-content a {
+      color: var(--secondary);
+      padding: 0.75rem 1rem;
+      display: block;
+      font-size: 1rem;
+      text-decoration: none;
+    }
+
+    .dropdown-content a:hover {
+      background: var(--light-gray);
+      color: var(--primary);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown > a::after {
+      content: '\f078';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      margin-left: 0.5rem;
+      font-size: 0.8rem;
+    }
+
     .hero {
       padding: 4rem 0 2rem;
       text-align: center;
@@ -968,7 +1009,6 @@
       to { opacity: 0; transform: translateX(100%); }
     }
 
-    /* Enhanced Mobile Responsiveness */
     @media (max-width: 600px) {
       .container {
         padding: 0 1rem;
@@ -1001,6 +1041,19 @@
 
       nav a::after {
         display: none;
+      }
+
+      .dropdown-content {
+        position: static;
+        box-shadow: none;
+        border: none;
+        background: transparent;
+        min-width: 100%;
+      }
+
+      .dropdown-content a {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
       }
 
       .hero {
@@ -1207,8 +1260,26 @@
         </div>
         <nav>
           <ul>
-            <li><a href="#tjenester" aria-label="Gå til Våre tjenester">Våre tjenester</a></li>
-            <li><a href="#verktoy" aria-label="Gå til Digitale verktøy">Digitale verktøy</a></li>
+            <li class="dropdown">
+              <a href="#tjenester" aria-label="Gå til Våre tjenester">Våre tjenester</a>
+              <div class="dropdown-content">
+                <a href="#tjenester" aria-label="Nettverk og Internett">Nettverk & Internett</a>
+                <a href="#tjenester" aria-label="Programvare og Systemer">Programvare & Systemer</a>
+                <a href="#tjenester" aria-label="Maskinvare og Utstyr">Maskinvare & Utstyr</a>
+                <a href="#tjenester" aria-label="Backup og Skylagring">Backup & Skylagring</a>
+                <a href="#tjenester" aria-label="API og Integrasjoner">API & Integrasjoner</a>
+                <a href="#tjenester" aria-label="Webutvikling">Webutvikling</a>
+              </div>
+            </li>
+            <li class="dropdown">
+              <a href="#verktoy" aria-label="Gå til Digitale verktøy">Digitale verktøy</a>
+              <div class="dropdown-content">
+                <a href="https://free-image-toolkit.com" target="_blank" aria-label="Gå til bilderedigeringsverktøy">Bilderedigering</a>
+                <a href="https://free-video-toolkit.com" target="_blank" aria-label="Gå til videoredigeringsverktøy">Videoredigering</a>
+                <a href="https://free-ean-maker.com" target="_blank" aria-label="Gå til EAN-generator">EAN-generator</a>
+                <a href="https://free-qr-maker.com" target="_blank" aria-label="Gå til QR-kodegenerator">QR-kodegenerator</a>
+              </div>
+            </li>
             <li><a href="#pris" aria-label="Gå til Pris">Pris</a></li>
             <li><a href="#contact" aria-label="Gå til Kontakt">Kontakt</a></li>
           </ul>
@@ -1307,6 +1378,38 @@
               </ul>
             </div>
           </div>
+          
+          <div class="service-card">
+            <div class="card-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <div class="card-content">
+              <h3>API & Integrasjoner</h3>
+              <ul>
+                <li><i class="fas fa-check"></i> Integrasjon av bedriftsystemer</li>
+                <li><i class="fas fa-check"></i> API-utvikling og tilpasning</li>
+                <li><i class="fas fa-check"></i> Automatisering av prosesser</li>
+                <li><i class="fas fa-check"></i> Sikker datautveksling</li>
+                <li><i class="fas fa-check"></i> Dokumentasjon og support</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="service-card">
+            <div class="card-icon">
+              <i class="fas fa-globe"></i>
+            </div>
+            <div class="card-content">
+              <h3>Webutvikling</h3>
+              <ul>
+                <li><i class="fas fa-check"></i> Responsive nettsider</li>
+                <li><i class="fas fa-check"></i> Hosting og domeneoppsett</li>
+                <li><i class="fas fa-check"></i> Nettsidevedlikehold</li>
+                <li><i class="fas fa-check"></i> E-handelsløsninger</li>
+                <li><i class="fas fa-check"></i> SEO-optimalisering</li>
+              </ul>
+            </div>
+          </div>
         </div>
         
         <div class="backup-section">
@@ -1373,6 +1476,8 @@
           </a>
           
           <a href="https://free-video-toolkit.com" target="_blank" class="tool-item" aria-label="Gå til videoredigeringsverktøy">
+
+
             <div class="tool-icon">
               <i class="fas fa-video"></i>
             </div>
@@ -1426,7 +1531,7 @@
         </div>
         
         <div class="additional-fee">
-          <p><strong>Merk:</strong> Fraktkostnader og en destruksjonsavgift på 500,- tilkommer dersom utstyret ikke kan repareres og du ønsker at vi destruerer det.</p>
+          <p><strong>Merk:</strong> Hvis du sender utstyr til oss og det ikke kan repareres, kan du velge å få det returnert eller la oss destruere det for en avgift på 500,-.</p>
         </div>
         
         <div class="process-steps">
@@ -1439,24 +1544,24 @@
           <div class="step-card">
             <div class="step-number">2</div>
             <h3>Vurdering</h3>
-            <p>Vi vurderer forespørselen din innen 24 timer og gir et tilbud med tidsestimat.</p>
+            <p>Vi vurderer forespørselen din, normalt innen 24 timer, og gir et tilbud med tidsestimat.</p>
           </div>
           
           <div class="step-card">
             <div class="step-number">3</div>
             <h3>Gjennomføring</h3>
-            <p>Etter godkjenning utfører vi tjenesten via fjernstyring, på stedet eller hos oss.</p>
+            <p>Hvis du godtar tilbudet, utfører vi tjenesten via fjernstyring eller ved at du sender utstyret til oss.</p>
           </div>
           
           <div class="step-card">
             <div class="step-number">4</div>
             <h3>Levering</h3>
-            <p>Vi fullfører tjenesten og returnerer utstyret. Hvis det ikke kan repareres, kan vi destruere det for 500,-.</p>
+            <p>Vi fullfører tjenesten og sender utstyret tilbake hvis det er tilsendt oss. Hvis det ikke kan repareres, kan vi destruere det for en avgift på 500,-.</p>
           </div>
         </div>
         
         <div class="disclaimer">
-          <p><strong>Viktig:</strong> Vi tar ikke ansvar for skader på utstyr under reparasjon eller oppsett. Våre eksperter jobber profesjonelt for å minimere risiko.</p>
+          <p><strong>Viktig:</strong> Våre eksperter jobber profesjonelt for å levere høykvalitets IT-tjenester. I sjeldne tilfeller kan det oppstå skader på utstyr under reparasjon eller oppsett, men vi gjør alt vi kan for å minimere risikoen.</p>
         </div>
       </div>
     </section>
@@ -1465,7 +1570,7 @@
       <div class="container">
         <div class="section-title">
           <h2>Kontakt oss</h2>
-          <p>Få rask IT-hjelp – fyll ut skjemaet, så svarer vi innen 24 timer.</p>
+          <p>Få rask IT-hjelp – fyll ut skjemaet, så svarer vi normalt innen 24 timer.</p>
         </div>
         
         <div class="contact-form-container">
@@ -1488,6 +1593,8 @@
                 <option value="software">Programvare & Systemer</option>
                 <option value="hardware">Maskinvare & Utstyr</option>
                 <option value="backup">Backup & Skylagring</option>
+                <option value="api">API & Integrasjoner</option>
+                <option value="web">Webutvikling</option>
                 <option value="other">Annet</option>
               </select>
             </div>
@@ -1511,7 +1618,7 @@
       <div class="footer-logo">
         <span>FixMyTech</span>.no
       </div>
-      <p class="footer-tagline">Din partner for profesjonell IT-hjelp</p>
+      <p class="footer-tagline">Profesjonell IT-hjelp</p>
       <div class="copyright">
         © 2025 FixMyTech.no. Alle rettigheter reservert.
       </div>
@@ -1552,12 +1659,14 @@
           case 'software': serviceText = 'Programvare & Systemer'; break;
           case 'hardware': serviceText = 'Maskinvare & Utstyr'; break;
           case 'backup': serviceText = 'Backup & Skylagring'; break;
+          case 'api': serviceText = 'API & Integrasjoner'; break;
+          case 'web': serviceText = 'Webutvikling'; break;
           default: serviceText = 'Annet';
         }
         
         const notification = document.getElementById('notification');
         const notificationMessage = document.getElementById('notification-message');
-        notificationMessage.innerHTML = `Takk, ${name}! Din forespørsel om ${serviceText} er mottatt. Vi kontakter deg innen 24 timer.`;
+        notificationMessage.innerHTML = `Takk, ${name}! Din forespørsel om ${serviceText} er mottatt. Vi kontakter deg normalt innen 24 timer.`;
         
         notification.classList.add('show');
         
