@@ -4,18 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FixMyTech.no - Profesjonelle IT-løsninger</title>
-  <meta name="description" content="FixMyTech.no tilbyr profesjonell IT-hjelp for privatpersoner og bedrifter. Vi løser programvarefeil, nettverksproblemer, maskinvareutfordringer og sikrer dine data med backup og skylagring.">
+  <meta name="description" content="FixMyTech.no tilbyr profesjonell IT-hjelp for privatpersoner og bedrifter. Vi løser programvarefeil, nettverksproblemer, maskinvare og sikrer dine data med backup og skylagring.">
   <meta name="keywords" content="IT-support, IT-hjelp, PC-reparasjon, nettverkshjelp, datasikkerhet, backup, skylagring, virusfjerning, systemoptimalisering, teknisk støtte">
   <meta name="author" content="FixMyTech.no">
   <meta property="og:title" content="FixMyTech.no - Profesjonelle IT-løsninger">
-  <meta property="og:description" content="Pålitelig IT-hjelp for alle dine teknologiske behov. Fra feilsøking til backup og skylagring, vi har løsningene du trenger.">
+  <meta property="og:description" content="Profesjonell IT-hjelp for alle dine teknologiske behov. Fra feilsøking til backup og skylagring, vi har løsningene du trenger.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://fixmytech.no">
   <meta property="og:image" content="https://fixmytech.no/images/og-image.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="FixMyTech.no - Profesjonelle IT-løsninger">
-  <meta name="twitter:description" content="Pålitelig IT-hjelp for alle dine teknologiske behov. Fra feilsøking til backup og skylagring, vi har løsningene du trenger.">
-  <meta name="twitter:image" content="https://fixmytech.no/images/og-image.jpg">
+  <meta name="twitter:description" content="Profesjonell IT-hjelp for alle dine teknologiske behov. Fra feilsøking til backup og skylagring, vi har løsningene du trenger.">
+  <meta name="twitter:image" content="https://fixmytech.no/images/twitter-image.jpg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -149,7 +149,7 @@
       display: none;
       position: absolute;
       background: white;
-      min-width: 200px;
+      min-width: 220px;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
       z-index: 1;
       border-radius: 8px;
@@ -159,14 +159,25 @@
     .dropdown-content a {
       color: var(--secondary);
       padding: 0.75rem 1rem;
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
       font-size: 1rem;
       text-decoration: none;
+    }
+
+    .dropdown-content a i {
+      color: var(--primary);
+      font-size: 0.9rem;
     }
 
     .dropdown-content a:hover {
       background: var(--light-gray);
       color: var(--primary);
+    }
+
+    .dropdown-content a:hover i {
+      color: var(--primary-dark);
     }
 
     .dropdown:hover .dropdown-content {
@@ -1210,7 +1221,7 @@
 
       .tab-btn {
         font-size: 0.95rem;
-        padding: 0.75rem 1rem;
+        padding: 0.75rem;
       }
 
       .notification {
@@ -1263,21 +1274,21 @@
             <li class="dropdown">
               <a href="#tjenester" aria-label="Gå til Våre tjenester">Våre tjenester</a>
               <div class="dropdown-content">
-                <a href="#tjenester" aria-label="Nettverk og Internett">Nettverk & Internett</a>
-                <a href="#tjenester" aria-label="Programvare og Systemer">Programvare & Systemer</a>
-                <a href="#tjenester" aria-label="Maskinvare og Utstyr">Maskinvare & Utstyr</a>
-                <a href="#tjenester" aria-label="Backup og Skylagring">Backup & Skylagring</a>
-                <a href="#tjenester" aria-label="API og Integrasjoner">API & Integrasjoner</a>
-                <a href="#tjenester" aria-label="Webutvikling">Webutvikling</a>
+                <a href="#tjenester" aria-label="Nettverk og Internett"><i class="fas fa-network-wired"></i>Nettverk & Internett</a>
+                <a href="#tjenester" aria-label="Programvare og Systemer"><i class="fas fa-laptop-code"></i>Programvare & Systemer</a>
+                <a href="#tjenester" aria-label="Maskinvare og Utstyr"><i class="fas fa-plug"></i>Maskinvare & Utstyr</a>
+                <a href="#tjenester" aria-label="Backup og Skylagring"><i class="fas fa-cloud"></i>Backup & Skylagring</a>
+                <a href="#tjenester" aria-label="API og Integrasjoner"><i class="fas fa-code"></i>API & Integrasjoner</a>
+                <a href="#tjenester" aria-label="Webutvikling"><i class="fas fa-globe"></i>Webutvikling</a>
               </div>
             </li>
             <li class="dropdown">
               <a href="#verktoy" aria-label="Gå til Digitale verktøy">Digitale verktøy</a>
               <div class="dropdown-content">
-                <a href="https://free-image-toolkit.com" target="_blank" aria-label="Gå til bilderedigeringsverktøy">Bilderedigering</a>
-                <a href="https://free-video-toolkit.com" target="_blank" aria-label="Gå til videoredigeringsverktøy">Videoredigering</a>
-                <a href="https://free-ean-maker.com" target="_blank" aria-label="Gå til EAN-generator">EAN-generator</a>
-                <a href="https://free-qr-maker.com" target="_blank" aria-label="Gå til QR-kodegenerator">QR-kodegenerator</a>
+                <a href="https://free-image-toolkit.com" target="_blank" aria-label="Gå til bilderedigeringsverktøy"><i class="fas fa-image"></i>Bilderedigering</a>
+                <a href="https://free-video-toolkit.com" target="_blank" aria-label="Gå til videoredigeringsverktøy"><i class="fas fa-video"></i>Videoredigering</a>
+                <a href="https://free-ean-maker.com" target="_blank" aria-label="Gå til EAN-generator"><i class="fas fa-barcode"></i>EAN-generator</a>
+                <a href="https://free-qr-maker.com" target="_blank" aria-label="Gå til QR-kodegenerator"><i class="fas fa-qrcode"></i>QR-kodegenerator</a>
               </div>
             </li>
             <li><a href="#pris" aria-label="Gå til Pris">Pris</a></li>
@@ -1299,7 +1310,7 @@
 
     <section class="hero">
       <div class="container">
-        <h1>Rask og pålitelig <span>IT-hjelp</span> for deg</h1>
+        <h1><span>IT-hjelp</span> for deg</h1>
         <p>FixMyTech.no tilbyr profesjonelle IT-løsninger for privatpersoner og bedrifter. Vi fikser programvarefeil, nettverksproblemer, maskinvare og sikrer dine data.</p>
         <div style="text-align: center; margin-top: 2rem;">
           <a href="#contact" class="btn" aria-label="Kontakt oss for IT-hjelp">Få hjelp nå</a>
@@ -1430,7 +1441,7 @@
                     <li><i class="fas fa-check"></i> Regelmessig backup</li>
                     <li><i class="fas fa-check"></i> Beskyttelse mot virus og ransomware</li>
                     <li><i class="fas fa-check"></i> Gjenoppretting av filer</li>
-                    <li><i class="fas fa-check"></i> Kryptert lagring</li>
+                    <li><i class="fas fa-check"></i> Kryptert datalagring</li>
                     <li><i class="fas fa-check"></i> Tofaktorautentisering</li>
                   </ul>
                 </div>
@@ -1476,8 +1487,6 @@
           </a>
           
           <a href="https://free-video-toolkit.com" target="_blank" class="tool-item" aria-label="Gå til videoredigeringsverktøy">
-
-
             <div class="tool-icon">
               <i class="fas fa-video"></i>
             </div>
@@ -1586,8 +1595,8 @@
             </div>
             
             <div class="form-group">
-              <label for="service">Hva trenger du hjelp med?</label>
-              <select id="service" name="service-type" required aria-label="Velg type IT-tjeneste">
+              <label for="service-type">Hva trenger du hjelp med?</label>
+              <select id="service-type" name="service-type" required aria-label="Velg type IT-tjeneste">
                 <option value="">Velg en tjeneste...</option>
                 <option value="network">Nettverk & Internett</option>
                 <option value="software">Programvare & Systemer</option>
@@ -1601,7 +1610,7 @@
             
             <div class="form-group">
               <label for="message">Beskriv behovet ditt</label>
-              <textarea id="message" name="Beskjed" required aria-label="Beskrivelse av ditt IT-behov" placeholder="Fortell oss hva du trenger hjelp med, f.eks. feilsøking av Wi-Fi, oppsett av backup, eller reparasjon av PC. Inkluder detaljer om utstyret eller problemet for raskere respons."></textarea>
+              <textarea id="message" name="Beskjed" required aria-label="Beskrivelse av ditt IT-behov" placeholder="Beskriv problemet eller behovet ditt, f.eks. 'Wi-Fi kobler ikke til', 'trenger backup-oppsett', eller 'PC starter ikke'. Inkluder detaljer om utstyr eller feilmeldinger for raskere hjelp."></textarea>
             </div>
             
             <div class="form-group">
@@ -1620,8 +1629,7 @@
       </div>
       <p class="footer-tagline">Profesjonell IT-hjelp</p>
       <div class="copyright">
-        © 2025 FixMyTech.no. Alle rettigheter reservert.
-      </div>
+        © 2025 FixMyTech.no. Alle rettigheter reserver.</div>
     </div>
   </footer>
 
@@ -1651,7 +1659,7 @@
         e.preventDefault();
         
         const name = document.getElementById('name').value;
-        const serviceType = document.getElementById('service').value;
+        const serviceType = document.getElementById('service-type').value;
         
         let serviceText = '';
         switch(serviceType) {
@@ -1666,7 +1674,7 @@
         
         const notification = document.getElementById('notification');
         const notificationMessage = document.getElementById('notification-message');
-        notificationMessage.innerHTML = `Takk, ${name}! Din forespørsel om ${serviceText} er mottatt. Vi kontakter deg normalt innen 24 timer.`;
+        notificationMessage.innerHTML = `Takk, ${name}! Din forespørsel om ${serviceText} er mottatt. Hvis du har sendt utstyr til oss, kontakter vi deg normalt innen 24 timer.`;
         
         notification.classList.add('show');
         
