@@ -1650,12 +1650,14 @@
               <textarea id="message" name="message" required aria-label="Beskrivelse av ditt IT-behov" placeholder="Beskriv problemet eller behovet ditt, f.eks. 'Wi-Fi kobler ikke til', 'trenger backup-oppsett', eller 'PC starter ikke'. Inkluder detaljer om utstyr eller feilmeldinger for raskere hjelp."></textarea>
             </div>
             
+            <!-- Honeypot spam protection -->
             <div style="display: none;">
               <label for="website">Website (leave blank)</label>
               <input type="text" id="website" name="_gotcha">
             </div>
             
-            <input type="hidden" name="_replyto" value="{{email}}">
+            <!-- Email subject customization -->
+            <input type="hidden" name="_subject" id="email-subject" value="New contact request from FixMyTech.no">
             
             <div class="form-group">
               <button type="submit" aria-label="Send henvendelse">Send henvendelse</button>
@@ -1710,23 +1712,43 @@
         const name = formData.get('name');
         const serviceType = formData.get('service');
         
+        // Update email subject with service type
+        const subjectField = document.getElementById('email-subject');
         let serviceText = '';
         switch(serviceType) {
-          case 'network': serviceText = 'Nettverk & Internett'; break;
-          case 'software': serviceText = 'Programvare & Systemer'; break;
-          case 'hardware': serviceText = 'Maskinvare & Utstyr'; break;
-          case 'backup': serviceText = 'Backup & Skylagring'; break;
-          case 'api': serviceText = 'API & Integrasjoner'; break;
-          case 'web': serviceText = 'Webutvikling'; break;
-          case 'office365': serviceText = 'Office 365 & Azure-tjenester'; break;
-          case 'cybersecurity': serviceText = 'Cybersikkerhet'; break;
-          default: serviceText = 'Annet';
+          case 'network': 
+            serviceText = 'Nettverk & Internett'; 
+            break;
+          case 'software': 
+            serviceText = 'Programvare & Systemer'; 
+            break;
+          case 'hardware': 
+            serviceText = 'Maskinvare & Utstyr'; 
+            break;
+          case 'backup': 
+            serviceText = 'Backup & Skylagring'; 
+            break;
+          case 'api': 
+            serviceText = 'API & Integrasjoner'; 
+            break;
+          case 'web': 
+            serviceText = 'Webutvikling'; 
+            break;
+          case 'office365': 
+            serviceText = 'Office 365 & Azure-tjenester'; 
+            break;
+          case 'cybersecurity': 
+            serviceText = 'Cybersikkerhet'; 
+            break;
+          default: 
+            serviceText = 'Annet';
         }
+        subjectField.value = `Henvendelse om ${serviceText} fra ${name}`;
 
         try {
           const response = await fetch(form.action, {
             method: 'POST',
-            body: formData,
+            body: new FormData(form),
             headers: {
               'Accept': 'application/json'
             }
