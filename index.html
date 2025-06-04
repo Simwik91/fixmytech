@@ -1657,7 +1657,7 @@
             </div>
             
             <!-- Email subject customization -->
-            <input type="hidden" name="_subject" id="email-subject" value="New contact request from FixMyTech.no">
+            <input type="hidden" name="_subject" id="email-subject" value="Ny henvendelse fra FixMyTech.no">
             
             <div class="form-group">
               <button type="submit" aria-label="Send henvendelse">Send henvendelse</button>
@@ -1681,6 +1681,7 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Smooth scrolling for anchor links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           e.preventDefault();
@@ -1701,6 +1702,7 @@
         });
       });
       
+      // Form submission handling
       const form = document.getElementById('contact-form');
       const notification = document.getElementById('notification');
       const notificationMessage = document.getElementById('notification-message');
@@ -1712,74 +1714,65 @@
         const name = formData.get('name');
         const serviceType = formData.get('service');
         
-        // Update email subject with service type
+        // Update email subject with service type and name
         const subjectField = document.getElementById('email-subject');
         let serviceText = '';
         switch(serviceType) {
-          case 'network': 
-            serviceText = 'Nettverk & Internett'; 
-            break;
-          case 'software': 
-            serviceText = 'Programvare & Systemer'; 
-            break;
-          case 'hardware': 
-            serviceText = 'Maskinvare & Utstyr'; 
-            break;
-          case 'backup': 
-            serviceText = 'Backup & Skylagring'; 
-            break;
-          case 'api': 
-            serviceText = 'API & Integrasjoner'; 
-            break;
-          case 'web': 
-            serviceText = 'Webutvikling'; 
-            break;
-          case 'office365': 
-            serviceText = 'Office 365 & Azure-tjenester'; 
-            break;
-          case 'cybersecurity': 
-            serviceText = 'Cybersikkerhet'; 
-            break;
-          default: 
-            serviceText = 'Annet';
+          case 'network': serviceText = 'Nettverk & Internett'; break;
+          case 'software': serviceText = 'Programvare & Systemer'; break;
+          case 'hardware': serviceText = 'Maskinvare & Utstyr'; break;
+          case 'backup': serviceText = 'Backup & Skylagring'; break;
+          case 'api': serviceText = 'API & Integrasjoner'; break;
+          case 'web': serviceText = 'Webutvikling'; break;
+          case 'office365': serviceText = 'Office 365 & Azure'; break;
+          case 'cybersecurity': serviceText = 'Cybersikkerhet'; break;
+          default: serviceText = 'Annet';
         }
         subjectField.value = `Henvendelse om ${serviceText} fra ${name}`;
+
+        // Show loading indicator
+        const submitButton = form.querySelector('button[type="submit"]');
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sender...';
+        submitButton.disabled = true;
 
         try {
           const response = await fetch(form.action, {
             method: 'POST',
-            body: new FormData(form),
+            body: new URLSearchParams(formData),
             headers: {
               'Accept': 'application/json'
             }
           });
 
-          if (response.ok) {
-            notificationMessage.innerHTML = `Takk, ${name}! Din forespørsel om ${serviceText} er mottatt. Vi kontakter deg normalt innen 24 timer.`;
+          // Parse the JSON response
+          const result = await response.json();
+          
+          if (response.ok && result.ok) {
+            // Success message
+            notificationMessage.textContent = `Takk, ${name}! Din forespørsel om ${serviceText} er mottatt. Vi kontakter deg normalt innen 24 timer.`;
+            notification.style.borderLeftColor = 'var(--success)';
             notification.classList.add('show');
             form.reset();
-
-            setTimeout(() => {
-              notification.style.animation = 'slideOut 0.5s ease forwards';
-              setTimeout(() => {
-                notification.classList.remove('show');
-                notification.style.animation = '';
-              }, 500);
-            }, 5000);
           } else {
-            throw new Error('Form submission failed');
+            // Handle Formspree errors
+            throw new Error(result.error || 'Form submission failed');
           }
         } catch (error) {
-          notificationMessage.innerHTML = `Det oppstod en feil ved sending av skjemaet. Prøv igjen senere eller kontakt oss direkte på kontakt@fixmytech.no.`;
+          console.error('Form submission error:', error);
+          notificationMessage.textContent = `Det oppstod en feil ved sending av skjemaet. Prøv igjen senere eller kontakt oss direkte på kontakt@fixmytech.no.`;
           notification.style.borderLeftColor = 'var(--warning)';
           notification.classList.add('show');
-
+        } finally {
+          // Reset submit button
+          submitButton.innerHTML = 'Send henvendelse';
+          submitButton.disabled = false;
+          
+          // Auto-hide notification after 5 seconds
           setTimeout(() => {
             notification.style.animation = 'slideOut 0.5s ease forwards';
             setTimeout(() => {
               notification.classList.remove('show');
               notification.style.animation = '';
-              notification.style.borderLeftColor = 'var(--success)';
             }, 500);
           }, 5000);
         }
