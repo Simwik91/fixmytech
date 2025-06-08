@@ -342,18 +342,15 @@
       font-size: 1.1rem;
     }
 
-    .service-section {
+    .service-section, .backup-section, .pricing-section, .contact {
       padding: 4rem 0;
       margin-bottom: 4rem;
-    }
-
-    .service-section:nth-child(even) {
       background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
     }
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 2rem;
     }
 
@@ -441,11 +438,17 @@
 
     .tools-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
       width: 100%;
       max-width: 800px;
       margin: 2rem auto;
+    }
+
+    @media (max-width: 768px) {
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .tool-item {
@@ -679,12 +682,6 @@
       border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .backup-section {
-      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-      padding: 4rem 0;
-      margin-bottom: 4rem;
-    }
-
     .pricing-note {
       text-align: center;
       max-width: 800px;
@@ -698,12 +695,6 @@
 
     .pricing-note strong {
       color: var(--primary);
-    }
-
-    .pricing-section {
-      padding: 4rem 0;
-      margin-bottom: 4rem;
-      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
     }
 
     .pricing-cards {
@@ -1170,7 +1161,7 @@
       <section id="how-we-work" class="service-section">
         <div class="section-title">
           <h2>Hvordan jobber vi?</h2>
-          <p>Vår prosess er enkel og effektiv for å sikre rask og pålitelig teknisk støtte.</p>
+          <p>Vår prosess er enkel og effektiv for å sikre rask og profesjonell teknisk støtte.</p>
         </div>
         <div class="process-steps">
           <div class="step-card">
@@ -1186,7 +1177,7 @@
           <div class="step-card">
             <div class="step-number">3</div>
             <h3>Gjennomføring og Levering</h3>
-            <p>Etter at du har godkjent tilbudet, løser vi oppdraget enten via fjernstyring eller ved å motta utstyret ditt, og returnerer det når arbeidet er ferdig.</p>
+            <p>Etter godkjent tilbud løser vi oppdraget via fjernstyring eller returnerer utstyret etter reparasjon.</p>
           </div>
         </div>
       </section>
@@ -1264,12 +1255,12 @@
           <div class="pricing-cards">
             <div class="pricing-card">
               <div class="price-tag">550,- <span>per time</span></div>
-              <p class="price-highlight">80% av problemer løses innen én time</p>
+              <p class="price-highlight">80% av problemer løses med én times fakturering</p>
               <ul>
                 <li><i class="fas fa-check-circle"></i>Betaling kun ved løst problem</li>
-                <li><i class="fas fa-check-circle"></i>Skjulte kostnader unngås</li>
+                <li><i class="fas fa-check-circle"></i>Ingen skjulte kostnader</li>
                 <li><i class="fas fa-check-circle"></i>Gratis tilbud</li>
-                <li><i class="fas fa-check-circle"></i>Faktura etter arbeid</li>
+                <li><i class="fas fa-check-circle"></i>Faktura etter fullført arbeid</li>
               </ul>
             </div>
           </div>
@@ -1295,8 +1286,7 @@
                 <li><i class="fas fa-check"></i>Regelmessige sikkerhetskopier</li>
                 <li><i class="fas fa-check"></i>Automatisert backup</li>
                 <li><i class="fas fa-check"></i>Gjenoppretting ved tap</li>
-                <li><i class="fas fa-check"></i>Kryptert sikkerhet</li>
-                <li><i class="fas fa-check"></i>Support 24/7</li>
+                <li><i class="fas fa-check"></i>Kryptert datalbehandling</li>
               </ul>
             </div>
           </div>
@@ -1320,17 +1310,13 @@
           <div class="pricing-cards">
             <div class="pricing-card">
               <div class="price-tag">790,- <span>per år</span></div>
-              <p class="price-highlight">100 GB skylagring inkludert</p>
               <ul>
-                <li><i class="fas fa-check-circle"></i>100 GB sikker lagring</li>
+                <li><i class="fas fa-check-circle"></i>100 GB sikker skylagring</li>
                 <li><i class="fas fa-check-circle"></i>Automatisk backup</li>
-                <li><i class="fas fa-check-circle"></i>Kryptert overføring</li>
-                <li><i class="fas fa-check-circle"></i>24/7 support</li>
+                <li><i class="fas fa-check-circle"></i>Kryptert databehandling</li>
+                <li><i class="fas fa-check-circle"></i>Skalerbare priser ved større lagringsbehov</li>
               </ul>
             </div>
-          </div>
-          <div class="pricing-note">
-            <p><strong>Info:</strong> Prisene kan variere basert på lagringsbehov. Kontakt oss for skreddersydde løsninger.</p>
           </div>
         </div>
       </section>
@@ -1420,7 +1406,7 @@
               <button type="submit" aria-label="Send henvendelse">Send henvendelse</button>
             </div>
             <div class="form-disclaimer">
-              <p><strong>Viktig:</strong> Våre eksperter jobber profesjonelt for å levere høykvalitets teknologitjenester. I sjeldne tilfeller kan det oppstå skader på utstyr under reparasjon eller oppsett, men vi gjør alt vi kan for å minimere risikoen.</p>
+              <p><strong>Viktig:</strong> Våre eksperter jobber alltid for å levere høykvalitets teknologitjenester. I sjeldne tilfeller kan det oppstå skader på utstyr under reparasjon eller oppsett, men vi gjør alt vi kan for å minimere risikoen.</p>
             </div>
           </form>
         </div>
