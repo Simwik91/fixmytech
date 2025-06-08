@@ -43,7 +43,7 @@
 
     body {
       font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      background: white;
       color: var(--secondary);
       line-height: 1.6;
       min-height: 100vh;
@@ -57,6 +57,7 @@
       width: 100%;
       max-width: 1200px;
       padding: 0 1.5rem;
+      margin: 0 auto;
     }
 
     header {
@@ -193,11 +194,12 @@
     }
 
     .hero {
-      padding: 4rem 0 2rem;
+      padding: 4rem 0;
       text-align: center;
       max-width: 900px;
       margin: 0 auto;
       position: relative;
+      margin-bottom: 4rem;
     }
 
     @media (min-width: 768px) {
@@ -434,6 +436,15 @@
       font-size: 1.1rem;
     }
 
+    .service-section {
+      padding: 4rem 0;
+      margin-bottom: 4rem;
+    }
+
+    .service-section:nth-child(even) {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    }
+
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -584,6 +595,7 @@
       padding: 5rem 0;
       width: 100%;
       background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      margin-bottom: 4rem;
     }
 
     .contact-container {
@@ -701,6 +713,21 @@
       box-shadow: 0 10px 15px rgba(37, 99, 235, 0.3);
     }
 
+    .form-disclaimer {
+      font-size: 0.9rem;
+      color: var(--gray);
+      background: white;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-top: 1rem;
+      border-left: 4px solid var(--warning);
+      text-align: center;
+    }
+
+    .form-disclaimer strong {
+      color: var(--warning);
+    }
+
     footer {
       background: var(--secondary);
       color: white;
@@ -746,10 +773,6 @@
     }
 
     .tab-indicator {
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      height: 4px;
       background: var(--primary);
       border-radius: 2px;
       transition: var(--transition);
@@ -767,14 +790,13 @@
     .backup-section {
       background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
       padding: 4rem 0;
-      margin: 4rem 0;
-      border-radius: 16px;
+      margin-bottom: 4rem;
     }
 
     .pricing-note {
       text-align: center;
       max-width: 800px;
-      margin: 2rem auto 0;
+      margin: 2rem auto;
       padding: 1.5rem;
       background: white;
       border-radius: 16px;
@@ -787,10 +809,9 @@
     }
 
     .pricing-section {
-      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
       padding: 4rem 0;
-      border-radius: 16px;
-      margin: 4rem 0;
+      margin-bottom: 4rem;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
     }
 
     .pricing-cards {
@@ -817,6 +838,17 @@
       transform: translateY(-10px);
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
       border-color: var(--primary);
+    }
+
+    .price-highlight {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--primary);
+      background: rgba(37, 75, 235, 0.1);
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      margin: 1.5rem 0;
+      display: inline-block;
     }
 
     .price-tag {
@@ -856,13 +888,13 @@
 
     .process-steps {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
       max-width: 1000px;
       margin: 4rem auto 0;
     }
 
-    @media (max-width: 650px) {
+    @media (max-width: 767px) {
       .process-steps {
         grid-template-columns: 1fr;
       }
@@ -909,25 +941,6 @@
       color: var(--primary);
     }
 
-    .disclaimer {
-      background: white;
-      border-radius: 16px;
-      padding: 2rem;
-      box-shadow: var(--card-shadow);
-      max-width: 1000px;
-      margin: 3rem auto 0;
-      text-align: center;
-      border-left: 4px solid var(--warning);
-    }
-
-    .disclaimer p {
-      font-size: 1.1rem;
-    }
-
-    .disclaimer strong {
-      color: var(--warning);
-    }
-
     @media (max-width: 768px) {
       .pricing-cards {
         grid-template-columns: 1fr;
@@ -948,7 +961,7 @@
       padding: 1.5rem;
       box-shadow: var(--card-shadow);
       max-width: 800px;
-      margin: 2rem auto 0;
+      margin: 2rem auto;
       text-align: center;
       border-top: 4px solid var(--warning);
     }
@@ -1069,6 +1082,7 @@
 
       .hero {
         padding: 2rem 0;
+        margin-bottom: 2rem;
       }
 
       .hero h1 {
@@ -1127,7 +1141,6 @@
       }
 
       .process-steps {
-        grid-template-columns: 1fr;
         gap: 1.5rem;
       }
 
@@ -1170,6 +1183,7 @@
 
       .contact {
         padding: 2rem 0;
+        margin-bottom: 2rem;
       }
 
       .contact-container {
@@ -1198,6 +1212,12 @@
         font-size: 1rem;
       }
 
+      .form-disclaimer {
+        font-size: 0.85rem;
+        padding: 0.75rem;
+        margin-top: 0.75rem;
+      }
+
       footer {
         padding: 2rem 0;
       }
@@ -1206,7 +1226,7 @@
         font-size: 1.5rem;
       }
 
-      .footer-tagline {
+      .footer-title {
         font-size: 0.95rem;
       }
 
@@ -1254,7 +1274,7 @@
 
     .container {
       width: 100%;
-      max-width: 100%;
+      max-width: 1200px;
       box-sizing: border-box;
     }
   </style>
@@ -1309,7 +1329,36 @@
     <section class="hero">
       <div class="container">
         <h1><span>IT-hjelp</span> for deg</h1>
-        <p>FixMyTech.no tilbyr profesjonelle IT-løsninger for privatpersoner og bedrifter. Vi fikser programvarefeil, nettverksproblemer, maskinvare og sikrer dine data.</p>
+        <p>FixMyTech.no tilbyder professionelle IT-løsninger for privatpersoner og bedrifter. Vi fikser programvarefeil, nettverksproblemer, maskinvare og sikrer dine data.</p>
+      </div>
+    </section>
+
+    <section id="how-we-work" class="service-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Hvordan jobber vi?</h2>
+          <p>Vår prosess er enkel og effektiv for å sikre rask og pålitelig IT-hjelp.</p>
+        </div>
+        
+        <div class="process-steps">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3>Kontakt oss</h3>
+            <p>Fortell oss om dit IT-problem eller behov via skjemaet eller direkte kontakt.</p>
+          </div>
+          
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3>Vurdering</h3>
+            <p>Vi vurderer forespørselen din, normalt innen 24 timer, og gir et tilbud med tidsestimat.</p>
+          </div>
+          
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3>Gjennomføring og Levering</h3>
+            <p>Etter at du har godkjent tilbudet, løser vi problemet enten via fjernstyring eller ved å motta utstyret ditt, og returnerer det når tjenesten er fullført.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1318,20 +1367,20 @@
         <div class="services-grid">
           <div class="service-card">
             <div class="card-icon">
-              <i class="fas fa-network-wired"></i>
+              <i class="fas fa-plug"></i>
             </div>
             <div class="card-content">
-              <h3>Nettverk & Internett</h3>
+              <h3>Maskinvare & Utstyr</h3>
               <ul>
-                <li><i class="fas fa-check"></i> Feilsøking av Wi-Fi og nettverk</li>
-                <li><i class="fas fa-check"></i> Internettforbindelse</li>
-                <li><i class="fas fa-check"></i> Ruterkonfigurasjon</li>
-                <li><i class="fas fa-check"></i> Nettverkssikkerhet</li>
-                <li><i class="fas fa-check"></i> VPN-oppsett</li>
+                <li><i class="fas fa-check"></i> Reparasjon av PC og laptop</li>
+                <li><i class="fas fa-check"></i> Skjerm- og grafikkjøler</li>
+                <li><i class="fas fa-check"></i> Strømforsyningsfeil</li>
+                <li><i class="fas fa-check"></i> Harddisk/SSD-oppgradering</li>
+                <li><i class="fas fa-check"></i> Feilsøking av maskinvare</li>
               </ul>
             </div>
           </div>
-          
+
           <div class="service-card">
             <div class="card-icon">
               <i class="fas fa-laptop-code"></i>
@@ -1350,16 +1399,16 @@
           
           <div class="service-card">
             <div class="card-icon">
-              <i class="fas fa-plug"></i>
+              <i class="fas fa-network-wired"></i>
             </div>
             <div class="card-content">
-              <h3>Maskinvare & Utstyr</h3>
+              <h3>Nettverk & Internett</h3>
               <ul>
-                <li><i class="fas fa-check"></i> Reparasjon av PC og laptop</li>
-                <li><i class="fas fa-check"></i> Skjerm- og grafikkproblemer</li>
-                <li><i class="fas fa-check"></i> Strømforsyningsfeil</li>
-                <li><i class="fas fa-check"></i> Harddisk/SSD-oppgradering</li>
-                <li><i class="fas fa-check"></i> Feilsøking av maskinvare</li>
+                <li><i class="fas fa-check"></i> Feilsøking av Wi-Fi og nettverk</li>
+                <li><i class="fas fa-check"></i> Internettforbindelse</li>
+                <li><i class="fas fa-check"></i> Ruterkonfigurasjon</li>
+                <li><i class="fas fa-check"></i> Nettverkssikkerhet</li>
+                <li><i class="fas fa-check"></i> VPN-oppsett</li>
               </ul>
             </div>
           </div>
@@ -1389,11 +1438,10 @@
           <div class="pricing-cards">
             <div class="pricing-card">
               <div class="price-tag">550,- <span>per time</span></div>
+              <div class="price-highlight">80% av problemer løses innen én time</div>
               <ul>
-                <li><i class="fas fa-check-circle"></i> Løser 80% av problemer innen én time</li>
                 <li><i class="fas fa-check-circle"></i> Betaling kun for utførte tjenester</li>
                 <li><i class="fas fa-check-circle"></i> Ingen skjulte kostnader</li>
-                <li><i class="fas fa-check-circle"></i> Ingen bindingstid</li>
                 <li><i class="fas fa-check-circle"></i> Gratis estimat på forhånd</li>
                 <li><i class="fas fa-check-circle"></i> Faktura etter fullført arbeid</li>
               </ul>
@@ -1402,36 +1450,6 @@
           
           <div class="additional-fee">
             <p><strong>Merk:</strong> Hvis du sender utstyr til oss og det ikke kan repareres, kan du velge å få det returnert eller la oss destruere det for en avgift på 500,-.</p>
-          </div>
-          
-          <div class="process-steps">
-            <div class="step-card">
-              <div class="step-number">1</div>
-              <h3>Kontakt oss</h3>
-              <p>Fortell oss om ditt IT-problem eller behov via skjemaet eller direkte kontakt.</p>
-            </div>
-            
-            <div class="step-card">
-              <div class="step-number">2</div>
-              <h3>Vurdering</h3>
-              <p>Vi vurderer forespørselen din, normalt innen 24 timer, og gir et tilbud med tidsestimat.</p>
-            </div>
-            
-            <div class="step-card">
-              <div class="step-number">3</div>
-              <h3>Gjennomføring</h3>
-              <p>Hvis du godtar tilbudet, utfører vi tjenesten via fjernstyring eller ved at du sender utstyret til oss.</p>
-            </div>
-            
-            <div class="step-card">
-              <div class="step-number">4</div>
-              <h3>Levering</h3>
-              <p>Vi fullfører tjenesten og sender utstyret tilbake hvis det er tilsendt oss. Hvis det ikke kan repareres, kan vi destruere det for en avgift på 500,-.</p>
-            </div>
-          </div>
-          
-          <div class="disclaimer">
-            <p><strong>Viktig:</strong> Våre eksperter jobber profesjonelt for å levere høykvalitets IT-tjenester. I sjeldne tilfeller kan det oppstå skader på utstyr under reparasjon eller oppsett, men vi gjør alt vi kan for å minimere risikoen.</p>
           </div>
         </div>
       </div>
@@ -1486,11 +1504,11 @@
               <div class="pricing-card">
                 <div class="price-tag">790,- <span>per år</span></div>
                 <ul>
-                  <li><i class="fas fa-check-circle"></i> 100 GB sikker skylagring</li>
+                  <li><i class="fas fa-check-circle"></i> 100 GB sikker skylagring (mer lagringsplass kan skaffes ved å be om tilbud)</li>
                   <li><i class="fas fa-check-circle"></i> Automatisk backup</li>
                   <li><i class="fas fa-check-circle"></i> Kryptert datalagring</li>
                   <li><i class="fas fa-check-circle"></i> Tilgang fra alle enheter</li>
-                  <li><i class="fas fa-check-circle"></i> Gratis oppsett</li>
+                  <li><i class="fas fa-check-circle"></i> Vi bruker normalt én time på å konfigurere backup på tvers av enheter</li>
                 </ul>
               </div>
             </div>
@@ -1576,7 +1594,7 @@
                 <option value="network">Nettverk & Internett</option>
                 <option value="software">Programvare & Systemer</option>
                 <option value="hardware">Maskinvare & Utstyr</option>
-                <li><a href="#tjenester" aria-label="Backup og Skylagring"><i class="fas fa-cloud"></i>Backup & Skylagring</a></li>
+                <option value="backup">Backup & Skylagring</option>
                 <option value="web">Webutvikling</option>
                 <option value="other">Annet</option>
               </select>
@@ -1599,6 +1617,10 @@
             <div class="form-group">
               <button type="submit" aria-label="Send henvendelse">Send henvendelse</button>
             </div>
+            
+            <div class="form-disclaimer">
+              <p><strong>Viktig:</strong> Våre eksperter jobber profesjonelt for å levere høykvalitets IT-tjenester. I sjeldne tilfeller kan det oppstå skader på utstyr under reparasjon eller oppsett, men vi gjør alt vi kan for å minimere risikoen.</p>
+            </div>
           </form>
         </div>
       </div>
@@ -1606,13 +1628,15 @@
   </main>
   
   <footer>
-    <div class="container footer-content">
-      <div class="footer-logo">
-        <span>FixMyTech</span>.no
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <span>FixMyTech</span>.no
+        </div>
+        <p class="footer-tagline">IT-hjelp for deg</p>
+        <div class="copyright">
+          © 2025 FixMyTech.no. Alle rettigheter reservert.</div>
       </div>
-      <p class="footer-tagline">IT-hjelp for deg</p>
-      <div class="copyright">
-        © 2025 FixMyTech.no. Alle rettigheter reserver.</div>
     </div>
   </footer>
 
@@ -1620,23 +1644,23 @@
     document.addEventListener('DOMContentLoaded', function() {
       // Smooth scrolling for anchor links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          
-          const targetId = this.getAttribute('href');
-          if (targetId === '#') return;
-          
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            const headerHeight = document.querySelector('header').offsetHeight;
-            const offset = 20;
-            
-            window.scrollTo({
-              top: targetElement.offsetTop - headerHeight - offset,
-              behavior: 'smooth'
+            anchor.addEventListener('click', function(e) {
+              e.preventDefault();
+              
+              const targetId = this.getAttribute('href');
+              if (targetId === '#') return;
+              
+              const targetElement = document.querySelector(targetId);
+              if (targetElement) {
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const offset = 20;
+                
+                window.scrollTo({
+                  top: targetElement.offsetTop - headerHeight - offset,
+                  behavior: 'smooth'
+                });
+              }
             });
-          }
-        });
       });
       
       // Form submission handling
