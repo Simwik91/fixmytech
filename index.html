@@ -19,11 +19,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <script>
-    if (window.location.hostname === 'www.fixmytech.no') {
-      window.location.href = 'https://fixmytech.no' + window.location.pathname + window.location.search;
-    }
-  </script>
   <style>
     :root {
       --primary: #2563eb;
@@ -38,6 +33,7 @@
       --warning: #f59e0b;
       --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
       --transition: all 0.3s ease;
+      --eco-green: #047857;
     }
 
     * {
@@ -379,16 +375,16 @@
 
     .card-icon {
       height: 100px;
-      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      background: var(--light-gray);
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: 2.5rem;
-      color: white;
+      color: var(--primary);
     }
 
     .business .card-icon {
-      background: linear-gradient(135deg, var(--business) 0%, var(--business-dark) 100%);
+      color: var(--business);
     }
 
     .card-content {
@@ -478,9 +474,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      background: var(--light-gray);
       border-radius: 50%;
-      color: white;
+      color: var(--primary);
       font-size: 2rem;
       margin: 0 auto 1rem;
     }
@@ -1103,6 +1099,40 @@
       align-items: center;
       justify-content: center;
     }
+    
+    /* New environmental section styling */
+    .environmental-section {
+      background-color: rgba(4, 120, 87, 0.05);
+      border-radius: 16px;
+      padding: 2rem;
+      margin: 2rem 0;
+      text-align: center;
+      border-left: 4px solid var(--eco-green);
+    }
+    
+    .environmental-section h3 {
+      color: var(--eco-green);
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+    
+    .environmental-section p {
+      max-width: 800px;
+      margin: 0 auto;
+      color: var(--gray);
+    }
+    
+    .environmental-icon {
+      font-size: 2.5rem;
+      color: var(--eco-green);
+      margin-bottom: 1rem;
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--gray);
+    }
   </style>
 </head>
 <body>
@@ -1120,11 +1150,11 @@
             <li class="dropdown">
               <a href="#tjenester" aria-label="Gå til Våre tjenester">Våre tjenester</a>
               <div class="dropdown-content">
-                <a href="#tjenester" aria-label="Maskinvare og Utstyr"><i class="fas fa-plug"></i>Maskinvare & Utstyr</a>
-                <a href="#tjenester" aria-label="Programvare og Systemer"><i class="fas fa-laptop-code"></i>Programvare & Systemer</a>
-                <a href="#tjenester" aria-label="Nettverk og Internett"><i class="fas fa-network-wired"></i>Nettverk & Internett</a>
-                <a href="#tjenester" aria-label="Webutvikling"><i class="fas fa-globe"></i>Webutvikling</a>
-                <a href="#tjenester" aria-label="Backup og Skylagring"><i class="fas fa-cloud"></i>Backup & Skylagring</a>
+                <a href="#feilretting" aria-label="Feilretting og Vedlikehold"><i class="fas fa-wrench"></i>Feilretting og Vedlikehold</a>
+                <a href="#nettverk" aria-label="Nettverk og Internett"><i class="fas fa-network-wired"></i>Nettverk og Internett</a>
+                <a href="#web" aria-label="Webutvikling"><i class="fas fa-globe"></i>Webutvikling</a>
+                <a href="#api" aria-label="API og Integrasjoner"><i class="fas fa-code"></i>API og Integrasjoner</a>
+                <a href="#backup" aria-label="Backup og Skylagring"><i class="fas fa-cloud"></i>Backup & Skylagring</a>
               </div>
             </li>
             <li class="dropdown">
@@ -1182,10 +1212,21 @@
         </div>
       </section>
 
-      <section id="tjenester" class="service-section">
+      <!-- Feilretting og Vedlikehold Section -->
+      <section id="feilretting" class="service-section">
         <div class="section-title">
-          <h2>Våre Tjenester</h2>
+          <h2>Feilretting og Vedlikehold</h2>
+          <p>Profesjonell feilsøking og reparasjon for maskinvare og programvare</p>
         </div>
+        
+        <div class="environmental-section">
+          <div class="environmental-icon">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <h3>Godt for miljøet og lommeboken</h3>
+          <p>Ved å reparere og vedlikeholde utstyr istedenfor å kjøpe nytt, bidrar du til bærekraftig utvikling og reduserer elektronisk avfall. Våre reparasjoner forlenger levetiden til utstyr og sparer deg for unødvendige kostnader.</p>
+        </div>
+        
         <div class="services-grid">
           <div class="service-card">
             <div class="card-icon">
@@ -1214,44 +1255,13 @@
                 <li><i class="fas fa-check"></i>Systemoptimalisering</li>
                 <li><i class="fas fa-check"></i>Operativsystem-oppdateringer</li>
                 <li><i class="fas fa-check"></i>Datagjenoppretting</li>
-              </ul>
-            </div>
-          </div>
-          <div class="service-card">
-            <div class="card-icon">
-              <i class="fas fa-network-wired"></i>
-            </div>
-            <div class="card-content">
-              <h3>Nettverk & Internett</h3>
-              <ul>
-                <li><i class="fas fa-check"></i>Feilsøking av Wi-Fi</li>
-                <li><i class="fas fa-check"></i>Internettforbindelser</li>
-                <li><i class="fas fa-check"></i>Ruterkonfigurasjon</li>
-                <li><i class="fas fa-check"></i>Nettverkssikkerhet</li>
-                <li><i class="fas fa-check"></i>VPN-oppsett</li>
-              </ul>
-            </div>
-          </div>
-          <div class="service-card">
-            <div class="card-icon">
-              <i class="fas fa-globe"></i>
-            </div>
-            <div class="card-content">
-              <h3>Webutvikling</h3>
-              <ul>
-                <li><i class="fas fa-check"></i>Responsiv nettsidedesign</li>
-                <li><i class="fas fa-check"></i>Hosting og domenestyring</li>
-                <li><i class="fas fa-check"></i>Nettsidevedlikehold</li>
-                <li><i class="fas fa-check"></i>E-handelsløsninger</li>
-                <li><i class="fas fa-check"></i>SEO-optimalisering</li>
+                <li><i class="fas fa-check"></i>Nettverksfeilsøking</li>
               </ul>
             </div>
           </div>
         </div>
+        
         <div class="pricing-section">
-          <div class="section-title">
-            <h2>Priser</h2>
-          </div>
           <div class="pricing-cards">
             <div class="pricing-card">
               <div class="price-tag">550,- <span>per time</span></div>
@@ -1270,6 +1280,160 @@
         </div>
       </section>
 
+      <!-- Nettverk og Internett Section -->
+      <section id="nettverk" class="service-section">
+        <div class="section-title">
+          <h2>Nettverk og Internett</h2>
+          <p>Profesjonell hjelp med nettverksløsninger og internettilkoblinger</p>
+        </div>
+        
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="card-icon">
+              <i class="fas fa-network-wired"></i>
+            </div>
+            <div class="card-content">
+              <h3>Nettverk & Internett</h3>
+              <ul>
+                <li><i class="fas fa-check"></i>Feilsøking av Wi-Fi</li>
+                <li><i class="fas fa-check"></i>Internettforbindelser</li>
+                <li><i class="fas fa-check"></i>Ruterkonfigurasjon</li>
+                <li><i class="fas fa-check"></i>Nettverkssikkerhet</li>
+                <li><i class="fas fa-check"></i>VPN-oppsett</li>
+              </ul>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="card-icon">
+              <i class="fas fa-server"></i>
+            </div>
+            <div class="card-content">
+              <h3>Nettverksinfrastruktur</h3>
+              <ul>
+                <li><i class="fas fa-check"></i>Bedriftsnettverk</li>
+                <li><i class="fas fa-check"></i>Switch- og routeroppsett</li>
+                <li><i class="fas fa-check"></i>Trådløse nettverk</li>
+                <li><i class="fas fa-check"></i>Nettverksmonitorering</li>
+                <li><i class="fas fa-check"></i>Nettverkssikkerhetstesting</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="pricing-section">
+          <div class="pricing-cards">
+            <div class="pricing-card">
+              <div class="price-tag">Fra 550,- <span>per time</span></div>
+              <p class="price-highlight">Tilbud etter vurdering av behov</p>
+              <ul>
+                <li><i class="fas fa-check-circle"></i>Gratis vurdering av nettverksbehov</li>
+                <li><i class="fas fa-check-circle"></i>Skreddersydd løsning for din virksomhet</li>
+                <li><i class="fas fa-check-circle"></i>Pris basert på kompleksitet</li>
+                <li><i class="fas fa-check-circle"></i>Ingen bindingstid</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Webutvikling Section -->
+      <section id="web" class="service-section">
+        <div class="section-title">
+          <h2>Webutvikling</h2>
+          <p>Profesjonelle nettsteder og digitale løsninger</p>
+        </div>
+        
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="card-icon">
+              <i class="fas fa-globe"></i>
+            </div>
+            <div class="card-content">
+              <h3>Webutvikling</h3>
+              <ul>
+                <li><i class="fas fa-check"></i>Responsiv nettsidedesign</li>
+                <li><i class="fas fa-check"></i>Hosting og domenestyring</li>
+                <li><i class="fas fa-check"></i>Nettsidevedlikehold</li>
+                <li><i class="fas fa-check"></i>E-handelsløsninger</li>
+                <li><i class="fas fa-check"></i>SEO-optimalisering</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="pricing-section">
+          <div class="pricing-cards">
+            <div class="pricing-card">
+              <div class="price-tag">10.000,- <span>engangs</span></div>
+              <p class="price-highlight">Standard nettsideutvikling</p>
+              <ul>
+                <li><i class="fas fa-check-circle"></i>Design og implementering</li>
+                <li><i class="fas fa-check-circle"></i>Responsivt for alle enheter</li>
+                <li><i class="fas fa-check-circle"></i>Grunnleggende SEO</li>
+                <li><i class="fas fa-check-circle"></i>Opplæring i innholdsadministrasjon</li>
+              </ul>
+              <div class="price-tag">500,- <span>per år</span></div>
+              <p class="price-highlight">Hosting og vedlikehold</p>
+              <ul>
+                <li><i class="fas fa-check-circle"></i>Sikkerhetskopiering</li>
+                <li><i class="fas fa-check-circle"></i>Teknisk støtte</li>
+                <li><i class="fas fa-check-circle"></i>Oppdateringer</li>
+              </ul>
+              <div class="price-tag">500,- <span>per time</span></div>
+              <p class="price-highlight">Tilleggstjenester</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- API og Integrasjoner Section -->
+      <section id="api" class="service-section">
+        <div class="section-title">
+          <h2>API og Integrasjoner</h2>
+          <p>Effektiv knytning av systemer og tjenester</p>
+        </div>
+        
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="card-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <div class="card-content">
+              <h3>API og Systemintegrasjon</h3>
+              <ul>
+                <li><i class="fas fa-check"></i>Tilpassede API-løsninger</li>
+                <li><i class="fas fa-check"></i>Integrasjon mellom systemer</li>
+                <li><i class="fas fa-check"></i>Automatisering av arbeidsflyter</li>
+                <li><i class="fas fa-check"></i>Datamigrering</li>
+                <li><i class="fas fa-check"></i>Skreddersydde integrasjoner</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="pricing-section">
+          <div class="pricing-cards">
+            <div class="pricing-card">
+              <div class="price-tag">550,- <span>per time</span></div>
+              <p class="price-highlight">API-utvikling og integrasjon</p>
+              <ul>
+                <li><i class="fas fa-check-circle"></i>Tilpassede løsninger</li>
+                <li><i class="fas fa-check-circle"></i>Dokumentasjon og testing</li>
+                <li><i class="fas fa-check-circle"></i>Implementering og opplæring</li>
+              </ul>
+              <div class="price-tag">Avtales <span>per oppdrag</span></div>
+              <p class="price-highlight">Vedlikehold og oppdateringer</p>
+              <ul>
+                <li><i class="fas fa-check-circle"></i>Årlig vedlikeholdsavtale</li>
+                <li><i class="fas fa-check-circle"></i>Sikkerhetsoppdateringer</li>
+                <li><i class="fas fa-check-circle"></i>Feilretting og støtte</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Backup Section -->
       <section id="backup" class="backup-section">
         <div class="section-title">
           <h2>Backup & Skylagring</h2>
@@ -1277,7 +1441,7 @@
         </div>
         <div class="services-grid">
           <div class="service-card">
-            <div class="card-icon" style="background: linear-gradient(135deg, #10b981 0%, #047857 100%);">
+            <div class="card-icon" style="color: var(--success);">
               <i class="fas fa-cloud"></i>
             </div>
             <div class="card-content">
@@ -1291,7 +1455,7 @@
             </div>
           </div>
           <div class="service-card">
-            <div class="card-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+            <div class="card-icon" style="color: var(--business);">
               <i class="fas fa-upload"></i>
             </div>
             <div class="card-content">
@@ -1385,10 +1549,10 @@
               <label for="service-type">Hva kan vi hjelpe deg med?</label>
               <select id="service-type" name="service" required aria-required="true" aria-label="Velg type tjeneste">
                 <option value="">Velg en tjeneste...</option>
-                <option value="hardware">Maskinvare & Utstyr</option>
-                <option value="software">Programvare & Systemer</option>
-                <option value="network">Nettverk & Internett</option>
+                <option value="feilretting">Feilretting og Vedlikehold</option>
+                <option value="nettverk">Nettverk og Internett</option>
                 <option value="web">Webutvikling</option>
+                <option value="api">API og Integrasjoner</option>
                 <option value="backup">Backup & Skylagring</option>
                 <option value="other">Annet</option>
               </select>
@@ -1465,11 +1629,11 @@
         const subjectField = document.getElementById('email-subject');
         let serviceText = '';
         switch(serviceType) {
-          case 'network': serviceText = 'Nettverk & Internett'; break;
-          case 'software': serviceText = 'Programvare & Systemer'; break;
-          case 'hardware': serviceText = 'Maskinvare & Utstyr'; break;
-          case 'backup': serviceText = 'Backup & Skylagring'; break;
+          case 'nettverk': serviceText = 'Nettverk & Internett'; break;
+          case 'feilretting': serviceText = 'Feilretting og Vedlikehold'; break;
           case 'web': serviceText = 'Webutvikling'; break;
+          case 'api': serviceText = 'API og Integrasjoner'; break;
+          case 'backup': serviceText = 'Backup & Skylagring'; break;
           default: serviceText = 'Annet';
         }
         subjectField.value = `Henvendelse om ${serviceText} fra ${name}`;
