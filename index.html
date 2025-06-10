@@ -176,17 +176,20 @@
 
     .dropdown-content a {
       color: var(--secondary);
-      padding: 0.75rem 1rem;
+      padding: 0.75rem 1.5rem;
       display: flex;
       align-items: center;
       gap: 0.75rem;
       font-size: 1rem;
       text-decoration: none;
+      padding-left: 1rem;
     }
 
     .dropdown-content a i {
       color: var(--primary);
-      font-size: 0.9rem;
+      font-size: 1rem;
+      width: 1.2rem;
+      text-align: center;
     }
 
     .dropdown-content a:hover {
@@ -1192,6 +1195,7 @@
                 <a href="#nettverk" aria-label="Nettverk og Internett"><i class="fas fa-network-wired"></i>Nettverk og Internett</a>
                 <a href="#web" aria-label="Webutvikling"><i class="fas fa-globe"></i>Webutvikling</a>
                 <a href="#api" aria-label="API og Integrasjoner"><i class="fas fa-code"></i>API og Integrasjoner</a>
+                <a href="#office365-azure" aria-label="Office365 og Azure"><i class="fas fa-envelope"></i>Office365 og Azure</a>
                 <a href="#backup" aria-label="Backup og Skylagring"><i class="fas fa-cloud"></i>Backup & Skylagring</a>
               </div>
             </li>
@@ -1294,6 +1298,7 @@
                 <li><i class="fas fa-check"></i>Operativsystem-oppdateringer</li>
                 <li><i class="fas fa-check"></i>Datagjenoppretting</li>
                 <li><i class="fas fa-check"></i>Nettverksfeilsøking</li>
+                <li><i class="fas fa-check"></i>Feilsøking av Wi-Fi</li>
               </ul>
             </div>
           </div>
@@ -1308,12 +1313,12 @@
                 <li><i class="fas fa-check-circle"></i>Betaling kun ved løst problem</li>
                 <li><i class="fas fa-check-circle"></i>Ingen skjulte kostnader</li>
                 <li><i class="fas fa-check-circle"></i>Gratis tilbud</li>
-                <li><i class="fas fa-check-circle"></i>Faktura etter fullført arbeid</li>
+                <li><i class="fas fa-check-circle"></i>Faktura sendes etter vellykket reparasjon</li>
               </ul>
             </div>
           </div>
           <div class="additional-fee">
-            <p><strong>Merk:</strong> Dersom vi ikke kan reparere utstyret ditt, kan du velge å få det returnert eller la oss destruere det for en avgift på 500,-.</p>
+            <p><strong>Merk:</strong> Hvis vi ikke kan reparere utstyret du har sendt til oss, kan du velge å få det returnert eller la oss destruere det for en avgift på 500,-.</p>
           </div>
         </div>
       </section>
@@ -1322,7 +1327,7 @@
       <section id="nettverk" class="service-section">
         <div class="section-title">
           <h2>Nettverk og Internett</h2>
-          <p>Profesjonell hjelp med nettverksløsninger og internettilkoblinger</p>
+          <p>Profesjonell hjelp med nettverksløsninger</p>
         </div>
         
         <div class="services-grid">
@@ -1333,7 +1338,6 @@
             <div class="card-content">
               <h3>Nettverk & Internett</h3>
               <ul>
-                <li><i class="fas fa-check"></i>Feilsøking av Wi-Fi</li>
                 <li><i class="fas fa-check"></i>Internettforbindelser</li>
                 <li><i class="fas fa-check"></i>Ruterkonfigurasjon</li>
                 <li><i class="fas fa-check"></i>Nettverkssikkerhet</li>
@@ -1366,7 +1370,7 @@
               <ul>
                 <li><i class="fas fa-check-circle"></i>Gratis vurdering av nettverksbehov</li>
                 <li><i class="fas fa-check-circle"></i>Skreddersydd løsning for din virksomhet</li>
-                <li><i class="fas fa-check-circle"></i>Pris basert på kompleksitet</li>
+                <li><i class="fas fa-check-circle"></i>Pris basert på utstyrsbehov</li>
                 <li><i class="fas fa-check-circle"></i>Ingen bindingstid</li>
               </ul>
             </div>
@@ -1503,6 +1507,69 @@
         </div>
       </section>
 
+      <!-- Office365 og Azure Section -->
+      <section id="office365-azure" class="service-section">
+        <div class="section-title">
+          <h2>Office365 og Azure</h2>
+          <p>Effektive skybaserte løsninger for produktivitet og infrastruktur</p>
+        </div>
+        
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="card-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="card-content">
+              <h3>Microsoft Office365</h3>
+              <ul>
+                <li><i class="fas fa-check"></i>Email og kalender</li>
+                <li><i class="fas fa-check"></i>Teams og samarbeid</li>
+                <li><i class="fas fa-check"></i>Office-applikasjoner</li>
+                <li><i class="fas fa-check"></i>Skylagring via OneDrive</li>
+                <li><i class="fas fa-check"></i>Sikkerhetsfunksjoner</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="service-card">
+            <div class="card-icon">
+              <i class="fas fa-cloud"></i>
+            </div>
+            <div class="card-content">
+              <h3>Microsoft Azure</h3>
+              <ul>
+                <li><i class="fas fa-check"></i>Skyinfrastruktur</li>
+                <li><i class="fas fa-check"></i>Virtuelle maskiner</li>
+                <li><i class="fas fa-check"></i>Databasehåndtering</li>
+                <li><i class="fas fa-check"></i>AI og maskinlæring</li>
+                <li><i class="fas fa-check"></i>Sikkerhetsløsninger</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="pricing-section">
+          <div class="pricing-cards">
+            <div class="pricing-card">
+              <div class="price-tag">2000,- <span>engangs</span></div>
+              <p class="price-highlight">Oppsett av Office365 eller Azure</p>
+              <ul>
+                <li><i class="fas fa-check-circle"></i>Initial konfigurasjon</li>
+                <li><i class="fas fa-check-circle"></i>Brukeroppsett</li>
+                <li><i class="fas fa-check-circle"></i>Grunnleggende opplæring</li>
+              </ul>
+              <div class="price-tag">1500,- <span>per år</span></div>
+              <p class="price-highlight">Support og vedlikehold</p>
+              <ul>
+                <li><i class="fas fa-check-circle"></i>Teknisk støtte</li>
+                <li><i class="fas fa-check-circle"></i>Sikkerhetsoppdateringer</li>
+                <li><i class="fas fa-check-circle"></i>Feilretting</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Backup Section -->
       <section id="backup" class="backup-section">
         <div class="section-title">
@@ -1613,7 +1680,7 @@
             </div>
             <div class="form-group">
               <label for="email">E-post</label>
-              <input type="email" id="email" name="email" required aria-required="true" aria-label="Din e-postadresse" autocomplete="email">
+              <input type="email" id="email" name="email" required aria-required="true" aria-label="email" autocomplete="email">
             </div>
             <div class="form-group">
               <label for="service-type">Hva kan vi hjelpe deg med?</label>
@@ -1623,6 +1690,7 @@
                 <option value="nettverk">Nettverk og Internett</option>
                 <option value="web">Webutvikling</option>
                 <option value="api">API og Integrasjoner</option>
+                <option value="office365-azure">Office365 og Azure</option>
                 <option value="backup">Backup & Skylagring</option>
                 <option value="other">Annet</option>
               </select>
@@ -1703,6 +1771,7 @@
           case 'feilretting': serviceText = 'Feilretting og Vedlikehold'; break;
           case 'web': serviceText = 'Webutvikling'; break;
           case 'api': serviceText = 'API og Integrasjoner'; break;
+          case 'office365-azure': serviceText = 'Office365 og Azure'; break;
           case 'backup': serviceText = 'Backup & Skylagring'; break;
           default: serviceText = 'Annet';
         }
@@ -1725,7 +1794,7 @@
           const result = await response.json();
 
           if (response.ok && result.ok) {
-            notificationMessage.textContent = `Takk, ${name}! Din forespørsel om ${serviceText} er mottatt. Vi kontakter deg normalt innen 24 timer.`;
+            notificationMessage.textContent = `Takk, ${name}! Din forespør om ${serviceText} er mottatt. Vi kontakter deg normalt innen 24 timer.`;
             notification.style.borderLeftColor = 'var(--success)';
             notification.classList.add('show');
             form.reset();
