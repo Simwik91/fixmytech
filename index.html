@@ -60,6 +60,23 @@
       margin: 0 auto;
     }
 
+    /* Skip navigation for accessibility */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--primary);
+      color: white;
+      padding: 8px;
+      z-index: 10000;
+      transition: transform 0.3s;
+    }
+
+    .skip-link:focus {
+      top: 0;
+      transform: translateY(40px);
+    }
+
     header {
       width: 100%;
       background: white;
@@ -366,6 +383,16 @@
       display: flex;
       flex-direction: column;
       height: 100%;
+      animation: fadeIn 0.5s ease-out;
+      animation-fill-mode: both;
+    }
+
+    .services-grid > :nth-child(1) { animation-delay: 0.1s; }
+    .services-grid > :nth-child(2) { animation-delay: 0.3s; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .service-card:hover {
@@ -417,6 +444,7 @@
       gap: 0.5rem;
       border-bottom: 1px solid var(--light-gray);
       font-size: 0.95rem;
+      color: #334155;
     }
 
     .card-content li:last-child {
@@ -570,19 +598,19 @@
     }
 
     .form-group {
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
     }
 
     label {
       display: block;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.5rem;
       font-weight: 500;
       font-size: 0.95rem;
     }
 
     input, textarea, select {
       width: 100%;
-      padding: 0.8rem;
+      padding: 0.9rem;
       border: 2px solid var(--light-gray);
       border-radius: 8px;
       font-family: 'Roboto', sans-serif;
@@ -593,7 +621,7 @@
     input:focus, textarea:focus, select:focus {
       outline: none;
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.3);
     }
 
     textarea {
@@ -606,7 +634,7 @@
       color: white;
       border: none;
       border-radius: 8px;
-      padding: 0.8rem 1.5rem;
+      padding: 1rem 1.5rem;
       font-size: 1rem;
       font-weight: 600;
       cursor: pointer;
@@ -626,7 +654,7 @@
       background: white;
       border-radius: 8px;
       padding: 1rem;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
       border-left: 4px solid var(--warning);
       text-align: center;
     }
@@ -674,8 +702,10 @@
     .copyright {
       font-size: 0.85rem;
       opacity: 0.7;
-      padding-top: 1rem;
+      padding-top: 1.5rem;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     .pricing-note {
@@ -936,6 +966,11 @@
         display: none;
       }
 
+      .dropdown > a::after {
+        position: absolute;
+        right: 10px;
+      }
+
       .dropdown-content {
         position: static;
         box-shadow: none;
@@ -1136,6 +1171,9 @@
   </style>
 </head>
 <body>
+  <!-- Skip navigation link -->
+  <a href="#main-content" class="skip-link">Hopp til hovedinnhold</a>
+
   <header>
     <div class="container">
       <div class="header-content">
@@ -1173,7 +1211,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <div class="container">
       <div class="notification" id="notification">
         <div class="notification-header">
@@ -1346,16 +1384,32 @@
         <div class="services-grid">
           <div class="service-card">
             <div class="card-icon">
-              <i class="fas fa-globe"></i>
+              <i class="fas fa-laptop-code"></i>
             </div>
             <div class="card-content">
-              <h3>Webutvikling</h3>
+              <h3>Frontend Utvikling</h3>
               <ul>
                 <li><i class="fas fa-check"></i>Responsiv nettsidedesign</li>
-                <li><i class="fas fa-check"></i>Hosting og domenestyring</li>
-                <li><i class="fas fa-check"></i>Nettsidevedlikehold</li>
+                <li><i class="fas fa-check"></i>Brukervennlige grensesnitt</li>
+                <li><i class="fas fa-check"></i>React og Vue.js applikasjoner</li>
+                <li><i class="fas fa-check"></i>Optimalisering for mobil</li>
+                <li><i class="fas fa-check"></i>Tilgjengelighetsjusteringer</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="service-card">
+            <div class="card-icon">
+              <i class="fas fa-shopping-cart"></i>
+            </div>
+            <div class="card-content">
+              <h3>Backend & E-handel</h3>
+              <ul>
                 <li><i class="fas fa-check"></i>E-handelsløsninger</li>
-                <li><i class="fas fa-check"></i>SEO-optimalisering</li>
+                <li><i class="fas fa-check"></i>CMS-oppsett (WordPress, etc.)</li>
+                <li><i class="fas fa-check"></i>Databaseintegrasjon</li>
+                <li><i class="fas fa-check"></i>Brukergenerert innhold</li>
+                <li><i class="fas fa-check"></i>Betalingsløsninger</li>
               </ul>
             </div>
           </div>
@@ -1399,13 +1453,29 @@
               <i class="fas fa-code"></i>
             </div>
             <div class="card-content">
-              <h3>API og Systemintegrasjon</h3>
+              <h3>API Utvikling</h3>
               <ul>
-                <li><i class="fas fa-check"></i>Tilpassede API-løsninger</li>
+                <li><i class="fas fa-check"></i>Tilpassede REST/GraphQL APIer</li>
+                <li><i class="fas fa-check"></i>Sikkerhetsimplementering</li>
+                <li><i class="fas fa-check"></i>Dokumentasjon (Swagger)</li>
+                <li><i class="fas fa-check"></i>Testing og validering</li>
+                <li><i class="fas fa-check"></i>Versjonshåndtering</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="service-card">
+            <div class="card-icon">
+              <i class="fas fa-sync-alt"></i>
+            </div>
+            <div class="card-content">
+              <h3>Systemintegrasjon</h3>
+              <ul>
                 <li><i class="fas fa-check"></i>Integrasjon mellom systemer</li>
                 <li><i class="fas fa-check"></i>Automatisering av arbeidsflyter</li>
-                <li><i class="fas fa-check"></i>Datamigrering</li>
-                <li><i class="fas fa-check"></i>Skreddersydde integrasjoner</li>
+                <li><i class="fas fa-check"></i>Datamigrering mellom plattformer</li>
+                <li><i class="fas fa-check"></i>ERP/CRM-integrasjoner</li>
+                <li><i class="fas fa-check"></i>Webhook-implementering</li>
               </ul>
             </div>
           </div>
