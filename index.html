@@ -925,8 +925,8 @@
     }
 
     .notification p {
-      color: var(--gray);
       font-size: 0.95rem;
+      color: var(--gray);
     }
 
     @keyframes slideIn {
@@ -939,7 +939,7 @@
       to { opacity: 0; transform: translateX(100%); }
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 610px) {
       .container {
         padding: 0 1rem;
       }
@@ -1238,7 +1238,7 @@
           <div class="step-card">
             <div class="step-number">1</div>
             <h3>Kontakt oss</h3>
-            <p>Fortell oss om ditt problem via skjemaet nederst på siden.</p>
+            <p>Fortell oss om ditt problem via skjemaet.</p>
           </div>
           <div class="step-card">
             <div class="step-number">2</div>
@@ -1335,7 +1335,7 @@
                 <li><i class="fas fa-check"></i>Regelmessige sikkerhetskopier</li>
                 <li><i class="fas fa-check"></i>Automatisert backup</li>
                 <li><i class="fas fa-check"></i>Gjenoppretting ved tap</li>
-                <li><i class="fas fa-check"></i>Kryptert datalbehandling</li>
+                <li><i class="fas fa-check"></i>Kryptert databehandling</li>
               </ul>
             </div>
           </div>
@@ -1392,7 +1392,6 @@
               </ul>
             </div>
           </div>
-
           <div class="service-card">
             <div class="card-icon">
               <i class="fas fa-shopping-cart"></i>
@@ -1490,7 +1489,7 @@
             </div>
             <div class="form-group">
               <label for="email">E-post</label>
-              <input type="email" id="email" name="email" required aria-required="true" aria-label="email" autocomplete="email">
+              <input type="email" id="email" name="email" required aria-required="true" aria-label="Email" autocomplete="email">
             </div>
             <div class="form-group">
               <label for="service-type">Hva kan vi hjelpe deg med?</label>
@@ -1539,18 +1538,19 @@
   </footer>
 
   <script>
+    console.log('Script loaded successfully');
     document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           e.preventDefault();
           const targetId = this.getAttribute('href');
           if (targetId === '#') return;
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
+          const target = document.querySelector(targetId);
+          if (target) {
             const headerHeight = document.querySelector('header').offsetHeight;
             const offset = 20;
             window.scrollTo({
-              top: targetElement.offsetTop - headerHeight - offset,
+              top: target.offsetTop - headerHeight - offset,
               behavior: 'smooth'
             });
           }
@@ -1570,7 +1570,7 @@
 
         const subjectField = document.getElementById('email-subject');
         let serviceText = '';
-        switch(serviceType) {
+        switch (serviceType) {
           case 'feilretting': serviceText = 'Feilretting og Vedlikehold'; break;
           case 'backup': serviceText = 'Backup & Skylagring'; break;
           case 'web': serviceText = 'Webutvikling'; break;
@@ -1586,24 +1586,20 @@
           const response = await fetch(form.action, {
             method: 'POST',
             body: formData,
-            headers: {
-              'Accept': 'application/json'
-            }
+            headers: { 'Accept': 'application/json' }
           });
 
-          const result = await response.json();
-
-          if (response.ok && result.ok) {
+          if (response.ok) {
             notificationMessage.textContent = `Takk, ${name}! Din forespørsel om ${serviceText} er mottatt. Vi kontakter deg normalt innen 24 timer.`;
             notification.style.borderLeftColor = 'var(--success)';
             notification.classList.add('show');
             form.reset();
-            console.log('Form submitted successfully!');
+            console.log('Form submitted successfully');
           } else {
-            throw new Error(result.error || 'Form submission failed');
+            throw new Error('Form submission failed');
           }
         } catch (error) {
-          console.error('Form submission error:', error);
+          console.error('Error during form submission:', error);
           notificationMessage.textContent = `Det oppstod en feil ved sending av skjemaet. Prøv igjen senere eller kontakt oss direkte på kontakt@fixmytech.no.`;
           notification.style.borderLeftColor = 'var(--warning)';
           notification.classList.add('show');
@@ -1611,7 +1607,7 @@
           submitButton.innerHTML = 'Send henvendelse';
           submitButton.disabled = false;
           setTimeout(() => {
-            notification.style.animation = 'slideOut 0.5s ease forwards';
+            notification.style.animation = 'slideOut 0.5s ease';
             setTimeout(() => {
               notification.classList.remove('show');
               notification.style.animation = '';
