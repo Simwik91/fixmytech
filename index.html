@@ -3,19 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FixMyTech.no - Profesjonelle IT-løsninger</title>
-  <meta name="description" content="FixMyTech.no tilbyr profesjonell teknisk hjelp for privatpersoner og bedrifter. Vi løser programvarefeil, maskinvareproblemer, webutvikling og beskytter dine data med backup og skylagring.">
-  <meta name="keywords" content="teknisk støtte, teknologihjelp, PC-reparasjon, datasikkerhet, backup, skylagring, virusfjerning, systemoptimalisering, webutvikling">
+  <title>FixMyTech.no - Profesjonelle IT-reparasjoner og programvareløsninger</title>
+  <meta name="description" content="FixMyTech.no tilbyr profesjonell teknisk hjelp for privatpersoner og bedrifter. Vi løser programvarefeil, maskinvareproblemer, og beskytter dine data med backup og skylagring.">
+  <meta name="keywords" content="teknisk støtte, teknologihjelp, PC-reparasjon, datasikkerhet, backup, skylagring, virusfjerning, systemoptimalisering">
   <meta name="author" content="FixMyTech.no">
-  <meta property="og:title" content="FixMyTech.no - Profesjonelle IT-løsninger">
-  <meta property="og:description" content="Profesjonell teknisk hjelp for alle dine teknologiske behov. Fra feilsøking til backup og webutvikling, vi har løsningene du trenger.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://fixmytech.no">
-  <meta property="og:image" content="https://fixmytech.no/images/og-image.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="FixMyTech.no - Profesjonelle IT-løsninger">
-  <meta name="twitter:description" content="Profesjonell teknisk hjelp for alle dine teknologiske behov. Fra feilsøking til backup og webutvikling, vi har løsningene du trenger.">
-  <meta name="twitter:image" content="https://fixmytech.no/images/twitter-image.jpg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -31,6 +22,7 @@
       --light-gray: #e2e8f0;
       --success: #10b981;
       --warning: #f59e0b;
+      --danger: #ef4444;
       --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
       --transition: all 0.3s ease;
       --eco-green: #047857;
@@ -226,6 +218,19 @@
       max-width: 900px;
       margin: 0 auto;
       margin-bottom: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+      z-index: -1;
     }
 
     @media (min-width: 768px) {
@@ -1189,6 +1194,110 @@
       margin-bottom: 2rem;
       color: var(--gray);
     }
+    
+    /* New styles for enhanced sections */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    
+    @media (max-width: 768px) {
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .benefit-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+      text-align: center;
+      transition: var(--transition);
+      border: 1px solid var(--light-gray);
+    }
+    
+    .benefit-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .benefit-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    
+    .benefit-card h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--secondary);
+    }
+    
+    .problem-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    
+    @media (max-width: 768px) {
+      .problem-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .problem-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: var(--transition);
+    }
+    
+    .problem-card:hover {
+      transform: translateX(5px);
+    }
+    
+    .problem-icon {
+      font-size: 1.8rem;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+    
+    .problem-content h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--secondary);
+    }
+    
+    .problem-content p {
+      font-size: 0.95rem;
+      color: var(--gray);
+    }
+    
+    .device-icons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    
+    .device-icon {
+      font-size: 3rem;
+      color: var(--primary);
+      transition: var(--transition);
+    }
+    
+    .device-icon:hover {
+      transform: translateY(-5px);
+    }
   </style>
 </head>
 <body>
@@ -1210,7 +1319,6 @@
               <div class="dropdown-content">
                 <a href="#feilretting" aria-label="Feilretting og Vedlikehold"><i class="fas fa-wrench"></i>Feilretting og Vedlikehold</a>
                 <a href="#backup" aria-label="Backup og Skylagring"><i class="fas fa-cloud"></i>Backup & Skylagring</a>
-                <a href="#web" aria-label="Webutvikling"><i class="fas fa-globe"></i>Webutvikling</a>
               </div>
             </li>
             <li class="dropdown">
@@ -1241,8 +1349,9 @@
 
       <section class="hero">
         <h1><span>IT-hjelp</span> for deg</h1>
-        <p>FixMyTech.no tilbyr profesjonelle tekniske løsninger.</p> 
-        <p>Vi løser programvarefeil, maskinvareproblemer, utvikler nettsider og beskytter dine data.</p>
+        <p>FixMyTech.no tilbyr profesjonelle tekniske løsninger for reparasjoner, programvarefeil og datasikkerhet.</p>
+        <p>Vi gir nytt liv til ditt elektroniske utstyr og sikrer at det fungerer optimalt.</p>
+        <a href="#contact" class="btn" style="margin-top: 2rem;">Få hjelp nå</a>
       </section>
 
       <section id="how-we-work" class="service-section">
@@ -1269,6 +1378,15 @@
         </div>
       </section>
 
+      <div class="device-icons">
+        <i class="fas fa-laptop device-icon" title="Bærbare datamaskiner"></i>
+        <i class="fas fa-desktop device-icon" title="Stasjonære datamaskiner"></i>
+        <i class="fas fa-mobile-alt device-icon" title="Mobiltelefoner"></i>
+        <i class="fas fa-tablet-alt device-icon" title="Nettbrett"></i>
+        <i class="fas fa-print device-icon" title="Skrivere"></i>
+        <i class="fas fa-server device-icon" title="Servere"></i>
+      </div>
+
       <section id="feilretting" class="service-section">
         <div class="section-title">
           <h2>Feilretting og Vedlikehold</h2>
@@ -1291,10 +1409,12 @@
             <div class="card-content">
               <h3>Maskinvare & Utstyr</h3>
               <ul>
-                <li><i class="fas fa-check"></i>Reparasjon</li>
-                <li><i class="fas fa-check"></i>Utstyrs-oppgradering</li>
-                <li><i class="fas fa-check"></i>Feilsøking</li>
+                <li><i class="fas fa-check"></i>Reparasjon av PC, laptop, nettbrett</li>
+                <li><i class="fas fa-check"></i>Utstyrs-oppgradering (minne, SSD)</li>
+                <li><i class="fas fa-check"></i>Feilsøking av maskinvarefeil</li>
                 <li><i class="fas fa-check"></i>Hente ut data fra ødelagt utstyr</li>
+                <li><i class="fas fa-check"></i>Skjermreparasjoner</li>
+                <li><i class="fas fa-check"></i>Strømforsyningsproblemer</li>
               </ul>
             </div>
           </div>
@@ -1310,7 +1430,48 @@
                 <li><i class="fas fa-check"></i>Systemoptimalisering</li>
                 <li><i class="fas fa-check"></i>Operativsystem-oppdateringer</li>
                 <li><i class="fas fa-check"></i>Gjenoppretting av Operativsystem</li>
+                <li><i class="fas fa-check"></i>Programvareinstallasjon og konfigurasjon</li>
+                <li><i class="fas fa-check"></i>Driver-oppdateringer</li>
               </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="problem-cards">
+          <div class="problem-card">
+            <div class="problem-icon">
+              <i class="fas fa-bug"></i>
+            </div>
+            <div class="problem-content">
+              <h4>Datavirus og malware</h4>
+              <p>Vi fjerner alle typer skadelig programvare og sikrer at systemet ditt er trygt.</p>
+            </div>
+          </div>
+          <div class="problem-card">
+            <div class="problem-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <div class="problem-content">
+              <h4>Langsom datamaskin</h4>
+              <p>Vi optimaliserer systemet ditt for raskere ytelse og bedre effektivitet.</p>
+            </div>
+          </div>
+          <div class="problem-card">
+            <div class="problem-icon">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="problem-content">
+              <h4>Blåskjerm-feil</h4>
+              <p>Vi diagnostiserer årsaken til systemkrasj og implementerer løsninger.</p>
+            </div>
+          </div>
+          <div class="problem-card">
+            <div class="problem-icon">
+              <i class="fas fa-wifi"></i>
+            </div>
+            <div class="problem-content">
+              <h4>Nettverksproblemer</h4>
+              <p>Vi løser Wi-Fi-problemer, nettverkskoblinger og Internett-tilkoblinger.</p>
             </div>
           </div>
         </div>
@@ -1324,11 +1485,37 @@
                 <li><i class="fas fa-check-circle"></i>Betaling kun ved løst problem</li>
                 <li><i class="fas fa-check-circle"></i>Ingen skjulte kostnader</li>
                 <li><i class="fas fa-check-circle"></i>Gratis tilbud</li>
+                <li><i class="fas fa-check-circle"></i>6 måneders garanti på reparasjoner</li>
+                <li><i class="fas fa-check-circle"></i>Fjernhjelp tilgjengelig</li>
               </ul>
             </div>
           </div>
           <div class="additional-fee">
             <p><strong>Merk:</strong> Hvis du har sendt utstyr til oss og vi ikke kan reparere det, kan du velge å få det returnert eller la oss destruere det for en avgift på 500,-.</p>
+          </div>
+        </div>
+        
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h4>Sikkerhet</h4>
+            <p>Vi sikrer at systemet ditt er beskyttet mot trusler og sårbarheter.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <i class="fas fa-rocket"></i>
+            </div>
+            <h4>Ytelse</h4>
+            <p>Vi optimaliserer systemet ditt for raskere drift og bedre effektivitet.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <i class="fas fa-history"></i>
+            </div>
+            <h4>Stabilitet</h4>
+            <p>Vi eliminerer systemkrasj og uventede feil for en pålitelig opplevelse.</p>
           </div>
         </div>
       </section>
@@ -1350,6 +1537,8 @@
                 <li><i class="fas fa-check"></i>Konfigurasjon av automatisk backup</li>
                 <li><i class="fas fa-check"></i>Hjelp til gjenoppretting av data</li>
                 <li><i class="fas fa-check"></i>Oppsett av kryptert databehandling</li>
+                <li><i class="fas fa-check"></i>Lokal og skylagringsløsninger</li>
+                <li><i class="fas fa-check"></i>Kontinuitetsplaner for bedrifter</li>
               </ul>
             </div>
           </div>
@@ -1364,10 +1553,52 @@
                 <li><i class="fas fa-check"></i>Konfigurasjon av automatisk synkronisering</li>
                 <li><i class="fas fa-check"></i>Synkronisering på tvers av enheter</li>
                 <li><i class="fas fa-check"></i>Tilgang fra alle enheter</li>
+                <li><i class="fas fa-check"></i>Versjonshåndtering og historikk</li>
+                <li><i class="fas fa-check"></i>Delt tilgang til filer og mapper</li>
               </ul>
             </div>
           </div>
         </div>
+        
+        <div class="problem-cards">
+          <div class="problem-card">
+            <div class="problem-icon">
+              <i class="fas fa-virus"></i>
+            </div>
+            <div class="problem-content">
+              <h4>Ransomware-angrep</h4>
+              <p>Beskytt deg mot løsepenger-virus som krypterer dataene dine.</p>
+            </div>
+          </div>
+          <div class="problem-card">
+            <div class="problem-icon">
+              <i class="fas fa-hard-drive"></i>
+            </div>
+            <div class="problem-content">
+              <h4>Harddiskfeil</h4>
+              <p>Harddisker har begrenset levetid - backup sikrer dataene mot uventet feil.</p>
+            </div>
+          </div>
+          <div class="problem-card">
+            <div class="problem-icon">
+              <i class="fas fa-user-slash"></i>
+            </div>
+            <div class="problem-content">
+              <h4>Brukerfeil</h4>
+              <p>Gjenopprett filer som er slettet ved en feil eller overskrevet.</p>
+            </div>
+          </div>
+          <div class="problem-card">
+            <div class="problem-icon">
+              <i class="fas fa-fire"></i>
+            </div>
+            <div class="problem-content">
+              <h4>Naturkatastrofer</h4>
+              <p>Skylagring sikrer dataene dine selv ved brann eller flom.</p>
+            </div>
+          </div>
+        </div>
+        
         <div class="pricing-section">
           <div class="pricing-cards">
             <div class="pricing-card">
@@ -1377,56 +1608,8 @@
                 <li><i class="fas fa-check-circle"></i>Konfigurasjon av automatisk backup</li>
                 <li><i class="fas fa-check-circle"></i>Oppsett av kryptert databehandling</li>
                 <li><i class="fas fa-check-circle"></i>Synkronisering på tvers av enheter</li>
+                <li><i class="fas fa-check-circle"></i>Hjelp til gjenoppretting ved behov</li>
               </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="web" class="service-section">
-        <div class="section-title">
-          <h2>Webutvikling</h2>
-          <p>Profesjonelle nettsteder og digitale løsninger</p>
-        </div>
-
-        <div class="services-grid">
-          <div class="service-card">
-            <div class="card-icon">
-              <i class="fas fa-laptop-code"></i>
-            </div>
-            <div class="card-content">
-              <h3>Frontend Utvikling</h3>
-              <ul>
-                <li><i class="fas fa-check"></i>Responsive nettsider</li>
-                <li><i class="fas fa-check"></i>Brukervennlige grensesnitt</li>
-                <li><i class="fas fa-check"></i>React og Vue.js applikasjoner</li>
-                <li><i class="fas fa-check"></i>Optimalisert for alle flater</li>
-              </ul>
-            </div>
-          </div>
-          <div class="service-card">
-            <div class="card-icon">
-              <i class="fas fa-globe"></i>
-            </div>
-            <div class="card-content">
-              <h3>Landing Pages & SEO</h3>
-              <ul>
-                <li><i class="fas fa-check"></i>Skreddersydd til ditt behov</li>
-                <li><i class="fas fa-check"></i>Visuelt tiltalende design</li>
-                <li><i class="fas fa-check"></i>Avansert SEO-optimalisering</li>
-                <li><i class="fas fa-check"></i>Gratis konsultasjon</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="pricing-section">
-          <div class="pricing-cards">
-            <div class="pricing-card">
-              <div class="price-tag">10.000,- <span>oppstartskost</span></div>
-              <p class="price-highlight">Inkluderer design og utvikling av nettside</p>
-              <div class="price-tag">550,- <span>per time for videre vedlikehold</span></div>
-              <div class="price-tag">500,- <span>per år for hosting</span></div>
             </div>
           </div>
         </div>
@@ -1498,13 +1681,12 @@
                 <option value="">Velg en tjeneste...</option>
                 <option value="feilretting">Feilretting og Vedlikehold</option>
                 <option value="backup">Backup & Skylagring</option>
-                <option value="web">Webutvikling</option>
                 <option value="other">Annet</option>
               </select>
             </div>
             <div class="form-group">
               <label for="message">Beskriv behovet ditt</label>
-              <textarea id="message" name="message" required aria-required="true" aria-label="Beskrivelse av ditt behov" placeholder="Beskriv utfordringen eller behovet ditt, f.eks. 'PC starter ikke', 'trenger backup-oppsett', eller 'ønsker ny nettside'. Inkluder detaljer om utstyr eller feilmeldinger for raskere støtte." autocomplete="off"></textarea>
+              <textarea id="message" name="message" required aria-required="true" aria-label="Beskrivelse av ditt behov" placeholder="Beskriv utfordringen eller behovet ditt, f.eks. 'PC starter ikke', 'trenger backup-oppsett', eller 'laptop er veldig treg'. Inkluder detaljer om utstyr eller feilmeldinger for raskere støtte." autocomplete="off"></textarea>
             </div>
             <div style="display: none;">
               <label for="website">Website (leave blank)</label>
@@ -1576,7 +1758,6 @@
         switch (serviceType) {
           case 'feilretting': serviceText = 'Feilretting og Vedlikehold'; break;
           case 'backup': serviceText = 'Backup & Skylagring'; break;
-          case 'web': serviceText = 'Webutvikling'; break;
           default: serviceText = 'Annet';
         }
         subjectField.value = `Henvendelse om ${serviceText} fra ${name}`;
