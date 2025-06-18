@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Digitale Verktøy - FixMyTech.no</title>
-  <meta name="description" content="Utforsk FixMyTech.no sine gratis, nettleserbaserte verktøy for bilderedigering, videoredigering, EAN-generator og QR-generator, utviklet for å forenkle digitale oppgaver med fokus på personvern.">
-  <meta name="keywords" content="digitale verktøy, bilderedigering, videoredigering, EAN-generator, QR-generator, personvern, nettleserbasert, teknologihjelp">
+  <title>Personvernerklæring – FixMyTech.no</title>
+  <meta name="description" content="Les vår personvernerklæring for å forstå hvordan vi samler inn og behandler personopplysninger gjennom kontaktskjemaet.">
+  <meta name="keywords" content="personvernerklæring, personvern, datasikkerhet, FixMyTech.no">
   <meta name="author" content="FixMyTech.no">
+  <link rel="canonical" href="https://fixmytech.no/personvern.html">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -212,215 +213,55 @@
       font-size: 0.8rem;
     }
 
-    .hero {
-      padding: 4rem 0;
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto;
-      margin-bottom: 4rem;
-      position: relative;
-      overflow: hidden;
+    main {
+      flex: 1;
+      width: 100%;
+      padding: 2rem 0;
     }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
-      z-index: -1;
+    h1, h2 {
+      color: var(--primary-dark);
     }
 
-    @media (min-width: 768px) {
-      .hero {
-        padding: 6rem 0 4rem;
-      }
-      .header-content {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0.5rem 0;
-      }
-      .logo-container {
-        width: auto;
-        padding: 0;
-      }
-      nav ul {
-        padding: 0;
-      }
-    }
-
-    .hero h1 {
+    h1 {
       font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
-    }
-
-    @media (min-width: 768px) {
-      .hero h1 {
-        font-size: 3.5rem;
-      }
-    }
-
-    .hero h1 span {
-      color: var(--primary);
-      position: relative;
-    }
-
-    .hero h1 span::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, var(--primary), transparent);
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      color: var(--gray);
-      margin-bottom: 2.5rem;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    @media (min-width: 768px) {
-      .hero p {
-        font-size: 1.3rem;
-      }
-    }
-
-    .btn {
-      display: inline-block;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      color: white;
-      border: none;
-      border-radius: 10px;
-      padding: 1rem 2rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      text-decoration: none;
-      box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3);
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 15px rgba(37, 99, 235, 0.3);
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .section-title h2 {
-      font-size: 2.2rem;
-      font-weight: 700;
       margin-bottom: 1rem;
-      position: relative;
-      display: inline-block;
+      font-weight: 700;
     }
 
-    @media (min-width: 768px) {
-      .section-title h2 {
-        font-size: 2.5rem;
-      }
+    h2 {
+      font-size: 1.8rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
     }
 
-    .section-title h2::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background: var(--primary);
-      border-radius: 2px;
-    }
-
-    .section-title p {
-      color: var(--gray);
-      max-width: 600px;
-      margin: 2rem auto;
+    p, ul {
+      margin-bottom: 1.5rem;
       font-size: 1.1rem;
-    }
-
-    .tools-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-      width: 100%;
-      max-width: 800px;
-      margin: 2rem auto;
-    }
-
-    @media (max-width: 768px) {
-      .tools-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .tool-item {
-      display: flex;
-      flex-direction: column;
-      padding: 2rem;
-      background: white;
-      border-radius: 16px;
-      box-shadow: var(--card-shadow);
-      transition: var(--transition);
-      text-decoration: none;
-      color: var(--secondary);
-      border: 1px solid var(--light-gray);
-      text-align: center;
-      height: 100%;
-    }
-
-    .tool-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.1);
-      border-color: var(--primary);
-    }
-
-    .tool-icon {
-      width: 70px;
-      height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--light-gray);
-      border-radius: 50%;
-      color: var(--primary);
-      font-size: 2rem;
-      margin: 0 auto 1rem;
-    }
-
-    .tool-info h3 {
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-      color: var(--secondary);
-      min-height: 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .tool-info p {
-      font-size: 0.95rem;
       color: var(--gray);
+    }
+
+    ul {
+      padding-left: 1.5rem;
+      list-style-type: disc;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    a:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
     }
 
     footer {
       background: var(--secondary);
       color: white;
-      padding: 3rem 0 2rem;
+      padding: 1.5rem 0;
       width: 100%;
       text-align: center;
       margin-top: auto;
@@ -448,58 +289,73 @@
       color: var(--primary);
     }
 
-    .footer-links a {
+    .copyright {
+      font-size: 0.9rem;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .copyright a {
       color: white;
       text-decoration: none;
-      font-size: 1rem;
       transition: var(--transition);
     }
 
-    .footer-links a:hover {
+    .copyright a:hover {
       color: var(--primary);
     }
 
-    .copyright {
-      font-size: 0.85rem;
-      opacity: 0.7;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      max-width: 800px;
-      margin: 0 auto;
+    @media (min-width: 768px) {
+      .header-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 0;
+      }
+      .logo-container {
+        width: auto;
+        padding: 0;
+      }
+      nav ul {
+        padding: 0;
+      }
+      h1 {
+        font-size: 3rem;
+      }
+      h2 {
+        font-size: 2rem;
+      }
     }
 
     @media (max-width: 610px) {
       .container {
         padding: 0 1rem;
       }
-
       header {
         padding: 0.5rem;
       }
-
       .header-content {
         flex-direction: column;
         align-items: center;
       }
-
       .logo-container {
         padding-bottom: 0.5rem;
       }
-
       nav ul {
         gap: 0.5rem;
         padding: 0.5rem 0;
       }
-
       nav a {
         padding: 0.5rem 1.5rem;
         font-size: 0.95rem;
       }
-
       nav a::after {
         content: none;
       }
-
       .dropdown > a::after {
         content: '\f078';
         font-family: 'Font Awesome 6 Free';
@@ -507,7 +363,6 @@
         position: absolute;
         right: 10px;
       }
-
       .dropdown-content {
         position: static;
         box-shadow: none;
@@ -516,59 +371,20 @@
         width: 100%;
         text-align: center;
       }
-
       .dropdown-content a {
         padding: 0.5rem 0;
         font-size: 0.9rem;
         margin-bottom: 0.5rem;
         justify-content: center;
       }
-
-      .hero {
-        padding: 2rem;
-        margin-bottom: 2rem;
+      h1 {
+        font-size: 2rem;
       }
-
-      .hero h1 {
-        font-size: 1.8rem;
-        line-height: 1.3;
+      h2 {
+        font-size: 1.5rem;
       }
-
-      .hero p {
+      p, ul {
         font-size: 1rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .btn {
-        padding: 0.75rem 1.5rem;
-        font-size: 1rem;
-      }
-
-      .section-title h2 {
-        font-size: 1.8rem;
-      }
-
-      .section-title p {
-        font-size: 1rem;
-      }
-
-      .tool-item {
-        padding: 1.5rem;
-      }
-
-      .tool-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 1.8rem;
-      }
-
-      .tool-info h3 {
-        font-size: 1.2rem;
-        min-height: 2rem;
-      }
-
-      .tool-info p {
-        font-size: 0.9rem;
       }
     }
 
@@ -576,11 +392,10 @@
       overflow-x: hidden;
     }
 
-    a, button, .btn {
+    a {
       min-height: 44px;
       display: flex;
       align-items: center;
-      justify-content: center;
     }
   </style>
 </head>
@@ -601,13 +416,13 @@
             <ul>
               <li><a href="/" aria-label="Gå til Hjem">Hjem</a></li>
               <li class="dropdown">
-                <a href="/#tjenester" aria-label="Gå til Våre tjenester">Våre tjenester</a>
+                <a href="#tjenester" aria-label="Gå til Våre tjenester">Våre tjenester</a>
                 <div class="dropdown-content">
                   <a href="/#feilretting" aria-label="Feilretting og Vedlikehold"><i class="fas fa-wrench"></i>Feilretting og Vedlikehold</a>
                   <a href="/#backup" aria-label="Backup og Skylagring"><i class="fas fa-cloud"></i>Backup & Skylagring</a>
                 </div>
               </li>
-              <li><a href="/digitaleverktøy.html" aria-label="Gå til Digitale verktøy" class="active">Digitale verktøy</a></li>
+              <li><a href="/digitaleverktøy.html" aria-label="Gå til Digitale verktøy">Digitale verktøy</a></li>
               <li><a href="/#contact" aria-label="Gå til Kontakt">Kontakt</a></li>
             </ul>
           </nav>
@@ -618,55 +433,55 @@
 
   <main id="main-content">
     <div class="container">
-      <section class="hero">
-        <h1><span>Digitale Verktøy</span> for deg</h1>
-        <p>Utforsk våre gratis, nettleserbaserte verktøy utviklet for å forenkle dine digitale oppgaver med fokus på personvern. All behandling skjer lokalt i nettleseren din, slik at dataene dine forblir sikre og private.</p>
-      </section>
+      <h1>Personvernerklæring for FixMyTech.no</h1>
+      <p><strong>Sist oppdatert: 15. juni 2025</strong></p>
 
-      <section id="verktoy" class="service-section">
-        <div class="section-title">
-          <h2>Digitale Verktøy</h2>
-          <p>Gratis verktøy utviklet for å forenkle dine digitale oppgaver.</p>
-        </div>
-        <div class="tools-grid">
-          <a href="https://free-image-toolkit.com" target="_blank" class="tool-item" aria-label="Gå til bilderedigeringsverktøy">
-            <div class="tool-icon">
-              <i class="fas fa-image"></i>
-            </div>
-            <div class="tool-info">
-              <h3>Bilderedigering</h3>
-              <p>Rediger bilder enkelt og effektivt.</p>
-            </div>
-          </a>
-          <a href="https://free-video-toolkit.com" target="_blank" class="tool-item" aria-label="Gå til videoredigeringsverktøy">
-            <div class="tool-icon">
-              <i class="fas fa-video"></i>
-            </div>
-            <div class="tool-info">
-              <h3>Videoredigering</h3>
-              <p>Rediger videoer med brukervennlige verktøy.</p>
-            </div>
-          </a>
-          <a href="https://free-ean-maker.com" target="_blank" class="tool-item" aria-label="Gå til EAN-generator">
-            <div class="tool-icon">
-              <i class="fas fa-barcode"></i>
-            </div>
-            <div class="tool-info">
-              <h3>EAN-generator</h3>
-              <p>Lag EAN-koder for dine produkter.</p>
-            </div>
-          </a>
-          <a href="https://free-qr-maker.com" target="_blank" class="tool-item" aria-label="Gå til QR-generator">
-            <div class="tool-icon">
-              <i class="fas fa-qrcode"></i>
-            </div>
-            <div class="tool-info">
-              <h3>QR-generator</h3>
-              <p>Lag QR-koder raskt og enkelt.</p>
-            </div>
-          </a>
-        </div>
-      </section>
+      <p>Vi i FixMyTech.no tar personvernet ditt på alvor. Denne personvernerklæringen forklarer hvilke personopplysninger vi samler inn, hvordan vi bruker dem, og hvilke rettigheter du har.</p>
+
+      <h2>1. Hvilke opplysninger samles inn</h2>
+      <p>Når du fyller ut kontaktskjemaet på våre nettsider, samler vi inn følgende opplysninger:</p>
+      <ul>
+        <li>Navn</li>
+        <li>E-postadresse</li>
+        <li>Valgt tjenestetype</li>
+        <li>Din beskjed</li>
+      </ul>
+
+      <h2>2. Hvordan brukes opplysningene</h2>
+      <p>Vi bruker informasjonen du sender inn for å:</p>
+      <ul>
+        <li>Svare på din henvendelse</li>
+        <li>Forstå hvilke tjenester du trenger</li>
+        <li>Kontakte deg via e-post for videre dialog</li>
+      </ul>
+      <p>Vi bruker <strong>Formspree.io</strong> som tjeneste for å sende inn kontaktskjemaer. Din informasjon sendes derfor trygt via deres tjeneste og lagres ikke på våre nettsider.</p>
+
+      <h2>3. Lagring og deling</h2>
+      <ul>
+        <li>Vi lagrer ikke opplysningene dine på våre servere.</li>
+        <li>Opplysningene mottas som e-post og behandles konfidensielt.</li>
+        <li>Vi deler aldri informasjonen din med tredjeparter, med unntak av Formspree som formidlingstjeneste.</li>
+      </ul>
+
+      <h2>4. Dine rettigheter</h2>
+      <p>Du har rett til å:</p>
+      <ul>
+        <li>Be om innsyn i hvilke personopplysninger vi har om deg</li>
+        <li>Be oss rette eller slette informasjon</li>
+        <li>Trekke tilbake samtykke</li>
+      </ul>
+      <p>Send en e-post til <a href="mailto:kontakt@fixmytech.no">kontakt@fixmytech.no</a> for forespørsler angående personvern.</p>
+
+      <h2>5. Informasjonskapsler (cookies)</h2>
+      <p>FixMyTech.no bruker <strong>ikke</strong> informasjonskapsler for analyse, reklame eller sporing. Det er derfor <strong>ingen cookie-banner</strong> på nettstedet. Nettstedet fungerer uten å lagre noe på enheten din utover det som er teknisk nødvendig for skjemaet.</p>
+
+      <h2>6. Kontaktinformasjon</h2>
+      <p>Har du spørsmål om personvern eller ønsker å benytte dine rettigheter? Kontakt oss på:</p>
+      <p><strong>E-post:</strong> <a href="mailto:kontakt@fixmytech.no">kontakt@fixmytech.no</a></p>
+      <p><strong>Nettside:</strong> <a href="https://fixmytech.no">https://fixmytech.no</a></p>
+
+      <h2>7. Ansvar</h2>
+      <p>Ved å bruke kontaktskjemaet godtar du at vi behandler informasjonen din i henhold til denne erklæringen. All tjenestebruk skjer på eget ansvar, som beskrevet i vår ansvarsfraskrivelse under skjemaet.</p>
     </div>
   </main>
 
@@ -676,11 +491,12 @@
         <div class="footer-logo">
           <span>FixMyTech</span>.no
         </div>
-        <div class="footer-links">
-          <a href="/personvern.html">Personvern</a>
-        </div>
         <div class="copyright">
-          © 2025 FixMyTech.no. Alle rettigheter reservert.
+          <span>© 2025 FixMyTech.no</span>
+          <span>|</span>
+          <span>Alle rettigheter reservert</span>
+          <span>|</span>
+          <a href="/personvern.html">Personvern</a>
         </div>
       </div>
     </div>
