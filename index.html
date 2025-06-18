@@ -240,6 +240,7 @@
       .header-content {
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
         padding: 0.5rem 0;
       }
       .logo-container {
@@ -1195,7 +1196,6 @@
       color: var(--gray);
     }
     
-    /* New styles for enhanced sections */
     .benefits-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1312,27 +1312,29 @@
             <span>FixMyTech</span>.no
           </a>
         </div>
-        <nav>
-          <ul>
-            <li class="dropdown">
-              <a href="#tjenester" aria-label="Gå til Våre tjenester">Våre tjenester</a>
-              <div class="dropdown-content">
-                <a href="#feilretting" aria-label="Feilretting og Vedlikehold"><i class="fas fa-wrench"></i>Feilretting og Vedlikehold</a>
-                <a href="#backup" aria-label="Backup og Skylagring"><i class="fas fa-cloud"></i>Backup & Skylagring</a>
-              </div>
-            </li>
-            <li class="dropdown">
-              <a href="#verktoy" aria-label="Gå til Digitale verktøy">Digitale verktøy</a>
-              <div class="dropdown-content">
-                <a href="https://free-image-toolkit.com" target="_blank" aria-label="Gå til bilderedigeringsverktøy"><i class="fas fa-image"></i>Bilderedigering</a>
-                <a href="https://free-video-toolkit.com" target="_blank" aria-label="Gå til videoredigeringsverktøy"><i class="fas fa-video"></i>Videoredigering</a>
-                <a href="https://free-ean-maker.com" target="_blank" aria-label="Gå til EAN-generator"><i class="fas fa-barcode"></i>EAN-generator</a>
-                <a href="https://free-qr-maker.com" target="_blank" aria-label="Gå til QR-generator"><i class="fas fa-qrcode"></i>QR-generator</a>
-              </div>
-            </li>
-            <li><a href="#contact" aria-label="Gå til Kontakt">Kontakt</a></li>
-          </ul>
-        </nav>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <nav>
+            <ul>
+              <li class="dropdown">
+                <a href="#tjenester" aria-label="Gå til Våre tjenester">Våre tjenester</a>
+                <div class="dropdown-content">
+                  <a href="#feilretting" aria-label="Feilretting og Vedlikehold"><i class="fas fa-wrench"></i>Feilretting og Vedlikehold</a>
+                  <a href="#backup" aria-label="Backup og Skylagring"><i class="fas fa-cloud"></i>Backup & Skylagring</a>
+                </div>
+              </li>
+              <li class="dropdown">
+                <a href="#verktoy" aria-label="Gå til Digitale verktøy">Digitale verktøy</a>
+                <div class="dropdown-content">
+                  <a href="https://free-image-toolkit.com" target="_blank" aria-label="Gå til bilderedigeringsverktøy"><i class="fas fa-image"></i>Bilderedigering</a>
+                  <a href="https://free-video-toolkit.com" target="_blank" aria-label="Gå til videoredigeringsverktøy"><i class="fas fa-video"></i>Videoredigering</a>
+                  <a href="https://free-ean-maker.com" target="_blank" aria-label="Gå til EAN-generator"><i class="fas fa-barcode"></i>EAN-generator</a>
+                  <a href="https://free-qr-maker.com" target="_blank" aria-label="Gå til QR-generator"><i class="fas fa-qrcode"></i>QR-generator</a>
+                </div>
+              </li>
+              <li><a href="#contact" aria-label="Gå til Kontakt">Kontakt</a></li>
+            </ul>
+          </nav>
+        </div>
       </div>
     </div>
   </header>
@@ -1485,7 +1487,6 @@
                 <li><i class="fas fa-check-circle"></i>Betaling kun ved løst problem</li>
                 <li><i class="fas fa-check-circle"></i>Ingen skjulte kostnader</li>
                 <li><i class="fas fa-check-circle"></i>Gratis tilbud</li>
-                <li><i class="fas fa-check-circle"></i>6 måneders garanti på reparasjoner</li>
                 <li><i class="fas fa-check-circle"></i>Fjernhjelp tilgjengelig</li>
               </ul>
             </div>
@@ -1537,8 +1538,6 @@
                 <li><i class="fas fa-check"></i>Konfigurasjon av automatisk backup</li>
                 <li><i class="fas fa-check"></i>Hjelp til gjenoppretting av data</li>
                 <li><i class="fas fa-check"></i>Oppsett av kryptert databehandling</li>
-                <li><i class="fas fa-check"></i>Lokal og skylagringsløsninger</li>
-                <li><i class="fas fa-check"></i>Kontinuitetsplaner for bedrifter</li>
               </ul>
             </div>
           </div>
@@ -1553,8 +1552,6 @@
                 <li><i class="fas fa-check"></i>Konfigurasjon av automatisk synkronisering</li>
                 <li><i class="fas fa-check"></i>Synkronisering på tvers av enheter</li>
                 <li><i class="fas fa-check"></i>Tilgang fra alle enheter</li>
-                <li><i class="fas fa-check"></i>Versjonshåndtering og historikk</li>
-                <li><i class="fas fa-check"></i>Delt tilgang til filer og mapper</li>
               </ul>
             </div>
           </div>
@@ -1706,24 +1703,25 @@
     </div>
   </main>
 
-<footer>
-  <div class="container">
-    <div class="footer-content">
-      <div class="footer-logo">
-        <span>FixMyTech</span>.no
-      </div>
-      <div class="footer-links">
-        <a href="/personvern.html">Personvern</a>
-      </div>
-      <div class="copyright">
-        © 2025 FixMyTech.no. Alle rettigheter reservert.
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <span>FixMyTech</span>.no
+        </div>
+        <div class="footer-links">
+          <a href="/personvern.html">Personvern</a>
+        </div>
+        <div class="copyright">
+          © 2025 FixMyTech.no. Alle rettigheter reservert.
+        </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
   <script>
     console.log('Script loaded successfully');
+
     document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
