@@ -420,7 +420,7 @@
     footer {
       background: var(--secondary);
       color: white;
-      padding: 3rem 0 2rem;
+      padding: 1.5rem 0;
       width: 100%;
       text-align: center;
       margin-top: auto;
@@ -448,24 +448,24 @@
       color: var(--primary);
     }
 
-    .footer-links a {
+    .copyright {
+      font-size: 0.9rem;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .copyright a {
       color: white;
       text-decoration: none;
-      font-size: 1rem;
       transition: var(--transition);
     }
 
-    .footer-links a:hover {
+    .copyright a:hover {
       color: var(--primary);
-    }
-
-    .copyright {
-      font-size: 0.85rem;
-      opacity: 0.7;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      max-width: 800px;
-      margin: 0 auto;
     }
 
     @media (max-width: 610px) {
@@ -676,11 +676,12 @@
         <div class="footer-logo">
           <span>FixMyTech</span>.no
         </div>
-        <div class="footer-links">
-          <a href="/personvern">Personvern</a>
-        </div>
         <div class="copyright">
-          © 2025 FixMyTech.no. Alle rettigheter reservert.
+          <span>© 2025 FixMyTech.no</span>
+          <span>|</span>
+          <span>Alle rettigheter reservert</span>
+          <span>|</span>
+          <a href="/personvern">Personvern</a>
         </div>
       </div>
     </div>
@@ -705,7 +706,7 @@
             });
           }
         });
-      });Add commentMore actions
+      });
     });
   </script>
 </body>
