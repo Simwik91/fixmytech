@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vilkår for bruk – FixMyTech.no</title>
+  <meta name="description" content="Les våre vilkår for bruk av FixMyTech.no sine tjenester, inkludert teknisk støtte, reparasjoner og skylagring.">
+  <meta name="keywords" content="vilkår for bruk, tjenester, teknisk støtte, reparasjoner, FixMyTech.no">
+  <meta name="author" content="FixMyTech.no">
+  <link rel="canonical" href="https://fixmytech.no/terms">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --business: #8b5cf6;
+      --business-dark: #7c3aed;
+      --secondary: #0f172a;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --light-gray: #e2e8f0;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --transition: all 0.3s ease;
+      --eco-green: #047857;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: white;
+      color: var(--secondary);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 80px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      padding: 0 1.5rem;
+      margin: 0 auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--primary);
+      color: white;
+      padding: 8px;
+      z-index: 10000;
+      transition: transform 0.3s;
+    }
+
+    .skip-link:focus {
+      top: 0;
+      transform: translateY(40px);
+    }
+
+    header {
+      width: 100%;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      z-index: 100;
+      padding: 0.5rem 0;
+    }
+
+    .header-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.5rem 0;
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      padding: 0.5rem 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .logo:hover {
+      transform: scale(1.03);
+    }
+
+    .logo span {
+      color: var(--secondary);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+      padding: 1rem 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--secondary);
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+      padding: 0.5rem 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: white;
+      min-width: 220px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+      border-radius: 8px;
+      border: 1px solid var(--light-gray);
+    }
+
+    .dropdown-content a {
+      color: var(--secondary);
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1rem;
+      text-decoration: none;
+      border-bottom: 1px solid var(--light-gray);
+      text-align: left;
+      justify-content: flex-start;
+    }
+
+    .dropdown-content a:last-child {
+      border-bottom: none;
+    }
+
+    .dropdown-content a i {
+      color: var(--primary);
+      font-size: 1rem;
+      width: 1.2rem;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .dropdown-content a:hover {
+      background: var(--light-gray);
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .dropdown-content a:hover i {
+      color: var(--primary-dark);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown > a::after {
+      content: '\f078';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      margin-left: 0.5rem;
+      font-size: 0.8rem;
+    }
+
+    main {
+      flex: 1;
+      width: 100%;
+      padding: 2rem 0;
+    }
+
+    h1, h2 {
+      color: var(--primary-dark);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    p, ul {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      color: var(--gray);
+    }
+
+    ul {
+      padding-left: 1.5rem;
+      list-style-type: disc;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    a:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+
+    footer {
+      background: var(--secondary);
+      color: white;
+      padding: 1.5rem 0;
+      width: 100%;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--light);
+      transition: var(--transition);
+    }
+
+    .footer-logo:hover {
+      transform: scale(1.05);
+    }
+
+    .footer-logo span {
+      color: var(--primary);
+    }
+
+    .copyright {
+      font-size: 0.9rem;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .copyright a {
+      color: white;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .copyright a:hover {
+      color: var(--primary);
+    }
+
+    @media (min-width: 768px) {
+      .header-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 0;
+      }
+      .logo-container {
+        width: auto;
+        padding: 0;
+      }
+      nav ul {
+        padding: 0;
+      }
+      h1 {
+        font-size: 3rem;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 610px) {
+      .container {
+        padding: 0 1rem;
+      }
+      header {
+        padding: 0.5rem;
+      }
+      .header-content {
+        flex-direction: column;
+        align-items: center;
+      }
+      .logo-container {
+        padding-bottom: 0.5rem;
+      }
+      nav ul {
+        gap: 0.5rem;
+        padding: 0.5rem 0;
+      }
+      nav a {
+        padding: 0.5rem 1.5rem;
+        font-size: 0.95rem;
+      }
+      nav a::after {
+        content: none;
+      }
+      .dropdown > a::after {
+        content: '\f078';
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        position: absolute;
+        right: 10px;
+      }
+      .dropdown-content {
+        position: static;
+        box-shadow: none;
+        border: none;
+        background: transparent;
+        width: 100%;
+        text-align: center;
+      }
+      .dropdown-content a {
+        padding: 0.5rem 0;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+        justify-content: center;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+      p, ul {
+        font-size: 1rem;
+      }
+    }
+
+    html, body {
+      overflow-x: hidden;
+    }
+
+    a {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Hopp til hovedinnhold</a>
+
+  <header>
+    <div class="container">
+     -Newton: 0px; padding: 0px; margin: 0px;" class="header-content">
+        <div class="logo-container">
+          <a href="/" class="logo" aria-label="FixMyTech.no hjemmeside">
+            <i class="fas fa-tools"></i>
+            <span>FixMyTech</span>.no
+          </a>
+        </div>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <nav>
+            <ul>
+              <li><a href="/" aria-label="Gå til Hjem">Hjem</a></li>
+              <li class="dropdown">
+                <a href="#tjenester" aria-label="Gå til Våre tjenester">Våre tjenester</a>
+                <div class="dropdown-content">
+                  <a href="/#feilretting" aria-label="Feilretting og Vedlikehold"><i class="fas fa-wrench"></i>Feilretting og Vedlikehold</a>
+                  <a href="/#backup" aria-label="Backup og Skylagring"><i class="fas fa-cloud"></i>Backup & Skylagring</a>
+                </div>
+              </li>
+              <li><a href="/digitaleverktøy" aria-label="Gå til Digitale verktøy">Digitale verktøy</a></li>
+              <li><a href="/#contact" aria-label="Gå til Kontakt">Kontakt</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+  <main id="main-content">
+    <div class="container">
+      <h1>Vilkår for bruk for FixMyTech.no</h1>
+      <p><strong>Sist oppdatert: 25. juni 2025</strong></p>
+
+      <p>Velkommen til FixMyTech.no. Disse vilkårene for bruk ("Vilkår") regulerer din bruk av vår nettside og tjenester, inkludert teknisk støtte, reparasjoner og skylagring. Ved å bruke våre tjenester aksepterer du disse vilkårene i sin helhet.</p>
+
+      <h2>1. Tjenester</h2>
+      <p>FixMyTech.no tilbyr teknisk støtte, reparasjon av maskinvare og programvare, samt oppsett av backup- og skylagringsløsninger. Vi forbeholder oss retten til å endre eller avbryte tjenester uten forvarsel.</p>
+
+      <h2>2. Brukeransvar</h2>
+      <p>Du er ansvarlig for:</p>
+      <ul>
+        <li>Å gi korrekt og fullstendig informasjon når du bruker våre tjenester.</li>
+        <li>Å sikre at utstyr sendt til oss er forsvarlig pakket for å unngå skade under transport.</li>
+        <li>Å akseptere at bruk av våre tjenester skjer på eget ansvar.</li>
+      </ul>
+
+      <h2>3. Betaling og priser</h2>
+      <p>Alle priser er i NOK og inkluderer merverdiavgift der det er aktuelt. Betaling skjer kun ved løst problem, med mindre annet er avtalt. Hvis utstyr ikke kan repareres, kan en avgift på 500,- tilkomme for retur eller destruksjon av utstyret.</p>
+
+      <h2>4. Ansvarsbegrensning</h2>
+      <p>FixMyTech.no er ikke ansvarlig for skader på utstyr, datatap eller andre problemer som oppstår under reparasjon eller bruk av våre tjenester. Vi garanterer ikke at tjenestene vil være feilfrie eller møte dine forventninger.</p>
+
+      <h2>5. Personvern</h2>
+      <p>Vi behandler dine personopplysninger i samsvar med GDPR og vår <a href="/personvern">personvernerklæring</a>. Vennligst les personvernerklæringen for mer informasjon om hvordan vi håndterer dine data.</p>
+
+      <h2>6. Endringer i vilkår</h2>
+      <p>Vi kan oppdatere disse vilkårene når som helst. Den nyeste versjonen vil være tilgjengelig på denne siden.</p>
+
+      <h2>7. Kansellering og refusjon</h2>
+      <p>Du kan kansellere en tjeneste før arbeidet påbegynnes uten kostnad. Refusjon er ikke tilgjengelig etter at arbeidet er utført, med mindre annet er avtalt skriftlig.</p>
+
+      <h2>8. Kontaktinformasjon</h2>
+      <p>Hvis du har spørsmål om disse vilkårene, kontakt oss på <a href="mailto:kontakt@fixmytech.no">kontakt@fixmytech.no</a>.</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <span>FixMyTech</span>.no
+        </div>
+        <div class="copyright">
+          <span>© 2025 FixMyTech.no</span>
+          <span>|</span>
+          <span>Alle rettigheter reservert</span>
+          <span>|</span>
+          <a href="/personvern">Personvern</a>
+          <span>|</span>
+          <a href="/terms">Vilkår</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    console.log('Script loaded successfully');
+
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          const target = document.querySelector(targetId);
+          if (target) {
+            const headerHeight = document.querySelector('header').offsetHeight;
+            const offset = 20;
+            window.scrollTo({
+              top: target.offsetTop - headerHeight - offset,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
