@@ -405,7 +405,8 @@
   <a href="#main-content" class="skip-link">Hopp til hovedinnhold</a>
 
   <header>
-    <div class="container"-Newton: 0px; padding: 0px; margin: 0px;" class="header-content">
+    <div class="container">
+      <div class="header-content">
         <div class="logo-container">
           <a href="/" class="logo" aria-label="FixMyTech.no hjemmeside">
             <i class="fas fa-tools"></i>
@@ -423,13 +424,14 @@
                   <a href="/#backup" aria-label="Backup og Skylagring"><i class="fas fa-cloud"></i>Backup & Skylagring</a>
                 </div>
               </li>
-              <li><a href="/digitaleverktøy" aria-label="Gå til Digitale verktøy">Digitale verktøy</a></li>
+              <li><a href="/#everytool" aria-label="Gå til everytool.io">everytool.io</a></li>
               <li><a href="/#contact" aria-label="Gå til Kontakt">Kontakt</a></li>
             </ul>
           </nav>
         </div>
       </div>
-    </header>
+    </div>
+  </header>
 
   <main id="main-content">
     <div class="container">
@@ -483,6 +485,8 @@
           <a href="/personvern">Personvern</a>
           <span>|</span>
           <a href="/terms">Vilkår</a>
+          <span>|</span>
+          <a href="#" id="cookieSettingsLink">Cookie-innstillinger</a>
         </div>
       </div>
     </div>
@@ -492,6 +496,7 @@
     console.log('Script loaded successfully');
 
     document.addEventListener('DOMContentLoaded', function() {
+      // Smooth scroll for anchor links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           e.preventDefault();
@@ -508,7 +513,22 @@
           }
         });
       });
+
+      // Cookie settings link handler
+      const cookieSettingsLink = document.getElementById('cookieSettingsLink');
+      if (cookieSettingsLink) {
+        cookieSettingsLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          const cookieSettingsModal = window.parent.document.getElementById('cookieSettingsModal');
+          if (cookieSettingsModal) {
+            cookieSettingsModal.classList.add('show');
+          } else {
+            alert('Cookie-innstillinger er ikke tilgjengelig for øyeblikket. Vennligst prøv igjen senere.');
+          }
+        });
+      });
     });
   </script>
+</body>
 </body>
 </html>
