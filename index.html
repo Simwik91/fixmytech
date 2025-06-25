@@ -83,15 +83,15 @@
 
     .header-content {
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
       padding: 0.5rem 0;
     }
 
     .logo-container {
       display: flex;
-      justify-content: center;
-      width: 100%;
+      justify-content: flex-start;
+      width: auto;
       padding: 0.5rem 0;
     }
 
@@ -1334,61 +1334,6 @@
       margin: 0 auto;
     }
 
-    .benefits-list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      max-width: 800px;
-      margin: 2.5rem auto;
-    }
-
-    @media (max-width: 768px) {
-      .benefits-list {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .benefit-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      background: rgba(255, 237, 213, 0.3);
-      padding: 1.2rem;
-      border-radius: 12px;
-      text-align: left;
-      transition: var(--transition);
-    }
-
-    .benefit-item:hover {
-      transform: translateY(-5px);
-      background: rgba(255, 237, 213, 0.5);
-    }
-
-    .benefit-icon {
-      flex-shrink: 0;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: #ffedd5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      color: var(--everytool-orange);
-    }
-
-    .benefit-text h4 {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      color: var(--secondary);
-    }
-
-    .benefit-text p {
-      font-size: 0.95rem;
-      color: var(--gray);
-      margin: 0;
-    }
-
     .free-badge {
       background: linear-gradient(135deg, var(--everytool-orange) 0%, var(--everytool-dark) 100%);
       color: white;
@@ -1404,54 +1349,162 @@
       margin-right: 0.5rem;
     }
 
-    .tool-grid {
+    .benefits-cards {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
-      margin: 2.5rem 0;
+      max-width: 1000px;
+      margin: 2.5rem auto;
     }
 
-    @media (max-width: 900px) {
-      .tool-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .tool-grid {
+    @media (max-width: 768px) {
+      .benefits-cards {
         grid-template-columns: 1fr;
       }
     }
 
-    .tool-item {
+    .benefit-card {
       background: white;
       border-radius: 12px;
       padding: 1.5rem;
       box-shadow: var(--card-shadow);
+      text-align: left;
       transition: var(--transition);
       border: 1px solid #ffedd5;
-      text-align: center;
-      position: relative;
     }
 
-    .tool-item:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+    .benefit-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
 
-    .tool-category {
-      font-weight: 700;
+    .benefit-card h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
       color: var(--everytool-orange);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .benefit-card h4 i {
+      font-size: 1.5rem;
+    }
+
+    .benefit-card p {
+      font-size: 0.95rem;
+      color: var(--gray);
+      padding-left: 2.25rem;
+    }
+    
+    /* Mobile menu styles */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--secondary);
+      padding: 0.5rem;
+      z-index: 101;
+    }
+    
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 280px;
+      background: white;
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+      padding: 5rem 1.5rem 2rem;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      overflow-y: auto;
+    }
+    
+    .mobile-nav.active {
+      transform: translateX(0);
+    }
+    
+    .mobile-nav ul {
+      list-style: none;
+    }
+    
+    .mobile-nav li {
       margin-bottom: 1rem;
     }
+    
+    .mobile-nav a {
+      display: block;
+      padding: 0.75rem;
+      text-decoration: none;
+      color: var(--secondary);
+      font-weight: 500;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+    
+    .mobile-nav a:hover {
+      background: var(--light-gray);
+      color: var(--primary);
+    }
+    
+    .mobile-dropdown > a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .mobile-dropdown-content {
+      padding-left: 1rem;
+      display: none;
+    }
+    
+    .mobile-dropdown.active .mobile-dropdown-content {
+      display: block;
+    }
+    
+    .mobile-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 99;
+    }
+    
+    .mobile-overlay.active {
+      display: block;
+    }
+    
+    .close-menu {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--secondary);
+    }
 
-    .tool-examples {
-      font-size: 1.1rem;
-      color: var(--gray);
-      line-height: 1.6;
+    @media (max-width: 768px) {
+      .mobile-menu-toggle {
+        display: block;
+      }
+      
+      .desktop-nav {
+        display: none;
+      }
+      
+      body.menu-open {
+        overflow: hidden;
+      }
     }
   </style>
 </head>
@@ -1467,25 +1520,48 @@
             <span>FixMyTech</span>.no
           </a>
         </div>
-        <div style="display: flex; align-items: center; gap: 1rem;">
-          <nav>
-            <ul>
-              <li><a href="/" aria-label="Gå til Hjem">Hjem</a></li>
-              <li class="dropdown">
-                <a href="#tjenester" aria-label="Gå til Våre tjenester">Våre tjenester</a>
-                <div class="dropdown-content">
-                  <a href="#feilretting" aria-label="Feilretting og Vedlikehold"><i class="fas fa-wrench"></i>Feilretting og Vedlikehold</a>
-                  <a href="#backup" aria-label="Backup og Skylagring"><i class="fas fa-cloud"></i>Backup & Skylagring</a>
-                </div>
-              </li>
-              <li><a href="#everytool" aria-label="Gå til everytool.io">everytool.io</a></li>
-              <li><a href="#contact" aria-label="Gå til Kontakt">Kontakt</a></li>
-            </ul>
-          </nav>
-        </div>
+        
+        <button class="mobile-menu-toggle" aria-label="Åpne meny">
+          <i class="fas fa-bars"></i>
+        </button>
+        
+        <nav class="desktop-nav">
+          <ul>
+            <li><a href="/" aria-label="Gå til Hjem">Hjem</a></li>
+            <li class="dropdown">
+              <a href="#tjenester" aria-label="Gå til Våre tjenester">Våre tjenester</a>
+              <div class="dropdown-content">
+                <a href="#feilretting" aria-label="Feilretting og Vedlikehold"><i class="fas fa-wrench"></i>Feilretting og Vedlikehold</a>
+                <a href="#backup" aria-label="Backup og Skylagring"><i class="fas fa-cloud"></i>Backup & Skylagring</a>
+              </div>
+            </li>
+            <li><a href="#everytool" aria-label="Gå til everytool.io">everytool.io</a></li>
+            <li><a href="#contact" aria-label="Gå til Kontakt">Kontakt</a></li>
+          </ul>
+        </nav>
       </div>
     </div>
   </header>
+  
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+  
+  <nav class="mobile-nav" id="mobile-nav">
+    <button class="close-menu" aria-label="Lukk meny">
+      <i class="fas fa-times"></i>
+    </button>
+    <ul>
+      <li><a href="/">Hjem</a></li>
+      <li class="mobile-dropdown">
+        <a href="#tjenester">Våre tjenester <i class="fas fa-chevron-down"></i></a>
+        <div class="mobile-dropdown-content">
+          <a href="#feilretting"><i class="fas fa-wrench"></i> Feilretting</a>
+          <a href="#backup"><i class="fas fa-cloud"></i> Backup</a>
+        </div>
+      </li>
+      <li><a href="#everytool">everytool.io</a></li>
+      <li><a href="#contact">Kontakt</a></li>
+    </ul>
+  </nav>
 
   <main id="main-content">
     <div class="container">
@@ -1772,86 +1848,30 @@
           
           <div class="tool-highlight">
             <h3>En verden av verktøy i nettleseren din</h3>
-            <p>Glem nedlastinger og abonnementer. Hos everytool.io får du tilgang til et utvalg av kraftige verktøy rett i nettleseren din – uten kostnad, uten registrering, og uten å måtte installere noe som helst!</p>
+            <p>Vi elsker gratis verktøy og derfor har vi skapt everytool.io. Her får du tilgang til et utvalg av kraftige verktøy rett i nettleseren din – uten kostnad, uten registrering, og uten å måtte installere noe som helst!</p>
+            <p>Vi tror på at kraftige verktøy bør være tilgjengelige for alle, uten at man skal måtte ofre personvernet sitt. Derfor har vi bygget everytool.io som en plattform der du kan utføre oppgaver direkte i nettleseren din, uten at vi lagrer dine data eller sporer deg.</p>
           </div>
           
-          <div class="benefits-list">
-            <div class="benefit-item">
-              <div class="benefit-icon">
-                <i class="fas fa-bolt"></i>
-              </div>
-              <div class="benefit-text">
-                <h4>Øk produktiviteten din</h4>
-                <p>Gjør kjedelige oppgaver på sekunder med våre effektive verktøy</p>
-              </div>
+          <div class="benefits-cards">
+            <div class="benefit-card">
+              <h4><i class="fas fa-bolt"></i> Øk produktiviteten din</h4>
+              <p>Gjør kjedelige oppgaver på sekunder med våre effektive verktøy</p>
             </div>
             
-            <div class="benefit-item">
-              <div class="benefit-icon">
-                <i class="fas fa-shield-alt"></i>
-              </div>
-              <div class="benefit-text">
-                <h4>Din personvern er viktig</h4>
-                <p>Vi lagrer ingen data og sporer deg ikke – bruk verktøyene med tillit</p>
-              </div>
+            <div class="benefit-card">
+              <h4><i class="fas fa-shield-alt"></i> Din personvern er viktig</h4>
+              <p>Vi lagrer ingen data og sporer deg ikke – bruk verktøyene med tillit</p>
             </div>
             
-            <div class="benefit-item">
-              <div class="benefit-icon">
-                <i class="fas fa-sync-alt"></i>
-              </div>
-              <div class="benefit-text">
-                <h4>Oppdatert kontinuerlig</h4>
-                <p>Nye verktøy og forbedringer legges til regelmessig</p>
-              </div>
+            <div class="benefit-card">
+              <h4><i class="fas fa-sync-alt"></i> Oppdatert kontinuerlig</h4>
+              <p>Nye verktøy og forbedringer legges til regelmessig</p>
             </div>
             
-            <div class="benefit-item">
-              <div class="benefit-icon">
-                <i class="fas fa-mobile-alt"></i>
-              </div>
-              <div class="benefit-text">
-                <h4>Tilgjengelig overalt</h4>
-                <p>Fungerer perfekt på mobil, nettbrett og datamaskin</p>
-              </div>
+            <div class="benefit-card">
+              <h4><i class="fas fa-mobile-alt"></i> Tilgjengelig overalt</h4>
+              <p>Fungerer perfekt på mobil, nettbrett og datamaskin</p>
             </div>
-          </div>
-          
-          <div class="tool-grid">
-            <div class="tool-item">
-              <div class="tool-category">Bildeverktøy</div>
-              <div class="tool-examples">
-                Komprimering<br>
-                Størrelsesendring<br>
-                Formatkonvertering<br>
-                Filredigering
-              </div>
-            </div>
-            
-            <div class="tool-item">
-              <div class="tool-category">Videoverktøy</div>
-              <div class="tool-examples">
-                Konvertering<br>
-                Komprimering<br>
-                Metadata-redigering<br>
-                Klipping
-              </div>
-            </div>
-            
-            <div class="tool-item">
-              <div class="tool-category">Dokumentverktøy</div>
-              <div class="tool-examples">
-                PDF-konvertering<br>
-                OCR-teknologi<br>
-                Dokumentredigering<br>
-                Filkomprimering
-              </div>
-            </div>
-          </div>
-          
-          <div class="tool-highlight">
-            <h3>Hvorfor laste ned når du kan bruke?</h3>
-            <p>Med everytool.io trenger du aldri å laste ned programvare igjen. Våre verktøy kjører direkte i nettleseren din, slik at du kan jobbe effektivt uten å fylle harddisken din med programmer.</p>
           </div>
           
           <a href="https://everytool.io" class="btn-everytool">
@@ -1924,14 +1944,47 @@
   </footer>
 
   <script>
-    console.log('Script loaded successfully');
-
     document.addEventListener('DOMContentLoaded', function() {
+      // Mobile menu functionality
+      const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+      const mobileNav = document.getElementById('mobile-nav');
+      const mobileOverlay = document.getElementById('mobile-overlay');
+      const closeMenu = document.querySelector('.close-menu');
+      const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
+      
+      mobileMenuToggle.addEventListener('click', function() {
+        mobileNav.classList.add('active');
+        mobileOverlay.classList.add('active');
+        document.body.classList.add('menu-open');
+      });
+      
+      function closeMobileMenu() {
+        mobileNav.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      }
+      
+      closeMenu.addEventListener('click', closeMobileMenu);
+      mobileOverlay.addEventListener('click', closeMobileMenu);
+      
+      mobileDropdowns.forEach(dropdown => {
+        const toggle = dropdown.querySelector('a');
+        toggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          dropdown.classList.toggle('active');
+        });
+      });
+      
+      // Smooth scrolling for anchor links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           e.preventDefault();
           const targetId = this.getAttribute('href');
           if (targetId === '#') return;
+          
+          // Close mobile menu if open
+          closeMobileMenu();
+          
           const target = document.querySelector(targetId);
           if (target) {
             const headerHeight = document.querySelector('header').offsetHeight;
@@ -1944,6 +1997,7 @@
         });
       });
 
+      // Form submission handling
       const form = document.getElementById('contact-form');
       const notification = document.getElementById('notification');
       const notificationMessage = document.getElementById('notification-message');
@@ -1980,12 +2034,10 @@
             notification.style.borderLeftColor = 'var(--success)';
             notification.classList.add('show');
             form.reset();
-            console.log('Form submitted successfully');
           } else {
             throw new Error('Form submission failed');
           }
         } catch (error) {
-          console.error('Error during form submission:', error);
           notificationMessage.textContent = `Det oppstod en feil ved sending av skjemaet. Prøv igjen senere eller kontakt oss direkte på kontakt@fixmytech.no.`;
           notification.style.borderLeftColor = 'var(--warning)';
           notification.classList.add('show');
