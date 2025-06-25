@@ -26,6 +26,8 @@
       --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
       --transition: all 0.3s ease;
       --eco-green: #047857;
+      --everytool-orange: #f97316;
+      --everytool-dark: #ea580c;
     }
 
     * {
@@ -371,7 +373,7 @@
       font-size: 1.1rem;
     }
 
-    .service-section, .backup-section, .pricing-section, .contact, .digital-tools-section {
+    .service-section, .backup-section, .pricing-section, .contact, .everytool-section {
       padding: 4rem 0;
       margin-bottom: 4rem;
       background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
@@ -1218,21 +1220,238 @@
       transform: translateY(-5px);
     }
 
-    .digital-tools-content {
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto;
-      background: white;
-      border-radius: 12px;
-      padding: 2rem;
-      box-shadow: var(--card-shadow);
+    /* New styles for everytool section */
+    .everytool-section {
+      background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+      position: relative;
+      overflow: hidden;
     }
 
-    .digital-tools-content p {
+    .everytool-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(249, 115, 22, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+      z-index: 0;
+    }
+
+    .everytool-content {
+      text-align: center;
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .everytool-content p {
       font-size: 1.1rem;
       color: var(--gray);
       margin-bottom: 2rem;
       line-height: 1.8;
+    }
+
+    .btn-everytool {
+      background: linear-gradient(135deg, var(--everytool-orange) 0%, var(--everytool-dark) 100%);
+      box-shadow: 0 4px 6px rgba(249, 115, 22, 0.3);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-everytool:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 15px rgba(249, 115, 22, 0.3);
+    }
+
+    .btn-everytool::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.1);
+      transform: rotate(30deg);
+    }
+
+    .btn-everytool:hover::after {
+      animation: shine 1.5s ease;
+    }
+
+    @keyframes shine {
+      100% {
+        top: 100%;
+        left: 100%;
+      }
+    }
+
+    .tool-highlight {
+      background: white;
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin: 2.5rem auto;
+      text-align: center;
+      box-shadow: var(--card-shadow);
+      border: 2px solid #ffedd5;
+      max-width: 800px;
+      position: relative;
+    }
+
+    .tool-highlight::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, #ffedd5, var(--everytool-orange), #ffedd5);
+      border-radius: 8px 8px 0 0;
+    }
+
+    .tool-highlight h3 {
+      color: var(--everytool-orange);
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .tool-highlight p {
+      font-size: 1.1rem;
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .benefits-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      max-width: 800px;
+      margin: 2.5rem auto;
+    }
+
+    @media (max-width: 768px) {
+      .benefits-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: rgba(255, 237, 213, 0.3);
+      padding: 1.2rem;
+      border-radius: 12px;
+      text-align: left;
+      transition: var(--transition);
+    }
+
+    .benefit-item:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 237, 213, 0.5);
+    }
+
+    .benefit-icon {
+      flex-shrink: 0;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #ffedd5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: var(--everytool-orange);
+    }
+
+    .benefit-text h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--secondary);
+    }
+
+    .benefit-text p {
+      font-size: 0.95rem;
+      color: var(--gray);
+      margin: 0;
+    }
+
+    .free-badge {
+      background: linear-gradient(135deg, var(--everytool-orange) 0%, var(--everytool-dark) 100%);
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 30px;
+      font-weight: 700;
+      display: inline-block;
+      margin: 1rem 0;
+      box-shadow: 0 4px 6px rgba(249, 115, 22, 0.3);
+    }
+
+    .free-badge i {
+      margin-right: 0.5rem;
+    }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+    }
+
+    @media (max-width: 900px) {
+      .tool-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .tool-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .tool-item {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+      border: 1px solid #ffedd5;
+      text-align: center;
+      position: relative;
+    }
+
+    .tool-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .tool-category {
+      font-weight: 700;
+      color: var(--everytool-orange);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .tool-examples {
+      font-size: 1.1rem;
+      color: var(--gray);
+      line-height: 1.6;
     }
   </style>
 </head>
@@ -1259,7 +1478,7 @@
                   <a href="#backup" aria-label="Backup og Skylagring"><i class="fas fa-cloud"></i>Backup & Skylagring</a>
                 </div>
               </li>
-              <li><a href="/digitaleverktøy" aria-label="Gå til Digitale verktøy">Digitale verktøy</a></li>
+              <li><a href="#everytool" aria-label="Gå til everytool.io">everytool.io</a></li>
               <li><a href="#contact" aria-label="Gå til Kontakt">Kontakt</a></li>
             </ul>
           </nav>
@@ -1541,14 +1760,103 @@
         </div>
       </section>
 
-      <section id="digital-tools" class="digital-tools-section">
+      <!-- Enhanced everytool.io section -->
+      <section id="everytool" class="everytool-section">
         <div class="section-title">
-          <h2>Digitale Verktøy</h2>
-          <p>Øk produktiviteten din med smarte digitale løsninger.</p>
+          <h2>everytool.io</h2>
+          <p>Din port til kraftfulle verktøy – helt gratis!</p>
         </div>
-        <div class="digital-tools-content">
-          <p>Vi lager smarte nettverktøy som kjører rett i nettleseren – uten konto, uten installasjon, og uten at vi følger med. Bare deg og verktøyet.</p>
-          <a href="/digitaleverktøy.html" class="btn" aria-label="Utforsk våre digitale verktøy">Utforsk verktøyene</a>
+        
+        <div class="everytool-content">
+          <p class="free-badge"><i class="fas fa-crown"></i> 100% GRATIS - INGEN REGISTRERING</p>
+          
+          <div class="tool-highlight">
+            <h3>En verden av verktøy i nettleseren din</h3>
+            <p>Glem nedlastinger og abonnementer. Hos everytool.io får du tilgang til et utvalg av kraftige verktøy rett i nettleseren din – uten kostnad, uten registrering, og uten å måtte installere noe som helst!</p>
+          </div>
+          
+          <div class="benefits-list">
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <i class="fas fa-bolt"></i>
+              </div>
+              <div class="benefit-text">
+                <h4>Øk produktiviteten din</h4>
+                <p>Gjør kjedelige oppgaver på sekunder med våre effektive verktøy</p>
+              </div>
+            </div>
+            
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <div class="benefit-text">
+                <h4>Din personvern er viktig</h4>
+                <p>Vi lagrer ingen data og sporer deg ikke – bruk verktøyene med tillit</p>
+              </div>
+            </div>
+            
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <i class="fas fa-sync-alt"></i>
+              </div>
+              <div class="benefit-text">
+                <h4>Oppdatert kontinuerlig</h4>
+                <p>Nye verktøy og forbedringer legges til regelmessig</p>
+              </div>
+            </div>
+            
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <i class="fas fa-mobile-alt"></i>
+              </div>
+              <div class="benefit-text">
+                <h4>Tilgjengelig overalt</h4>
+                <p>Fungerer perfekt på mobil, nettbrett og datamaskin</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="tool-grid">
+            <div class="tool-item">
+              <div class="tool-category">Bildeverktøy</div>
+              <div class="tool-examples">
+                Komprimering<br>
+                Størrelsesendring<br>
+                Formatkonvertering<br>
+                Filredigering
+              </div>
+            </div>
+            
+            <div class="tool-item">
+              <div class="tool-category">Videoverktøy</div>
+              <div class="tool-examples">
+                Konvertering<br>
+                Komprimering<br>
+                Metadata-redigering<br>
+                Klipping
+              </div>
+            </div>
+            
+            <div class="tool-item">
+              <div class="tool-category">Dokumentverktøy</div>
+              <div class="tool-examples">
+                PDF-konvertering<br>
+                OCR-teknologi<br>
+                Dokumentredigering<br>
+                Filkomprimering
+              </div>
+            </div>
+          </div>
+          
+          <div class="tool-highlight">
+            <h3>Hvorfor laste ned når du kan bruke?</h3>
+            <p>Med everytool.io trenger du aldri å laste ned programvare igjen. Våre verktøy kjører direkte i nettleseren din, slik at du kan jobbe effektivt uten å fylle harddisken din med programmer.</p>
+          </div>
+          
+          <a href="https://everytool.io" class="btn-everytool">
+            Utforsk alle verktøy på everytool.io
+          </a>
         </div>
       </section>
 
