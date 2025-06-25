@@ -27,6 +27,8 @@
       --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
       --transition: all 0.3s ease;
       --eco-green: #047857;
+      --cookie-bg: #f1f5f9;
+      --cookie-border: #cbd5e1;
     }
 
     * {
@@ -399,9 +401,398 @@
       display: flex;
       align-items: center;
     }
+
+    /* Enhanced Cookie Consent Banner */
+    #cookie-consent-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--cookie-bg);
+      padding: 1.5rem;
+      z-index: 1000;
+      display: none;
+      box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+      border-top: 1px solid var(--cookie-border);
+      font-size: 0.95rem;
+    }
+    
+    #cookie-consent-banner.show {
+      display: block;
+      animation: slideUp 0.5s ease forwards;
+    }
+    
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+    
+    .cookie-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    
+    .cookie-text {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .cookie-text h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      color: var(--secondary);
+    }
+    
+    .cookie-text p {
+      color: var(--gray);
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+    
+    .cookie-text a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .cookie-text a:hover {
+      text-decoration: underline;
+    }
+    
+    .cookie-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    
+    .cookie-btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.9rem;
+    }
+    
+    .cookie-accept-btn {
+      background: var(--success);
+      color: white;
+    }
+    
+    .cookie-reject-btn {
+      background: transparent;
+      color: var(--secondary);
+      border: 1px solid var(--gray);
+    }
+    
+    .cookie-settings-btn {
+      background: transparent;
+      color: var(--primary);
+      text-decoration: underline;
+      padding: 0.5rem;
+      border: none;
+    }
+    
+    .cookie-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    /* Enhanced Cookie Settings Modal */
+    #cookie-settings-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 2000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+    
+    #cookie-settings-modal.show {
+      display: flex;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .cookie-modal-content {
+      background: white;
+      border-radius: 12px;
+      max-width: 600px;
+      width: 100%;
+      padding: 2rem;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--secondary);
+      padding: 0.5rem;
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+    
+    .close-modal:hover {
+      background: var(--light-gray);
+    }
+    
+    .cookie-modal-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--secondary);
+      text-align: center;
+    }
+    
+    .cookie-modal-content p {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    
+    .cookie-options {
+      margin: 2rem 0;
+    }
+    
+    .cookie-option {
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+      border: 1px solid var(--light-gray);
+      background: var(--light);
+    }
+    
+    .cookie-option-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    
+    .cookie-option-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--secondary);
+    }
+    
+    .cookie-option-description {
+      color: var(--gray);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+    
+    .cookie-toggle {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 26px;
+    }
+    
+    .cookie-toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .cookie-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+    }
+    
+    .cookie-slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    
+    input:checked + .cookie-slider {
+      background-color: var(--success);
+    }
+    
+    input:checked + .cookie-slider:before {
+      transform: translateX(24px);
+    }
+    
+    .cookie-modal-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .save-settings-btn {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      flex: 1;
+    }
+    
+    .save-settings-btn:hover {
+      background: var(--primary-dark);
+    }
+    
+    .cookie-status {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+    
+    .status-indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--success);
+    }
+    
+    .status-indicator.off {
+      background: var(--danger);
+    }
+    
+    .cookie-required {
+      background: rgba(37, 99, 235, 0.1);
+      border-color: var(--primary);
+    }
+    
+    .cookie-required .cookie-toggle {
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    
+    .cookie-option-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .cookie-info-link {
+      color: var(--primary);
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+    
+    .cookie-info-link:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
+  <!-- Enhanced Cookie Consent Banner -->
+  <div id="cookie-consent-banner">
+    <div class="cookie-content">
+      <div class="cookie-text">
+        <h3>Vi bruker informasjonskapsler</h3>
+        <p>Vi bruker informasjonskapsler (cookies) for å forbedre opplevelsen din og analysere trafikk. Ved å bruke vår nettside godtar du vår bruk av informasjonskapsler. Les mer i vår <a href="/personvern">personvernerklæring</a>.</p>
+      </div>
+      <div class="cookie-buttons">
+        <button id="cookie-accept" class="cookie-btn cookie-accept-btn">Godta alle</button>
+        <button id="cookie-reject" class="cookie-btn cookie-reject-btn">Avvis</button>
+        <button id="cookie-settings" class="cookie-settings-btn">Innstillinger</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Enhanced Cookie Settings Modal -->
+  <div id="cookie-settings-modal">
+    <div class="cookie-modal-content">
+      <button class="close-modal" aria-label="Lukk innstillinger">
+        <i class="fas fa-times"></i>
+      </button>
+      <h3>Cookie-innstillinger</h3>
+      <p>Velg hvilke typer informasjonskapsler du vil tillate:</p>
+      
+      <div class="cookie-options">
+        <div class="cookie-option cookie-required">
+          <div class="cookie-option-header">
+            <div class="cookie-option-title">Nødvendige</div>
+            <div class="cookie-status">
+              <span class="status-indicator"></span>
+              <span>Påkrevet</span>
+            </div>
+          </div>
+          <div class="cookie-option-description">
+            Disse kreves for at nettsiden skal fungere korrekt. De brukes til grunnleggende funksjoner som navigering og sikkerhet.
+          </div>
+          <div class="cookie-option-actions">
+            <a href="/personvern" class="cookie-info-link">Les mer</a>
+            <label class="cookie-toggle">
+              <input type="checkbox" id="essential-cookies" checked disabled>
+              <span class="cookie-slider"></span>
+            </label>
+          </div>
+        </div>
+        
+        <div class="cookie-option">
+          <div class="cookie-option-header">
+            <div class="cookie-option-title">Analyse</div>
+            <div class="cookie-status">
+              <span class="status-indicator off" id="analytics-status"></span>
+              <span id="analytics-status-text">Av</span>
+            </div>
+          </div>
+          <div class="cookie-option-description">
+            Disse lar oss analysere bruk av nettsiden for å forbedre tjenestene våre. Vi bruker disse for å forstå hvordan besøkende bruker siden vår.
+          </div>
+          <div class="cookie-option-actions">
+            <a href="/personvern" class="cookie-info-link">Les mer</a>
+            <label class="cookie-toggle">
+              <input type="checkbox" id="analytics-cookies">
+              <span class="cookie-slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="cookie-modal-buttons">
+        <div class="cookie-status">
+          <span class="status-indicator" id="overall-status"></span>
+          <span id="overall-status-text">Innstillinger er ikke lagret</span>
+        </div>
+        <button id="save-cookie-settings" class="save-settings-btn">Lagre innstillinger</button>
+      </div>
+    </div>
+  </div>
+
   <a href="#main-content" class="skip-link">Hopp til hovedinnhold</a>
 
   <header>
@@ -493,7 +884,103 @@
   </footer>
 
   <script>
-    console.log('Script loaded successfully');
+    // Cookie management functions
+    function setCookie(name, value, days) {
+      const d = new Date();
+      d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+      const expires = "expires=" + d.toUTCString();
+      document.cookie = name + "=" + value + ";" + expires + ";path=/;SameSite=Lax";
+    }
+
+    function getCookie(name) {
+      const nameEQ = name + "=";
+      const ca = document.cookie.split(';');
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+      }
+      return null;
+    }
+
+    // Cookie consent functions
+    function showCookieBanner() {
+      const banner = document.getElementById('cookie-consent-banner');
+      banner.classList.add('show');
+    }
+
+    function hideCookieBanner() {
+      const banner = document.getElementById('cookie-consent-banner');
+      banner.classList.remove('show');
+    }
+
+    function acceptCookies() {
+      setCookie('cookie_consent', 'accepted', 365);
+      setCookie('analytics_consent', 'true', 365);
+      hideCookieBanner();
+      updateStatusIndicators();
+    }
+
+    function rejectCookies() {
+      setCookie('cookie_consent', 'rejected', 365);
+      setCookie('analytics_consent', 'false', 365);
+      hideCookieBanner();
+      updateStatusIndicators();
+    }
+
+    function loadAnalytics() {
+      // This page doesn't have analytics, so we leave this empty
+    }
+
+    function showCookieSettings() {
+      const modal = document.getElementById('cookie-settings-modal');
+      modal.classList.add('show');
+      
+      // Set toggle based on current settings
+      const analyticsConsent = getCookie('analytics_consent');
+      document.getElementById('analytics-cookies').checked = analyticsConsent === 'true';
+      
+      updateStatusIndicators();
+    }
+
+    function saveCookieSettings() {
+      const analyticsAllowed = document.getElementById('analytics-cookies').checked;
+      setCookie('analytics_consent', analyticsAllowed, 365);
+      
+      if (analyticsAllowed) {
+        setCookie('cookie_consent', 'accepted', 365);
+        loadAnalytics();
+      } else {
+        setCookie('cookie_consent', 'rejected', 365);
+      }
+      
+      const modal = document.getElementById('cookie-settings-modal');
+      modal.classList.remove('show');
+      hideCookieBanner();
+      updateStatusIndicators();
+    }
+
+    function updateStatusIndicators() {
+      const analyticsConsent = getCookie('analytics_consent');
+      const analyticsStatus = document.getElementById('analytics-status');
+      const analyticsStatusText = document.getElementById('analytics-status-text');
+      const overallStatus = document.getElementById('overall-status');
+      const overallStatusText = document.getElementById('overall-status-text');
+      
+      if (analyticsConsent === 'true') {
+        analyticsStatus.classList.remove('off');
+        analyticsStatusText.textContent = 'På';
+      } else {
+        analyticsStatus.classList.add('off');
+        analyticsStatusText.textContent = 'Av';
+      }
+      
+      if (getCookie('cookie_consent')) {
+        overallStatusText.textContent = 'Innstillinger er lagret';
+      } else {
+        overallStatusText.textContent = 'Innstillinger er ikke lagret';
+      }
+    }
 
     document.addEventListener('DOMContentLoaded', function() {
       // Smooth scroll for anchor links
@@ -519,14 +1006,45 @@
       if (cookieSettingsLink) {
         cookieSettingsLink.addEventListener('click', function(e) {
           e.preventDefault();
-          const cookieSettingsModal = window.parent.document.getElementById('cookieSettingsModal');
-          if (cookieSettingsModal) {
-            cookieSettingsModal.classList.add('show');
-          } else {
-            alert('Cookie-innstillinger er ikke tilgjengelig for øyeblikket. Vennligst prøv igjen senere.');
-          }
+          showCookieSettings();
         });
       }
+
+      // Cookie consent handling
+      const cookieConsent = getCookie('cookie_consent');
+      
+      if (!cookieConsent) {
+        showCookieBanner();
+      } else if (cookieConsent === 'accepted') {
+        loadAnalytics();
+      }
+      
+      // Event listeners for cookie buttons
+      document.getElementById('cookie-accept').addEventListener('click', acceptCookies);
+      document.getElementById('cookie-reject').addEventListener('click', rejectCookies);
+      document.getElementById('cookie-settings').addEventListener('click', function(e) {
+        e.preventDefault();
+        showCookieSettings();
+      });
+      document.querySelector('.close-modal').addEventListener('click', function() {
+        document.getElementById('cookie-settings-modal').classList.remove('show');
+      });
+      document.getElementById('save-cookie-settings').addEventListener('click', saveCookieSettings);
+      
+      // Close modal when clicking outside
+      document.getElementById('cookie-settings-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.classList.remove('show');
+        }
+      });
+      
+      // Update analytics toggle when changed
+      document.getElementById('analytics-cookies').addEventListener('change', function() {
+        updateStatusIndicators();
+      });
+      
+      // Initialize status indicators
+      updateStatusIndicators();
     });
   </script>
 </body>
