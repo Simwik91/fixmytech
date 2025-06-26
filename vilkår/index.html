@@ -46,7 +46,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-top: 80px;
+      padding-top: 100px;
     }
 
     .container {
@@ -269,6 +269,9 @@
       width: 100%;
       text-align: center;
       margin-top: auto;
+      position: relative;
+      z-index: 10;
+      padding-bottom: 5rem;
     }
 
     .footer-content {
@@ -313,6 +316,28 @@
       color: var(--primary);
     }
 
+    /* Hamburger Menu Styles */
+    .nav-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--secondary);
+      padding: 0.5rem;
+      transition: var(--transition);
+    }
+
+    .nav-toggle:hover {
+      color: var(--primary);
+    }
+
+    .main-nav {
+      display: flex;
+    }
+
+    .main-nav.active {
+      transform: translateX(0);
+    }
+
     @media (min-width: 768px) {
       .header-content {
         flex-direction: row;
@@ -343,19 +368,46 @@
         padding: 0.5rem;
       }
       .header-content {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
       }
       .logo-container {
         padding-bottom: 0.5rem;
       }
-      nav ul {
-        gap: 0.5rem;
-        padding: 0.5rem 0;
+      .nav-toggle {
+        display: block;
       }
-      nav a {
-        padding: 0.5rem 1.5rem;
-        font-size: 0.95rem;
+      .main-nav {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: white;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 99;
+      }
+      .main-nav.active {
+        display: block;
+        transform: translateX(0);
+      }
+      .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+        gap: 2rem;
+      }
+      .main-nav ul li {
+        width: 100%;
+        text-align: center;
+      }
+      .main-nav ul li a {
+        display: block;
+        padding: 1rem;
+        font-size: 1.2rem;
       }
       nav a::after {
         content: none;
@@ -377,7 +429,7 @@
       }
       .dropdown-content a {
         padding: 0.5rem 0;
-        font-size: 0.9rem;
+        font-size: 1rem;
         margin-bottom: 0.5rem;
         justify-content: center;
       }
@@ -389,6 +441,11 @@
       }
       p, ul {
         font-size: 1rem;
+      }
+      #cookie-consent-banner {
+        z-index: 1000;
+        bottom: 0;
+        padding-bottom: 1rem;
       }
     }
 
@@ -751,7 +808,7 @@
             </div>
           </div>
           <div class="cookie-option-description">
-            Disse kreves for at nettsiden skal fungere korrekt. De brukes til grunnleggende funksjoner som navigering og sikkerhet.
+            Disse kreves for at nettsiden skal fungere korrekt. De brukes til grunnleggende funksjoner som navigasjon og sikkerhet.
           </div>
           <div class="cookie-option-actions">
             <a href="/personvern" class="cookie-info-link">Les mer</a>
@@ -804,22 +861,23 @@
             <span>FixMyTech</span>.no
           </a>
         </div>
-        <div style="display: flex; align-items: center; gap: 1rem;">
-          <nav>
-            <ul>
-              <li><a href="/" aria-label="Gå til Hjem">Hjem</a></li>
-              <li class="dropdown">
-                <a href="#tjenester" aria-label="Gå til Våre tjenester">Våre tjenester</a>
-                <div class="dropdown-content">
-                  <a href="/#feilretting" aria-label="Feilretting og Vedlikehold"><i class="fas fa-wrench"></i>Feilretting og Vedlikehold</a>
-                  <a href="/#backup" aria-label="Backup og Skylagring"><i class="fas fa-cloud"></i>Backup & Skylagring</a>
-                </div>
-              </li>
-              <li><a href="https://everytool.io" aria-label="Gå til everytool.io">everytool.io</a></li>
-              <li><a href="/#contact" aria-label="Gå til Kontakt">Kontakt</a></li>
-            </ul>
-          </nav>
+        <div class="nav-toggle" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
         </div>
+        <nav class="main-nav">
+          <ul>
+            <li><a href="/" aria-label="Gå til Hjem">Hjem</a></li>
+            <li class="dropdown">
+              <a href="#tjenester" aria-label="Gå til Våre tjenester">Våre tjenester</a>
+              <div class="dropdown-content">
+                <a href="/#feilretting" aria-label="Feilretting og Vedlikehold"><i class="fas fa-wrench"></i>Feilretting og Vedlikehold</a>
+                <a href="/#backup" aria-label="Backup og Skylagring"><i class="fas fa-cloud"></i>Backup & Skylagring</a>
+              </div>
+            </li>
+            <li><a href="https://everytool.io" aria-label="Gå til everytool.io">everytool.io</a></li>
+            <li><a href="/#contact" aria-label="Gå til Kontakt">Kontakt</a></li>
+          </ul>
+        </nav>
       </div>
     </div>
   </header>
@@ -1000,6 +1058,30 @@
           }
         });
       });
+
+      // Hamburger menu toggle
+      const navToggle = document.querySelector('.nav-toggle');
+      const mainNav = document.querySelector('.main-nav');
+
+      if (navToggle && mainNav) {
+        navToggle.addEventListener('click', function() {
+          mainNav.classList.toggle('active');
+          const isActive = mainNav.classList.contains('active');
+          navToggle.setAttribute('aria-expanded', isActive);
+          navToggle.querySelector('i').classList.toggle('fa-bars');
+          navToggle.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Close mobile menu when clicking a link
+        mainNav.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', function() {
+            mainNav.classList.remove('active');
+            navToggle.querySelector('i').classList.add('fa-bars');
+            navToggle.querySelector('i').classList.remove('fa-times');
+            navToggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
 
       // Cookie settings link handler
       const cookieSettingsLink = document.getElementById('cookieSettingsLink');
