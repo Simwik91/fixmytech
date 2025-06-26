@@ -47,7 +47,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-top: 80px;
+      padding-top: 100px; /* Changed from 80px to 100px */
     }
 
     .container {
@@ -634,6 +634,7 @@
       width: 100%;
       text-align: center;
       margin-top: auto;
+      padding-bottom: 5rem; /* Added padding to prevent cookie banner overlap */
     }
 
     .footer-content {
@@ -902,7 +903,29 @@
       to { opacity: 0; right: -400px; }
     }
 
-    @media (max-width: 610px) {
+    /* Hamburger Menu Styles - Added from first code */
+    .nav-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--secondary);
+      padding: 0.5rem;
+      transition: var(--transition);
+    }
+
+    .nav-toggle:hover {
+      color: var(--primary);
+    }
+
+    .main-nav {
+      display: flex;
+    }
+
+    .main-nav.active {
+      transform: translateX(0);
+    }
+
+    @media (max-width: 768px) {
       .container {
         padding: 0 1rem;
       }
@@ -912,7 +935,8 @@
       }
 
       .header-content {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
       }
 
@@ -920,14 +944,44 @@
         padding-bottom: 0.5rem;
       }
 
-      nav ul {
-        gap: 0.5rem;
-        padding: 0.5rem 0;
+      .nav-toggle {
+        display: block;
       }
 
-      nav a {
-        padding: 0.5rem 1.5rem;
-        font-size: 0.95rem;
+      .main-nav {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: white;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 99;
+      }
+
+      .main-nav.active {
+        display: block;
+        transform: translateX(0);
+      }
+
+      .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+        gap: 2rem;
+      }
+
+      .main-nav ul li {
+        width: 100%;
+        text-align: center;
+      }
+
+      .main-nav ul li a {
+        display: block;
+        padding: 1rem;
+        font-size: 1.2rem;
       }
 
       nav a::after {
@@ -953,7 +1007,7 @@
 
       .dropdown-content a {
         padding: 0.5rem 0;
-        font-size: 0.9rem;
+        font-size: 1rem;
         margin-bottom: 0.5rem;
         justify-content: center;
       }
@@ -1399,116 +1453,6 @@
       padding-left: 2.25rem;
     }
     
-    /* Mobile menu styles */
-    .mobile-menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: var(--secondary);
-      padding: 0.5rem;
-      z-index: 101;
-    }
-    
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      top: 0;
-      right: 0;
-      height: 100%;
-      width: 280px;
-      background: white;
-      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-      z-index: 100;
-      padding: 5rem 1.5rem 2rem;
-      transform: translateX(100%);
-      transition: transform 0.3s ease;
-      overflow-y: auto;
-    }
-    
-    .mobile-nav.active {
-      transform: translateX(0);
-    }
-    
-    .mobile-nav ul {
-      list-style: none;
-    }
-    
-    .mobile-nav li {
-      margin-bottom: 1rem;
-    }
-    
-    .mobile-nav a {
-      display: block;
-      padding: 0.75rem;
-      text-decoration: none;
-      color: var(--secondary);
-      font-weight: 500;
-      border-radius: 8px;
-      transition: var(--transition);
-    }
-    
-    .mobile-nav a:hover {
-      background: var(--light-gray);
-      color: var(--primary);
-    }
-    
-    .mobile-dropdown > a {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .mobile-dropdown-content {
-      padding-left: 1rem;
-      display: none;
-    }
-    
-    .mobile-dropdown.active .mobile-dropdown-content {
-      display: block;
-    }
-    
-    .mobile-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 99;
-    }
-    
-    .mobile-overlay.active {
-      display: block;
-    }
-    
-    .close-menu {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: var(--secondary);
-    }
-
-    @media (max-width: 768px) {
-      .mobile-menu-toggle {
-        display: block;
-      }
-      
-      .desktop-nav {
-        display: none;
-      }
-      
-      body.menu-open {
-        overflow: hidden;
-      }
-    }
-
     /* Cookie Consent Banner - Enhanced */
     #cookie-consent-banner {
       position: fixed;
@@ -1912,11 +1856,11 @@
           </a>
         </div>
         
-        <button class="mobile-menu-toggle" aria-label="Åpne meny">
+        <div class="nav-toggle" aria-label="Toggle navigation">
           <i class="fas fa-bars"></i>
-        </button>
+        </div>
         
-        <nav class="desktop-nav">
+        <nav class="main-nav">
           <ul>
             <li><a href="/" aria-label="Gå til Hjem">Hjem</a></li>
             <li class="dropdown">
@@ -1933,26 +1877,6 @@
       </div>
     </div>
   </header>
-  
-  <div class="mobile-overlay" id="mobile-overlay"></div>
-  
-  <nav class="mobile-nav" id="mobile-nav">
-    <button class="close-menu" aria-label="Lukk meny">
-      <i class="fas fa-times"></i>
-    </button>
-    <ul>
-      <li><a href="/">Hjem</a></li>
-      <li class="mobile-dropdown">
-        <a href="#tjenester">Våre tjenester <i class="fas fa-chevron-down"></i></a>
-        <div class="mobile-dropdown-content">
-          <a href="#feilretting"><i class="fas fa-wrench"></i> Feilretting</a>
-          <a href="#backup"><i class="fas fa-cloud"></i> Backup</a>
-        </div>
-      </li>
-      <li><a href="#everytool">everytool.io</a></li>
-      <li><a href="#contact">Kontakt</a></li>
-    </ul>
-  </nav>
 
   <main id="main-content">
     <div class="container">
@@ -2470,45 +2394,36 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-      // Mobile menu functionality
-      const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-      const mobileNav = document.getElementById('mobile-nav');
-      const mobileOverlay = document.getElementById('mobile-overlay');
-      const closeMenu = document.querySelector('.close-menu');
-      const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
-      
-      mobileMenuToggle.addEventListener('click', function() {
-        mobileNav.classList.add('active');
-        mobileOverlay.classList.add('active');
-        document.body.classList.add('menu-open');
-      });
-      
-      function closeMobileMenu() {
-        mobileNav.classList.remove('active');
-        mobileOverlay.classList.remove('active');
-        document.body.classList.remove('menu-open');
-      }
-      
-      closeMenu.addEventListener('click', closeMobileMenu);
-      mobileOverlay.addEventListener('click', closeMobileMenu);
-      
-      mobileDropdowns.forEach(dropdown => {
-        const toggle = dropdown.querySelector('a');
-        toggle.addEventListener('click', function(e) {
-          e.preventDefault();
-          dropdown.classList.toggle('active');
+      // Hamburger menu toggle - Added from first code
+      const navToggle = document.querySelector('.nav-toggle');
+      const mainNav = document.querySelector('.main-nav');
+
+      if (navToggle && mainNav) {
+        navToggle.addEventListener('click', function() {
+          mainNav.classList.toggle('active');
+          const isActive = mainNav.classList.contains('active');
+          navToggle.setAttribute('aria-expanded', isActive);
+          navToggle.querySelector('i').classList.toggle('fa-bars');
+          navToggle.querySelector('i').classList.toggle('fa-times');
         });
-      });
-      
+
+        // Close mobile menu when clicking a link
+        mainNav.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', function() {
+            mainNav.classList.remove('active');
+            navToggle.querySelector('i').classList.add('fa-bars');
+            navToggle.querySelector('i').classList.remove('fa-times');
+            navToggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
       // Smooth scrolling for anchor links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           e.preventDefault();
           const targetId = this.getAttribute('href');
           if (targetId === '#') return;
-          
-          // Close mobile menu if open
-          closeMobileMenu();
           
           const target = document.querySelector(targetId);
           if (target) {
