@@ -1300,6 +1300,9 @@
       margin: 0 auto;
       position: relative;
       z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center children horizontally */
     }
 
     .everytool-content p {
@@ -1307,6 +1310,13 @@
       color: var(--gray);
       margin-bottom: 2rem;
       line-height: 1.8;
+    }
+
+    .everytool-button-container {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-top: 1.5rem; /* Added spacing above button */
     }
 
     .btn-everytool {
@@ -2164,40 +2174,44 @@
           <!-- Removed "Din port til kraftfulle verktøy – helt gratis!" text -->
         </div>
   
-          <div class="tool-highlight">
-            <h3>En verden av verktøy i nettleseren din</h3>
-            <p>Vi elsker gratis verktøy og derfor har vi skapt everytool.io. Her får du tilgang til et utvalg av kraftige verktøy rett i nettleseren din – uten kostnad, uten registrering, og uten å måtte installere noe som helst!</p>
-            <!-- Changed text from "Vi tror på at kraftige verktøy" to "Vi tror at våre verktøy" -->
-            <p>Vi tror at våre verktøy bør være tilgjengelige for alle, uten at man skal måtte ofre personvernet sitt. Derfor har vi bygget everytool.io som en plattform der du kan utføre oppgaver direkte i nettleseren din, uten at vi lagrer dine data.</p>
+          <div class="everytool-content">
+            <div class="tool-highlight">
+              <h3>En verden av verktøy i nettleseren din</h3>
+              <p>Vi elsker gratis verktøy og derfor har vi skapt everytool.io. Her får du tilgang til et utvalg av kraftige verktøy rett i nettleseren din – uten kostnad, uten registrering, og uten å måtte installere noe som helst!</p>
+              <!-- Changed text from "Vi tror på at kraftige verktøy" to "Vi tror at våre verktøy" -->
+              <p>Vi tror at våre verktøy bør være tilgjengelige for alle, uten at man skal måtte ofre personvernet sitt. Derfor har vi bygget everytool.io som en plattform der du kan utføre oppgaver direkte i nettleseren din, uten at vi lagrer dine data.</p>
+            </div>
+            
+            <div class="benefits-cards">
+              <div class="benefit-card">
+                <h4><i class="fas fa-bolt"></i> Øk produktiviteten din</h4>
+                <p>Gjør kjedelige oppgaver på sekunder med våre effektive verktøy</p>
+              </div>
+              
+              <div class="benefit-card">
+                <!-- Changed from "Din personvern" to "Ditt personvern" -->
+                <h4><i class="fas fa-shield-alt"></i> Ditt personvern er viktig</h4>
+                <p>Vi lagrer ingen data – bruk verktøyene med tillit</p>
+              </div>
+              
+              <div class="benefit-card">
+                <h4><i class="fas fa-sync-alt"></i> Oppdatert kontinuerlig</h4>
+                <p>Nye verktøy og forbedringer legges til regelmessig</p>
+              </div>
+              
+              <div class="benefit-card">
+                <h4><i class="fas fa-mobile-alt"></i> Tilgjengelig overalt</h4>
+                <p>Fungerer perfekt på mobil, nettbrett og datamaskin</p>
+              </div>
+            </div>
+            
+            <!-- Added button container for centering -->
+            <div class="everytool-button-container">
+              <a href="https://everytool.io" class="btn-everytool">
+                Utforsk alle verktøy på everytool.io
+              </a>
+            </div>
           </div>
-          
-          <div class="benefits-cards">
-            <div class="benefit-card">
-              <h4><i class="fas fa-bolt"></i> Øk produktiviteten din</h4>
-              <p>Gjør kjedelige oppgaver på sekunder med våre effektive verktøy</p>
-            </div>
-            
-            <div class="benefit-card">
-              <!-- Changed from "Din personvern" to "Ditt personvern" -->
-              <h4><i class="fas fa-shield-alt"></i> Ditt personvern er viktig</h4>
-              <p>Vi lagrer ingen data – bruk verktøyene med tillit</p>
-            </div>
-            
-            <div class="benefit-card">
-              <h4><i class="fas fa-sync-alt"></i> Oppdatert kontinuerlig</h4>
-              <p>Nye verktøy og forbedringer legges til regelmessig</p>
-            </div>
-            
-            <div class="benefit-card">
-              <h4><i class="fas fa-mobile-alt"></i> Tilgjengelig overalt</h4>
-              <p>Fungerer perfekt på mobil, nettbrett og datamaskin</p>
-            </div>
-          </div>
-          
-          <a href="https://everytool.io" class="btn-everytool">
-            Utforsk alle verktøy på everytool.io
-          </a>
-        </div>
       </section>
 
       <section id="contact" class="contact">
