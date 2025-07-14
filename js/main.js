@@ -3,7 +3,7 @@ const menuToggle = document.querySelector('.menu-toggle');
 const navMenu = document.querySelector('nav ul');
 const navLinks = document.querySelectorAll('nav a');
 const scrollTopBtn = document.getElementById('scrollTopBtn');
-const contactForm = document.getElementById('contact-form'); // Fixed ID to match HTML
+const contactForm = document.getElementById('contact-form');
 const modal = document.getElementById('modal');
 const modalClose = document.querySelector('.modal-close');
 const themeToggle = document.getElementById('themeToggle');
@@ -12,10 +12,8 @@ const themeToggle = document.getElementById('themeToggle');
 function toggleMobileMenu() {
   if (navMenu) {
     navMenu.classList.toggle('show');
-    // Toggle aria-expanded attribute
     const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
     menuToggle.setAttribute('aria-expanded', !isExpanded);
-    // Toggle hamburger icon
     menuToggle.classList.toggle('active');
   }
 }
@@ -129,7 +127,7 @@ function openModal(content) {
     if (modalContent) {
       modalContent.innerHTML = content;
       modal.style.display = 'flex';
-      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      document.body.style.overflow = 'hidden';
     }
   }
 }
@@ -137,7 +135,7 @@ function openModal(content) {
 function closeModal() {
   if (modal) {
     modal.style.display = 'none';
-    document.body.style.overflow = ''; // Restore scrolling
+    document.body.style.overflow = '';
   }
 }
 
@@ -161,14 +159,12 @@ function handleFormSubmit(e) {
   
   if (!validateForm(contactForm)) return;
   
-  // Form data collection
   const formData = {
     name: contactForm.querySelector('[name="name"]').value,
     email: contactForm.querySelector('[name="email"]').value,
     message: contactForm.querySelector('[name="message"]').value
   };
   
-  // Show success message
   const successMessage = `
     <div class="success-message">
       <i class="fas fa-check-circle" style="font-size: 3rem; color: var(--success);"></i>
@@ -180,8 +176,6 @@ function handleFormSubmit(e) {
   `;
   
   openModal(successMessage);
-  
-  // Reset form
   contactForm.reset();
 }
 
@@ -194,7 +188,6 @@ function toggleTheme() {
   }
 }
 
-// Check for saved theme preference
 function initTheme() {
   if (themeToggle) {
     const savedTheme = localStorage.getItem('theme') || 'light';
@@ -208,23 +201,16 @@ function initTheme() {
 }
 
 // ===== INITIALIZATION =====
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOM fully loaded and parsed');
-  
-  // Initialize theme
+function init() {
   initTheme();
   
-  // Event listeners
   if (contactForm) {
     contactForm.addEventListener('submit', handleFormSubmit);
   }
   
   window.addEventListener('scroll', toggleScrollTopButton);
-  
-  // Initialize scroll position
   toggleScrollTopButton();
   
-  // Close mobile menu on larger screens if resized
   window.addEventListener('resize', () => {
     if (window.innerWidth > 768 && navMenu && navMenu.classList.contains('show')) {
       navMenu.classList.remove('show');
@@ -234,41 +220,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
-});
-
-// ===== ADDITIONAL UTILITY FUNCTIONS =====
-// Debounce function for performance optimization
-function debounce(func, wait = 100) {
-  let timeout;
-  return function(...args) {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-      func.apply(this, args);
-    }, wait);
-  };
 }
 
-// Lazy loading for images
-function lazyLoadImages() {
-  const lazyImages = document.querySelectorAll('img.lazy');
-  
-  const lazyImageObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const lazyImage = entry.target;
-        lazyImage.src = lazyImage.dataset.src;
-        lazyImage.classList.remove('lazy');
-        lazyImageObserver.unobserve(lazyImage);
-      }
-    });
-  });
-  
-  lazyImages.forEach(lazyImage => {
-    lazyImageObserver.observe(lazyImage);
-  });
+// Wait until all elements are loaded
+function checkElementsLoaded() {
+  if (document.readyState === 'complete') {
+    init();
+  } else {
+    document.addEventListener('DOMContentLoaded', init);
+  }
 }
 
-// Initialize lazy loading
-if ('IntersectionObserver' in window) {
-  lazyLoadImages();
-}
+checkElementsLoaded();
