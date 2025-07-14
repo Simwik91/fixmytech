@@ -24,10 +24,10 @@ function initMainJS() {
   }
 
   // ===== CLOSE MOBILE MENU WHEN CLICKING LINKS =====
-  if (navLinks.length > 0) {
+  if (navLinks.length > 0 && navMenu && menuToggle) {
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
-        if (navMenu && navMenu.classList.contains('show') && menuToggle) {
+        if (navMenu.classList.contains('show')) {
           navMenu.classList.remove('show');
           menuToggle.classList.remove('active');
           menuToggle.setAttribute('aria-expanded', 'false');
@@ -46,7 +46,8 @@ function initMainJS() {
       
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
-        const headerHeight = document.querySelector('header').offsetHeight || 0;
+        const header = document.querySelector('header');
+        const headerHeight = header ? header.offsetHeight : 0;
         const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
         
         window.scrollTo({
@@ -81,6 +82,8 @@ function initMainJS() {
 
   // ===== FORM VALIDATION =====
   function validateForm(form) {
+    if (!form) return false;
+    
     let isValid = true;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
@@ -109,6 +112,8 @@ function initMainJS() {
   }
 
   function showError(field, message) {
+    if (!field) return;
+    
     field.classList.add('error-border');
     
     const errorElement = document.createElement('div');
