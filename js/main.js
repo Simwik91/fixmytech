@@ -241,4 +241,6 @@ window.initMainJS = initMainJS;
 // Initialize immediately if DOM is already loaded
 if (document.readyState === 'complete') {
   initMainJS();
+} else {
+  window.addEventListener('load', initMainJS);
 }
