@@ -457,26 +457,27 @@
   <!-- Footer Include -->
   <div id="footer-container"></div>
 
-  <!-- JavaScript Files -->
-  <script src="https://fixmytech.no/js/main.js"></script>
-  
   <!-- Include Loader and Page-Specific Script -->
   <script>
-    // Function to load includes
+    // Function to load includes and main.js
     function loadIncludes() {
       // Load header
       fetch('https://fixmytech.no/includes/header.html')
         .then(response => response.text())
         .then(data => {
           document.getElementById('header-container').innerHTML = data;
-        });
-      
-      // Load footer
-      fetch('https://fixmytech.no/includes/footer.html')
+          // Load footer after header
+          return fetch('https://fixmytech.no/includes/footer.html');
+        })
         .then(response => response.text())
         .then(data => {
           document.getElementById('footer-container').innerHTML = data;
-        });
+          // Load main.js after both includes are loaded
+          const script = document.createElement('script');
+          script.src = 'https://fixmytech.no/js/main.js';
+          document.body.appendChild(script);
+        })
+        .catch(error => console.error('Error loading includes:', error));
     }
     
     // Load includes when page is ready
