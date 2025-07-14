@@ -12,6 +12,36 @@ function initMainJS() {
   const modalClose = document.querySelector('.modal-close');
   const themeToggle = document.getElementById('themeToggle');
 
+  // ===== MODAL FUNCTIONS =====
+  const modalFunctions = {
+    openModal: function(content) {
+      if (modal) {
+        const modalContent = modal.querySelector('.modal-content');
+        if (modalContent) {
+          modalContent.innerHTML = content;
+          modal.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+          
+          // Add event listener to any close buttons in the modal content
+          const closeButtons = modalContent.querySelectorAll('[onclick*="closeModal"]');
+          closeButtons.forEach(button => {
+            button.onclick = modalFunctions.closeModal;
+          });
+        }
+      }
+    },
+    closeModal: function() {
+      if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    }
+  };
+
+  // Make modal functions available globally
+  window.modalFunctions = modalFunctions;
+  window.closeModal = modalFunctions.closeModal;
+
   // ===== MOBILE MENU TOGGLE =====
   if (menuToggle && navMenu) {
     console.log('Initializing mobile menu toggle...');
@@ -146,44 +176,25 @@ function initMainJS() {
           <h2>Takk, ${formData.name}!</h2>
           <p>Din melding er sendt.</p>
           <p>Vi tar kontakt med deg på ${formData.email} snart.</p>
-          <button class="btn" onclick="closeModal()">Lukk</button>
+          <button class="btn" onclick="modalFunctions.closeModal()">Lukk</button>
         </div>
       `;
       
-      openModal(successMessage);
+      modalFunctions.openModal(successMessage);
       this.reset();
     });
-  }
-
-  // ===== MODAL FUNCTIONS =====
-  function openModal(content) {
-    if (modal) {
-      const modalContent = modal.querySelector('.modal-content');
-      if (modalContent) {
-        modalContent.innerHTML = content;
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-      }
-    }
-  }
-
-  function closeModal() {
-    if (modal) {
-      modal.style.display = 'none';
-      document.body.style.overflow = '';
-    }
   }
 
   if (modal) {
     window.addEventListener('click', (e) => {
       if (e.target === modal) {
-        closeModal();
+        modalFunctions.closeModal();
       }
     });
   }
 
   if (modalClose) {
-    modalClose.addEventListener('click', closeModal);
+    modalClose.addEventListener('click', modalFunctions.closeModal);
   }
 
   // ===== DARK/LIGHT THEME TOGGLE =====
@@ -226,7 +237,6 @@ function initMainJS() {
 
 // Make init function available globally
 window.initMainJS = initMainJS;
-window.closeModal = closeModal;
 
 // Initialize immediately if DOM is already loaded
 if (document.readyState === 'complete') {
