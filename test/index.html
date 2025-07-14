@@ -572,10 +572,16 @@
       document.getElementById('cookie-accept').addEventListener('click', acceptCookies);
       document.getElementById('cookie-reject').addEventListener('click', rejectCookies);
       document.getElementById('cookie-settings').addEventListener('click', showCookieSettings);
-      document.getElementById('cookieSettingsLink').addEventListener('click', function(e) {
-        e.preventDefault();
-        showCookieSettings();
-      });
+      
+      // Check for cookieSettingsLink before adding event listener
+      const cookieSettingsLink = document.getElementById('cookieSettingsLink');
+      if (cookieSettingsLink) {
+        cookieSettingsLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          showCookieSettings();
+        });
+      }
+      
       document.querySelector('.close-modal').addEventListener('click', function() {
         document.getElementById('cookie-settings-modal').style.display = 'none';
       });
