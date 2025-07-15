@@ -93,27 +93,31 @@ p {
 
 /* Header Styles */
 header {
-  background: white;
+  background: #fff;
   box-shadow: var(--shadow);
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
+  padding: 1rem 0;
 }
 
 .header-content {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 1.5rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 1rem 1.5rem;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: var(--secondary);
+  display: flex;
+  align-items: center;
 }
 
 .logo span {
@@ -121,26 +125,30 @@ header {
 }
 
 .nav-toggle {
-  display: none;
-  font-size: 1.5rem;
   background: none;
   border: none;
+  font-size: 1.5rem;
   color: var(--secondary);
   cursor: pointer;
+  display: none;
 }
 
 .main-nav {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .main-nav a {
-  color: var(--secondary);
+  font-size: 1rem;
   font-weight: 500;
+  color: var(--secondary);
+  padding: 0.5rem 0;
+  transition: var(--transition);
 }
 
 .main-nav a:hover {
   color: var(--primary);
+  border-bottom: 2px solid var(--primary);
 }
 
 @media (max-width: 768px) {
@@ -153,7 +161,7 @@ header {
     top: 100%;
     left: 0;
     width: 100%;
-    background: white;
+    background: #fff;
     flex-direction: column;
     padding: 1rem;
     box-shadow: var(--shadow);
@@ -162,7 +170,8 @@ header {
     display: flex;
   }
   .main-nav a {
-    padding: 0.5rem 0;
+    padding: 0.75rem 0;
+    font-size: 1.1rem;
   }
 }
 
