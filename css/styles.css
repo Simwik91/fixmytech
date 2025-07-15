@@ -106,7 +106,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .logo-container {
@@ -115,12 +115,13 @@ header {
 }
 
 .logo {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--secondary);
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--secondary);
+  text-decoration: none;
 }
 
 .logo i {
@@ -144,12 +145,22 @@ header {
   color: var(--secondary);
   cursor: pointer;
   display: none;
+  padding: 0.5rem;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
 }
 
 .main-nav ul {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
   list-style: none;
+}
+
+.main-nav li {
+  position: relative;
 }
 
 .main-nav a {
@@ -157,16 +168,13 @@ header {
   font-weight: 500;
   color: var(--secondary);
   padding: 0.5rem 0;
+  display: block;
   transition: var(--transition);
 }
 
 .main-nav a:hover {
   color: var(--primary);
   border-bottom: 2px solid var(--primary);
-}
-
-.dropdown {
-  position: relative;
 }
 
 .dropdown-content {
@@ -177,7 +185,7 @@ header {
   background: #fff;
   box-shadow: var(--shadow);
   border-radius: var(--border-radius);
-  min-width: 200px;
+  min-width: 220px;
   z-index: 1000;
 }
 
@@ -190,12 +198,13 @@ header {
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1rem;
-  color: var(--secondary);
   font-size: 0.9rem;
+  color: var(--secondary);
 }
 
 .dropdown-content a i {
   color: var(--primary);
+  font-size: 1rem;
 }
 
 .dropdown-content a:hover {
@@ -217,6 +226,7 @@ header {
     background: #fff;
     padding: 1rem;
     box-shadow: var(--shadow);
+    z-index: 1000;
   }
   .main-nav.active {
     display: block;
@@ -226,7 +236,6 @@ header {
     gap: 0.5rem;
   }
   .main-nav a {
-    display: block;
     padding: 0.75rem 0;
     font-size: 1.1rem;
   }
@@ -234,10 +243,11 @@ header {
     position: static;
     box-shadow: none;
     background: #f9fafb;
-    padding-left: 1rem;
+    padding: 0.5rem 0 0 1rem;
+    min-width: auto;
   }
-  .dropdown:hover .dropdown-content {
-    display: block;
+  .dropdown-content a {
+    font-size: 1rem;
   }
 }
 
