@@ -10,44 +10,152 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" type="image/x-icon" href="https://fixmytech.no/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fixmytech.no/css/styles.css">
   <style>
-    /* Homepage-specific enhancements */
+    /* Root Variables */
+    :root {
+      --primary: #2563eb;
+      --secondary: #0f172a;
+      --light-gray: #e2e8f0;
+      --warning: #dc2626;
+      --success: #15803d;
+      --business: #4f46e5;
+      --border-radius: 8px;
+      --transition: all 0.3s ease;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #fff;
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--primary);
+      transition: var(--transition);
+    }
+
+    a:hover {
+      color: var(--secondary);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Roboto', sans-serif;
+      color: var(--secondary);
+    }
+
+    h1 {
+      font-size: 3rem;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+    }
+
+    h3 {
+      font-size: 1.75rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--border-radius);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .btn:hover {
+      background: var(--secondary);
+      transform: translateY(-2px);
+    }
+
+    .btn-everytool {
+      background: var(--business);
+    }
+
+    .btn-everytool:hover {
+      background: var(--secondary);
+    }
+    
+    /* Hero Section */
     .hero {
-      padding: 8rem 0 5rem;
-      background: linear-gradient(135deg, var(--primary) 0%, #1e40af 100%);
+      padding: 6rem 0 4rem;
+      background: linear-gradient(135deg, #1e3a8a 0%, var(--primary) 100%);
       color: white;
       position: relative;
       overflow: hidden;
-    }
-    
-    .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 1.5rem;
-      color: white;
-    }
-    
-    .hero p {
-      font-size: 1.25rem;
-      max-width: 700px;
-      margin: 0 auto 2rem;
-      color: rgba(255, 255, 255, 0.9);
-    }
-    
-    .hero-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0.1;
-      z-index: 0;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,100 M100,0 L0,100" stroke="white" stroke-width="1" /></svg>');
+      text-align: center;
     }
     
     .hero-content {
       position: relative;
-      z-index: 1;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      letter-spacing: -1px;
+    }
+    
+    .hero-title span {
+      display: block;
+      font-size: 5rem;
+      color: white;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+      background: linear-gradient(to right, #ffffff, #e6f4ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 1rem 0;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.5rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 300;
+    }
+    
+    .hero-description {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      color: rgba(255, 255, 255, 0.85);
     }
     
     .btn-hero {
@@ -56,37 +164,81 @@
       font-weight: 600;
       padding: 1rem 2.5rem;
       font-size: 1.1rem;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      border-radius: 50px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      display: inline-block;
     }
     
     .btn-hero:hover {
       background: var(--light-gray);
       transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
     }
     
-    .section-title h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+    .hero-bg-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.15;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255,255,255,0.1) 0%, transparent 20%);
+      z-index: 1;
     }
     
-    .section-title p {
-      font-size: 1.1rem;
-      color: var(--secondary);
+    .hero-tech-icons {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
     }
     
+    .tech-icon {
+      position: absolute;
+      font-size: 4rem;
+      color: rgba(255, 255, 255, 0.1);
+      transition: all 0.5s ease;
+    }
+    
+    /* Service Section */
     .service-section {
       padding: 5rem 0;
     }
     
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .section-title h2 {
+      margin-bottom: 0.5rem;
+    }
+    
+    .section-title p {
+      color: var(--secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Process Steps */
     .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
       margin-top: 3rem;
     }
     
     .step-card {
       background: white;
+      padding: 2rem;
       border-radius: var(--border-radius);
       box-shadow: var(--shadow);
-      padding: 2rem;
+      text-align: center;
       transition: var(--transition);
       border-top: 4px solid var(--primary);
     }
@@ -97,19 +249,20 @@
     }
     
     .step-number {
-      background: var(--primary);
-      color: white;
       width: 50px;
       height: 50px;
+      background: var(--primary);
+      color: white;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
+      margin: 0 auto 1.5rem;
       font-weight: 700;
-      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
     }
     
+    /* Device Icons */
     .device-icons {
       display: flex;
       justify-content: center;
@@ -140,6 +293,7 @@
       color: var(--secondary);
     }
     
+    /* Environmental Section */
     .environmental-section {
       background: linear-gradient(135deg, #e6f4ea 0%, #c8e6c9 100%);
       padding: 2.5rem;
@@ -155,15 +309,19 @@
       margin-bottom: 1.5rem;
     }
     
+    /* Services Grid */
     .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
       margin: 3rem 0;
     }
     
     .service-card {
       background: white;
+      padding: 2.5rem;
       border-radius: var(--border-radius);
       box-shadow: var(--shadow);
-      padding: 2.5rem;
       display: flex;
       gap: 1.5rem;
       transition: var(--transition);
@@ -183,15 +341,34 @@
       justify-content: center;
     }
     
+    .card-content ul {
+      list-style: none;
+    }
+    
+    .card-content li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .card-content li i {
+      color: var(--success);
+    }
+    
+    /* Problem Cards */
     .problem-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
       margin: 3rem 0;
     }
     
     .problem-card {
       background: white;
+      padding: 1.5rem;
       border-radius: var(--border-radius);
       box-shadow: var(--shadow);
-      padding: 1.5rem;
       display: flex;
       gap: 1.5rem;
       align-items: center;
@@ -211,15 +388,22 @@
       justify-content: center;
     }
     
+    /* Pricing Section */
     .pricing-section {
       margin: 3rem 0;
     }
     
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    
     .pricing-card {
       background: white;
+      padding: 2.5rem;
       border-radius: var(--border-radius);
       box-shadow: var(--shadow);
-      padding: 2.5rem;
       text-align: center;
       transition: var(--transition);
       border: 2px solid var(--light-gray);
@@ -237,15 +421,49 @@
       margin-bottom: 0.5rem;
     }
     
+    .price-tag span {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--secondary);
+    }
+    
+    .price-highlight {
+      color: var(--success);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    
+    .pricing-card ul {
+      list-style: none;
+      text-align: left;
+    }
+    
+    .pricing-card li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .additional-fee {
+      margin-top: 1rem;
+      text-align: center;
+      color: var(--secondary);
+    }
+    
+    /* Benefits Grid */
     .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
       margin: 3rem 0;
     }
     
     .benefit-card {
       background: white;
+      padding: 2rem;
       border-radius: var(--border-radius);
       box-shadow: var(--shadow);
-      padding: 2rem;
       text-align: center;
       transition: var(--transition);
     }
@@ -261,11 +479,13 @@
       margin-bottom: 1.5rem;
     }
     
+    /* Backup Section */
     .backup-section {
       padding: 5rem 0;
       background: #f9fafb;
     }
     
+    /* Everytool Section */
     .everytool-section {
       padding: 5rem 0;
       background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
@@ -278,41 +498,11 @@
       margin: 3rem 0;
     }
     
-    .benefits-cards .benefit-card {
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .benefits-cards .benefit-card h4 {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 1.2rem;
-    }
-    
     .everytool-button-container {
       margin-top: 3rem;
     }
     
-    .btn-everytool {
-      background: var(--business);
-      color: white;
-      padding: 1rem 2rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      border-radius: var(--border-radius);
-      transition: var(--transition);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    
-    .btn-everytool:hover {
-      background: var(--secondary);
-      transform: translateY(-5px);
-    }
-    
+    /* Contact Section */
     .contact {
       padding: 5rem 0;
       background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
@@ -325,6 +515,23 @@
       padding: 2.5rem;
       border-radius: var(--border-radius);
       box-shadow: var(--shadow);
+    }
+    
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .form-group label {
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: var(--secondary);
     }
     
     .form-group input,
@@ -345,6 +552,11 @@
       box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
     }
     
+    .form-group textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+    
     .form-group button {
       background: var(--primary);
       color: white;
@@ -356,6 +568,10 @@
       cursor: pointer;
       transition: var(--transition);
       width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
     }
     
     .form-group button:hover {
@@ -371,24 +587,32 @@
       border-radius: var(--border-radius);
     }
     
-    /* Responsive adjustments */
+    /* Responsive Design */
     @media (max-width: 992px) {
-      .hero h1 {
-        font-size: 2.5rem;
+      .hero-title {
+        font-size: 3.5rem;
       }
       
-      .hero p {
-        font-size: 1.1rem;
+      .hero-title span {
+        font-size: 4rem;
       }
     }
     
     @media (max-width: 768px) {
       .hero {
-        padding: 6rem 0 3rem;
+        padding: 4rem 0 3rem;
       }
       
-      .hero h1 {
-        font-size: 2rem;
+      .hero-title {
+        font-size: 2.8rem;
+      }
+      
+      .hero-title span {
+        font-size: 3.2rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.3rem;
       }
       
       .service-section, .backup-section, .everytool-section, .contact {
@@ -403,47 +627,25 @@
         justify-content: flex-start;
       }
     }
+    
+    @media (max-width: 576px) {
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      
+      .hero-title span {
+        font-size: 2.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- Cookie Consent Banner -->
-  <div id="cookie-consent-banner">
-    <div class="cookie-content">
-      <div class="cookie-text">
-        <h3>Vi bruker informasjonskapsler</h3>
-        <p>Vi bruker cookies for å forbedre din opplevelse og analysere bruk. Les mer i vår <a href="/personvern">personvernerklæring</a>.</p>
-      </div>
-      <div class="cookie-buttons">
-        <button id="cookie-accept" class="cookie-btn cookie-accept-btn">Godta</button>
-        <button id="cookie-reject" class="cookie-btn cookie-reject-btn">Avvis</button>
-        <button id="cookie-settings" class="cookie-btn cookie-settings-btn">Innstillinger</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Cookie Settings Modal -->
-  <div id="cookie-settings-modal">
-    <div class="cookie-settings-content">
-      <span class="close-modal">×</span>
-      <h2>Cookie-innstillinger</h2>
-      <div class="cookie-option">
-        <label class="toggle-label">
-          Analyse-cookies
-          <input type="checkbox" id="analytics-cookies">
-          <span class="toggle-switch"></span>
-          <span id="analytics-status-text">Av</span>
-        </label>
-        <p>Hjelper oss å forstå hvordan nettstedet brukes.</p>
-      </div>
-      <div class="cookie-option">
-        <p>Status: <span id="overall-status-text">Innstillinger er ikke lagret</span></p>
-      </div>
-      <button class="btn btn-primary" id="save-cookie-settings">Lagre</button>
-    </div>
-  </div>
-
-  <!-- Header Include -->
-  <div id="header-container"></div>
+  <!-- Skip to Main Content Link -->
+  <a href="#main-content" class="skip-link">Hopp til hovedinnhold</a>
 
   <main id="main-content">
     <!-- Scroll to top button -->
@@ -451,33 +653,28 @@
       <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- Modal -->
-    <div id="modal" class="modal" style="display: none;">
-      <div class="modal-content">
-        <span class="modal-close">×</span>
-        <!-- Modal content will be inserted here dynamically -->
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-tech-icons">
+        <div class="tech-icon" style="top: 15%; left: 10%;"><i class="fas fa-laptop"></i></div>
+        <div class="tech-icon" style="top: 25%; right: 15%;"><i class="fas fa-mobile-alt"></i></div>
+        <div class="tech-icon" style="top: 60%; left: 20%;"><i class="fas fa-server"></i></div>
+        <div class="tech-icon" style="top: 70%; right: 10%;"><i class="fas fa-tablet-alt"></i></div>
+        <div class="tech-icon" style="top: 40%; left: 5%;"><i class="fas fa-wrench"></i></div>
+        <div class="tech-icon" style="top: 50%; right: 5%;"><i class="fas fa-tools"></i></div>
       </div>
-    </div>
+      
+      <div class="hero-bg-pattern"></div>
+      
+      <div class="hero-content">
+        <h1 class="hero-title">IT-hjelp<br><span>for deg</span></h1>
+        <p class="hero-subtitle">FixMyTech.no tilbyr profesjonelle tekniske løsninger for reparasjoner, programvarefeil og datasikkerhet.</p>
+        <p class="hero-description">Vi gir nytt liv til ditt elektroniske utstyr og sikrer at det fungerer optimalt.</p>
+        <a href="#contact" class="btn-hero">Få hjelp nå</a>
+      </div>
+    </section>
 
     <div class="container">
-      <div class="notification" id="notification">
-        <div class="notification-header">
-          <i class="fas fa-check-circle"></i>
-          <h3>Takk for din henvendelse!</h3>
-        </div>
-        <p id="notification-message"></p>
-      </div>
-
-      <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-content">
-          <h1><span>IT-hjelp</span> for deg og din bedrift</h1>
-          <p>FixMyTech.no tilbyr profesjonelle tekniske løsninger for reparasjoner, programvarefeil og datasikkerhet.</p>
-          <p>Vi gir nytt liv til ditt elektroniske utstyr og sikrer at det fungerer optimalt.</p>
-          <a href="#contact" class="btn btn-hero">Få hjelp nå</a>
-        </div>
-      </section>
-
       <section id="how-we-work" class="service-section">
         <div class="section-title">
           <h2>Hvordan jobber vi?</h2>
@@ -767,22 +964,22 @@
           
           <div class="benefits-cards">
             <div class="benefit-card">
-              <h4><i class="fas fa-bolt text-primary"></i> Øk produktiviteten din</h4>
+              <h4><i class="fas fa-bolt"></i> Øk produktiviteten din</h4>
               <p>Gjør kjedelige oppgaver på sekunder med våre effektive verktøy</p>
             </div>
             
             <div class="benefit-card">
-              <h4><i class="fas fa-shield-alt text-primary"></i> Ditt personvern er viktig</h4>
+              <h4><i class="fas fa-shield-alt"></i> Ditt personvern er viktig</h4>
               <p>Vi lagrer ingen data – bruk verktøyene med tillit</p>
             </div>
             
             <div class="benefit-card">
-              <h4><i class="fas fa-sync-alt text-primary"></i> Oppdatert kontinuerlig</h4>
+              <h4><i class="fas fa-sync-alt"></i> Oppdatert kontinuerlig</h4>
               <p>Nye verktøy og forbedringer legges til regelmessig</p>
             </div>
             
             <div class="benefit-card">
-              <h4><i class="fas fa-mobile-alt text-primary"></i> Tilgjengelig overalt</h4>
+              <h4><i class="fas fa-mobile-alt"></i> Tilgjengelig overalt</h4>
               <p>Fungerer perfekt på mobil, nettbrett og datamaskin</p>
             </div>
           </div>
@@ -844,27 +1041,57 @@
     </div>
   </main>
 
-  <!-- Footer Include -->
-  <div id="footer-container"></div>
-
-  <!-- Script Loading -->
   <script>
-    // Load header and footer first
+    // Simple animation for tech icons in hero section
     document.addEventListener('DOMContentLoaded', function() {
-      Promise.all([
-        fetch('https://fixmytech.no/includes/header.html').then(res => res.text()),
-        fetch('https://fixmytech.no/includes/footer.html').then(res => res.text())
-      ]).then(([header, footer]) => {
-        document.getElementById('header-container').innerHTML = header;
-        document.getElementById('footer-container').innerHTML = footer;
+      const techIcons = document.querySelectorAll('.tech-icon');
+      techIcons.forEach(icon => {
+        // Random movement on hover
+        icon.addEventListener('mouseenter', () => {
+          const randomX = (Math.random() - 0.5) * 40;
+          const randomY = (Math.random() - 0.5) * 40;
+          icon.style.transform = `translate(${randomX}px, ${randomY}px)`;
+          icon.style.opacity = '0.2';
+        });
         
-        // Now load main.js after DOM is ready
-        const script = document.createElement('script');
-        script.src = 'https://fixmytech.no/js/main.js';
-        document.body.appendChild(script);
-      }).catch(error => {
-        console.error('Error loading includes:', error);
+        icon.addEventListener('mouseleave', () => {
+          icon.style.transform = 'translate(0, 0)';
+          icon.style.opacity = '0.1';
+          icon.style.transition = 'all 0.5s ease';
+        });
       });
+      
+      // Scroll to top button functionality
+      const scrollTopBtn = document.getElementById('scrollTopBtn');
+      
+      window.onscroll = function() {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+          scrollTopBtn.style.display = "block";
+        } else {
+          scrollTopBtn.style.display = "none";
+        }
+      };
+      
+      scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+      
+      // Form submission handling
+      const contactForm = document.getElementById('contact-form');
+      
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // In a real implementation, you would send the form data to your server
+          // Here we'll just show a success message
+          alert('Takk for din henvendelse! Vi vil kontakte deg så snart som mulig.');
+          this.reset();
+        });
+      }
     });
   </script>
 </body>
