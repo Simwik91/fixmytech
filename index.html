@@ -28,6 +28,27 @@
     </div>
   </div>
 
+  <!-- Cookie Settings Modal -->
+  <div id="cookie-settings-modal">
+    <div class="cookie-settings-content">
+      <span class="close-modal">×</span>
+      <h2>Cookie-innstillinger</h2>
+      <div class="cookie-option">
+        <label>
+          <input type="checkbox" id="analytics-cookies">
+          Analyse-cookies
+          <span class="status-indicator" id="analytics-status"></span>
+          <span id="analytics-status-text">Av</span>
+        </label>
+        <p>Disse cookiene hjelper oss å forstå hvordan nettstedet brukes.</p>
+      </div>
+      <div class="cookie-option">
+        <p>Samlet status: <span id="overall-status-text">Innstillinger er ikke lagret</span></p>
+      </div>
+      <button class="btn btn-primary" id="save-cookie-settings">Lagre innstillinger</button>
+    </div>
+  </div>
+
   <!-- Header Include -->
   <div id="header-container"></div>
 
@@ -40,7 +61,7 @@
     <!-- Modal -->
     <div id="modal" class="modal" style="display: none;">
       <div class="modal-content">
-        <span class="modal-close">&times;</span>
+        <span class="modal-close">×</span>
         <!-- Modal content will be inserted here dynamically -->
       </div>
     </div>
