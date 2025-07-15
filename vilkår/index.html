@@ -50,6 +50,9 @@
     </div>
   </div>
 
+  <!-- Skip to Main Content Link -->
+  <a href="#main-content" class="skip-link">Hopp til hovedinnhold</a>
+
   <!-- Header Include -->
   <div id="header-container"></div>
 
@@ -68,7 +71,7 @@
       <ul>
         <li>Å gi korrekt og fullstendig informasjon når du bruker våre tjenester.</li>
         <li>Å sikre at utstyr sendt til oss er forsvarlig pakket for å unngå skade under transport.</li>
-        <li>Å aksepterer at bruk av våre tjenester skjer på eget ansvar.</li>
+        <li>Å akseptere at bruk av våre tjenester skjer på eget ansvar.</li>
       </ul>
 
       <h2>3. Betaling og priser</h2>
@@ -107,7 +110,7 @@
         document.getElementById('header-container').innerHTML = header;
         document.getElementById('footer-container').innerHTML = footer;
         
-        // Now load main.js after DOM is ready
+        // Load main.js after header and footer are loaded
         const script = document.createElement('script');
         script.src = 'https://fixmytech.no/js/main.js';
         document.body.appendChild(script);
