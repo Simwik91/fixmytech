@@ -10,7 +10,6 @@ function initMainJS() {
   const contactForm = document.getElementById('contact-form');
   const modal = document.getElementById('modal');
   const modalClose = document.querySelector('.modal-close');
-  const themeToggle = document.getElementById('themeToggle');
   const cookieSettingsLink = document.getElementById('cookieSettingsLink');
 
   // ===== MOBILE MENU TOGGLE =====
@@ -374,32 +373,6 @@ function initMainJS() {
       cookieModal.style.display = 'none';
     }
   });
-
-  // ===== DARK/LIGHT THEME TOGGLE =====
-  function toggleTheme() {
-    if (themeToggle) {
-      const isDark = document.body.classList.toggle('dark-theme');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-    }
-  }
-
-  function initTheme() {
-    if (themeToggle) {
-      const savedTheme = localStorage.getItem('theme') || 'light';
-      if (savedTheme === 'dark') {
-        document.body.classList.add('dark-theme');
-        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-      } else {
-        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-      }
-      
-      themeToggle.addEventListener('click', toggleTheme);
-    }
-  }
-
-  // Initialize theme
-  initTheme();
 
   // Close mobile menu on larger screens if resized
   window.addEventListener('resize', () => {
