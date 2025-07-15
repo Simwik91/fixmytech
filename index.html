@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FixMyTech.no - Profesjonelle IT-reparasjoner og programvareløsninger</title>
-  <meta name="description" content="FixMyTech.no tilbyr profesjonell teknisk hjelp for privatpersoner og bedrifter. Vi løser programvarefeil, maskinvareproblemer, og beskytter dine data med backup og skylagring.">
+  <meta name="description" content="FixMyTech.no tilbyr profesjonell teknisk hjelp for deg. Vi løser programvarefeil, maskinvareproblemer, og beskytter dine data med backup og skylagring.">
   <meta name="keywords" content="teknisk støtte, teknologihjelp, PC-reparasjon, datasikkerhet, backup, skylagring, virusfjerning, systemoptimalisering">
   <meta name="author" content="FixMyTech.no">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -15,34 +15,27 @@
     /* Homepage-specific enhancements */
     .hero {
       padding: 8rem 0 5rem;
-      background: linear-gradient(135deg, var(--primary) 0%, #1e40af 100%);
-      color: white;
-      position: relative;
-      overflow: hidden;
+      background: #fff;
+      color: var(--secondary);
+      text-align: center;
     }
     
     .hero h1 {
       font-size: 3.5rem;
       margin-bottom: 1.5rem;
-      color: white;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .hero h1 span {
+      color: var(--primary);
     }
     
     .hero p {
       font-size: 1.25rem;
       max-width: 700px;
       margin: 0 auto 2rem;
-      color: rgba(255, 255, 255, 0.9);
-    }
-    
-    .hero-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0.1;
-      z-index: 0;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,100 M100,0 L0,100" stroke="white" stroke-width="1" /></svg>');
     }
     
     .hero-content {
@@ -51,16 +44,17 @@
     }
     
     .btn-hero {
-      background: white;
-      color: var(--primary);
+      background: var(--primary);
+      color: white;
       font-weight: 600;
       padding: 1rem 2.5rem;
       font-size: 1.1rem;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      border-radius: var(--border-radius);
     }
     
     .btn-hero:hover {
-      background: var(--light-gray);
+      background: var(--secondary);
       transform: translateY(-5px);
     }
     
@@ -469,11 +463,9 @@
       </div>
 
       <section class="hero">
-        <div class="hero-bg"></div>
         <div class="hero-content">
-          <h1><span>IT-hjelp</span> for deg og din bedrift</h1>
+          <h1><span>IT-hjelp</span> for deg</h1>
           <p>FixMyTech.no tilbyr profesjonelle tekniske løsninger for reparasjoner, programvarefeil og datasikkerhet.</p>
-          <p>Vi gir nytt liv til ditt elektroniske utstyr og sikrer at det fungerer optimalt.</p>
           <a href="#contact" class="btn btn-hero">Få hjelp nå</a>
         </div>
       </section>
