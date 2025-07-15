@@ -103,13 +103,15 @@ header {
 }
 
 .header-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
 }
 
 .logo {
@@ -118,9 +120,20 @@ header {
   color: var(--secondary);
   display: flex;
   align-items: center;
+  gap: 0.5rem;
+}
+
+.logo i {
+  color: var(--primary);
+  font-size: 1.5rem;
 }
 
 .logo span {
+  color: var(--secondary);
+}
+
+.logo span::after {
+  content: '.no';
   color: var(--primary);
 }
 
@@ -133,9 +146,10 @@ header {
   display: none;
 }
 
-.main-nav {
+.main-nav ul {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
+  list-style: none;
 }
 
 .main-nav a {
@@ -151,6 +165,45 @@ header {
   border-bottom: 2px solid var(--primary);
 }
 
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  box-shadow: var(--shadow);
+  border-radius: var(--border-radius);
+  min-width: 200px;
+  z-index: 1000;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: var(--secondary);
+  font-size: 0.9rem;
+}
+
+.dropdown-content a i {
+  color: var(--primary);
+}
+
+.dropdown-content a:hover {
+  background: var(--light-gray);
+  color: var(--primary);
+  border-bottom: none;
+}
+
 @media (max-width: 768px) {
   .nav-toggle {
     display: block;
@@ -162,16 +215,29 @@ header {
     left: 0;
     width: 100%;
     background: #fff;
-    flex-direction: column;
     padding: 1rem;
     box-shadow: var(--shadow);
   }
   .main-nav.active {
-    display: flex;
+    display: block;
+  }
+  .main-nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
   }
   .main-nav a {
+    display: block;
     padding: 0.75rem 0;
     font-size: 1.1rem;
+  }
+  .dropdown-content {
+    position: static;
+    box-shadow: none;
+    background: #f9fafb;
+    padding-left: 1rem;
+  }
+  .dropdown:hover .dropdown-content {
+    display: block;
   }
 }
 
