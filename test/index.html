@@ -123,13 +123,24 @@
     }
     
     .hero-title {
-      font-size: 4.5rem;
+      font-size: 4rem;
       font-weight: 800;
       margin-bottom: 1.5rem;
       line-height: 1.1;
       text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       letter-spacing: -1px;
+    }
+    
+    .hero-title span {
+      display: block;
+      font-size: 5rem;
       color: white;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+      background: linear-gradient(to right, #ffffff, #e6f4ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 1rem 0;
     }
     
     .hero-subtitle {
@@ -345,10 +356,10 @@
       color: var(--success);
     }
     
-    /* Problem Cards - 3 per row */
+    /* Problem Cards */
     .problem-cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
       margin: 3rem 0;
     }
@@ -482,7 +493,7 @@
     
     .benefits-cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
       margin: 3rem 0;
     }
@@ -581,6 +592,10 @@
       .hero-title {
         font-size: 3.5rem;
       }
+      
+      .hero-title span {
+        font-size: 4rem;
+      }
     }
     
     @media (max-width: 768px) {
@@ -590,6 +605,10 @@
       
       .hero-title {
         font-size: 2.8rem;
+      }
+      
+      .hero-title span {
+        font-size: 3.2rem;
       }
       
       .hero-subtitle {
@@ -612,6 +631,10 @@
     @media (max-width: 576px) {
       .hero-title {
         font-size: 2.2rem;
+      }
+      
+      .hero-title span {
+        font-size: 2.5rem;
       }
       
       .hero-subtitle {
@@ -657,11 +680,11 @@
     </div>
   </div>
 
+  <!-- Header Container -->
+  <div id="header-container"></div>
+
   <!-- Skip to Main Content Link -->
   <a href="#main-content" class="skip-link">Hopp til hovedinnhold</a>
-
-  <!-- Header Include -->
-  <div id="header-container"></div>
 
   <main id="main-content">
     <!-- Scroll to top button -->
@@ -683,7 +706,7 @@
       <div class="hero-bg-pattern"></div>
       
       <div class="hero-content">
-        <h1 class="hero-title">IT-hjelp for deg</h1>
+        <h1 class="hero-title">IT-hjelp<br><span>for deg</span></h1>
         <p class="hero-subtitle">FixMyTech.no tilbyr profesjonelle tekniske løsninger for reparasjoner, programvarefeil og datasikkerhet.</p>
         <p class="hero-description">Vi gir nytt liv til ditt elektroniske utstyr og sikrer at det fungerer optimalt.</p>
         <a href="#contact" class="btn-hero">Få hjelp nå</a>
@@ -792,7 +815,6 @@
           </div>
         </div>
 
-        <!-- Problem Cards - 3 per row -->
         <div class="problem-cards">
           <div class="problem-card">
             <div class="problem-icon">
@@ -819,6 +841,15 @@
             <div class="problem-content">
               <h4>Blåskjerm-feil</h4>
               <p>Vi diagnostiserer årsaken til systemkrasj og implementerer løsninger.</p>
+            </div>
+          </div>
+          <div class="problem-card">
+            <div class="problem-icon">
+              <i class="fas fa-wifi"></i>
+            </div>
+            <div class="problem-content">
+              <h4>Nettverksproblemer</h4>
+              <p>Vi løser Wi-Fi-problemer, nettverkskoblinger og Internett-tilkoblinger.</p>
             </div>
           </div>
         </div>
@@ -902,7 +933,6 @@
           </div>
         </div>
 
-        <!-- Problem Cards - 3 per row -->
         <div class="problem-cards">
           <div class="problem-card">
             <div class="problem-icon">
@@ -929,6 +959,15 @@
             <div class="problem-content">
               <h4>Brukerfeil</h4>
               <p>Gjenopprett filer som er slettet ved en feil eller overskrevet.</p>
+            </div>
+          </div>
+          <div class="problem-card">
+            <div class="problem-icon">
+              <i class="fas fa-fire"></i>
+            </div>
+            <div class="problem-content">
+              <h4>Naturkatastrofer</h4>
+              <p>Skylagring sikrer dataene dine selv ved brann eller flom.</p>
             </div>
           </div>
         </div>
@@ -962,7 +1001,6 @@
             <p>Vi tror at våre verktøy bør være tilgjengelige for alle, uten at man skal måtte ofre personvernet sitt. Derfor har vi bygget everytool.io som en plattform der du kan utføre oppgaver direkte i nettleseren din, uten at vi lagrer dine data.</p>
           </div>
           
-          <!-- Benefits Cards - 3 per row -->
           <div class="benefits-cards">
             <div class="benefit-card">
               <h4><i class="fas fa-bolt"></i> Øk produktiviteten din</h4>
@@ -977,6 +1015,11 @@
             <div class="benefit-card">
               <h4><i class="fas fa-sync-alt"></i> Oppdatert kontinuerlig</h4>
               <p>Nye verktøy og forbedringer legges til regelmessig</p>
+            </div>
+            
+            <div class="benefit-card">
+              <h4><i class="fas fa-mobile-alt"></i> Tilgjengelig overalt</h4>
+              <p>Fungerer perfekt på mobil, nettbrett og datamaskin</p>
             </div>
           </div>
           
@@ -1037,11 +1080,62 @@
     </div>
   </main>
 
-  <!-- Footer Include -->
+  <!-- Footer Container -->
   <div id="footer-container"></div>
 
-  <!-- Script Loading -->
   <script>
+    // Simple animation for tech icons in hero section
+    document.addEventListener('DOMContentLoaded', function() {
+      const techIcons = document.querySelectorAll('.tech-icon');
+      techIcons.forEach(icon => {
+        // Random movement on hover
+        icon.addEventListener('mouseenter', () => {
+          const randomX = (Math.random() - 0.5) * 40;
+          const randomY = (Math.random() - 0.5) * 40;
+          icon.style.transform = `translate(${randomX}px, ${randomY}px)`;
+          icon.style.opacity = '0.2';
+        });
+        
+        icon.addEventListener('mouseleave', () => {
+          icon.style.transform = 'translate(0, 0)';
+          icon.style.opacity = '0.1';
+          icon.style.transition = 'all 0.5s ease';
+        });
+      });
+      
+      // Scroll to top button functionality
+      const scrollTopBtn = document.getElementById('scrollTopBtn');
+      
+      window.onscroll = function() {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+          scrollTopBtn.style.display = "block";
+        } else {
+          scrollTopBtn.style.display = "none";
+        }
+      };
+      
+      scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+      
+      // Form submission handling
+      const contactForm = document.getElementById('contact-form');
+      
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // In a real implementation, you would send the form data to your server
+          // Here we'll just show a success message
+          alert('Takk for din henvendelse! Vi vil kontakte deg så snart som mulig.');
+          this.reset();
+        });
+      }
+    });
+
     // Load header and footer
     document.addEventListener('DOMContentLoaded', function() {
       Promise.all([
@@ -1051,7 +1145,7 @@
         document.getElementById('header-container').innerHTML = header;
         document.getElementById('footer-container').innerHTML = footer;
         
-        // Now load main.js after DOM is ready
+        // Load main.js after header and footer are loaded
         const script = document.createElement('script');
         script.src = 'https://fixmytech.no/js/main.js';
         document.body.appendChild(script);
