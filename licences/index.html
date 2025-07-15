@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lisenser - FixMyTech.no</title>
+  <meta name="description" content="Lisensinformasjon for tredjepartsressurser brukt på FixMyTech.no, inkludert Font Awesome og Google Fonts.">
+  <meta name="author" content="FixMyTech.no">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="https://fixmytech.no/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fixmytech.no/css/styles.css">
+  <style>
+    /* Licenses Page Styles */
+    .licenses-section {
+      padding: 5rem 0;
+      background: #fff;
+      color: var(--secondary);
+    }
+
+    .licenses-section .container {
+      max-width: 800px;
+    }
+
+    .licenses-section h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .licenses-section p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .license-item {
+      margin-bottom: 2rem;
+    }
+
+    .license-item h2 {
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .license-item p {
+      color: var(--secondary);
+    }
+
+    .license-item a {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    .license-item a:hover {
+      color: var(--secondary);
+    }
+
+    .license-item ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    .license-item li {
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .license-item li::before {
+      content: '\f058'; /* Font Awesome check-circle */
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      color: var(--success);
+    }
+
+    @media (max-width: 768px) {
+      .licenses-section {
+        padding: 3rem 0;
+      }
+
+      .licenses-section h1 {
+        font-size: 2rem;
+      }
+
+      .license-item h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Include -->
+  <div id="header-container"></div>
+
+  <main id="main-content">
+    <div class="container">
+      <section class="licenses-section">
+        <h1>Lisensinformasjon</h1>
+        <p>FixMyTech.no bruker flere tredjepartsressurser for å gi en optimal brukeropplevelse. Nedenfor finner du informasjon om lisensene for disse ressursene.</p>
+
+        <div class="license-item">
+          <h2>Font Awesome</h2>
+          <p>Vi bruker Font Awesome Free 6.4.0 for ikoner på nettstedet vårt. Font Awesome er lisensiert under følgende vilkår:</p>
+          <ul>
+            <li>Ikoner: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International (CC BY 4.0)</a></li>
+            <li>Kode (CSS/JS): <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a></li>
+            <li>Skjermfonter: <a href="https://scripts.sil.org/OFL" target="_blank">SIL Open Font License 1.1</a></li>
+          </ul>
+          <p>Mer informasjon finner du på <a href="https://fontawesome.com/license/free" target="_blank">Font Awesome sin lisensside</a>.</p>
+        </div>
+
+        <div class="license-item">
+          <h2>Google Fonts (Poppins og Roboto)</h2>
+          <p>Vi bruker Poppins og Roboto fonter fra Google Fonts. Begge fonter er lisensiert under <a href="https://scripts.sil.org/OFL" target="_blank">SIL Open Font License 1.1</a>.</p>
+          <p>Mer informasjon om disse fontene finner du på:</p>
+          <ul>
+            <li><a href="https://fonts.google.com/specimen/Poppins" target="_blank">Poppins på Google Fonts</a></li>
+            <li><a href="https://fonts.google.com/specimen/Roboto" target="_blank">Roboto på Google Fonts</a></li>
+          </ul>
+        </div>
+
+        <div class="license-item">
+          <h2>Favicon</h2>
+          <p>Faviconet som brukes på FixMyTech.no er [bekreft om det er egendesignet eller fra en tredjepart]. Hvis det er fra en tredjepart, vil lisensinformasjonen bli oppdatert her.</p>
+        </div>
+
+        <div class="license-item">
+          <h2>Formspree</h2>
+          <p>Vi bruker Formspree for å håndtere kontaktskjemaet vårt. Tjenesten er levert av <a href="https://formspree.io/" target="_blank">Formspree</a>. Se deres <a href="https://formspree.io/legal/terms-of-service" target="_blank">vilkår for bruk</a> for mer informasjon.</p>
+        </div>
+
+        <p>Hvis du har spørsmål om lisensene eller bruken av tredjepartsressurser, kontakt oss via <a href="/#contact">kontaktskjemaet</a>.</p>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer Include -->
+  <div id="footer-container"></div>
+
+  <!-- Script Loading -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      Promise.all([
+        fetch('https://fixmytech.no/includes/header.html').then(res => res.text()),
+        fetch('https://fixmytech.no/includes/footer.html').then(res => res.text())
+      ]).then(([header, footer]) => {
+        document.getElementById('header-container').innerHTML = header;
+        document.getElementById('footer-container').innerHTML = footer;
+
+        const script = document.createElement('script');
+        script.src = 'https://fixmytech.no/js/main.js';
+        document.body.appendChild(script);
+      }).catch(error => {
+        console.error('Error loading includes:', error);
+      });
+    });
+  </script>
+</body>
+</html>
