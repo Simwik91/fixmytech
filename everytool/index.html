@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>everytool.io - Gratis Verktøy i Nettleseren Din</title>
+  <title>everytool.io - Gratis Verktøy i Nettleseren Din | FixMyTech</title>
   <meta name="description" content="everytool.io tilbyr gratis, brukervennlige verktøy direkte i nettleseren din. Øk produktiviteten uten å ofre personvernet – ingen installasjon eller registrering kreves!">
   <meta name="keywords" content="gratis verktøy, nettleserverktøy, produktivitet, personvern, online verktøy, everytool">
-  <meta name="author" content="everytool.io">
+  <meta name="author" content="FixMyTech">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/x-icon" href="https://everytool.io/favicon.ico">
   <style>
     /* Root Variables */
     :root {
@@ -118,7 +117,7 @@
     }
 
     .section-title h2 {
-      font-size: 2.8rem;
+      font-size: 2.5rem;
       margin-bottom: 1rem;
       position: relative;
       display: inline-block;
@@ -185,9 +184,8 @@
     }
 
     .hero h1 {
-      font-size: 3.5rem;
+      font-size: 3rem;
       margin-bottom: 1.5rem;
-      animation: fadeInDown 0.8s ease;
     }
 
     .hero h1 span {
@@ -211,7 +209,6 @@
       max-width: 700px;
       margin: 0 auto 2rem;
       color: var(--dark-gray);
-      animation: fadeIn 1s ease 0.2s both;
     }
 
     .hero-buttons {
@@ -219,7 +216,6 @@
       gap: 1rem;
       justify-content: center;
       margin-top: 2rem;
-      animation: fadeInUp 0.8s ease 0.4s both;
     }
 
     .btn-hero {
@@ -505,46 +501,10 @@
       transform: translateY(-3px);
     }
 
-    /* Animations */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .animate {
-      animation: fadeIn 0.8s ease both;
-    }
-
     /* Responsive Design */
     @media (max-width: 992px) {
       .hero h1 {
-        font-size: 3rem;
+        font-size: 2.8rem;
       }
       
       .section {
@@ -552,7 +512,7 @@
       }
       
       .section-title h2 {
-        font-size: 2.4rem;
+        font-size: 2.2rem;
       }
     }
 
@@ -562,7 +522,7 @@
       }
       
       .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.3rem;
       }
       
       .hero p {
@@ -585,7 +545,7 @@
 
     @media (max-width: 576px) {
       .hero h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
       }
       
       .section-title h2 {
@@ -593,134 +553,234 @@
       }
     }
     
-    /* Existing Header/Footer Styles */
-    .header-content {
+    /* Cookie Consent Banner */
+    #cookie-consent-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #f9fafb;
+      border-top: 1px solid var(--light-gray);
+      box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    
+    #cookie-consent-banner.show {
+      transform: translateY(0);
+    }
+    
+    .cookie-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 2rem;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
+    
+    .cookie-text {
+      flex: 1;
+      min-width: 200px;
     }
-
-    .logo {
+    
+    .cookie-text h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--secondary);
+    }
+    
+    .cookie-text p {
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+    
+    .cookie-text a {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+    
+    .cookie-text a:hover {
+      color: var(--secondary);
+    }
+    
+    .cookie-buttons {
       display: flex;
-      align-items: center;
       gap: 0.5rem;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--secondary);
-      text-decoration: none;
+      flex-wrap: wrap;
     }
-
-    .logo i {
-      color: var(--primary);
-      font-size: 1.5rem;
-    }
-
-    .logo span {
-      color: var(--secondary);
-    }
-
-    .logo span::after {
-      content: '.io';
-      color: var(--primary);
-    }
-
-    .nav-toggle {
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: var(--secondary);
+    
+    .cookie-btn {
+      padding: 0.5rem 1rem;
+      border-radius: var(--border-radius);
+      font-size: 0.9rem;
+      font-weight: 500;
       cursor: pointer;
+      transition: var(--transition);
+      border: none;
+    }
+    
+    .cookie-accept-btn {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .cookie-accept-btn:hover {
+      background: #1e40af;
+    }
+    
+    .cookie-reject-btn {
+      background: var(--light-gray);
+      color: var(--secondary);
+    }
+    
+    .cookie-reject-btn:hover {
+      background: #d1d5db;
+    }
+    
+    .cookie-settings-btn {
+      background: transparent;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+    }
+    
+    .cookie-settings-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+    
+    /* Cookie Settings Modal */
+    #cookie-settings-modal {
       display: none;
-      padding: 0.5rem;
-      z-index: 1001;
-    }
-
-    .main-nav {
-      display: flex;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1000;
       align-items: center;
+      justify-content: center;
     }
-
-    .main-nav ul {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .main-nav li {
+    
+    .cookie-settings-content {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
       position: relative;
     }
-
-    .main-nav a {
-      font-size: 1rem;
+    
+    .close-modal {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #6b7280;
+      transition: var(--transition);
+    }
+    
+    .close-modal:hover {
+      color: var(--secondary);
+    }
+    
+    .cookie-settings-content h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--secondary);
+    }
+    
+    .cookie-option {
+      margin-bottom: 1.5rem;
+    }
+    
+    .cookie-option label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
       font-weight: 500;
       color: var(--secondary);
-      padding: 0.5rem 0;
-      display: block;
-      transition: var(--transition);
+      font-size: 1rem;
     }
-
-    .main-nav a:hover {
-      color: var(--primary);
+    
+    .cookie-option p {
+      font-size: 0.85rem;
+      color: #4b5563;
+      margin-top: 0.5rem;
     }
-
-    .main-nav .btn {
-      padding: 0.6rem 1.5rem;
-      font-size: 0.95rem;
-    }
-
-    /* Existing Footer Styles */
-    footer {
-      background: var(--secondary);
-      color: white;
-      padding: 4rem 0 2rem;
-    }
-
-    .footer-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-
-    .footer-column h3 {
-      font-size: 1.3rem;
-      margin-bottom: 1.5rem;
-      color: white;
-    }
-
-    .footer-links {
-      list-style: none;
-    }
-
-    .footer-links li {
-      margin-bottom: 0.8rem;
-    }
-
-    .footer-links a {
-      color: #cbd5e1;
-      transition: var(--transition);
+    
+    .toggle-label {
+      position: relative;
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
-
-    .footer-links a:hover {
-      color: white;
-      transform: translateX(5px);
+    
+    #analytics-cookies {
+      display: none;
     }
-
-    .footer-bottom {
-      text-align: center;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      color: #94a3b8;
-      font-size: 0.9rem;
+    
+    .toggle-switch {
+      position: relative;
+      width: 40px;
+      height: 20px;
+      background: #d1d5db;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: white;
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+      transition: var(--transition);
+    }
+    
+    #analytics-cookies:checked + .toggle-switch {
+      background: var(--primary);
+    }
+    
+    #analytics-cookies:checked + .toggle-switch::after {
+      left: 22px;
+    }
+    
+    #analytics-status-text {
+      font-size: 0.85rem;
+      color: #4b5563;
+    }
+    
+    #overall-status-text {
+      font-weight: 500;
+      color: var(--secondary);
+    }
+    
+    #save-cookie-settings {
+      width: 100%;
+      padding: 0.75rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: var(--border-radius);
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    #save-cookie-settings:hover {
+      background: #1e40af;
+      transform: translateY(-2px);
     }
   </style>
 </head>
@@ -761,250 +821,180 @@
     </div>
   </div>
 
-  <!-- Header -->
-  <header>
-    <div class="container">
-      <div class="header-content">
-        <div class="logo-container">
-          <a href="#" class="logo">
-            <i class="fas fa-tools"></i>
-            <span>everytool</span>
+  <!-- Header Container -->
+  <div id="header-container"></div>
+
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1><span>everytool.io</span> - Gratis Verktøy i Nettleseren</h1>
+          <p>Øk produktiviteten din med kraftige, brukervennlige verktøy – uten installasjon eller registrering! Alt behandles direkte i nettleseren din for maksimal personvern.</p>
+          <div class="hero-buttons">
+            <a href="#tools" class="btn btn-hero">Utforsk verktøyene</a>
+            <a href="#process" class="btn btn-hero btn-hero-outline">Se hvordan det fungerer</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Hvorfor velge everytool.io?</h2>
+          <p>Vi tilbyr essensielle verktøy uten å ofre personvern eller sikkerhet</p>
+        </div>
+        
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-lock"></i>
+            </div>
+            <h3>Fullstendig personvern</h3>
+            <p>All behandling skjer direkte i din nettleser. Filene dine forlater aldri enheten din, noe som sikrer fullstendig personvern og sikkerhet.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h3>Umiddelbar behandling</h3>
+            <p>Uansett om du genererer strekkoder eller behandler filer, fungerer våre verktøy med nettleserens hastighet. Ingen opplastinger, ingen venting.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-tag"></i>
+            </div>
+            <h3>100% gratis</h3>
+            <p>Alle våre verktøy er helt gratis å bruke. Ingen abonnementer, ingen skjulte avgifter, og ingen konto kreves.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-cloud-download-alt"></i>
+            </div>
+            <h3>Ingen installasjon</h3>
+            <p>Få tilgang til alle verktøy direkte fra nettleseren din. Ingen nedlastinger eller installasjoner kreves. Fungerer på alle enheter.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section id="tools" class="tools section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Vårt utvalg av verktøy</h2>
+          <p>En verden av verktøy i nettleseren din – uten kostnad og med fokus på personvern</p>
+        </div>
+        
+        <div class="tool-grid">
+          <div class="tool-card">
+            <div class="tool-icon">
+              <i class="fas fa-file-alt"></i>
+            </div>
+            <h3>Tekstverktøy</h3>
+            <p>Rediger, konverter og analyser tekst raskt og enkelt. Alt du trenger for tekstbehandling i nettleseren.</p>
+            <a href="https://everytool.io/tools" class="tool-link">Bruk verktøyet <i class="fas fa-arrow-right"></i></a>
+          </div>
+          
+          <div class="tool-card">
+            <div class="tool-icon">
+              <i class="fas fa-calculator"></i>
+            </div>
+            <h3>Regneverktøy</h3>
+            <p>Løs matematiske problemer og utfør komplekse beregninger. Fra enkel aritmetikk til avansert statistikk.</p>
+            <a href="https://everytool.io/tools" class="tool-link">Bruk verktøyet <i class="fas fa-arrow-right"></i></a>
+          </div>
+          
+          <div class="tool-card">
+            <div class="tool-icon">
+              <i class="fas fa-image"></i>
+            </div>
+            <h3>Bildeverktøy</h3>
+            <p>Komprimer, konverter eller rediger bilder direkte i nettleseren. Behold originalkvaliteten uten opplastinger.</p>
+            <a href="https://everytool.io/tools" class="tool-link">Bruk verktøyet <i class="fas fa-arrow-right"></i></a>
+          </div>
+          
+          <div class="tool-card">
+            <div class="tool-icon">
+              <i class="fas fa-file-pdf"></i>
+            </div>
+            <h3>PDF-verktøy</h3>
+            <p>Slå sammen, del eller konverter PDF-filer uten problemer. Full PDF-behandling uten tredjepartsprogrammer.</p>
+            <a href="https://everytool.io/tools" class="tool-link">Bruk verktøyet <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem;">
+          <a href="https://everytool.io/tools" class="btn btn-outline">Se alle verktøyene</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="process" class="process section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Slik fungerer våre verktøy</h2>
+          <p>Klient-side behandling betyr at dine data aldri forlater din enhet</p>
+        </div>
+        
+        <div class="process-steps">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3>Velg verktøy</h3>
+            <p>Velg fra vårt utvalg av personvernfokuserte verktøy designet for ulike behov.</p>
+          </div>
+          
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3>Behandle i nettleser</h3>
+            <p>Våre verktøy fungerer direkte i nettleseren din. Ingen data lastes opp til noen server.</p>
+          </div>
+          
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3>Få resultatet</h3>
+            <p>Last ned eller se resultatet ditt umiddelbart. Dine originale data forblir private.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Klar til å komme i gang?</h2>
+          <p>Bli en av tusenvis av brukere som stoler på everytool.io for sine daglige verktøybehov uten å ofre personvernet.</p>
+          <a href="https://everytool.io/tools" class="btn btn-cta">
+            <i class="fas fa-tools"></i> Utforsk alle verktøyene
           </a>
         </div>
-        <button class="nav-toggle">
-          <i class="fas fa-bars"></i>
-        </button>
-        <nav class="main-nav">
-          <ul>
-            <li><a href="#features">Fordeler</a></li>
-            <li><a href="#tools">Verktøy</a></li>
-            <li><a href="#process">Slik fungerer det</a></li>
-            <li><a href="#" class="btn">Kom i gang</a></li>
-          </ul>
-        </nav>
       </div>
-    </div>
-  </header>
+    </section>
+  </main>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <h1><span>everytool.io</span> - Gratis Verktøy i Nettleseren</h1>
-        <p>Øk produktiviteten din med kraftige, brukervennlige verktøy – uten installasjon eller registrering! Alt behandles direkte i nettleseren din for maksimal personvern.</p>
-        <div class="hero-buttons">
-          <a href="#tools" class="btn btn-hero">Utforsk verktøyene</a>
-          <a href="#process" class="btn btn-hero btn-hero-outline">Se hvordan det fungerer</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Footer Container -->
+  <div id="footer-container"></div>
 
-  <!-- Features Section -->
-  <section id="features" class="features section">
-    <div class="container">
-      <div class="section-title">
-        <h2>Hvorfor velge everytool.io?</h2>
-        <p>Vi tilbyr essensielle verktøy uten å ofre personvern eller sikkerhet</p>
-      </div>
-      
-      <div class="features-grid">
-        <div class="feature-card animate">
-          <div class="feature-icon">
-            <i class="fas fa-lock"></i>
-          </div>
-          <h3>Fullstendig personvern</h3>
-          <p>All behandling skjer direkte i din nettleser. Filene dine forlater aldri enheten din, noe som sikrer fullstendig personvern og sikkerhet.</p>
-        </div>
-        
-        <div class="feature-card animate">
-          <div class="feature-icon">
-            <i class="fas fa-bolt"></i>
-          </div>
-          <h3>Umiddelbar behandling</h3>
-          <p>Uansett om du genererer strekkoder eller behandler filer, fungerer våre verktøy med nettleserens hastighet. Ingen opplastinger, ingen venting.</p>
-        </div>
-        
-        <div class="feature-card animate">
-          <div class="feature-icon">
-            <i class="fas fa-tag"></i>
-          </div>
-          <h3>100% gratis</h3>
-          <p>Alle våre verktøy er helt gratis å bruke. Ingen abonnementer, ingen skjulte avgifter, og ingen konto kreves.</p>
-        </div>
-        
-        <div class="feature-card animate">
-          <div class="feature-icon">
-            <i class="fas fa-cloud-download-alt"></i>
-          </div>
-          <h3>Ingen installasjon</h3>
-          <p>Få tilgang til alle verktøy direkte fra nettleseren din. Ingen nedlastinger eller installasjoner kreves. Fungerer på alle enheter.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Tools Section -->
-  <section id="tools" class="tools section">
-    <div class="container">
-      <div class="section-title">
-        <h2>Vårt utvalg av verktøy</h2>
-        <p>En verden av verktøy i nettleseren din – uten kostnad og med fokus på personvern</p>
-      </div>
-      
-      <div class="tool-grid">
-        <div class="tool-card animate">
-          <div class="tool-icon">
-            <i class="fas fa-file-alt"></i>
-          </div>
-          <h3>Tekstverktøy</h3>
-          <p>Rediger, konverter og analyser tekst raskt og enkelt. Alt du trenger for tekstbehandling i nettleseren.</p>
-          <a href="#" class="tool-link">Bruk verktøyet <i class="fas fa-arrow-right"></i></a>
-        </div>
-        
-        <div class="tool-card animate">
-          <div class="tool-icon">
-            <i class="fas fa-calculator"></i>
-          </div>
-          <h3>Regneverktøy</h3>
-          <p>Løs matematiske problemer og utfør komplekse beregninger. Fra enkel aritmetikk til avansert statistikk.</p>
-          <a href="#" class="tool-link">Bruk verktøyet <i class="fas fa-arrow-right"></i></a>
-        </div>
-        
-        <div class="tool-card animate">
-          <div class="tool-icon">
-            <i class="fas fa-image"></i>
-          </div>
-          <h3>Bildeverktøy</h3>
-          <p>Komprimer, konverter eller rediger bilder direkte i nettleseren. Behold originalkvaliteten uten opplastinger.</p>
-          <a href="#" class="tool-link">Bruk verktøyet <i class="fas fa-arrow-right"></i></a>
-        </div>
-        
-        <div class="tool-card animate">
-          <div class="tool-icon">
-            <i class="fas fa-file-pdf"></i>
-          </div>
-          <h3>PDF-verktøy</h3>
-          <p>Slå sammen, del eller konverter PDF-filer uten problemer. Full PDF-behandling uten tredjepartsprogrammer.</p>
-          <a href="#" class="tool-link">Bruk verktøyet <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-      
-      <div style="text-align: center; margin-top: 3rem;">
-        <a href="#" class="btn btn-outline">Se alle verktøyene</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- How It Works Section -->
-  <section id="process" class="process section">
-    <div class="container">
-      <div class="section-title">
-        <h2>Slik fungerer våre verktøy</h2>
-        <p>Klient-side behandling betyr at dine data aldri forlater din enhet</p>
-      </div>
-      
-      <div class="process-steps">
-        <div class="step-card animate">
-          <div class="step-number">1</div>
-          <h3>Velg verktøy</h3>
-          <p>Velg fra vårt utvalg av personvernfokuserte verktøy designet for ulike behov.</p>
-        </div>
-        
-        <div class="step-card animate">
-          <div class="step-number">2</div>
-          <h3>Behandle i nettleser</h3>
-          <p>Våre verktøy fungerer direkte i nettleseren din. Ingen data lastes opp til noen server.</p>
-        </div>
-        
-        <div class="step-card animate">
-          <div class="step-number">3</div>
-          <h3>Få resultatet</h3>
-          <p>Last ned eller se resultatet ditt umiddelbart. Dine originale data forblir private.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="cta">
-    <div class="container">
-      <div class="cta-content">
-        <h2>Klar til å komme i gang?</h2>
-        <p>Bli en av tusenvis av brukere som stoler på everytool.io for sine daglige verktøybehov uten å ofre personvernet.</p>
-        <a href="#" class="btn btn-cta">
-          <i class="fas fa-tools"></i> Utforsk alle verktøyene
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-column">
-          <h3>everytool.io</h3>
-          <p>Gratis verktøy som fungerer direkte i nettleseren din. Ingen installasjon, ingen registrering, og ditt personvern er beskyttet.</p>
-        </div>
-        
-        <div class="footer-column">
-          <h3>Verktøykategorier</h3>
-          <ul class="footer-links">
-            <li><a href="#"><i class="fas fa-file-alt"></i> Tekstverktøy</a></li>
-            <li><a href="#"><i class="fas fa-calculator"></i> Regneverktøy</a></li>
-            <li><a href="#"><i class="fas fa-image"></i> Bildeverktøy</a></li>
-            <li><a href="#"><i class="fas fa-file-pdf"></i> PDF-verktøy</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-column">
-          <h3>Nyttige lenker</h3>
-          <ul class="footer-links">
-            <li><a href="#"><i class="fas fa-question-circle"></i> Hjelp & FAQ</a></li>
-            <li><a href="#"><i class="fas fa-shield-alt"></i> Personvern</a></li>
-            <li><a href="#"><i class="fas fa-file-contract"></i> Vilkår for bruk</a></li>
-            <li><a href="#"><i class="fas fa-envelope"></i> Kontakt oss</a></li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="footer-bottom">
-        <p>&copy; 2023 everytool.io. Alle rettigheter forbeholdt. Designet med <i class="fas fa-heart" style="color: #ef4444;"></i> i Norge</p>
-      </div>
-    </div>
-  </footer>
-
+  <!-- Script Loading -->
   <script>
-    // Mobile Navigation Toggle
     document.addEventListener('DOMContentLoaded', function() {
-      const navToggle = document.querySelector('.nav-toggle');
-      const mainNav = document.querySelector('.main-nav');
-      
-      navToggle.addEventListener('click', function() {
-        mainNav.classList.toggle('active');
-        navToggle.innerHTML = mainNav.classList.contains('active') ? 
-          '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+      // Load header and footer
+      Promise.all([
+        fetch('https://fixmytech.no/includes/header.html').then(res => res.text()),
+        fetch('https://fixmytech.no/includes/footer.html').then(res => res.text())
+      ]).then(([header, footer]) => {
+        document.getElementById('header-container').innerHTML = header;
+        document.getElementById('footer-container').innerHTML = footer;
+      }).catch(error => {
+        console.error('Error loading includes:', error);
       });
-      
-      // Animate elements on scroll
-      const animateOnScroll = function() {
-        const elements = document.querySelectorAll('.animate');
-        
-        elements.forEach(element => {
-          const elementPosition = element.getBoundingClientRect().top;
-          const screenPosition = window.innerHeight / 1.3;
-          
-          if (elementPosition < screenPosition) {
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0)';
-          }
-        });
-      };
-      
-      // Initialize animations
-      window.addEventListener('scroll', animateOnScroll);
-      animateOnScroll(); // Run on page load
       
       // Cookie Consent Logic
       const cookieBanner = document.getElementById('cookie-consent-banner');
@@ -1020,12 +1010,12 @@
       
       // Show cookie banner on load
       setTimeout(() => {
-        cookieBanner.style.display = 'block';
+        cookieBanner.classList.add('show');
       }, 1000);
       
       // Accept cookies
       acceptBtn.addEventListener('click', () => {
-        cookieBanner.style.display = 'none';
+        cookieBanner.classList.remove('show');
         analyticsToggle.checked = true;
         analyticsStatus.textContent = 'På';
         overallStatus.textContent = 'Innstillinger lagret';
@@ -1033,7 +1023,7 @@
       
       // Reject cookies
       rejectBtn.addEventListener('click', () => {
-        cookieBanner.style.display = 'none';
+        cookieBanner.classList.remove('show');
         analyticsToggle.checked = false;
         analyticsStatus.textContent = 'Av';
         overallStatus.textContent = 'Innstillinger lagret';
@@ -1051,7 +1041,7 @@
       
       // Save cookie settings
       saveSettingsBtn.addEventListener('click', () => {
-        cookieBanner.style.display = 'none';
+        cookieBanner.classList.remove('show');
         cookieModal.style.display = 'none';
         analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
         overallStatus.textContent = 'Innstillinger lagret';
@@ -1061,6 +1051,19 @@
       analyticsToggle.addEventListener('change', () => {
         analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
       });
+      
+      // Mobile Navigation Toggle
+      const navToggle = document.querySelector('.nav-toggle');
+      if (navToggle) {
+        navToggle.addEventListener('click', function() {
+          const mainNav = document.querySelector('.main-nav');
+          if (mainNav) {
+            mainNav.classList.toggle('active');
+            this.innerHTML = mainNav.classList.contains('active') ? 
+              '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+          }
+        });
+      }
     });
   </script>
 </body>
