@@ -3,366 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>everytool.io - Gratis Verktøy i Nettleseren Din | FixMyTech</title>
-  <meta name="description" content="everytool.io tilbyr gratis, brukervennlige verktøy direkte i nettleseren din. Øk produktiviteten uten å ofre personvernet – ingen installasjon eller registrering kreves!">
-  <meta name="keywords" content="gratis verktøy, nettleserverktøy, produktivitet, personvern, online verktøy, everytool">
-  <meta name="author" content="FixMyTech">
+  <title>Lisenser - FixMyTech.no</title>
+  <meta name="description" content="Lisensinformasjon for tredjepartsressurser brukt på FixMyTech.no, inkludert Font Awesome og Google Fonts.">
+  <meta name="author" content="FixMyTech.no">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="https://fixmytech.no/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="https://fixmytech.no/css/styles.css">
   <style>
-    /* Inline Styles for Main Content (Complementary to /css/styles.css) */
-    :root {
-      --primary-light: #3b82f6; /* Derived from --primary: #2563eb */
-      --medium-gray: #cbd5e1;
-      --dark-gray: #64748b;
-      --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
-      --gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-    }
-
-    /* Hero Section */
-    .hero {
-      padding: 12rem 0 6rem;
-      background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50px;
-      right: -50px;
-      width: 300px;
-      height: 300px;
-      background: var(--primary-light);
-      border-radius: 50%;
-      opacity: 0.1;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -100px;
-      left: -100px;
-      width: 400px;
-      height: 400px;
-      background: var(--primary);
-      border-radius: 50%;
-      opacity: 0.05;
-    }
-
-    .hero-content {
-      max-width: 800px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero h1 span {
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      margin-top: 2rem;
-    }
-
-    .btn-hero {
-      padding: 1rem 2.5rem;
-      font-size: 1.1rem;
-      border-radius: 50px;
-      box-shadow: var(--shadow);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .btn-hero:hover {
-      background: var(--secondary);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-hover);
-      outline: 2px solid var(--primary);
-      outline-offset: 2px;
-    }
-
-    .btn-hero-outline {
-      background: transparent;
-      border: 2px solid var(--primary);
-      color: var(--primary);
-      box-shadow: none;
-      border-radius: 50px;
-    }
-
-    .btn-hero-outline:hover {
-      background: var(--primary);
-      color: white;
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-hover);
-    }
-
-    /* Features Section */
-    .features {
+    /* Licenses Page Styles */
+    .licenses-section {
+      padding: 5rem 0;
       background: #fff;
-      padding: 6rem 0;
+      color: var(--secondary);
     }
 
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
+    .licenses-section .container {
+      max-width: 800px;
     }
 
-    .feature-card {
-      background: white;
-      border-radius: var(--border-radius);
-      padding: 2.5rem 2rem;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .feature-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 5px;
-      background: var(--primary);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.5s ease;
-      z-index: -1;
-    }
-
-    .feature-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .feature-icon {
-      font-size: 3rem;
-      color: var(--primary);
-      margin-bottom: 1.5rem;
-      transition: var(--transition);
-    }
-
-    .feature-card:hover .feature-icon {
-      transform: scale(1.1);
-    }
-
-    .feature-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .feature-card p {
-      font-size: 1rem;
-      color: var(--dark-gray);
-    }
-
-    /* Tools Section */
-    .tools {
-      background: var(--light-gray);
-      padding: 6rem 0;
-    }
-
-    .tool-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-
-    .tool-card {
-      background: white;
-      border-radius: var(--border-radius);
-      padding: 2rem;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .tool-card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-hover);
-    }
-
-    .tool-icon {
-      font-size: 3rem;
-      color: var(--primary);
-      margin-bottom: 1.5rem;
-      background: rgba(37, 99, 235, 0.1);
-      width: 80px;
-      height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      margin: 0 auto 1.5rem;
-      transition: var(--transition);
-    }
-
-    .tool-card:hover .tool-icon {
-      background: var(--primary);
-      color: white;
-      transform: rotate(10deg);
-    }
-
-    .tool-card h3 {
-      font-size: 1.4rem;
-      margin-bottom: 1rem;
-    }
-
-    .tool-card p {
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-      color: var(--dark-gray);
-    }
-
-    /* How It Works */
-    .process {
-      background: white;
-      padding: 6rem 0;
-    }
-
-    .process-steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      counter-reset: step-counter;
-      position: relative;
-    }
-
-    .process-steps::before {
-      content: '';
-      position: absolute;
-      top: 60px;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: var(--medium-gray);
-      z-index: 0;
-    }
-
-    .step-card {
-      background: white;
-      border-radius: var(--border-radius);
-      padding: 2rem;
-      box-shadow: var(--shadow);
-      text-align: center;
-      position: relative;
-      z-index: 1;
-      transition: var(--transition);
-    }
-
-    .step-card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-hover);
-    }
-
-    .step-number {
-      width: 60px;
-      height: 60px;
-      background: var(--primary);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1.5rem;
-      font-weight: 700;
-      font-size: 1.5rem;
-    }
-
-    /* CTA Section */
-    .cta {
-      padding: 6rem 0;
-      background: var(--gradient);
-      color: white;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta::before {
-      content: '';
-      position: absolute;
-      top: -100px;
-      right: -100px;
-      width: 300px;
-      height: 300px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-    }
-
-    .cta::after {
-      content: '';
-      position: absolute;
-      bottom: -100px;
-      left: -100px;
-      width: 400px;
-      height: 400px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 50%;
-    }
-
-    .cta-content {
-      max-width: 700px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .cta h2 {
+    .licenses-section h1 {
       font-size: 2.5rem;
       margin-bottom: 1.5rem;
-      color: white;
-    }
-
-    .cta p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      color: rgba(255, 255, 255, 0.9);
-    }
-
-    .btn-cta {
-      background: white;
-      color: var(--primary);
-      padding: 1rem 2.5rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      border-radius: 50px;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      box-shadow: var(--shadow);
-      text-decoration: none;
-    }
-
-    .btn-cta:hover {
-      background: rgba(255, 255, 255, 0.95);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-hover);
-      outline: 2px solid var(--primary);
-      outline-offset: 2px;
-    }
-
-    /* Error Message for Header/Footer */
-    .error-message {
-      display: none;
-      color: var(--warning);
       text-align: center;
-      padding: 1rem;
+    }
+
+    .licenses-section p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .license-item {
+      margin-bottom: 2rem;
+    }
+
+    .license-item h2 {
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .license-item p {
+      color: var(--secondary);
+    }
+
+    .license-item a {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    .license-item a:hover {
+      color: var(--secondary);
+    }
+
+    .license-item ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    .license-item li {
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .license-item li::before {
+      content: '\f058'; /* Font Awesome check-circle */
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      color: var(--success);
+    }
+
+    @media (max-width: 768px) {
+      .licenses-section {
+        padding: 3rem 0;
+      }
+
+      .licenses-section h1 {
+        font-size: 2rem;
+      }
+
+      .license-item h2 {
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -389,7 +114,7 @@
       <h2>Cookie-innstillinger</h2>
       <div class="cookie-option">
         <label class="toggle-label">
-          Analyse-cookies
+          analyse-cookies
           <input type="checkbox" id="analytics-cookies">
           <span class="toggle-switch"></span>
           <span id="analytics-status-text">Av</span>
@@ -403,170 +128,64 @@
     </div>
   </div>
 
-  <!-- Header Container -->
-  <div id="header-container">
-    <p class="error-message">Kunne ikke laste header. Vennligst oppdater siden.</p>
-  </div>
+  <!-- Header Include -->
+  <div id="header-container"></div>
 
   <main id="main-content">
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="container">
-        <div class="hero-content">
-          <h1><span>everytool.io</span> - Gratis Verktøy i Nettleseren</h1>
-          <p>Øk produktiviteten din med kraftige, brukervennlige verktøy – uten installasjon eller registrering! Alt behandles direkte i nettleseren din for maksimal personvern.</p>
-          <div class="hero-buttons">
-            <a href="#tools" class="btn btn-hero"><i class="fas fa-toolbox"></i> Utforsk verktøyene</a>
-            <a href="#process" class="btn btn-hero btn-hero-outline"><i class="fas fa-play-circle"></i> Se hvordan det fungerer</a>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div class="container">
+      <section class="licenses-section">
+        <h1>Lisensinformasjon</h1>
+        <p>FixMyTech.no bruker flere tredjepartsressurser for å gi en optimal brukeropplevelse. Nedenfor finner du informasjon om lisensene for disse ressursene.</p>
 
-    <!-- Features Section -->
-    <section id="features" class="features section">
-      <div class="container">
-        <div class="section-title">
-          <h2>Hvorfor velge everytool.io?</h2>
-          <p>Vi tilbyr essensielle verktøy uten å ofre personvern eller sikkerhet</p>
+        <div class="license-item">
+          <h2>Font Awesome</h2>
+          <p>Vi bruker Font Awesome Free 6.4.0 for ikoner på nettstedet vårt. Font Awesome er lisensiert under følgende vilkår:</p>
+          <ul>
+            <li>Ikoner: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International (CC BY 4.0)</a></li>
+            <li>Kode (CSS/JS): <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a></li>
+            <li>Skjermfonter: <a href="https://scripts.sil.org/OFL" target="_blank">SIL Open Font License 1.1</a></li>
+          </ul>
+          <p>Mer informasjon finner du på <a href="https://fontawesome.com/license/free" target="_blank">Font Awesome sin lisensside</a>.</p>
         </div>
-        
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-lock"></i>
-            </div>
-            <h3>Fullstendig personvern</h3>
-            <p>All behandling skjer direkte i din nettleser. Filene dine forlater aldri enheten din, noe som sikrer fullstendig personvern og sikkerhet.</p>
-          </div>
-          
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-bolt"></i>
-            </div>
-            <h3>Umiddelbar behandling</h3>
-            <p>Uansett om du genererer strekkoder eller behandler filer, fungerer våre verktøy med nettleserens hastighet. Ingen opplastinger, ingen venting.</p>
-          </div>
-          
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-tag"></i>
-            </div>
-            <h3>100% gratis</h3>
-            <p>Alle våre verktøy er helt gratis å bruke. Ingen abonnementer, ingen skjulte avgifter, og ingen konto kreves.</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Tools Section -->
-    <section id="tools" class="tools section">
-      <div class="container">
-        <div class="section-title">
-          <h2>Vårt utvalg av verktøy</h2>
-          <p>En verden av verktøy i nettleseren din – uten kostnad og med fokus på personvern</p>
+        <div class="license-item">
+          <h2>Google Fonts (Poppins og Roboto)</h2>
+          <p>Vi bruker Poppins og Roboto fonter fra Google Fonts. Begge fonter er lisensiert under <a href="https://scripts.sil.org/OFL" target="_blank">SIL Open Font License 1.1</a>.</p>
+          <p>Mer informasjon om disse fontene finner du på:</p>
+          <ul>
+            <li><a href="https://fonts.google.com/specimen/Poppins" target="_blank">Poppins på Google Fonts</a></li>
+            <li><a href="https://fonts.google.com/specimen/Roboto" target="_blank">Roboto på Google Fonts</a></li>
+          </ul>
         </div>
-        
-        <div class="tool-grid">
-          <div class="tool-card">
-            <div class="tool-icon">
-              <i class="fas fa-file-alt"></i>
-            </div>
-            <h3>Tekstverktøy</h3>
-            <p>Rediger, konverter og analyser tekst raskt og enkelt. Alt du trenger for tekstbehandling i nettleseren.</p>
-          </div>
-          
-          <div class="tool-card">
-            <div class="tool-icon">
-              <i class="fas fa-barcode"></i>
-            </div>
-            <h3>Strekkodeverktøy</h3>
-            <p>Generer strekkoder for produkter eller lager. Støtter ulike formater og standarder.</p>
-          </div>
-          
-          <div class="tool-card">
-            <div class="tool-icon">
-              <i class="fas fa-image"></i>
-            </div>
-            <h3>Bildeverktøy</h3>
-            <p>Komprimer, konverter eller rediger bilder direkte i nettleseren. Behold originalkvaliteten uten opplastinger.</p>
-          </div>
-          
-          <div class="tool-card">
-            <div class="tool-icon">
-              <i class="fas fa-file-pdf"></i>
-            </div>
-            <h3>PDF-verktøy</h3>
-            <p>Slå sammen, del eller konverter PDF-filer uten problemer. Full PDF-behandling uten tredjepartsprogrammer.</p>
-          </div>
-        </div>
-        
-        <p style="text-align: center; margin-top: 2rem;">Dette er bare et utvalg av de mange verktøyene vi tilbyr.</p>
-        <div style="text-align: center; margin-top: 1rem;">
-          <a href="https://everytool.io/tools" class="btn btn-outline">Se alle verktøyene</a>
-        </div>
-      </div>
-    </section>
 
-    <!-- How It Works Section -->
-    <section id="process" class="process section">
-      <div class="container">
-        <div class="section-title">
-          <h2>Slik fungerer våre verktøy</h2>
-          <p>Klient-side behandling betyr at dine data aldri forlater din enhet</p>
+        <div class="license-item">
+          <h2>Favicon</h2>
+          <p>Faviconet som brukes på FixMyTech.no er [bekreft om det er egendesignet eller fra en tredjepart]. Hvis det er fra en tredjepart, vil lisensinformasjonen bli oppdatert her.</p>
         </div>
-        
-        <div class="process-steps">
-          <div class="step-card">
-            <div class="step-number">1</div>
-            <h3>Velg verktøy</h3>
-            <p>Velg fra vårt utvalg av personvernfokuserte verktøy designet for ulike behov.</p>
-          </div>
-          
-          <div class="step-card">
-            <div class="step-number">2</div>
-            <h3>Behandle i nettleser</h3>
-            <p>Våre verktøy fungerer direkte i nettleseren din. Ingen data lastes opp til noen server.</p>
-          </div>
-          
-          <div class="step-card">
-            <div class="step-number">3</div>
-            <h3>Få resultatet</h3>
-            <p>Last ned eller se resultatet ditt umiddelbart. Dine originale data forblir private.</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- CTA Section -->
-    <section class="cta">
-      <div class="container">
-        <div class="cta-content">
-          <h2>Klar til å komme i gang?</h2>
-          <p>Bli en av tusenvis av brukere som stoler på everytool.io for sine daglige verktøybehov uten å ofre personvernet.</p>
-          <a href="https://everytool.io/tools" class="btn btn-cta">
-            <i class="fas fa-tools"></i> Utforsk alle verktøyene
-          </a>
+        <div class="license-item">
+          <h2>Formspree</h2>
+          <p>Vi bruker Formspree for å håndtere kontaktskjemaet vårt. Tjenesten er levert av <a href="https://formspree.io/" target="_blank">Formspree</a>. Se deres <a href="https://formspree.io/legal/terms-of-service" target="_blank">vilkår for bruk</a> for mer informasjon.</p>
         </div>
-      </div>
-    </section>
+
+        <p>Hvis du har spørsmål om lisensene eller bruken av tredjepartsressurser, kontakt oss via <a href="/#contact">kontaktskjemaet</a>.</p>
+      </section>
+    </div>
   </main>
 
-  <!-- Footer Container -->
-  <div id="footer-container">
-    <p class="error-message">Kunne ikke laste footer. Vennligst oppdater siden.</p>
-  </div>
+  <!-- Footer Include -->
+  <div id="footer-container"></div>
 
   <!-- Script Loading -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Load header and footer
       Promise.all([
-        fetch('/includes/header.html').then(res => {
+        fetch('https://fixmytech.no/includes/header.html').then(res => {
           if (!res.ok) throw new Error('Header fetch failed');
           return res.text();
         }),
-        fetch('/includes/footer.html').then(res => {
+        fetch('https://fixmytech.no/includes/footer.html').then(res => {
           if (!res.ok) throw new Error('Footer fetch failed');
           return res.text();
         })
@@ -576,7 +195,7 @@
 
         // Load main.js after header and footer are loaded
         const script = document.createElement('script');
-        script.src = 'https://everytool.io/js/main.js';
+        script.src = 'https://fixmytech.no/js/main.js';
         document.body.appendChild(script);
 
         // Cookie Consent Logic (matching fixmytech.no behavior)
