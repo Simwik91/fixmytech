@@ -9,144 +9,21 @@
   <meta name="author" content="FixMyTech">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
   <style>
-    /* Root Variables */
+    /* Inline Styles for Main Content (Complementary to /css/styles.css) */
     :root {
-      --primary: #4f46e5;
-      --primary-light: #6366f1;
-      --primary-dark: #4338ca;
-      --secondary: #0f172a;
-      --light-gray: #f1f5f9;
+      --primary-light: #3b82f6; /* Derived from --primary: #2563eb */
       --medium-gray: #cbd5e1;
       --dark-gray: #64748b;
-      --success: #10b981;
-      --warning: #ef4444;
-      --border-radius: 8px;
-      --transition: all 0.3s ease;
-      --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
       --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
       --gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-    }
-
-    /* General Styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      line-height: 1.6;
-      color: #334155;
-      background: #fff;
-      font-size: 16px;
-      overflow-x: hidden;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    a {
-      text-decoration: none;
-      color: var(--primary);
-      transition: var(--transition);
-    }
-
-    a:hover {
-      color: var(--primary-dark);
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Roboto', sans-serif;
-      color: var(--secondary);
-      line-height: 1.2;
-    }
-
-    p {
-      margin-bottom: 1rem;
-      color: var(--dark-gray);
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 0.9rem 2rem;
-      background: var(--primary);
-      color: white;
-      border-radius: var(--border-radius);
-      font-weight: 600;
-      transition: var(--transition);
-      border: none;
-      cursor: pointer;
-      text-align: center;
-      font-size: 1rem;
-      box-shadow: var(--shadow);
-    }
-
-    .btn:hover {
-      background: var(--primary-dark);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-hover);
-    }
-
-    .btn-outline {
-      background: transparent;
-      border: 2px solid var(--primary);
-      color: var(--primary);
-    }
-
-    .btn-outline:hover {
-      background: var(--primary);
-      color: white;
-    }
-
-    .section {
-      padding: 6rem 0;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .section-title h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      position: relative;
-      display: inline-block;
-    }
-
-    .section-title h2::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background: var(--primary);
-      border-radius: 2px;
-    }
-
-    .section-title p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto;
-      color: var(--dark-gray);
     }
 
     /* Hero Section */
     .hero {
       padding: 12rem 0 6rem;
       background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
-      color: var(--secondary);
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -183,23 +60,10 @@
       z-index: 1;
     }
 
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1.5rem;
-      font-weight: 700;
-    }
-
     .hero h1 span {
-      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      background: var(--gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-    }
-
-    .hero p {
-      font-size: 1.3rem;
-      max-width: 700px;
-      margin: 0 auto 2rem;
-      color: var(--dark-gray);
     }
 
     .hero-buttons {
@@ -213,16 +77,16 @@
       padding: 1rem 2.5rem;
       font-size: 1.1rem;
       border-radius: 50px;
-      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+      box-shadow: var(--shadow);
       display: inline-flex;
       align-items: center;
       gap: 0.75rem;
     }
 
     .btn-hero:hover {
-      background: var(--primary-dark);
+      background: var(--secondary);
       transform: translateY(-3px);
-      box-shadow: 0 15px 35px rgba(79, 70, 229, 0.4);
+      box-shadow: var(--shadow-hover);
       outline: 2px solid var(--primary);
       outline-offset: 2px;
     }
@@ -239,12 +103,13 @@
       background: var(--primary);
       color: white;
       transform: translateY(-3px);
-      box-shadow: 0 15px 35px rgba(79, 70, 229, 0.4);
+      box-shadow: var(--shadow-hover);
     }
 
     /* Features Section */
     .features {
       background: #fff;
+      padding: 6rem 0;
     }
 
     .features-grid {
@@ -301,11 +166,13 @@
 
     .feature-card p {
       font-size: 1rem;
+      color: var(--dark-gray);
     }
 
     /* Tools Section */
     .tools {
       background: var(--light-gray);
+      padding: 6rem 0;
     }
 
     .tool-grid {
@@ -334,7 +201,7 @@
       font-size: 3rem;
       color: var(--primary);
       margin-bottom: 1.5rem;
-      background: rgba(79, 70, 229, 0.1);
+      background: rgba(37, 99, 235, 0.1);
       width: 80px;
       height: 80px;
       display: flex;
@@ -359,6 +226,7 @@
     .tool-card p {
       font-size: 0.95rem;
       margin-bottom: 1.5rem;
+      color: var(--dark-gray);
     }
 
     .tool-link {
@@ -370,13 +238,14 @@
     }
 
     .tool-link:hover {
-      color: var(--primary-dark);
+      color: var(--secondary);
       transform: translateX(5px);
     }
 
     /* How It Works */
     .process {
       background: white;
+      padding: 6rem 0;
     }
 
     .process-steps {
@@ -426,18 +295,12 @@
       margin: 0 auto 1.5rem;
       font-weight: 700;
       font-size: 1.5rem;
-      position: relative;
-    }
-
-    .step-card h3 {
-      font-size: 1.4rem;
-      margin-bottom: 1rem;
     }
 
     /* CTA Section */
     .cta {
       padding: 6rem 0;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      background: var(--gradient);
       color: white;
       text-align: center;
       position: relative;
@@ -495,298 +358,16 @@
       display: inline-flex;
       align-items: center;
       gap: 0.75rem;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      box-shadow: var(--shadow);
       text-decoration: none;
     }
 
     .btn-cta:hover {
       background: rgba(255, 255, 255, 0.95);
       transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: var(--shadow-hover);
       outline: 2px solid var(--primary);
       outline-offset: 2px;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 992px) {
-      .hero h1 {
-        font-size: 2.8rem;
-      }
-      
-      .section {
-        padding: 5rem 0;
-      }
-      
-      .section-title h2 {
-        font-size: 2.2rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .hero {
-        padding: 10rem 0 4rem;
-      }
-      
-      .hero h1 {
-        font-size: 2.3rem;
-      }
-      
-      .hero p {
-        font-size: 1.1rem;
-      }
-      
-      .section-title h2 {
-        font-size: 2rem;
-      }
-      
-      .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .process-steps::before {
-        display: none;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .hero h1 {
-        font-size: 2rem;
-      }
-      
-      .section-title h2 {
-        font-size: 1.8rem;
-      }
-    }
-    
-    /* Cookie Consent Banner */
-    #cookie-consent-banner {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: #f9fafb;
-      border-top: 1px solid var(--light-gray);
-      box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
-    }
-    
-    #cookie-consent-banner.show {
-      transform: translateY(0);
-    }
-    
-    .cookie-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    
-    .cookie-text {
-      flex: 1;
-      min-width: 200px;
-    }
-    
-    .cookie-text h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      color: var(--secondary);
-    }
-    
-    .cookie-text p {
-      font-size: 0.9rem;
-      color: #4b5563;
-    }
-    
-    .cookie-text a {
-      color: var(--primary);
-      text-decoration: underline;
-    }
-    
-    .cookie-text a:hover {
-      color: var(--secondary);
-    }
-    
-    .cookie-buttons {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-    
-    .cookie-btn {
-      padding: 0.5rem 1rem;
-      border-radius: var(--border-radius);
-      font-size: 0.9rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: var(--transition);
-      border: none;
-    }
-    
-    .cookie-accept-btn {
-      background: var(--primary);
-      color: white;
-    }
-    
-    .cookie-accept-btn:hover {
-      background: #1e40af;
-    }
-    
-    .cookie-reject-btn {
-      background: var(--light-gray);
-      color: var(--secondary);
-    }
-    
-    .cookie-reject-btn:hover {
-      background: #d1d5db;
-    }
-    
-    .cookie-settings-btn {
-      background: transparent;
-      border: 1px solid var(--primary);
-      color: var(--primary);
-    }
-    
-    .cookie-settings-btn:hover {
-      background: var(--primary);
-      color: white;
-    }
-    
-    /* Cookie Settings Modal */
-    #cookie-settings-modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.4);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .cookie-settings-content {
-      background: #fff;
-      padding: 1.5rem;
-      border-radius: 12px;
-      max-width: 400px;
-      width: 90%;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-      position: relative;
-    }
-    
-    .close-modal {
-      position: absolute;
-      top: 0.5rem;
-      right: 0.5rem;
-      font-size: 1.2rem;
-      cursor: pointer;
-      color: #6b7280;
-      transition: var(--transition);
-    }
-    
-    .close-modal:hover {
-      color: var(--secondary);
-    }
-    
-    .cookie-settings-content h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--secondary);
-    }
-    
-    .cookie-option {
-      margin-bottom: 1.5rem;
-    }
-    
-    .cookie-option label {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-weight: 500;
-      color: var(--secondary);
-      font-size: 1rem;
-    }
-    
-    .cookie-option p {
-      font-size: 0.85rem;
-      color: #4b5563;
-      margin-top: 0.5rem;
-    }
-    
-    .toggle-label {
-      position: relative;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    #analytics-cookies {
-      display: none;
-    }
-    
-    .toggle-switch {
-      position: relative;
-      width: 40px;
-      height: 20px;
-      background: #d1d5db;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-    
-    .toggle-switch::after {
-      content: '';
-      position: absolute;
-      width: 16px;
-      height: 16px;
-      background: white;
-      border-radius: 50%;
-      top: 2px;
-      left: 2px;
-      transition: var(--transition);
-    }
-    
-    #analytics-cookies:checked + .toggle-switch {
-      background: var(--primary);
-    }
-    
-    #analytics-cookies:checked + .toggle-switch::after {
-      left: 22px;
-    }
-    
-    #analytics-status-text {
-      font-size: 0.85rem;
-      color: #4b5563;
-    }
-    
-    #overall-status-text {
-      font-weight: 500;
-      color: var(--secondary);
-    }
-    
-    #save-cookie-settings {
-      width: 100%;
-      padding: 0.75rem;
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: var(--border-radius);
-      font-weight: 500;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-    
-    #save-cookie-settings:hover {
-      background: #1e40af;
-      transform: translateY(-2px);
     }
 
     /* Error Message for Header/Footer */
