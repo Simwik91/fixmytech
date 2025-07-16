@@ -290,7 +290,7 @@
   </style>
 </head>
 <body>
-  <!-- Header Placeholder -->
+  <!-- Header -->
   <header id="main-header">
     <p class="error-message" style="display: none; color: red; text-align: center;">Kunne ikke laste inn header. Vennligst prøv å oppdatere siden.</p>
   </header>
@@ -403,10 +403,9 @@
         </article>
       </div>
     </div>
-    </div>
   </section>
 
-  <!-- Footer Placeholder -->
+  <!-- Footer -->
   <footer id="main-footer">
     <p class="error-message" style="display: none; color: red; text-align: center;">Kunne ikke laste inn footer. Vennligst prøv å oppdatere siden.</p>
   </footer>
@@ -482,7 +481,27 @@
   <script>
     // Verktøyside-spesifikk JavaScript
     document.addEventListener('DOMContentLoaded', () => {
-      // Søkefunksjonalitet
+      // Load Header and Footer
+      const loadHeaderFooter = async () => {
+        try {
+          const headerResponse = await fetch('/includes/header.html');
+          if (!headerResponse.ok) throw new Error('Header failed to load');
+          const headerContent = await headerResponse.text();
+          document.getElementById('main-header').innerHTML = headerContent;
+
+          const footerResponse = await fetch('/includes/footer.html');
+          if (!footerResponse.ok) throw new Error('Footer failed to load');
+          const footerContent = await footerResponse.text();
+          document.getElementById('main-footer').innerHTML = footerContent;
+        } catch (error) {
+          console.error('Error loading header/footer:', error);
+          document.querySelectorAll('.error-message').forEach(el => {
+            el.style.display = 'block';
+          });
+        }
+      };
+
+      // Search Functionality
       const initSearch = () => {
         const toolsData = [
           { name: "Strekkodegenerator", description: "Generer strekkoder for produkter eller lagerbeholdning.", url: "/verktøy/strekkodegenerator", icon: "fas fa-barcode" },
@@ -526,9 +545,47 @@
         renderTools();
       };
 
-      // Tilgjengelighetsfunksjoner
+      // Cookie Consent Functionality
+      const initCookieConsent = () => {
+        const cookieConsent = document.getElementById('cookie-consent');
+        const cookieSettings = document.getElementById('cookie-settings');
+        const acceptButton = document.getElementById('accept-cookies');
+        const rejectButton = document.getElementById('reject-cookies');
+        const openSettingsButton = document.getElementById('open-settings');
+        const closeSettingsButton = document.getElementById('close-settings');
+        const saveSettingsButton = document.getElementById('save-settings');
+
+        if (cookieConsent && acceptButton && rejectButton) {
+          acceptButton.addEventListener('click', () => {
+            cookieConsent.style.display = 'none';
+            // Add logic to set cookies
+          });
+
+          rejectButton.addEventListener('click', () => {
+            cookieConsent.style.display = 'none';
+            // Add logic to reject non-essential cookies
+          });
+        }
+
+        if (cookieSettings && openSettingsButton && closeSettingsButton && saveSettingsButton) {
+          openSettingsButton.addEventListener('click', () => {
+            cookieSettings.style.display = 'block';
+          });
+
+          closeSettingsButton.addEventListener('click', () => {
+            cookieSettings.style.display = 'none';
+          });
+
+          saveSettingsButton.addEventListener('click', () => {
+            cookieSettings.style.display = 'none';
+            // Add logic to save cookie preferences
+          });
+        }
+      };
+
+      // Accessibility Functions
       const initAccessibility = () => {
-        // Tastaturnavigasjon for vekslebrytere
+        // Keyboard navigation for toggle switches
         document.querySelectorAll('.toggle-switch input').forEach(toggle => {
           toggle.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
@@ -541,7 +598,7 @@
           });
         });
 
-        // Fokusbehandling for modale vinduer
+        // Focus management for modals
         const settingsModal = document.querySelector('.settings-modal');
         if (settingsModal) {
           const focusableElements = settingsModal.querySelectorAll('button, input');
@@ -570,7 +627,7 @@
           });
         }
         
-        // Fokusstil for alle interaktive elementer
+        // Focus styles for all interactive elements
         const focusableElements = document.querySelectorAll(
           'a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])'
         );
@@ -587,8 +644,10 @@
         });
       };
 
-      // Initialiser verktøyside-spesifikke funksjoner
+      // Initialize functions
+      loadHeaderFooter();
       initSearch();
+      initCookieConsent();
       initAccessibility();
     });
   </script>
