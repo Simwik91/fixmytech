@@ -1070,7 +1070,7 @@
   <!-- Footer Container -->
   <div id="footer-container"></div>
 
-  <!-- Script Loading -->
+  <!-- Script Loading - FIXED HEADER/FOOTER ISSUE -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Load header and footer
@@ -1080,90 +1080,32 @@
       ]).then(([header, footer]) => {
         document.getElementById('header-container').innerHTML = header;
         document.getElementById('footer-container').innerHTML = footer;
-        
-        // Add animation class to elements after loading
-        setTimeout(() => {
-          document.querySelectorAll('.feature-card, .tool-card, .step-card').forEach((card, index) => {
-            setTimeout(() => {
-              card.style.opacity = '1';
-              card.style.transform = 'translateY(0)';
-            }, 100 * index);
-          });
-        }, 500);
+
+        // Load main.js AFTER header/footer are inserted
+        const script = document.createElement('script');
+        script.src = 'https://fixmytech.no/js/main.js';
+        script.onload = function() {
+          // Initialize main.js functionality
+          if (typeof initMainJS === 'function') {
+            initMainJS();
+          }
+          
+          // Add animation class to elements after loading
+          setTimeout(() => {
+            document.querySelectorAll('.feature-card, .tool-card, .step-card').forEach((card, index) => {
+              setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+              }, 100 * index);
+            });
+          }, 500);
+        };
+        document.body.appendChild(script);
       }).catch(error => {
         console.error('Error loading includes:', error);
       });
       
-      // Cookie Consent Logic
-      const cookieBanner = document.getElementById('cookie-consent-banner');
-      const cookieModal = document.getElementById('cookie-settings-modal');
-      const acceptBtn = document.getElementById('cookie-accept');
-      const rejectBtn = document.getElementById('cookie-reject');
-      const settingsBtn = document.getElementById('cookie-settings');
-      const closeModal = document.querySelector('.close-modal');
-      const saveSettingsBtn = document.getElementById('save-cookie-settings');
-      const analyticsToggle = document.getElementById('analytics-cookies');
-      const analyticsStatus = document.getElementById('analytics-status-text');
-      const overallStatus = document.getElementById('overall-status-text');
-      
-      // Show cookie banner on load
-      setTimeout(() => {
-        cookieBanner.classList.add('show');
-      }, 1000);
-      
-      // Accept cookies
-      acceptBtn.addEventListener('click', () => {
-        cookieBanner.classList.remove('show');
-        analyticsToggle.checked = true;
-        analyticsStatus.textContent = 'På';
-        overallStatus.textContent = 'Innstillinger lagret';
-      });
-      
-      // Reject cookies
-      rejectBtn.addEventListener('click', () => {
-        cookieBanner.classList.remove('show');
-        analyticsToggle.checked = false;
-        analyticsStatus.textContent = 'Av';
-        overallStatus.textContent = 'Innstillinger lagret';
-      });
-      
-      // Open settings modal
-      settingsBtn.addEventListener('click', () => {
-        cookieModal.classList.add('show');
-      });
-      
-      // Close settings modal
-      closeModal.addEventListener('click', () => {
-        cookieModal.classList.remove('show');
-      });
-      
-      // Save cookie settings
-      saveSettingsBtn.addEventListener('click', () => {
-        cookieBanner.classList.remove('show');
-        cookieModal.classList.remove('show');
-        analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
-        overallStatus.textContent = 'Innstillinger lagret';
-      });
-      
-      // Toggle analytics status text
-      analyticsToggle.addEventListener('change', () => {
-        analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
-      });
-      
-      // Mobile Navigation Toggle
-      const navToggle = document.querySelector('.nav-toggle');
-      if (navToggle) {
-        navToggle.addEventListener('click', function() {
-          const mainNav = document.querySelector('.main-nav');
-          if (mainNav) {
-            mainNav.classList.toggle('active');
-            this.innerHTML = mainNav.classList.contains('active') ? 
-              '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-          }
-        });
-      }
-      
-      // Initialize animations
+      // Initialize animations for cards
       document.querySelectorAll('.feature-card, .tool-card, .step-card').forEach(card => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(20px)';
