@@ -229,19 +229,6 @@
       color: var(--dark-gray);
     }
 
-    .tool-link {
-      display: inline-block;
-      color: var(--primary);
-      font-weight: 500;
-      font-size: 0.9rem;
-      transition: var(--transition);
-    }
-
-    .tool-link:hover {
-      color: var(--secondary);
-      transform: translateX(5px);
-    }
-
     /* How It Works */
     .process {
       background: white;
@@ -468,14 +455,6 @@
             <h3>100% gratis</h3>
             <p>Alle våre verktøy er helt gratis å bruke. Ingen abonnementer, ingen skjulte avgifter, og ingen konto kreves.</p>
           </div>
-          
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-cloud-download-alt"></i>
-            </div>
-            <h3>Ingen installasjon</h3>
-            <p>Få tilgang til alle verktøy direkte fra nettleseren din. Ingen nedlastinger eller installasjoner kreves. Fungerer på alle enheter.</p>
-          </div>
         </div>
       </div>
     </section>
@@ -495,16 +474,14 @@
             </div>
             <h3>Tekstverktøy</h3>
             <p>Rediger, konverter og analyser tekst raskt og enkelt. Alt du trenger for tekstbehandling i nettleseren.</p>
-            <a href="https://everytool.io/tools" class="tool-link">Bruk verktøyet <i class="fas fa-arrow-right"></i></a>
           </div>
           
           <div class="tool-card">
             <div class="tool-icon">
-              <i class="fas fa-calculator"></i>
+              <i class="fas fa-barcode"></i>
             </div>
-            <h3>Regneverktøy</h3>
-            <p>Løs matematiske problemer og utfør komplekse beregninger. Fra enkel aritmetikk til avansert statistikk.</p>
-            <a href="https://everytool.io/tools" class="tool-link">Bruk verktøyet <i class="fas fa-arrow-right"></i></a>
+            <h3>Strekkodeverktøy</h3>
+            <p>Generer strekkoder for produkter eller lager. Støtter ulike formater og standarder.</p>
           </div>
           
           <div class="tool-card">
@@ -513,7 +490,6 @@
             </div>
             <h3>Bildeverktøy</h3>
             <p>Komprimer, konverter eller rediger bilder direkte i nettleseren. Behold originalkvaliteten uten opplastinger.</p>
-            <a href="https://everytool.io/tools" class="tool-link">Bruk verktøyet <i class="fas fa-arrow-right"></i></a>
           </div>
           
           <div class="tool-card">
@@ -522,11 +498,11 @@
             </div>
             <h3>PDF-verktøy</h3>
             <p>Slå sammen, del eller konverter PDF-filer uten problemer. Full PDF-behandling uten tredjepartsprogrammer.</p>
-            <a href="https://everytool.io/tools" class="tool-link">Bruk verktøyet <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
         
-        <div style="text-align: center; margin-top: 3rem;">
+        <p style="text-align: center; margin-top: 2rem;">Dette er bare et utvalg av de mange verktøyene vi tilbyr.</p>
+        <div style="text-align: center; margin-top: 1rem;">
           <a href="https://everytool.io/tools" class="btn btn-outline">Se alle verktøyene</a>
         </div>
       </div>
@@ -601,7 +577,24 @@
         console.error('Error loading includes:', error);
         document.querySelectorAll('.error-message').forEach(el => el.style.display = 'block');
       });
-      
+
+      // Cookie functions
+      function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+      }
+
+      function setCookie(name, value, days) {
+        let expires = "";
+        if (days) {
+          const date = new Date();
+          date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+          expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+      }
+
       // Cookie Consent Logic
       const cookieBanner = document.getElementById('cookie-consent-banner');
       const cookieModal = document.getElementById('cookie-settings-modal');
@@ -613,51 +606,73 @@
       const analyticsToggle = document.getElementById('analytics-cookies');
       const analyticsStatus = document.getElementById('analytics-status-text');
       const overallStatus = document.getElementById('overall-status-text');
-      
-      // Show cookie banner on load
-      setTimeout(() => {
-        cookieBanner.classList.add('show');
-      }, 1000);
-      
+
+      // Check if cookie consent is already given
+      const consentGiven = getCookie('cookie_consent_given');
+      if (consentGiven) {
+        // Set toggle based on analytics_cookies
+        const analytics = getCookie('analytics_cookies');
+        analyticsToggle.checked = analytics === 'true';
+        analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
+        overallStatus.textContent = 'Innstillinger lagret';
+      } else {
+        // Show cookie banner after 1 second
+        setTimeout(() => {
+          cookieBanner.classList.add('show');
+        }, 1000);
+      }
+
       // Accept cookies
       acceptBtn.addEventListener('click', () => {
+        setCookie('cookie_consent_given', 'true', 365);
+        setCookie('analytics_cookies', 'true', 365);
         cookieBanner.classList.remove('show');
         analyticsToggle.checked = true;
         analyticsStatus.textContent = 'På';
         overallStatus.textContent = 'Innstillinger lagret';
       });
-      
+
       // Reject cookies
       rejectBtn.addEventListener('click', () => {
+        setCookie('cookie_consent_given', 'true', 365);
+        setCookie('analytics_cookies', 'false', 365);
         cookieBanner.classList.remove('show');
         analyticsToggle.checked = false;
         analyticsStatus.textContent = 'Av';
         overallStatus.textContent = 'Innstillinger lagret';
       });
-      
+
       // Open settings modal
       settingsBtn.addEventListener('click', () => {
+        // If consent is already given, set toggle to current value
+        const analytics = getCookie('analytics_cookies');
+        if (analytics !== null) {
+          analyticsToggle.checked = analytics === 'true';
+          analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
+        }
         cookieModal.style.display = 'block';
       });
-      
+
       // Close settings modal
       closeModal.addEventListener('click', () => {
         cookieModal.style.display = 'none';
       });
-      
+
       // Save cookie settings
       saveSettingsBtn.addEventListener('click', () => {
+        setCookie('cookie_consent_given', 'true', 365);
+        setCookie('analytics_cookies', analyticsToggle.checked.toString(), 365);
         cookieBanner.classList.remove('show');
         cookieModal.style.display = 'none';
         analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
         overallStatus.textContent = 'Innstillinger lagret';
       });
-      
+
       // Toggle analytics status text
       analyticsToggle.addEventListener('change', () => {
         analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
       });
-      
+
       // Mobile Navigation Toggle
       const navToggle = document.querySelector('.nav-toggle');
       if (navToggle) {
