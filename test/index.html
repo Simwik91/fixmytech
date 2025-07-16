@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     /* Root Variables */
@@ -24,11 +24,11 @@
       --dark-gray: #64748b;
       --success: #10b981;
       --warning: #ef4444;
-      --border-radius: 12px;
+      --border-radius: 8px;
       --transition: all 0.3s ease;
       --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.15);
-      --gradient: linear-gradient(90deg, var(--primary), var(--primary-light));
+      --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+      --gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
     }
 
     /* General Styles */
@@ -111,22 +111,32 @@
     }
 
     .section {
-      padding: 5rem 0;
+      padding: 6rem 0;
     }
 
     .section-title {
       text-align: center;
-      margin-bottom: 3rem;
+      margin-bottom: 4rem;
     }
 
     .section-title h2 {
-      font-size: 2.8rem;
+      font-size: 2.5rem;
       margin-bottom: 1rem;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
       position: relative;
       display: inline-block;
+      font-weight: 700;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
     }
 
     .section-title p {
@@ -136,29 +146,76 @@
       color: var(--dark-gray);
     }
 
-    /* Error Message for Header/Footer */
-    .error-message {
-      display: none;
-      color: var(--warning);
-      text-align: center;
-      padding: 1rem;
-      font-size: 1rem;
+    /* Header Fallback */
+    #header-container {
+      min-height: 80px;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 100;
     }
 
-    /* Hero Section */
+    .header-fallback {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+    }
+
+    .header-fallback .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+
+    .header-fallback nav a {
+      margin-left: 1.5rem;
+      font-weight: 500;
+    }
+
+    /* Footer Fallback */
+    #footer-container {
+      background: var(--secondary);
+      color: white;
+      padding: 2rem 0;
+    }
+
+    .footer-fallback {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      padding: 0 1.5rem;
+    }
+
+    .footer-fallback .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .footer-fallback p {
+      color: var(--medium-gray);
+    }
+
+    .footer-fallback a {
+      color: var(--medium-gray);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-fallback a:hover {
+      color: white;
+    }
+
+    /* Hero Section - Enhanced */
     .hero {
-      padding: 10rem 0 5rem;
+      padding: 12rem 0 6rem;
       background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
       color: var(--secondary);
       text-align: center;
       position: relative;
       overflow: hidden;
-      animation: subtlePulse 10s infinite ease-in-out;
-    }
-
-    @keyframes subtlePulse {
-      0%, 100% { background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%); }
-      50% { background: linear-gradient(135deg, #e0e7ff 0%, #f0f4ff 100%); }
     }
 
     .hero::before {
@@ -186,18 +243,20 @@
     }
 
     .hero-content {
-      max-width: 900px;
+      max-width: 800px;
       margin: 0 auto;
       position: relative;
       z-index: 1;
     }
 
     .hero h1 {
-      font-size: 3.5rem;
+      font-size: 3rem;
       margin-bottom: 1.5rem;
-      background: var(--gradient);
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      line-height: 1.2;
     }
 
     .hero p {
@@ -209,16 +268,16 @@
 
     .hero-buttons {
       display: flex;
-      gap: 1.5rem;
+      gap: 1rem;
       justify-content: center;
       margin-top: 2rem;
     }
 
     .btn-hero {
-      padding: 1rem 3rem;
-      font-size: 1.2rem;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
       border-radius: 50px;
-      box-shadow: 0 6px 20px rgba(79, 70, 229, 0.3);
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
       display: inline-flex;
       align-items: center;
       gap: 0.75rem;
@@ -236,7 +295,7 @@
       color: white;
     }
 
-    /* Features Section */
+    /* Features Section - Enhanced */
     .features {
       background: #fff;
     }
@@ -250,33 +309,34 @@
     .feature-card {
       background: white;
       border-radius: var(--border-radius);
-      padding: 2.5rem;
+      padding: 2.5rem 2rem;
       box-shadow: var(--shadow);
       transition: var(--transition);
       text-align: center;
       position: relative;
       overflow: hidden;
+      height: 100%;
       display: flex;
       flex-direction: column;
-      align-items: center;
     }
 
     .feature-card:hover {
       transform: translateY(-10px);
-      box-shadow: var(--shadow-hover);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     }
 
     .feature-icon {
-      font-size: 3.5rem;
+      font-size: 3rem;
       color: var(--primary);
       margin-bottom: 1.5rem;
       background: rgba(79, 70, 229, 0.1);
-      width: 90px;
-      height: 90px;
+      width: 80px;
+      height: 80px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
+      margin: 0 auto 1.5rem;
       transition: var(--transition);
     }
 
@@ -287,7 +347,7 @@
     }
 
     .feature-card h3 {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       margin-bottom: 1rem;
     }
 
@@ -296,7 +356,7 @@
       flex-grow: 1;
     }
 
-    /* Tools Section */
+    /* Tools Section - Enhanced */
     .tools {
       background: var(--light-gray);
     }
@@ -316,15 +376,18 @@
       text-align: center;
       position: relative;
       overflow: hidden;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
     .tool-card:hover {
-      transform: translateY(-10px) scale(1.02);
+      transform: translateY(-10px);
       box-shadow: var(--shadow-hover);
     }
 
     .tool-icon {
-      font-size: 3.5rem;
+      font-size: 3rem;
       color: var(--primary);
       margin-bottom: 1.5rem;
       background: rgba(79, 70, 229, 0.1);
@@ -341,17 +404,18 @@
     .tool-card:hover .tool-icon {
       background: var(--primary);
       color: white;
-      transform: rotate(10deg) scale(1.1);
+      transform: rotate(10deg);
     }
 
     .tool-card h3 {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       margin-bottom: 1rem;
     }
 
     .tool-card p {
       font-size: 0.95rem;
       margin-bottom: 1.5rem;
+      flex-grow: 1;
     }
 
     .tool-link {
@@ -360,6 +424,7 @@
       font-weight: 500;
       font-size: 0.9rem;
       transition: var(--transition);
+      margin-top: auto;
     }
 
     .tool-link:hover {
@@ -367,7 +432,7 @@
       transform: translateX(5px);
     }
 
-    /* How It Works */
+    /* How It Works - Enhanced */
     .process {
       background: white;
     }
@@ -383,12 +448,13 @@
     .step-card {
       background: white;
       border-radius: var(--border-radius);
-      padding: 2.5rem;
+      padding: 2.5rem 2rem 2rem;
       box-shadow: var(--shadow);
       text-align: center;
       position: relative;
-      counter-increment: step-counter;
+      z-index: 1;
       transition: var(--transition);
+      height: 100%;
     }
 
     .step-card:hover {
@@ -397,36 +463,34 @@
     }
 
     .step-number {
-      position: absolute;
-      top: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
       background: var(--primary);
       color: white;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
+      margin: 0 auto 1.5rem;
       font-weight: 700;
       font-size: 1.5rem;
-      content: counter(step-counter);
+      position: relative;
+    }
+
+    .step-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
     }
 
     .step-card h3 {
-      font-size: 1.5rem;
-      margin-top: 2.5rem;
+      font-size: 1.4rem;
       margin-bottom: 1rem;
     }
 
-    .step-card p {
-      font-size: 0.95rem;
-    }
-
-    /* CTA Section */
+    /* CTA Section - Enhanced */
     .cta {
-      padding: 5rem 0;
+      padding: 6rem 0;
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
       color: white;
       text-align: center;
@@ -464,7 +528,7 @@
     }
 
     .cta h2 {
-      font-size: 2.8rem;
+      font-size: 2.5rem;
       margin-bottom: 1.5rem;
       color: white;
     }
@@ -478,14 +542,14 @@
     .btn-cta {
       background: white;
       color: var(--primary);
-      padding: 1rem 3rem;
-      font-size: 1.2rem;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
       font-weight: 600;
       border-radius: 50px;
       display: inline-flex;
       align-items: center;
       gap: 0.75rem;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     }
 
     .btn-cta:hover {
@@ -493,6 +557,58 @@
       transform: translateY(-3px);
     }
 
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .section {
+        padding: 5rem 0;
+      }
+      
+      .section-title h2 {
+        font-size: 2.2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 10rem 0 4rem;
+      }
+      
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2rem;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .header-fallback nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .section-title h2 {
+        font-size: 1.8rem;
+      }
+    }
+    
     /* Cookie Consent Banner */
     #cookie-consent-banner {
       position: fixed;
@@ -506,14 +622,13 @@
       transform: translateY(100%);
       transition: transform 0.3s ease;
     }
-
+    
     #cookie-consent-banner.show {
       transform: translateY(0);
     }
-
+    
     .cookie-content {
-      max-width: برق
-1200px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 1rem 1.5rem;
       display: flex;
@@ -522,77 +637,77 @@
       gap: 1rem;
       flex-wrap: wrap;
     }
-
+    
     .cookie-text {
       flex: 1;
       min-width: 200px;
     }
-
+    
     .cookie-text h3 {
       font-size: 1.2rem;
       margin-bottom: 0.5rem;
       color: var(--secondary);
     }
-
+    
     .cookie-text p {
       font-size: 0.9rem;
       color: #4b5563;
     }
-
-    .cookietekst a {
+    
+    .cookie-text a {
       color: var(--primary);
       text-decoration: underline;
     }
-
+    
     .cookie-text a:hover {
       color: var(--secondary);
     }
-
+    
     .cookie-buttons {
       display: flex;
       gap: 0.5rem;
       flex-wrap: wrap;
     }
-
+    
     .cookie-btn {
-      padding: 0.5rem 1.5rem;
-      border-radius: 50px;
+      padding: 0.5rem 1rem;
+      border-radius: var(--border-radius);
       font-size: 0.9rem;
       font-weight: 500;
       cursor: pointer;
       transition: var(--transition);
       border: none;
     }
-
+    
     .cookie-accept-btn {
       background: var(--primary);
       color: white;
     }
-
+    
     .cookie-accept-btn:hover {
-      background: var(--primary-dark);
+      background: #1e40af;
     }
-
+    
     .cookie-reject-btn {
       background: var(--light-gray);
       color: var(--secondary);
     }
-
+    
     .cookie-reject-btn:hover {
       background: #d1d5db;
     }
-
+    
     .cookie-settings-btn {
       background: transparent;
       border: 1px solid var(--primary);
       color: var(--primary);
     }
-
+    
     .cookie-settings-btn:hover {
       background: var(--primary);
       color: white;
     }
-
+    
     /* Cookie Settings Modal */
     #cookie-settings-modal {
       display: none;
@@ -606,7 +721,7 @@
       align-items: center;
       justify-content: center;
     }
-
+    
     .cookie-settings-content {
       background: #fff;
       padding: 1.5rem;
@@ -616,7 +731,7 @@
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
       position: relative;
     }
-
+    
     .close-modal {
       position: absolute;
       top: 0.5rem;
@@ -626,21 +741,21 @@
       color: #6b7280;
       transition: var(--transition);
     }
-
+    
     .close-modal:hover {
       color: var(--secondary);
     }
-
+    
     .cookie-settings-content h2 {
       font-size: 1.5rem;
       margin-bottom: 1rem;
       color: var(--secondary);
     }
-
+    
     .cookie-option {
       margin-bottom: 1.5rem;
     }
-
+    
     .cookie-option label {
       display: flex;
       align-items: center;
@@ -649,24 +764,24 @@
       color: var(--secondary);
       font-size: 1rem;
     }
-
+    
     .cookie-option p {
       font-size: 0.85rem;
       color: #4b5563;
       margin-top: 0.5rem;
     }
-
+    
     .toggle-label {
       position: relative;
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
-
+    
     #analytics-cookies {
       display: none;
     }
-
+    
     .toggle-switch {
       position: relative;
       width: 40px;
@@ -676,7 +791,7 @@
       cursor: pointer;
       transition: var(--transition);
     }
-
+    
     .toggle-switch::after {
       content: '';
       position: absolute;
@@ -688,25 +803,25 @@
       left: 2px;
       transition: var(--transition);
     }
-
+    
     #analytics-cookies:checked + .toggle-switch {
       background: var(--primary);
     }
-
+    
     #analytics-cookies:checked + .toggle-switch::after {
       left: 22px;
     }
-
+    
     #analytics-status-text {
       font-size: 0.85rem;
       color: #4b5563;
     }
-
+    
     #overall-status-text {
       font-weight: 500;
       color: var(--secondary);
     }
-
+    
     #save-cookie-settings {
       width: 100%;
       padding: 0.75rem;
@@ -718,58 +833,10 @@
       cursor: pointer;
       transition: var(--transition);
     }
-
+    
     #save-cookie-settings:hover {
-      background: var(--primary-dark);
+      background: #1e40af;
       transform: translateY(-2px);
-    }
-
-    /* Responsive Design */
-    @media (max-width: 992px) {
-      .hero h1 {
-        font-size: 3rem;
-      }
-
-      .section {
-        padding: 4rem 0;
-      }
-
-      .section-title h2 {
-        font-size: 2.5rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .hero {
-        padding: 8rem 0 4rem;
-      }
-
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-
-      .hero p {
-        font-size: 1.1rem;
-      }
-
-      .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .process-steps::before {
-        display: none;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-
-      .section-title h2 {
-        font-size: 2rem;
-      }
     }
   </style>
 </head>
@@ -810,33 +877,42 @@
     </div>
   </div>
 
-  <!-- Header Container -->
+  <!-- Header Container with Fallback -->
   <div id="header-container">
-    <p class="error-message">Kunne ikke laste header. Vennligst oppdater siden.</p>
+    <div class="header-fallback">
+      <div class="logo">FixMyTech</div>
+      <nav>
+        <a href="/">Hjem</a>
+        <a href="/tjenester">Tjenester</a>
+        <a href="/everytool">everytool.io</a>
+        <a href="/kontakt">Kontakt</a>
+      </nav>
+    </div>
   </div>
 
   <main id="main-content">
-    <!-- Hero Section -->
+    <!-- Hero Section - Enhanced -->
     <section class="hero">
       <div class="container">
         <div class="hero-content">
           <h1>everytool.io - Gratis Verktøy i Nettleseren</h1>
           <p>Øk produktiviteten din med kraftige, brukervennlige verktøy – uten installasjon eller registrering! Alt behandles direkte i nettleseren din for maksimal personvern.</p>
           <div class="hero-buttons">
-            <a href="#tools" class="btn btn-hero">Utforsk verktøyene</a>
-            <a href="#process" class="btn btn-hero btn-hero-outline">Se hvordan det fungerer</a>
+            <a href="#tools" class="btn btn-hero"><i class="fas fa-tools"></i> Utforsk verktøyene</a>
+            <a href="#process" class="btn btn-hero btn-hero-outline"><i class="fas fa-info-circle"></i> Se hvordan det fungerer</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Features Section -->
+    <!-- Features Section - Enhanced -->
     <section id="features" class="features section">
       <div class="container">
         <div class="section-title">
           <h2>Hvorfor velge everytool.io?</h2>
           <p>Vi tilbyr essensielle verktøy uten å ofre personvern eller sikkerhet</p>
         </div>
+        
         <div class="features-grid">
           <div class="feature-card">
             <div class="feature-icon">
@@ -845,6 +921,7 @@
             <h3>Fullstendig personvern</h3>
             <p>All behandling skjer direkte i din nettleser. Filene dine forlater aldri enheten din, noe som sikrer fullstendig personvern og sikkerhet.</p>
           </div>
+          
           <div class="feature-card">
             <div class="feature-icon">
               <i class="fas fa-bolt"></i>
@@ -852,6 +929,7 @@
             <h3>Umiddelbar behandling</h3>
             <p>Uansett om du genererer strekkoder eller behandler filer, fungerer våre verktøy med nettleserens hastighet. Ingen opplastinger, ingen venting.</p>
           </div>
+          
           <div class="feature-card">
             <div class="feature-icon">
               <i class="fas fa-tag"></i>
@@ -859,6 +937,7 @@
             <h3>100% gratis</h3>
             <p>Alle våre verktøy er helt gratis å bruke. Ingen abonnementer, ingen skjulte avgifter, og ingen konto kreves.</p>
           </div>
+          
           <div class="feature-card">
             <div class="feature-icon">
               <i class="fas fa-cloud-download-alt"></i>
@@ -870,13 +949,14 @@
       </div>
     </section>
 
-    <!-- Tools Section -->
+    <!-- Tools Section - Enhanced -->
     <section id="tools" class="tools section">
       <div class="container">
         <div class="section-title">
           <h2>Vårt utvalg av verktøy</h2>
           <p>En verden av verktøy i nettleseren din – uten kostnad og med fokus på personvern</p>
         </div>
+        
         <div class="tool-grid">
           <div class="tool-card">
             <div class="tool-icon">
@@ -886,6 +966,7 @@
             <p>Rediger, konverter og analyser tekst raskt og enkelt. Alt du trenger for tekstbehandling i nettleseren.</p>
             <a href="https://everytool.io/tools" class="tool-link">Bruk verktøyet <i class="fas fa-arrow-right"></i></a>
           </div>
+          
           <div class="tool-card">
             <div class="tool-icon">
               <i class="fas fa-calculator"></i>
@@ -894,6 +975,7 @@
             <p>Løs matematiske problemer og utfør komplekse beregninger. Fra enkel aritmetikk til avansert statistikk.</p>
             <a href="https://everytool.io/tools" class="tool-link">Bruk verktøyet <i class="fas fa-arrow-right"></i></a>
           </div>
+          
           <div class="tool-card">
             <div class="tool-icon">
               <i class="fas fa-image"></i>
@@ -902,6 +984,7 @@
             <p>Komprimer, konverter eller rediger bilder direkte i nettleseren. Behold originalkvaliteten uten opplastinger.</p>
             <a href="https://everytool.io/tools" class="tool-link">Bruk verktøyet <i class="fas fa-arrow-right"></i></a>
           </div>
+          
           <div class="tool-card">
             <div class="tool-icon">
               <i class="fas fa-file-pdf"></i>
@@ -911,32 +994,45 @@
             <a href="https://everytool.io/tools" class="tool-link">Bruk verktøyet <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
+        
         <div style="text-align: center; margin-top: 3rem;">
-          <a href="https://everytool.io/tools" class="btn btn-outline">Se alle verktøyene</a>
+          <a href="https://everytool.io/tools" class="btn btn-outline"><i class="fas fa-arrow-right"></i> Se alle verktøyene</a>
         </div>
       </div>
     </section>
 
-    <!-- How It Works Section -->
+    <!-- How It Works Section - Enhanced -->
     <section id="process" class="process section">
       <div class="container">
         <div class="section-title">
           <h2>Slik fungerer våre verktøy</h2>
           <p>Klient-side behandling betyr at dine data aldri forlater din enhet</p>
         </div>
+        
         <div class="process-steps">
           <div class="step-card">
-            <div class="step-number"></div>
+            <div class="step-number">1</div>
+            <div class="step-icon">
+              <i class="fas fa-mouse-pointer"></i>
+            </div>
             <h3>Velg verktøy</h3>
             <p>Velg fra vårt utvalg av personvernfokuserte verktøy designet for ulike behov.</p>
           </div>
+          
           <div class="step-card">
-            <div class="step-number"></div>
+            <div class="step-number">2</div>
+            <div class="step-icon">
+              <i class="fas fa-cog"></i>
+            </div>
             <h3>Behandle i nettleser</h3>
             <p>Våre verktøy fungerer direkte i nettleseren din. Ingen data lastes opp til noen server.</p>
           </div>
+          
           <div class="step-card">
-            <div class="step-number"></div>
+            <div class="step-number">3</div>
+            <div class="step-icon">
+              <i class="fas fa-download"></i>
+            </div>
             <h3>Få resultatet</h3>
             <p>Last ned eller se resultatet ditt umiddelbart. Dine originale data forblir private.</p>
           </div>
@@ -944,7 +1040,7 @@
       </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- CTA Section - Enhanced -->
     <section class="cta">
       <div class="container">
         <div class="cta-content">
@@ -958,27 +1054,68 @@
     </section>
   </main>
 
-  <!-- Footer Container -->
+  <!-- Footer Container with Fallback -->
   <div id="footer-container">
-    <p class="error-message">Kunne ikke laste footer. Vennligst oppdater siden.</p>
+    <div class="footer-fallback">
+      <div class="footer-col">
+        <div class="logo">FixMyTech</div>
+        <p>Vi hjelper deg med dine teknologibehov.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Nyttige lenker</h4>
+        <a href="/tjenester">Våre tjenester</a>
+        <a href="/everytool">everytool.io</a>
+        <a href="/blog">Blogg</a>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <a href="mailto:kontakt@fixmytech.no">kontakt@fixmytech.no</a>
+        <a href="/personvern">Personvern</a>
+        <a href="/vilkar">Vilkår</a>
+      </div>
+    </div>
   </div>
 
-  <!-- Script Loading -->
+  <!-- Script Loading with Error Handling -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Load header and footer
-      Promise.all([
-        fetch('https://fixmytech.no/includes/header.html').then(res => res.text()),
-        fetch('https://fixmytech.no/includes/footer.html').then(res => res.text())
-      ]).then(([header, footer]) => {
-        document.getElementById('header-container').innerHTML = header;
-        document.getElementById('footer-container').innerHTML = footer;
-        document.querySelectorAll('#header-container .error-message, #footer-container .error-message').forEach(el => el.style.display = 'none');
-      }).catch(error => {
-        console.error('Error loading includes:', error);
-        document.querySelectorAll('#header-container .error-message, #footer-container .error-message').forEach(el => el.style.display = 'block');
-      });
+      // Load header and footer with error handling
+      function loadHeader() {
+        return fetch('https://fixmytech.no/includes/header.html')
+          .then(res => {
+            if (!res.ok) throw new Error('Failed to load header');
+            return res.text();
+          })
+          .catch(error => {
+            console.error('Error loading header:', error);
+            // Keep the fallback header
+            return '';
+          });
+      }
 
+      function loadFooter() {
+        return fetch('https://fixmytech.no/includes/footer.html')
+          .then(res => {
+            if (!res.ok) throw new Error('Failed to load footer');
+            return res.text();
+          })
+          .catch(error => {
+            console.error('Error loading footer:', error);
+            // Keep the fallback footer
+            return '';
+          });
+      }
+
+      Promise.all([loadHeader(), loadFooter()])
+        .then(([header, footer]) => {
+          if (header) {
+            document.getElementById('header-container').innerHTML = header;
+          }
+          if (footer) {
+            document.getElementById('footer-container').innerHTML = footer;
+          }
+        });
+      
       // Cookie Consent Logic
       const cookieBanner = document.getElementById('cookie-consent-banner');
       const cookieModal = document.getElementById('cookie-settings-modal');
@@ -990,12 +1127,12 @@
       const analyticsToggle = document.getElementById('analytics-cookies');
       const analyticsStatus = document.getElementById('analytics-status-text');
       const overallStatus = document.getElementById('overall-status-text');
-
+      
       // Show cookie banner on load
       setTimeout(() => {
         cookieBanner.classList.add('show');
       }, 1000);
-
+      
       // Accept cookies
       acceptBtn.addEventListener('click', () => {
         cookieBanner.classList.remove('show');
@@ -1003,7 +1140,7 @@
         analyticsStatus.textContent = 'På';
         overallStatus.textContent = 'Innstillinger lagret';
       });
-
+      
       // Reject cookies
       rejectBtn.addEventListener('click', () => {
         cookieBanner.classList.remove('show');
@@ -1011,17 +1148,17 @@
         analyticsStatus.textContent = 'Av';
         overallStatus.textContent = 'Innstillinger lagret';
       });
-
+      
       // Open settings modal
       settingsBtn.addEventListener('click', () => {
         cookieModal.style.display = 'block';
       });
-
+      
       // Close settings modal
       closeModal.addEventListener('click', () => {
         cookieModal.style.display = 'none';
       });
-
+      
       // Save cookie settings
       saveSettingsBtn.addEventListener('click', () => {
         cookieBanner.classList.remove('show');
@@ -1029,12 +1166,12 @@
         analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
         overallStatus.textContent = 'Innstillinger lagret';
       });
-
+      
       // Toggle analytics status text
       analyticsToggle.addEventListener('change', () => {
         analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
       });
-
+      
       // Mobile Navigation Toggle
       const navToggle = document.querySelector('.nav-toggle');
       if (navToggle) {
@@ -1042,7 +1179,7 @@
           const mainNav = document.querySelector('.main-nav');
           if (mainNav) {
             mainNav.classList.toggle('active');
-            this.innerHTML = mainNav.classList.contains('active') ?
+            this.innerHTML = mainNav.classList.contains('active') ? 
               '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
           }
         });
