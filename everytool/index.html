@@ -136,6 +136,15 @@
       color: var(--dark-gray);
     }
 
+    /* Error Message for Header/Footer */
+    .error-message {
+      display: none;
+      color: var(--warning);
+      text-align: center;
+      padding: 1rem;
+      font-size: 1rem;
+    }
+
     /* Hero Section */
     .hero {
       padding: 10rem 0 5rem;
@@ -162,7 +171,6 @@
       background: var(--primary-light);
       border-radius: 50%;
       opacity: 0.1;
-      animation: floatbenefactor
     }
 
     .hero::after {
@@ -467,8 +475,7 @@
       color: rgba(255, 255, 255, 0.9);
     }
 
-    .btn- محمي
-cta {
+    .btn-cta {
       background: white;
       color: var(--primary);
       padding: 1rem 3rem;
@@ -505,7 +512,8 @@ cta {
     }
 
     .cookie-content {
-      max-width: 1200px;
+      max-width: برق
+1200px;
       margin: 0 auto;
       padding: 1rem 1.5rem;
       display: flex;
@@ -531,7 +539,7 @@ cta {
       color: #4b5563;
     }
 
-    .cookie-text a {
+    .cookietekst a {
       color: var(--primary);
       text-decoration: underline;
     }
@@ -671,7 +679,6 @@ cta {
 
     .toggle-switch::after {
       content: '';
-
       position: absolute;
       width: 16px;
       height: 16px;
@@ -695,12 +702,11 @@ cta {
       color: #4b5563;
     }
 
- overall-status-text {
+    #overall-status-text {
       font-weight: 500;
       color: var(--secondary);
     }
 
-    #inetto
     #save-cookie-settings {
       width: 100%;
       padding: 0.75rem;
@@ -777,7 +783,7 @@ cta {
       </div>
       <div class="cookie-buttons">
         <button id="cookie-accept" class="cookie-btn cookie-accept-btn">Godta</button>
-        <button id="cookie-re reject" class="cookie-btn cookie-reject-btn">Avvis</button>
+        <button id="cookie-reject" class="cookie-btn cookie-reject-btn">Avvis</button>
         <button id="cookie-settings" class="cookie-btn cookie-settings-btn">Innstillinger</button>
       </div>
     </div>
@@ -805,7 +811,9 @@ cta {
   </div>
 
   <!-- Header Container -->
-  <div id="header-container"></div>
+  <div id="header-container">
+    <p class="error-message">Kunne ikke laste header. Vennligst oppdater siden.</p>
+  </div>
 
   <main id="main-content">
     <!-- Hero Section -->
@@ -941,7 +949,7 @@ cta {
       <div class="container">
         <div class="cta-content">
           <h2>Klar til å komme i gang?</h2>
-          p>Join thousands of users who trust everytool.io for their daily tool needs without compromising their privacy.</p>
+          <p>Bli en av tusenvis av brukere som stoler på everytool.io for sine daglige verktøybehov uten å ofre personvernet.</p>
           <a href="https://everytool.io/tools" class="btn btn-cta">
             <i class="fas fa-tools"></i> Utforsk alle verktøyene
           </a>
@@ -951,7 +959,9 @@ cta {
   </main>
 
   <!-- Footer Container -->
-  <div id="footer-container"></div>
+  <div id="footer-container">
+    <p class="error-message">Kunne ikke laste footer. Vennligst oppdater siden.</p>
+  </div>
 
   <!-- Script Loading -->
   <script>
@@ -963,8 +973,10 @@ cta {
       ]).then(([header, footer]) => {
         document.getElementById('header-container').innerHTML = header;
         document.getElementById('footer-container').innerHTML = footer;
+        document.querySelectorAll('#header-container .error-message, #footer-container .error-message').forEach(el => el.style.display = 'none');
       }).catch(error => {
         console.error('Error loading includes:', error);
+        document.querySelectorAll('#header-container .error-message, #footer-container .error-message').forEach(el => el.style.display = 'block');
       });
 
       // Cookie Consent Logic
@@ -975,7 +987,7 @@ cta {
       const settingsBtn = document.getElementById('cookie-settings');
       const closeModal = document.querySelector('.close-modal');
       const saveSettingsBtn = document.getElementById('save-cookie-settings');
-      const.analyticsToggle = document.getElementById('analytics-cookies');
+      const analyticsToggle = document.getElementById('analytics-cookies');
       const analyticsStatus = document.getElementById('analytics-status-text');
       const overallStatus = document.getElementById('overall-status-text');
 
@@ -986,7 +998,7 @@ cta {
 
       // Accept cookies
       acceptBtn.addEventListener('click', () => {
-        cookieBanner.classList.remove('Show');
+        cookieBanner.classList.remove('show');
         analyticsToggle.checked = true;
         analyticsStatus.textContent = 'På';
         overallStatus.textContent = 'Innstillinger lagret';
@@ -1013,7 +1025,7 @@ cta {
       // Save cookie settings
       saveSettingsBtn.addEventListener('click', () => {
         cookieBanner.classList.remove('show');
-        cookieModal.style.display = ' 'none';
+        cookieModal.style.display = 'none';
         analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
         overallStatus.textContent = 'Innstillinger lagret';
       });
