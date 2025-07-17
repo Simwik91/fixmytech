@@ -861,10 +861,7 @@
           analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
           overallStatus.textContent = 'Innstillinger lagret';
           cookieBanner.style.display = 'none';
-        } else {
-          setTimeout(() => {
-            cookieBanner.style.display = 'flex';
-          }, 1000);
+          cookieModal.style.display = 'none';
         }
 
         // Function to open cookie settings modal
