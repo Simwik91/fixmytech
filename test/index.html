@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FixMyTech.no - Profesjonelle IT-reparasjoner og programvareløsninger</title>
-  <meta name="description" content="FixMyTech.no tilbyr profesjonell teknisk hjelp, inkludert feilretting, backup, skylagring, webdesign og domenetjenester.">
+  <meta name="description" content="FixMyTech.no tilbyr profesjonell teknisk hjelp, inkludert reparasjon, backup, skylagring, webdesign og domenetjenester.">
   <meta name="keywords" content="teknisk støtte, teknologihjelp, PC-reparasjon, datasikkerhet, backup, skylagring, webdesign, domene">
   <meta name="author" content="FixMyTech.no">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -74,9 +74,10 @@
     
     .process-steps {
       margin-top: 3rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      display: flex;
+      flex-wrap: nowrap;
       gap: 2rem;
+      justify-content: center;
     }
     
     .step-card {
@@ -86,6 +87,9 @@
       padding: 2rem;
       transition: var(--transition);
       border-top: 4px solid var(--primary);
+      flex: 1;
+      min-width: 250px;
+      max-width: 350px;
     }
     
     .step-card:hover {
@@ -179,6 +183,29 @@
       color: var(--secondary);
       margin-bottom: 1.5rem;
       flex-grow: 1;
+    }
+    
+    .service-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: left;
+      font-size: 1rem;
+      color: var(--secondary);
+      line-height: 1.6;
+    }
+    
+    .service-card li {
+      padding: 0.5rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+    }
+    
+    .service-card i.fa-check {
+      color: var(--success);
+      min-width: 24px;
+      margin-top: 0.2rem;
     }
     
     .service-card .btn-service {
@@ -316,30 +343,10 @@
     
     /* Style for everytool.io in section-title */
     .everytool-section .section-title h2 {
-      color: var(--primary); /* Match the blue color used elsewhere */
+      color: var(--primary);
     }
 
     /* Service-specific styles */
-    .service-hero {
-      padding: 6rem 0 4rem;
-      background: linear-gradient(135deg, #f0f7ff 0%, #e1ecfe 100%);
-      color: var(--secondary);
-      text-align: center;
-      border-bottom: 1px solid #e2e8f0;
-    }
-    
-    .service-hero h1 {
-      font-size: 2.8rem;
-      margin-bottom: 1rem;
-    }
-    
-    .service-hero p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto;
-      color: #4a5568;
-    }
-    
     .service-container {
       max-width: 1200px;
       margin: 0 auto;
@@ -359,55 +366,6 @@
       font-size: 2.5rem;
       color: var(--success);
       margin-bottom: 1.5rem;
-    }
-    
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin: 3rem 0;
-    }
-    
-    .service-card {
-      background: white;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-      padding: 2rem;
-      transition: var(--transition);
-      border-top: 4px solid var(--primary);
-    }
-    
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    }
-    
-    .card-icon {
-      font-size: 2.5rem;
-      color: var(--primary);
-      margin-bottom: 1.5rem;
-    }
-    
-    .service-card h3 {
-      margin-bottom: 1.2rem;
-      color: var(--primary);
-    }
-    
-    .service-card ul {
-      list-style: none;
-      padding: 0;
-    }
-    
-    .service-card li {
-      padding: 0.5rem 0;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.8rem;
-    }
-    
-    .service-card i.fa-check {
-      color: var(--success);
-      min-width: 24px;
     }
     
     .problem-cards {
@@ -503,9 +461,10 @@
     }
     
     .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      display: flex;
+      flex-wrap: nowrap;
       gap: 2rem;
+      justify-content: center;
       margin: 3rem 0;
     }
     
@@ -516,6 +475,9 @@
       padding: 2rem;
       text-align: center;
       transition: var(--transition);
+      flex: 1;
+      min-width: 250px;
+      max-width: 350px;
     }
     
     .benefit-card:hover {
@@ -550,8 +512,8 @@
     }
     
     .btn-service:hover {
-        background: var(--secondary);
-        transform: translateY(-3px);
+      background: var(--secondary);
+      transform: translateY(-3px);
     }
     
     @media (max-width: 992px) {
@@ -569,6 +531,14 @@
       
       .about-content h2 {
         font-size: 2rem;
+      }
+      
+      .process-steps {
+        flex-wrap: wrap;
+      }
+      
+      .benefits-grid {
+        flex-wrap: wrap;
       }
     }
     
@@ -602,20 +572,12 @@
         font-size: 1.1rem;
       }
       
-      .about-content h2 Boarding Call! {
+      .about-content h2 {
         font-size: 1.8rem;
       }
       
       .about-content p {
         font-size: 1.1rem;
-      }
-      
-      .service-hero {
-        padding: 4rem 1rem 2rem;
-      }
-      
-      .service-hero h1 {
-        font-size: 2.2rem;
       }
       
       .pricing-section {
@@ -710,7 +672,7 @@
                 <i class="fas fa-leaf"></i>
               </div>
               <h3>Godt for miljøet og lommeboken</h3>
-              <p>Ved å reparere og vedlikeholde utstyr istedenfor å kjøpe nytt, bidrar du til bærekraftig utvikling og reduserer elektronisk avfall. Våre reparasjoner forlenger levetiden til utstyr og sparer deg for unødvendige kostWL: The tech crew is ready to assist!nader.</p>
+              <p>Ved å reparere og vedlikeholde utstyr istedenfor å kjøpe nytt, bidrar du til bærekraftig utvikling og reduserer elektronisk avfall. Våre reparasjoner forlenger levetiden til utstyr og sparer deg for unødvendige kostnader.</p>
             </div>
             <div class="services-grid">
               <div class="service-card">
@@ -720,7 +682,7 @@
                 <h3>Maskinvare & Utstyr</h3>
                 <ul>
                   <li><i class="fas fa-check"></i>Reparasjon av PC, laptop, nettbrett</li>
-                  <li><i class="fas fa-check"></i>Utstyrs-oppgradering (minne, SSD)</li>
+                  <li><i class="fas fa-check"></i>Utstyrsoppgradering (minne, SSD)</li>
                   <li><i class="fas fa-check"></i>Feilsøking av maskinvarefeil</li>
                   <li><i class="fas fa-check"></i>Hente ut data fra ødelagt utstyr</li>
                   <li><i class="fas fa-check"></i>Skjermreparasjoner</li>
@@ -736,10 +698,10 @@
                   <li><i class="fas fa-check"></i>Fikse programvarefeil</li>
                   <li><i class="fas fa-check"></i>Virus- og malware-fjerning</li>
                   <li><i class="fas fa-check"></i>Systemoptimalisering</li>
-                  <li><i class="fas fa-check"></i>Operativsystem-oppdateringer</li>
-                  <li><i class="fas fa-check"></i>Gjenoppretting av Operativsystem</li>
-                  <li><i class="fas fa-check"></i>Programvareinstallasjon og konfigurasjon</li>
-                  <li><i class="fas fa-check"></i>Driver-oppdateringer</li>
+                  <li><i class="fas fa-check"></i>Operativsystemoppdateringer</li>
+                  <li><i class="fas fa-check"></i>Gjenoppretting av operativsystem</li>
+                  <li><i class="fas fa-check"></i>Programvareinstallasjon og -konfigurasjon</li>
+                  <li><i class="fas fa-check"></i>Driveroppdateringer</li>
                 </ul>
               </div>
             </div>
@@ -780,53 +742,6 @@
                   <p>Vi løser Wi-Fi-problemer, nettverkskoblinger og Internett-tilkoblinger.</p>
                 </div>
               </div>
-            </div>
-            <div class="service-section">
-              <div class="section-title">
-                <h2>Hvordan jobber vi?</h2>
-                <p>Vår prosess er enkel og effektiv for å sikre rask og teknisk støtte</p>
-              </div>
-              <div class="process-steps">
-                <div class="step-card">
-                  <div class="step-number">1</div>
-                  <h3>Kontakt oss</h3>
-                  <p>Fortell oss om ditt problem via skjemaet på kontaktsiden.</p>
-                </div>
-                <div class="step-card">
-                  <div class="step-number">2</div>
-                  <h3>Vurdering</h3>
-                  <p>Vi vurderer forespørselen din, normalt innen 24 timer, og gir et tilbud på løsning.</p>
-                </div>
-                <div class="step-card">
-                  <div class="step-number">3</div>
-                  <h3>Gjennomføring og Levering</h3>
-                  <p>Etter godkjent tilbud løser vi oppdraget via fjernstyring eller returnerer utstyret etter reparasjon.</p>
-                </div>
-              </div>
-            </div>
-            <div class="pricing-section">
-              <div class="section-title">
-                <h2>Priser og Betingelser</h2>
-                <p>Transparent prising uten skjulte kostnader</p>
-              </div>
-              <div class="pricing-card">
-                <div class="price-tag">550,- <span>per time</span></div>
-                <p class="price-highlight">80% av alle problemer løses innen en time!</p>
-                <ul>
-                  <li><i class="fas fa-check-circle"></i>Betaling kun ved løst problem</li>
-                  <li><i class="fas fa-check-circle"></i>Ingen skjulte kostnader</li>
-                  <li><i class="fas fa-check-circle"></i>Gratis tilbud</li>
-                  <li><i class="fas fa-check-circle"></i>Fjernhjelp tilgjengelig</li>
-                </ul>
-              </div>
-              <div class="additional-fee">
-                <p><strong>Merk:</strong> Hvis du har sendt utstyr til oss og vi ikke kan reparere det, kan du velge å få det returnert eller la oss destruere det for en avgift på 500,-.</p>
-              </div>
-            </div>
-            <div class="cta-section">
-              <h3>Klar til å reparere utstyret ditt?</h3>
-              <p>Kontakt oss i dag for en gratis vurdering av ditt problem</p>
-              <a href="#contact" class="btn btn-service">Kontakt oss nå</a>
             </div>
             <div class="benefits-grid">
               <div class="benefit-card">
@@ -881,6 +796,54 @@
           <span>Servere</span>
         </div>
       </div>
+
+      <section id="how-we-work" class="service-section">
+        <div class="section-title">
+          <h2>Hvordan jobber vi?</h2>
+          <p>Vår prosess er enkel og effektiv for å sikre rask og teknisk støtte</p>
+        </div>
+        <div class="process-steps">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3>Kontakt oss</h3>
+            <p>Fortell oss om ditt problem via skjemaet på kontaktsiden.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3>Vurdering</h3>
+            <p>Vi vurderer forespørselen din, normalt innen 24 timer, og gir et tilbud på løsning.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3>Gjennomføring og Levering</h3>
+            <p>Etter godkjent tilbud løser vi oppdraget via fjernstyring eller returnerer utstyret etter reparasjon.</p>
+          </div>
+        </div>
+        <div class="pricing-section">
+          <div class="section-title">
+            <h2>Priser og Betingelser</h2>
+            <p>Transparent prising uten skjulte kostnader</p>
+          </div>
+          <div class="pricing-card">
+            <div class="price-tag">550,- <span>per time</span></div>
+            <p class="price-highlight">80% av alle problemer løses innen en time!</p>
+            <ul>
+              <li><i class="fas fa-check-circle"></i>Betaling kun ved løst problem</li>
+              <li><i class="fas fa-check-circle"></i>Ingen skjulte kostnader</li>
+              <li><i class="fas fa-check-circle"></i>Gratis tilbud</li>
+              <li><i class="fas fa-check-circle"></i>Fjernhjelp tilgjengelig</li>
+            </ul>
+          </div>
+          <div class="additional-fee">
+            <p><strong>Merk:</strong> Hvis du har sendt utstyr til oss og vi ikke kan reparere det, kan du velge å få det returnert eller la oss destruere det for en avgift på 500,-.</p>
+          </div>
+        </div>
+        <div class="cta-section">
+          <h3>Klar til å reparere utstyret ditt?</h3>
+          <p>Kontakt oss i dag for en gratis vurdering av ditt problem</p>
+          <a href="#contact" class="btn btn-service">Kontakt oss nå</a>
+        </div>
+      </section>
 
       <section id="services" class="service-section">
         <div class="section-title">
