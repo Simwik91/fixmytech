@@ -58,7 +58,13 @@
       width: 100%;
     }
     
-    .form-group button:hover {
+    .form-group button:disabled {
+      background: var(--light-gray);
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+    
+    .form-group button:hover:not(:disabled) {
       background: var(--secondary);
       transform: translateY(-3px);
     }
@@ -92,7 +98,7 @@
       background: #fff;
       color: var(--secondary);
       text-align: center;
-      margin-top: 2rem; /* Added spacing between header and hero */
+      margin-top: 2rem;
     }
     
     .hero h1 {
@@ -133,6 +139,31 @@
       transform: translateY(-5px);
     }
 
+    /* Terms checkbox */
+    .terms-checkbox-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      color: var(--secondary);
+    }
+
+    .terms-checkbox-container input[type="checkbox"] {
+      width: 1.2rem;
+      height: 1.2rem;
+      cursor: pointer;
+    }
+
+    .terms-checkbox-container a {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    .terms-checkbox-container a:hover {
+      color: var(--secondary);
+    }
+
     /* Additional spacing between header and content */
     #main-content {
       padding-top: 2rem;
@@ -160,6 +191,15 @@
       
       .contact {
         padding: 3rem 0;
+      }
+      
+      .terms-checkbox-container {
+        font-size: 0.9rem;
+      }
+      
+      .terms-checkbox-container input[type="checkbox"] {
+        width: 1rem;
+        height: 1rem;
       }
     }
   </style>
@@ -254,6 +294,7 @@
               <label for="service-type">Hva kan vi hjelpe deg med?</label>
               <select id="service-type" name="service" required aria-required="true" aria-label="Velg type tjeneste" autocomplete="off">
                 <option value="">Velg en tjeneste...</option>
+                <option value="webdesign">Webdesign & Domene</option>
                 <option value="feilretting">Feilretting og Vedlikehold</option>
                 <option value="backup">Backup & Skylagring</option>
                 <option value="other">Annet</option>
@@ -269,7 +310,13 @@
             </div>
             <input type="hidden" name="_subject" id="email-subject" value="Ny henvendelse fra FixMyTech.no" autocomplete="off">
             <div class="form-group">
-              <button type="submit" aria-label="Send henvendelse">
+              <div class="terms-checkbox-container">
+                <input type="checkbox" id="terms-checkbox" aria-label="Godta vilkårene">
+                <label for="terms-checkbox">Jeg har lest og forstått <a href="/vilkår" target="_blank">vilkårene</a></label>
+              </div>
+            </div>
+            <div class="form-group">
+              <button type="submit" id="submit-button" disabled aria-label="Send henvendelse">
                 <i class="fas fa-paper-plane"></i> Send henvendelse
               </button>
             </div>
@@ -288,7 +335,6 @@
 
   <!-- Script Loading -->
   <script>
-    // Load header and footer first
     document.addEventListener('DOMContentLoaded', function() {
       Promise.all([
         fetch('https://fixmytech.no/includes/header.html').then(res => res.text()),
@@ -297,13 +343,22 @@
         document.getElementById('header-container').innerHTML = header;
         document.getElementById('footer-container').innerHTML = footer;
         
-        // Now load main.js after DOM is ready
         const script = document.createElement('script');
         script.src = 'https://fixmytech.no/js/main.js';
         document.body.appendChild(script);
       }).catch(error => {
         console.error('Error loading includes:', error);
       });
+
+      // Terms checkbox functionality
+      const termsCheckbox = document.getElementById('terms-checkbox');
+      const submitButton = document.getElementById('submit-button');
+
+      if (termsCheckbox && submitButton) {
+        termsCheckbox.addEventListener('change', function() {
+          submitButton.disabled = !this.checked;
+        });
+      }
     });
   </script>
 </body>
