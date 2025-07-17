@@ -97,7 +97,6 @@
 
     .pricing-section {
       margin: 3rem 0;
-      text-align: center;
     }
 
     .pricing-card {
@@ -108,8 +107,6 @@
       text-align: center;
       transition: var(--transition);
       border: 2px solid var(--light-gray);
-      max-width: 500px;
-      margin: 0 auto;
     }
 
     .pricing-card:hover {
@@ -117,69 +114,52 @@
       border-color: var(--primary);
     }
 
-    .price-tag {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
+    .annual-cost {
+      margin-top: 1rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--secondary);
     }
 
-    .contact {
-      padding: 5rem 0;
-      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-    }
-
-    .contact-form-container {
-      max-width: 700px;
-      margin: 0 auto;
-      background: white;
-      padding: 2.5rem;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-    }
-
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      padding: 1rem;
-      border: 1px solid var(--light-gray);
-      border-radius: var(--border-radius);
+    .annual-cost-list {
+      margin-top: 0.5rem;
       font-size: 1rem;
-      transition: var(--transition);
+      color: var(--secondary);
+      text-align: left;
     }
 
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      border-color: var(--primary);
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    .annual-cost-list li {
+      padding: 0.5rem 0;
     }
 
-    .form-group button {
+    /* Get Help Button Styling */
+    .get-help-section {
+      padding: 2rem 0;
+      text-align: center;
+    }
+
+    .get-help-button {
       background: var(--primary);
       color: white;
       border: none;
-      padding: 1rem 2rem;
+      padding: 1.25rem 2.5rem;
       border-radius: var(--border-radius);
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       cursor: pointer;
       transition: var(--transition);
-      width: 100%;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
-    .form-group button:hover {
+    .get-help-button i {
+      font-size: 1.4rem;
+    }
+
+    .get-help-button:hover {
       background: var(--secondary);
       transform: translateY(-3px);
-    }
-
-    .form-disclaimer {
-      margin-top: 2rem;
-      padding: 1.5rem;
-      background: rgba(220, 38, 38, 0.05);
-      border-left: 4px solid var(--warning);
-      border-radius: var(--border-radius);
     }
 
     /* Responsive adjustments */
@@ -200,8 +180,25 @@
         font-size: 2rem;
       }
 
-      .contact {
-        padding: 3rem 0;
+      .get-help-section {
+        padding: 1.5rem 0;
+      }
+
+      .get-help-button {
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+      }
+
+      .get-help-button i {
+        font-size: 1.3rem;
+      }
+
+      .annual-cost {
+        font-size: 1.3rem;
+      }
+
+      .annual-cost-list {
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -324,64 +321,29 @@
         </div>
 
         <div class="pricing-section">
-          <div class="pricing-cards">
+          <div class="services-grid">
             <div class="pricing-card">
-              <div class="price-tag">1500,- <span>engangskostnad</span></div>
-              <div class="price-tag">Årlig kost <span>avhengig av datamengde</span></div>
               <ul>
                 <li><i class="fas fa-check-circle"></i>Konfigurasjon av automatisk backup</li>
                 <li><i class="fas fa-check-circle"></i>Oppsett av kryptert databehandling</li>
                 <li><i class="fas fa-check-circle"></i>Synkronisering på tvers av enheter</li>
                 <li><i class="fas fa-check-circle"></i>Hjelp til gjenoppretting ved behov</li>
               </ul>
+              <div class="annual-cost">Årlig kost</div>
+              <ul class="annual-cost-list">
+                <li><i class="fas fa-check-circle"></i>Opptil 100 GB: 900,- per år</li>
+                <li><i class="fas fa-check-circle"></i>Opptil 500 GB: 1500,- per år</li>
+                <li><i class="fas fa-check-circle"></i>1 TB: 2500,- per år</li>
+                <li><i class="fas fa-check-circle"></i>Over 1 TB: Skreddersydd tilbud</li>
+              </ul>
             </div>
           </div>
         </div>
 
-        <section id="contact" class="contact">
-          <div class="section-title">
-            <h2>Kontakt Oss</h2>
-            <p>Få teknisk hjelp raskt og enkelt</p>
-          </div>
-          <div class="contact-form-container">
-            <form id="contact-form" action="https://formspree.io/f/mwpbkjdd" method="POST">
-              <div class="form-group">
-                <label for="name">Navn</label>
-                <input type="text" id="name" name="name" required aria-required="true" aria-label="Ditt navn" autocomplete="name">
-              </div>
-              <div class="form-group">
-                <label for="email">E-post</label>
-                <input type="email" id="email" name="email" required aria-required="true" aria-label="Email" autocomplete="email">
-              </div>
-              <div class="form-group">
-                <label for="service-type">Hva kan vi hjelpe deg med?</label>
-                <select id="service-type" name="service" required aria-required="true" aria-label="Velg type tjeneste" autocomplete="off">
-                  <option value="">Velg en tjeneste...</option>
-                  <option value="feilretting">Feilretting og Vedlikehold</option>
-                  <option value="backup">Backup & Skylagring</option>
-                  <option value="other">Annet</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="message">Beskriv behovet ditt</label>
-                <textarea id="message" name="message" required aria-required="true" aria-label="Beskrivelse av ditt behov" placeholder="Beskriv utfordringen eller behovet ditt, f.eks. 'PC starter ikke', 'trenger backup-oppsett', eller 'laptop er veldig treg'. Inkluder detaljer om utstyr eller feilmeldinger for raskere støtte." autocomplete="off"></textarea>
-              </div>
-              <div style="display: none;">
-                <label for="website">Website (leave blank)</label>
-                <input type="text" id="website" name="_gotcha" autocomplete="off">
-              </div>
-              <input type="hidden" name="_subject" id="email-subject" value="Ny henvendelse fra FixMyTech.no" autocomplete="off">
-              <div class="form-group">
-                <button type="submit" aria-label="Send henvendelse">
-                  <i class="fas fa-paper-plane"></i> Send henvendelse
-                </button>
-              </div>
-              <div class="form-disclaimer">
-                <p><strong>Viktig:</strong></p>
-                <p>Våre eksperter jobber for å levere høykvalitets teknologitjenester. FixMyTech.no er ikke ansvarlig for skader på utstyr eller problemer som kan oppstå under reparasjon, oppsett eller andre tjenester. Kunden aksepterer at all bruk av våre tjenester skjer på eget ansvar.</p>
-              </div>
-            </form>
-          </div>
+        <section id="get-help" class="get-help-section">
+          <a href="/kontakt/" class="get-help-button" aria-label="Få hjelp nå">
+            <i class="fas fa-paper-plane"></i> Få hjelp nå
+          </a>
         </section>
       </section>
     </div>
