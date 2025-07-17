@@ -225,21 +225,48 @@
       position: relative;
       z-index: 1;
       background: white;
-      padding: 2.5rem;
+      padding: 3rem;
       border-radius: var(--border-radius);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
+    }
+    
+    .everytool-content:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
     }
     
     .everytool-content h3 {
-      font-size: 2rem;
+      font-size: 2.2rem;
       margin-bottom: 1.5rem;
       color: var(--primary);
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    
+    .everytool-content h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 2px;
     }
     
     .everytool-content p {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: var(--secondary);
       margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    
+    .everytool-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
     }
     
     .btn-everytool {
@@ -262,6 +289,31 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
     }
     
+    /* About Us Section */
+    .about-section {
+      padding: 5rem 0;
+      text-align: center;
+      background: #f9fafb;
+    }
+    
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .about-content h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+    
+    .about-content p {
+      font-size: 1.2rem;
+      color: var(--secondary);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    
     /* Responsive adjustments */
     @media (max-width: 992px) {
       .hero h1 {
@@ -275,6 +327,10 @@
       .everytool-content h3 {
         font-size: 1.8rem;
       }
+      
+      .about-content h2 {
+        font-size: 2rem;
+      }
     }
     
     @media (max-width: 768px) {
@@ -286,7 +342,7 @@
         font-size: 2rem;
       }
       
-      .service-section, .everytool-section {
+      .service-section, .everytool-section, .about-section {
         padding: 3rem 0;
       }
       
@@ -304,6 +360,14 @@
       
       .btn-everytool {
         padding: 1rem 2rem;
+        font-size: 1.1rem;
+      }
+      
+      .about-content h2 {
+        font-size: 1.8rem;
+      }
+      
+      .about-content p {
         font-size: 1.1rem;
       }
     }
@@ -377,6 +441,15 @@
           <h1><span>IT-hjelp</span> for deg</h1>
           <p>Profesjonelle tekniske løsninger.</p>
           <a href="/kontakt/" class="btn btn-hero">Få hjelp nå</a>
+        </div>
+      </section>
+
+      <section id="about-us" class="about-section">
+        <div class="about-content">
+          <p>FixMyTech.no ble grunnlagt med en visjon om å gjøre teknologi enkel og tilgjengelig for alle. Vårt team av erfarne IT-eksperter er dedikert til å levere skreddersydde løsninger som møter dine behov.</p>
+          <p>Med fokus på kvalitet, pålitelighet og kundetilfredshet, tilbyr vi alt fra feilsøking og reparasjoner til avanserte skyløsninger og webdesign.</p>
+          <p>Vi tror på å bygge langsiktige relasjoner ved å gi ærlig rådgivning og effektive resultater.</p>
+          <p>La oss hjelpe deg med å navigere i teknologiens verden – vi er her for å gjøre hverdagen din enklere!</p>
         </div>
       </section>
 
@@ -469,6 +542,9 @@
           <h2>everytool.io</h2>
         </div>
         <div class="everytool-content">
+          <div class="everytool-icon">
+            <i class="fas fa-tools"></i>
+          </div>
           <h3>Utforsk vår samling av gratis verktøy</h3>
           <p>Vi har utviklet en kraftig samling av gratis verktøy på everytool.io, tilgjengelig direkte i nettleseren din. Ingen registrering, ingen datalagring – bare enkle, effektive løsninger for å øke produktiviteten din.</p>
           <a href="everytool/" class="btn btn-everytool">
