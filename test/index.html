@@ -160,9 +160,10 @@
     }
 
     .help-button:hover {
-      background: var(--secondary);
-      transform: translateY(-5px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+      background: #4b6cb7; /* Lighter blue for subtle pop */
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+      color: white;
     }
 
     /* Cookie Consent Banner Styling */
@@ -175,9 +176,7 @@
       box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
       padding: 1.5rem;
       z-index: 1000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: none; /* Hidden by default, shown by JS */
     }
 
     .cookie-content {
@@ -227,7 +226,7 @@
     }
 
     .cookie-accept-btn:hover {
-      background: var(--secondary);
+      background: #4b6cb7;
     }
 
     .cookie-reject-btn {
@@ -336,7 +335,7 @@
     }
 
     .btn-primary:hover {
-      background: var(--secondary);
+      background: #4b6cb7;
     }
 
     /* Additional styles for cookie status indicators */
@@ -344,9 +343,15 @@
       opacity: 0.5;
     }
 
+    #analytics-status,
+    #overall-status {
+      font-size: 0.9rem;
+      color: var(--secondary);
+    }
+
     #analytics-status-text,
     #overall-status-text {
-      font-size:3.5rem;
+      font-size: 0.9rem;
       color: var(--secondary);
     }
 
@@ -449,12 +454,12 @@
           Analyse-cookies
           <input type="checkbox" id="analytics-cookies">
           <span class="toggle-switch"></span>
-          <span id="analytics-status-text">Av</span>
+          <span id="analytics-status">Av</span>
         </label>
         <p>Hjelper oss å forstå hvordan nettstedet brukes.</p>
       </div>
       <div class="cookie-option">
-        <p>sony2>Status: <span id="overall-status-text">Innstillinger er ikke lagret</span></p>
+        <p>Status: <span id="overall-status">Innstillinger er ikke lagret</span></p>
       </div>
       <button class="btn btn-primary" id="save-cookie-settings">Lagre</button>
     </div>
