@@ -130,11 +130,10 @@
       margin-bottom: 0.5rem;
     }
 
-    .price-subtext {
+    .price-tag span {
       font-size: 1rem;
       font-weight: 400;
-      color: var(--primary);
-      margin-bottom: 1rem;
+      color: var(--secondary);
     }
 
     .help-button-section {
@@ -148,22 +147,17 @@
       border: none;
       padding: 1.5rem 3rem;
       border-radius: var(--border-radius);
-      font-weight: 700;
-      font-size: 1.4rem;
+      font-weight: 600;
+      font-size: 1.5rem;
       cursor: pointer;
       transition: var(--transition);
       display: inline-block;
       text-decoration: none;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
     }
 
     .help-button:hover {
-      background: #4b6cb7; /* Lighter blue for subtle pop */
+      background: var(--secondary);
       transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-      color: white;
     }
 
     /* Cookie Consent Banner Styling */
@@ -176,7 +170,9 @@
       box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
       padding: 1.5rem;
       z-index: 1000;
-      display: none; /* Hidden by default, shown by JS */
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .cookie-content {
@@ -226,7 +222,7 @@
     }
 
     .cookie-accept-btn:hover {
-      background: #4b6cb7;
+      background: var(--secondary);
     }
 
     .cookie-reject-btn {
@@ -335,18 +331,12 @@
     }
 
     .btn-primary:hover {
-      background: #4b6cb7;
+      background: var(--secondary);
     }
 
     /* Additional styles for cookie status indicators */
     .off {
       opacity: 0.5;
-    }
-
-    #analytics-status,
-    #overall-status {
-      font-size: 0.9rem;
-      color: var(--secondary);
     }
 
     #analytics-status-text,
@@ -375,11 +365,6 @@
 
       .pricing-cards {
         grid-template-columns: 1fr;
-      }
-
-      .help-button {
-        padding: 1.2rem 2.5rem;
-        font-size: 1.2rem;
       }
 
       #cookie-consent-banner {
@@ -420,11 +405,6 @@
         font-size: 0.8rem;
         padding: 0.6rem;
       }
-
-      .help-button {
-        padding: 1rem 2rem;
-        font-size: 1.1rem;
-      }
     }
   </style>
 </head>
@@ -454,12 +434,12 @@
           Analyse-cookies
           <input type="checkbox" id="analytics-cookies">
           <span class="toggle-switch"></span>
-          <span id="analytics-status">Av</span>
+          <span id="analytics-status-text">Av</span>
         </label>
         <p>Hjelper oss å forstå hvordan nettstedet brukes.</p>
       </div>
       <div class="cookie-option">
-        <p>Status: <span id="overall-status">Innstillinger er ikke lagret</span></p>
+        <p>Status: <span id="overall-status-text">Innstillinger er ikke lagret</span></p>
       </div>
       <button class="btn btn-primary" id="save-cookie-settings">Lagre</button>
     </div>
@@ -548,8 +528,7 @@
         <div class="pricing-section">
           <div class="pricing-cards">
             <div class="pricing-card">
-              <div class="price-tag">10 000,-</div>
-              <div class="price-subtext">oppstartskost</div>
+              <div class="price-tag">10 000,- <span>oppstartskost</span></div>
               <ul>
                 <li><i class="fas fa-check-circle"></i>Komplett nettsidedesign</li>
                 <li><i class="fas fa-check-circle"></i>Domeneoppsett og registrering</li>
@@ -557,8 +536,7 @@
               </ul>
             </div>
             <div class="pricing-card">
-              <div class="price-tag">590,-</div>
-              <div class="price-subtext">årlig</div>
+              <div class="price-tag">590,- <span>årlig</span></div>
               <ul>
                 <li><i class="fas fa-check-circle"></i>Hosting av domene</li>
                 <li><i class="fas fa-check-circle"></i>Domeneoverføring og fornyelse</li>
@@ -567,11 +545,11 @@
               </ul>
             </div>
             <div class="pricing-card">
-              <div class="price-tag">550,-</div>
-              <div class="price-subtext">per time</div>
+              <div class="price-tag">550,- <span>per time</span></div>
               <ul>
                 <li><i class="fas fa-check-circle"></i>Support og vedlikehold</li>
                 <li><i class="fas fa-check-circle"></i>Feilretting og oppdateringer</li>
+                <li><i class="fas fa-check-circle"></i>SEO-optimaliseringstjenester</li>
                 <li><i class="fas fa-check-circle"></i>Teknisk konsultasjon</li>
               </ul>
             </div>
