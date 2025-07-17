@@ -10,102 +10,265 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" type="image/x-icon" href="https://fixmytech.no/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fixmytech.no/css/styles.css">
   <style>
-    /* Service-specific styles */
-    .service-hero {
-      padding: 6rem 0 4rem;
-      background: linear-gradient(135deg, #f0f7ff 0%, #e1ecfe 100%);
+    :root {
+      --primary: #2563eb;
+      --secondary: #1e293b;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --light-gray: #f1f5f9;
+      --border-radius: 10px;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      color: #334155;
+      background-color: #f8fafc;
+    }
+    
+    h1, h2, h3, h4, h5 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
       color: var(--secondary);
-      text-align: center;
-      border-bottom: 1px solid #e2e8f0;
     }
     
-    .service-hero h1 {
-      font-size: 2.8rem;
-      margin-bottom: 1rem;
-    }
-    
-    .service-hero p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto;
-      color: #4a5568;
-    }
-    
-    .service-container {
+    .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 2rem 1rem;
+      padding: 0 1.5rem;
     }
     
-    .service-section {
-      padding: 3rem 0;
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.8rem;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      cursor: pointer;
+      text-align: center;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+    }
+    
+    .btn-primary:hover {
+      background-color: #1d4ed8;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+    }
+    
+    .btn-large {
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+    }
+    
+    .section {
+      padding: 5rem 0;
     }
     
     .section-title {
       text-align: center;
-      margin-bottom: 2.5rem;
+      margin-bottom: 3rem;
     }
     
     .section-title h2 {
-      font-size: 2.2rem;
-      margin-bottom: 0.8rem;
-      color: var(--primary);
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background-color: var(--primary);
+      border-radius: 2px;
     }
     
     .section-title p {
-      font-size: 1.1rem;
-      color: var(--secondary);
-      max-width: 800px;
+      font-size: 1.2rem;
+      color: #64748b;
+      max-width: 700px;
       margin: 0 auto;
     }
     
+    /* Header Section */
+    .service-hero {
+      padding: 8rem 0 5rem;
+      background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+      color: var(--secondary);
+      text-align: center;
+      border-bottom: 1px solid #e2e8f0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .service-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.2" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+      background-size: cover;
+      background-position: center bottom;
+      z-index: 0;
+    }
+    
+    .service-hero .container {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .service-hero h1 {
+      font-size: 3.2rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+    
+    .service-hero p {
+      font-size: 1.4rem;
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+      color: #334155;
+    }
+    
+    /* Environmental Section */
     .environmental-section {
       background: linear-gradient(135deg, #e6f4ea 0%, #c8e6c9 100%);
-      padding: 2rem;
+      padding: 2.5rem;
       border-radius: var(--border-radius);
       text-align: center;
       margin: 3rem 0;
       border-left: 5px solid var(--success);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .environmental-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,224C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+      background-size: cover;
+      background-position: center bottom;
+      z-index: 0;
+    }
+    
+    .environmental-section > * {
+      position: relative;
+      z-index: 1;
     }
     
     .environmental-icon {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       color: var(--success);
       margin-bottom: 1.5rem;
     }
     
+    .environmental-section h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #047857;
+    }
+    
+    .environmental-section p {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #065f46;
+    }
+    
+    /* Service Cards */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin: 3rem 0;
+      gap: 2.5rem;
+      margin: 4rem 0;
     }
     
     .service-card {
       background: white;
       border-radius: var(--border-radius);
       box-shadow: var(--shadow);
-      padding: 2rem;
+      padding: 2.5rem;
       transition: var(--transition);
+      position: relative;
+      overflow: hidden;
       border-top: 4px solid var(--primary);
     }
     
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #f0f7ff 0%, #e1ecfe 100%);
+      opacity: 0.1;
+      z-index: 0;
+    }
+    
+    .service-card > * {
+      position: relative;
+      z-index: 1;
+    }
+    
     .service-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-10px);
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
     }
     
     .card-icon {
-      font-size: 2.5rem;
+      font-size: 3.5rem;
       color: var(--primary);
       margin-bottom: 1.5rem;
+      text-align: center;
     }
     
     .service-card h3 {
-      margin-bottom: 1.2rem;
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 1.8rem;
       color: var(--primary);
+      position: relative;
+      padding-bottom: 1rem;
+    }
+    
+    .service-card h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background-color: var(--primary);
+      border-radius: 2px;
     }
     
     .service-card ul {
@@ -114,445 +277,815 @@
     }
     
     .service-card li {
-      padding: 0.5rem 0;
+      padding: 0.8rem 0;
       display: flex;
       align-items: flex-start;
-      gap: 0.8rem;
+      gap: 1rem;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    
+    .service-card li:last-child {
+      border-bottom: none;
     }
     
     .service-card i.fa-check {
       color: var(--success);
       min-width: 24px;
+      padding-top: 0.3rem;
+      font-size: 1.2rem;
     }
     
+    .service-card .service-item-content {
+      flex: 1;
+    }
+    
+    .service-card .service-item-title {
+      font-weight: 600;
+      color: var(--secondary);
+      margin-bottom: 0.3rem;
+    }
+    
+    .service-card .service-item-description {
+      font-size: 0.95rem;
+      color: #64748b;
+    }
+    
+    /* Problem Cards */
     .problem-cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin: 3rem 0;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 4rem 0;
     }
     
     .problem-card {
       background: white;
       border-radius: var(--border-radius);
       box-shadow: var(--shadow);
-      padding: 1.5rem;
+      padding: 2rem;
       display: flex;
+      flex-direction: column;
       gap: 1.2rem;
-      align-items: flex-start;
       transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .problem-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #f0f7ff 0%, #e1ecfe 100%);
+      opacity: 0.05;
+      z-index: 0;
+    }
+    
+    .problem-card > * {
+      position: relative;
+      z-index: 1;
     }
     
     .problem-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
     }
     
     .problem-icon {
-      font-size: 1.8rem;
-      color: var(--warning);
-      min-width: 40px;
+      font-size: 2.5rem;
+      color: var(--primary);
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
       display: flex;
+      align-items: center;
       justify-content: center;
-      padding-top: 0.3rem;
+      background-color: rgba(37, 99, 235, 0.1);
     }
     
+    .problem-card h4 {
+      font-size: 1.4rem;
+      color: var(--secondary);
+    }
+    
+    .problem-card p {
+      color: #64748b;
+      line-height: 1.7;
+    }
+    
+    /* Pricing Section */
     .pricing-section {
-      background: #f8fafc;
-      padding: 3rem;
-      border-radius: var(--border-radius);
-      margin: 3rem 0;
-      text-align: center;
-    }
-    
-    .pricing-card {
-      max-width: 600px;
-      margin: 0 auto;
       background: white;
       border-radius: var(--border-radius);
       box-shadow: var(--shadow);
-      padding: 2.5rem;
+      padding: 3rem;
+      margin: 4rem 0;
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
     
-    .price-tag {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--primary);
+    .pricing-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23f0f7ff" fill-opacity="0.3" d="M0,160L48,170.7C96,181,192,203,288,192C384,181,480,139,576,128C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+      background-size: cover;
+      background-position: center bottom;
+      z-index: 0;
+    }
+    
+    .pricing-section > * {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .pricing-title {
+      margin-bottom: 2.5rem;
+    }
+    
+    .pricing-title h3 {
+      font-size: 2rem;
       margin-bottom: 0.5rem;
     }
     
-    .price-highlight {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--success);
-      margin-bottom: 1.5rem;
-    }
-    
-    .pricing-card ul {
-      list-style: none;
-      padding: 0;
-      text-align: left;
-      max-width: 400px;
+    .pricing-title p {
+      color: #64748b;
+      max-width: 600px;
       margin: 0 auto;
     }
     
-    .pricing-card li {
-      padding: 0.7rem 0;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      border-bottom: 1px solid #edf2f7;
+    .price-tag {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      line-height: 1;
     }
     
-    .pricing-card i.fa-check-circle {
+    .price-tag span {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #64748b;
+    }
+    
+    .price-highlight {
+      font-size: 1.3rem;
+      font-weight: 600;
       color: var(--success);
+      margin-bottom: 2rem;
+      padding: 0.8rem 1.5rem;
+      background-color: rgba(16, 185, 129, 0.1);
+      border-radius: 50px;
+      display: inline-block;
+    }
+    
+    .pricing-features {
+      max-width: 500px;
+      margin: 0 auto 2rem;
+    }
+    
+    .pricing-features ul {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+    }
+    
+    .pricing-features li {
+      padding: 0.8rem 0;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    
+    .pricing-features li:last-child {
+      border-bottom: none;
+    }
+    
+    .pricing-features i {
+      color: var(--success);
+      font-size: 1.2rem;
+      min-width: 24px;
     }
     
     .additional-fee {
-      margin-top: 1.5rem;
-      padding: 1rem;
-      background: #fffaf0;
+      margin-top: 2rem;
+      padding: 1.2rem;
+      background: #fffbeb;
       border-left: 4px solid var(--warning);
       border-radius: var(--border-radius);
+      max-width: 700px;
+      margin: 2rem auto 0;
     }
     
+    /* Benefits Grid */
     .benefits-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
-      margin: 3rem 0;
+      margin: 4rem 0;
     }
     
     .benefit-card {
       background: white;
       border-radius: var(--border-radius);
       box-shadow: var(--shadow);
-      padding: 2rem;
+      padding: 2.5rem 2rem;
       text-align: center;
       transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .benefit-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #f0f7ff 0%, #e1ecfe 100%);
+      opacity: 0.05;
+      z-index: 0;
+    }
+    
+    .benefit-card > * {
+      position: relative;
+      z-index: 1;
     }
     
     .benefit-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
     }
     
     .benefit-icon {
-      font-size: 2.5rem;
+      font-size: 3rem;
       color: var(--primary);
+      margin-bottom: 1.5rem;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      background-color: rgba(37, 99, 235, 0.1);
+    }
+    
+    .benefit-card h4 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .benefit-card p {
+      color: #64748b;
+    }
+    
+    /* Contact Section */
+    .contact-section {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      padding: 5rem 0;
+      border-radius: var(--border-radius);
+      margin: 4rem 0;
+    }
+    
+    .contact-form-container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: white;
+      padding: 2.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+    }
+    
+    .form-group {
       margin-bottom: 1.5rem;
     }
     
-    .cta-section {
-      text-align: center;
-      padding: 3rem 0;
-      background: linear-gradient(135deg, #f0f7ff 0%, #e1ecfe 100%);
-      border-radius: var(--border-radius);
-      margin: 3rem 0;
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--secondary);
     }
     
-    .btn-service {
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid #cbd5e1;
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      transition: var(--transition);
+      font-family: 'Roboto', sans-serif;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+    
+    .form-group button {
       background: var(--primary);
       color: white;
-      font-weight: 600;
-      padding: 1rem 2rem;
-      font-size: 1.1rem;
+      border: none;
+      padding: 1rem;
       border-radius: var(--border-radius);
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
       transition: var(--transition);
-      display: inline-block;
-      margin-top: 1.5rem;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
     }
     
-    .btn-service:hover {
-      background: var(--secondary);
+    .form-group button:hover {
+      background: #1d4ed8;
       transform: translateY(-3px);
     }
     
+    .form-disclaimer {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: rgba(220, 38, 38, 0.03);
+      border-left: 4px solid #ef4444;
+      border-radius: var(--border-radius);
+    }
+    
+    /* Footer */
+    .footer {
+      background: var(--secondary);
+      color: #cbd5e1;
+      padding: 4rem 0 2rem;
+      text-align: center;
+    }
+    
+    .footer-content {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .footer-logo {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .footer-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .footer-links a:hover {
+      color: white;
+    }
+    
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+    
+    .social-icon:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+    
+    /* Responsive */
+    @media (max-width: 992px) {
+      .service-hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .service-hero p {
+        font-size: 1.2rem;
+      }
+    }
+    
     @media (max-width: 768px) {
+      .section {
+        padding: 4rem 0;
+      }
+      
       .service-hero {
-        padding: 4rem 1rem 2rem;
+        padding: 6rem 0 3rem;
       }
       
       .service-hero h1 {
-        font-size: 2.2rem;
+        font-size: 2.3rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2rem;
+      }
+      
+      .price-tag {
+        font-size: 2.8rem;
+      }
+      
+      .contact-form-container {
+        padding: 1.8rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .service-hero h1 {
+        font-size: 2rem;
+      }
+      
+      .section-title h2 {
+        font-size: 1.8rem;
+      }
+      
+      .service-card {
+        padding: 2rem 1.5rem;
       }
       
       .pricing-section {
-        padding: 1.5rem;
-      }
-      
-      .pricing-card {
-        padding: 1.5rem;
+        padding: 2rem 1.5rem;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Cookie Consent Banner -->
-  <div id="cookie-consent-banner">
-    <div class="cookie-content">
-      <div class="cookie-text">
-        <h3>Vi bruker informasjonskapsler</h3>
-        <p>Vi bruker cookies for å forbedre din opplevelse og analysere bruk. Les mer i vår <a href="/personvern">personvernerklæring</a>.</p>
-      </div>
-      <div class="cookie-buttons">
-        <button id="cookie-accept" class="cookie-btn cookie-accept-btn">Godta</button>
-        <button id="cookie-reject" class="cookie-btn cookie-reject-btn">Avvis</button>
-        <button id="cookie-settings" class="cookie-btn cookie-settings-btn">Innstillinger</button>
-      </div>
+  <!-- Header -->
+  <header class="service-hero">
+    <div class="container">
+      <h1>Feilretting og Vedlikehold</h1>
+      <p>Profesjonell feilsøking og reparasjon av maskinvare og programvare</p>
+      <a href="#contact" class="btn btn-primary btn-large">Få hjelp nå</a>
     </div>
-  </div>
+  </header>
 
-  <!-- Cookie Settings Modal -->
-  <div id="cookie-settings-modal">
-    <div class="cookie-settings-content">
-      <span class="close-modal">×</span>
-      <h2>Cookie-innstillinger</h2>
-      <div class="cookie-option">
-        <label class="toggle-label">
-          Analyse-cookies
-          <input type="checkbox" id="analytics-cookies">
-          <span class="toggle-switch"></span>
-          <span id="analytics-status-text">Av</span>
-        </label>
-        <p>Hjelper oss å forstå hvordan nettstedet brukes.</p>
+  <div class="container">
+    <!-- Environmental Section -->
+    <div class="environmental-section">
+      <div class="environmental-icon">
+        <i class="fas fa-leaf"></i>
       </div>
-      <div class="cookie-option">
-        <p>Status: <span id="overall-status-text">Innstillinger er ikke lagret</span></p>
-      </div>
-      <button class="btn btn-primary" id="save-cookie-settings">Lagre</button>
+      <h3>Godt for miljøet og lommeboken</h3>
+      <p>Ved å reparere og vedlikeholde utstyr istedenfor å kjøpe nytt, bidrar du til bærekraftig utvikling og reduserer elektronisk avfall. Våre reparasjoner forlenger levetiden til utstyr og sparer deg for unødvendige kostnader.</p>
     </div>
-  </div>
 
-  <!-- Header Include -->
-  <div id="header-container"></div>
+    <!-- Service Cards -->
+    <section class="section">
+      <div class="services-grid">
+        <!-- Maskinvare & Utstyr -->
+        <div class="service-card">
+          <div class="card-icon">
+            <i class="fas fa-plug"></i>
+          </div>
+          <h3>Maskinvare & Utstyr</h3>
+          <ul>
+            <li>
+              <i class="fas fa-check"></i>
+              <div class="service-item-content">
+                <div class="service-item-title">PC, laptop & nettbrett reparasjon</div>
+                <div class="service-item-description">Faglig reparasjon av alle typer datamaskiner og nettbrett</div>
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-check"></i>
+              <div class="service-item-content">
+                <div class="service-item-title">Utstyrs-oppgradering</div>
+                <div class="service-item-description">Minne, SSD og annen maskinvareoppgradering</div>
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-check"></i>
+              <div class="service-item-content">
+                <div class="service-item-title">Feilsøking av maskinvarefeil</div>
+                <div class="service-item-description">Diagnostisering og løsning av maskinvareproblemer</div>
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-check"></i>
+              <div class="service-item-content">
+                <div class="service-item-title">Datauthenting</div>
+                <div class="service-item-description">Hente ut data fra ødelagt utstyr</div>
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-check"></i>
+              <div class="service-item-content">
+                <div class="service-item-title">Skjermreparasjoner</div>
+                <div class="service-item-description">Reparasjon av skjermer på bærbare og stasjonære maskiner</div>
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-check"></i>
+              <div class="service-item-content">
+                <div class="service-item-title">Strømforsyningsproblemer</div>
+                <div class="service-item-description">Feilsøking og reparasjon av strømforsyningsenheter</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Programvare & Systemer -->
+        <div class="service-card">
+          <div class="card-icon">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <h3>Programvare & Systemer</h3>
+          <ul>
+            <li>
+              <i class="fas fa-check"></i>
+              <div class="service-item-content">
+                <div class="service-item-title">Programvarefeil</div>
+                <div class="service-item-description">Løsning av problemer med programvare og applikasjoner</div>
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-check"></i>
+              <div class="service-item-content">
+                <div class="service-item-title">Virus- og malware-fjerning</div>
+                <div class="service-item-description">Fjerning av skadelig programvare og sikring av system</div>
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-check"></i>
+              <div class="service-item-content">
+                <div class="service-item-title">Systemoptimalisering</div>
+                <div class="service-item-description">Optimalisering for raskere og mer effektiv drift</div>
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-check"></i>
+              <div class="service-item-content">
+                <div class="service-item-title">Operativsystem-oppdateringer</div>
+                <div class="service-item-description">Oppdatering av Windows, macOS og Linux-systemer</div>
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-check"></i>
+              <div class="service-item-content">
+                <div class="service-item-title">Gjenoppretting av OS</div>
+                <div class="service-item-description">Gjenoppretting av operativsystem etter krasj eller feil</div>
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-check"></i>
+              <div class="service-item-content">
+                <div class="service-item-title">Programvareinstallasjon</div>
+                <div class="service-item-description">Installasjon og konfigurasjon av nødvendig programvare</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
 
-  <main id="main-content">
-    <!-- Scroll to top button -->
-    <button id="scrollTopBtn" title="Go to top" aria-label="Scroll to top" style="display: none;">
-      <i class="fas fa-arrow-up"></i>
-    </button>
+      <!-- Problem Cards -->
+      <div class="problem-cards">
+        <div class="problem-card">
+          <div class="problem-icon">
+            <i class="fas fa-bug"></i>
+          </div>
+          <h4>Datavirus og malware</h4>
+          <p>Vi fjerner alle typer skadelig programvare og sikrer at systemet ditt er trygt mot fremtidige trusler.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h4>Langsom datamaskin</h4>
+          <p>Vi optimaliserer systemet ditt for raskere ytelse og bedre effektivitet, slik at du kan jobbe uten forsinkelser.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+          </div>
+          <h4>Blåskjerm-feil</h4>
+          <p>Vi diagnostiserer årsaken til systemkrasj og implementerer løsninger for stabil drift.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">
+            <i class="fas fa-wifi"></i>
+          </div>
+          <h4>Nettverksproblemer</h4>
+          <p>Vi løser Wi-Fi-problemer, nettverkskoblinger og Internett-tilkoblinger for pålitelig tilkobling.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">
+            <i class="fas fa-database"></i>
+          </div>
+          <h4>Dataoverføring</h4>
+          <p>Sikker overføring av dine viktige data til ny maskin eller ekstern lagring.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">
+            <i class="fas fa-sync-alt"></i>
+          </div>
+          <h4>Systemoppdateringer</h4>
+          <p>Hjelp med å holde systemet oppdatert med siste sikkerhetsoppdateringer og funksjoner.</p>
+        </div>
+      </div>
 
-    <!-- Service Hero Section -->
-    <section class="service-hero">
-      <div class="container">
-        <h1>Feilretting og Vedlikehold</h1>
-        <p>Feilsøking og reparasjon av maskinvare og programvare</p>
-        <a href="#contact" class="btn btn-service">Få hjelp nå</a>
+      <!-- Pricing Section -->
+      <div class="pricing-section">
+        <div class="pricing-title">
+          <h3>Våre priser</h3>
+          <p>Transparent prising uten skjulte kostnader</p>
+        </div>
+        
+        <div class="price-tag">550,- <span>per time</span></div>
+        <div class="price-highlight">80% av alle problemer løses innen en time!</div>
+        
+        <div class="pricing-features">
+          <ul>
+            <li><i class="fas fa-check-circle"></i>Betaling kun ved løst problem</li>
+            <li><i class="fas fa-check-circle"></i>Ingen skjulte kostnader</li>
+            <li><i class="fas fa-check-circle"></i>Gratis tilbud og vurdering</li>
+            <li><i class="fas fa-check-circle"></i>Fjernhjelp tilgjengelig</li>
+          </ul>
+        </div>
+        
+        <div class="additional-fee">
+          <p><strong>Merk:</strong> Hvis du har sendt utstyr til oss og vi ikke kan reparere det, kan du velge å få det returnert eller la oss destruere det for en avgift på 500,-.</p>
+        </div>
+      </div>
+
+      <!-- Benefits Grid -->
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h4>Sikkerhet</h4>
+          <p>Vi sikrer at systemet ditt er beskyttet mot trusler og sårbarheter.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <h4>Ytelse</h4>
+          <p>Vi optimaliserer systemet ditt for raskere drift og bedre effektivitet.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="fas fa-history"></i>
+          </div>
+          <h4>Stabilitet</h4>
+          <p>Vi eliminerer systemkrasj og uventede feil for en pålitelig opplevelse.</p>
+        </div>
       </div>
     </section>
 
-    <div class="service-container">
-      <section class="service-section">
-        <div class="section-title">
-          <h2>Profesjonell IT-reparasjon</h2>
-          <p>Vi løser alle typer tekniske problemer med din datamaskin, laptop eller nettbrett</p>
-        </div>
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+      <div class="section-title">
+        <h2>Kontakt Oss</h2>
+        <p>Få teknisk hjelp raskt og enkelt</p>
+      </div>
+      <div class="contact-form-container">
+        <form id="contact-form" action="https://formspree.io/f/mwpbkjdd" method="POST">
+          <div class="form-group">
+            <label for="name">Navn</label>
+            <input type="text" id="name" name="name" required aria-required="true" aria-label="Ditt navn" autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="email">E-post</label>
+            <input type="email" id="email" name="email" required aria-required="true" aria-label="Email" autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="service-type">Hva kan vi hjelpe deg med?</label>
+            <select id="service-type" name="service" required aria-required="true" aria-label="Velg type tjeneste" autocomplete="off">
+              <option value="">Velg en tjeneste...</option>
+              <option value="feilretting" selected>Feilretting og Vedlikehold</option>
+              <option value="backup">Backup & Skylagring</option>
+              <option value="other">Annet</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Beskriv behovet ditt</label>
+            <textarea id="message" name="message" required aria-required="true" aria-label="Beskrivelse av ditt behov" placeholder="Beskriv utfordringen eller behovet ditt, f.eks. 'PC starter ikke', 'laptop er veldig treg', eller 'skjerm er ødelagt'. Inkluder detaljer om utstyr eller feilmeldinger for raskere støtte." rows="5" autocomplete="off"></textarea>
+          </div>
+          <div style="display: none;">
+            <label for="website">Website (leave blank)</label>
+            <input type="text" id="website" name="_gotcha" autocomplete="off">
+          </div>
+          <input type="hidden" name="_subject" id="email-subject" value="Ny henvendelse om Feilretting og Vedlikehold" autocomplete="off">
+          <div class="form-group">
+            <button type="submit" aria-label="Send henvendelse">
+              <i class="fas fa-paper-plane"></i> Send henvendelse
+            </button>
+          </div>
+          <div class="form-disclaimer">
+            <p><strong>Viktig:</strong></p>
+            <p>Våre eksperter jobber for å levere høykvalitets teknologitjenester. FixMyTech.no er ikke ansvarlig for skader på utstyr eller problemer som kan oppstå under reparasjon, oppsett eller andre tjenester. Kunden aksepterer at all bruk av våre tjenester skjer på eget ansvar.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
 
-        <div class="environmental-section">
-          <div class="environmental-icon">
-            <i class="fas fa-leaf"></i>
-          </div>
-          <h3>Godt for miljøet og lommeboken</h3>
-          <p>Ved å reparere og vedlikeholde utstyr istedenfor å kjøpe nytt, bidrar du til bærekraftig utvikling og reduserer elektronisk avfall. Våre reparasjoner forlenger levetiden til utstyr og sparer deg for unødvendige kostnader.</p>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">FixMyTech.no</div>
+        <div class="footer-links">
+          <a href="#">Hjem</a>
+          <a href="#">Tjenester</a>
+          <a href="#">Om oss</a>
+          <a href="#">Kontakt</a>
+          <a href="#">Personvern</a>
         </div>
-
-        <div class="services-grid">
-          <div class="service-card">
-            <div class="card-icon">
-              <i class="fas fa-plug"></i>
-            </div>
-            <h3>Maskinvare & Utstyr</h3>
-            <ul>
-              <li><i class="fas fa-check"></i>Reparasjon av PC, laptop, nettbrett</li>
-              <li><i class="fas fa-check"></i>Utstyrs-oppgradering (minne, SSD)</li>
-              <li><i class="fas fa-check"></i>Feilsøking av maskinvarefeil</li>
-              <li><i class="fas fa-check"></i>Hente ut data fra ødelagt utstyr</li>
-              <li><i class="fas fa-check"></i>Skjermreparasjoner</li>
-              <li><i class="fas fa-check"></i>Strømforsyningsproblemer</li>
-            </ul>
-          </div>
-          
-          <div class="service-card">
-            <div class="card-icon">
-              <i class="fas fa-laptop-code"></i>
-            </div>
-            <h3>Programvare & Systemer</h3>
-            <ul>
-              <li><i class="fas fa-check"></i>Fikse programvarefeil</li>
-              <li><i class="fas fa-check"></i>Virus- og malware-fjerning</li>
-              <li><i class="fas fa-check"></i>Systemoptimalisering</li>
-              <li><i class="fas fa-check"></i>Operativsystem-oppdateringer</li>
-              <li><i class="fas fa-check"></i>Gjenoppretting av Operativsystem</li>
-              <li><i class="fas fa-check"></i>Programvareinstallasjon og konfigurasjon</li>
-              <li><i class="fas fa-check"></i>Driver-oppdateringer</li>
-            </ul>
-          </div>
+        <div class="footer-social">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
         </div>
-
-        <div class="problem-cards">
-          <div class="problem-card">
-            <div class="problem-icon">
-              <i class="fas fa-bug"></i>
-            </div>
-            <div class="problem-content">
-              <h4>Datavirus og malware</h4>
-              <p>Vi fjerner alle typer skadelig programvare og sikrer at systemet ditt er trygt.</p>
-            </div>
-          </div>
-          <div class="problem-card">
-            <div class="problem-icon">
-              <i class="fas fa-bolt"></i>
-            </div>
-            <div class="problem-content">
-              <h4>Langsom datamaskin</h4>
-              <p>Vi optimaliserer systemet ditt for raskere ytelse og bedre effektivitet.</p>
-            </div>
-          </div>
-          <div class="problem-card">
-            <div class="problem-icon">
-              <i class="fas fa-exclamation-triangle"></i>
-            </div>
-            <div class="problem-content">
-              <h4>Blåskjerm-feil</h4>
-              <p>Vi diagnostiserer årsaken til systemkrasj og implementerer løsninger.</p>
-            </div>
-          </div>
-          <div class="problem-card">
-            <div class="problem-icon">
-              <i class="fas fa-wifi"></i>
-            </div>
-            <div class="problem-content">
-              <h4>Nettverksproblemer</h4>
-              <p>Vi løser Wi-Fi-problemer, nettverkskoblinger og Internett-tilkoblinger.</p>
-            </div>
-          </div>
+        <div class="copyright">
+          &copy; 2023 FixMyTech.no. Alle rettigheter reservert.
         </div>
-
-        <div class="pricing-section">
-          <div class="section-title">
-            <h2>Priser og Betingelser</h2>
-            <p>Transparent prising uten skjulte kostnader</p>
-          </div>
-          
-          <div class="pricing-card">
-            <div class="price-tag">550,- <span>per time</span></div>
-            <p class="price-highlight">80% av alle problemer løses innen en time!</p>
-            <ul>
-              <li><i class="fas fa-check-circle"></i>Betaling kun ved løst problem</li>
-              <li><i class="fas fa-check-circle"></i>Ingen skjulte kostnader</li>
-              <li><i class="fas fa-check-circle"></i>Gratis tilbud</li>
-              <li><i class="fas fa-check-circle"></i>Fjernhjelp tilgjengelig</li>
-            </ul>
-          </div>
-          
-          <div class="additional-fee">
-            <p><strong>Merk:</strong> Hvis du har sendt utstyr til oss og vi ikke kan reparere det, kan du velge å få det returnert eller la oss destruere det for en avgift på 500,-.</p>
-          </div>
-        </div>
-
-        <div class="benefits-grid">
-          <div class="benefit-card">
-            <div class="benefit-icon">
-              <i class="fas fa-shield-alt"></i>
-            </div>
-            <h4>Sikkerhet</h4>
-            <p>Vi sikrer at systemet ditt er beskyttet mot trusler og sårbarheter.</p>
-          </div>
-          <div class="benefit-card">
-            <div class="benefit-icon">
-              <i class="fas fa-rocket"></i>
-            </div>
-            <h4>Ytelse</h4>
-            <p>Vi optimaliserer systemet ditt for raskere drift og bedre effektivitet.</p>
-          </div>
-          <div class="benefit-card">
-            <div class="benefit-icon">
-              <i class="fas fa-history"></i>
-            </div>
-            <h4>Stabilitet</h4>
-            <p>Vi eliminerer systemkrasj og uventede feil for en pålitelig opplevelse.</p>
-          </div>
-        </div>
-
-        <div class="cta-section">
-          <h3>Klar til å reparere utstyret ditt?</h3>
-          <p>Kontakt oss i dag for en gratis vurdering av ditt problem</p>
-          <a href="#contact" class="btn btn-service">Kontakt oss nå</a>
-        </div>
-      </section>
-
-      <section id="contact" class="contact">
-        <div class="section-title">
-          <h2>Kontakt Oss</h2>
-          <p>Få teknisk hjelp raskt og enkelt</p>
-        </div>
-        <div class="contact-form-container">
-          <form id="contact-form" action="https://formspree.io/f/mwpbkjdd" method="POST">
-            <div class="form-group">
-              <label for="name">Navn</label>
-              <input type="text" id="name" name="name" required aria-required="true" aria-label="Ditt navn" autocomplete="name">
-            </div>
-            <div class="form-group">
-              <label for="email">E-post</label>
-              <input type="email" id="email" name="email" required aria-required="true" aria-label="Email" autocomplete="email">
-            </div>
-            <div class="form-group">
-              <label for="service-type">Hva kan vi hjelpe deg med?</label>
-              <select id="service-type" name="service" required aria-required="true" aria-label="Velg type tjeneste" autocomplete="off">
-                <option value="">Velg en tjeneste...</option>
-                <option value="feilretting" selected>Feilretting og Vedlikehold</option>
-                <option value="backup">Backup & Skylagring</option>
-                <option value="other">Annet</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="message">Beskriv behovet ditt</label>
-              <textarea id="message" name="message" required aria-required="true" aria-label="Beskrivelse av ditt behov" placeholder="Beskriv utfordringen eller behovet ditt, f.eks. 'PC starter ikke', 'laptop er veldig treg', eller 'skjerm er ødelagt'. Inkluder detaljer om utstyr eller feilmeldinger for raskere støtte." autocomplete="off"></textarea>
-            </div>
-            <div style="display: none;">
-              <label for="website">Website (leave blank)</label>
-              <input type="text" id="website" name="_gotcha" autocomplete="off">
-            </div>
-            <input type="hidden" name="_subject" id="email-subject" value="Ny henvendelse om Feilretting og Vedlikehold" autocomplete="off">
-            <div class="form-group">
-              <button type="submit" aria-label="Send henvendelse">
-                <i class="fas fa-paper-plane"></i> Send henvendelse
-              </button>
-            </div>
-            <div class="form-disclaimer">
-              <p><strong>Viktig:</strong></p>
-              <p>Våre eksperter jobber for å levere høykvalitets teknologitjenester. FixMyTech.no er ikke ansvarlig for skader på utstyr eller problemer som kan oppstå under reparasjon, oppsett eller andre tjenester. Kunden aksepterer at all bruk av våre tjenester skjer på eget ansvar.</p>
-            </div>
-          </form>
-        </div>
-      </section>
+      </div>
     </div>
-  </main>
+  </footer>
 
-  <!-- Footer Include -->
-  <div id="footer-container"></div>
-
-  <!-- Script Loading -->
   <script>
-    // Load header and footer first
-    document.addEventListener('DOMContentLoaded', function() {
-      Promise.all([
-        fetch('https://fixmytech.no/includes/header.html').then(res => res.text()),
-        fetch('https://fixmytech.no/includes/footer.html').then(res => res.text())
-      ]).then(([header, footer]) => {
-        document.getElementById('header-container').innerHTML = header;
-        document.getElementById('footer-container').innerHTML = footer;
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
         
-        // Now load main.js after DOM is ready
-        const script = document.createElement('script');
-        script.src = 'https://fixmytech.no/js/main.js';
-        document.body.appendChild(script);
-      }).catch(error => {
-        console.error('Error loading includes:', error);
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
       });
     });
+    
+    // Form submission
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Simple form validation
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        
+        if (!name || !email || !message) {
+          alert('Vennligst fyll ut alle feltene');
+          return;
+        }
+        
+        // Submit form (in a real scenario, this would be an AJAX call)
+        alert('Takk for din henvendelse! Vi kontakter deg så snart som mulig.');
+        contactForm.reset();
+      });
+    }
   </script>
 </body>
 </html>
