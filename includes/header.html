@@ -7,17 +7,16 @@
           <span>FixMyTech</span>
         </a>
       </div>
-      <div class="nav-toggle" aria-label="Toggle navigation">
+      <div class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <i class="fas fa-bars"></i>
       </div>
       <nav class="main-nav">
         <ul>
           <li><a href="/" aria-label="Gå til Hjem">Hjem</a></li>
           <li class="dropdown">
-            <a href="#tjenester" aria-label="Gå til Våre tjenester">Våre tjenester</a>
-            <div class="dropdown-content">
-              <a href="#feilretting" aria-label="Feilretting og Vedlikehold"><i class="fas fa-wrench"></i>Feilretting og Vedlikehold</a>
-              <a href="#backup" aria-label="Backup og Skylagring"><i class="fas fa-cloud"></i>Backup & Skylagring</a>
+            <a href="#tjenester" class="dropdown-toggle" aria-label="Gå til Våre tjenester">Våre tjenester</a>
+            <div class="dropdown-content" id="dropdown-services">
+              <!-- Services will be populated dynamically from tjenester.json -->
             </div>
           </li>
           <li><a href="/everytool" aria-label="Gå til everytool.io">everytool.io</a></li>
