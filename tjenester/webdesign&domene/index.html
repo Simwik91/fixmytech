@@ -100,6 +100,14 @@
       text-align: center;
     }
 
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
     .pricing-card {
       background: white;
       border-radius: var(--border-radius);
@@ -108,8 +116,6 @@
       text-align: center;
       transition: var(--transition);
       border: 2px solid var(--light-gray);
-      max-width: 500px;
-      margin: 0 auto;
     }
 
     .pricing-card:hover {
@@ -124,39 +130,18 @@
       margin-bottom: 0.5rem;
     }
 
-    .contact {
-      padding: 5rem 0;
-      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-    }
-
-    .contact-form-container {
-      max-width: 700px;
-      margin: 0 auto;
-      background: white;
-      padding: 2.5rem;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-    }
-
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      padding: 1rem;
-      border: 1px solid var(--light-gray);
-      border-radius: var(--border-radius);
+    .price-tag span {
       font-size: 1rem;
-      transition: var(--transition);
+      font-weight: 400;
+      color: var(--secondary);
     }
 
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      border-color: var(--primary);
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    .help-button-section {
+      padding: 5rem 0;
+      text-align: center;
     }
 
-    .form-group button {
+    .help-button {
       background: var(--primary);
       color: white;
       border: none;
@@ -166,20 +151,13 @@
       font-size: 1.1rem;
       cursor: pointer;
       transition: var(--transition);
-      width: 100%;
+      display: inline-block;
+      text-decoration: none;
     }
 
-    .form-group button:hover {
+    .help-button:hover {
       background: var(--secondary);
       transform: translateY(-3px);
-    }
-
-    .form-disclaimer {
-      margin-top: 2rem;
-      padding: 1.5rem;
-      background: rgba(220, 38, 38, 0.05);
-      border-left: 4px solid var(--warning);
-      border-radius: var(--border-radius);
     }
 
     /* Cookie Consent Banner Styling */
@@ -267,6 +245,106 @@
       color: white;
     }
 
+    /* Cookie Settings Modal */
+    #cookie-settings-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1001;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cookie-settings-content {
+      background: white;
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .cookie-option {
+      margin: 1.5rem 0;
+    }
+
+    .toggle-label {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 40px;
+      height: 20px;
+      background: var(--light-gray);
+      border-radius: 20px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .toggle-switch::before {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: white;
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+      transition: var(--transition);
+    }
+
+    input[type="checkbox"]:checked + .toggle-switch {
+      background: var(--primary);
+    }
+
+    input[type="checkbox"]:checked + .toggle-switch::before {
+      transform: translateX(20px);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      width: 100%;
+    }
+
+    .btn-primary:hover {
+      background: var(--secondary);
+    }
+
+    /* Additional styles for cookie status indicators */
+    .off {
+      opacity: 0.5;
+    }
+
+    #analytics-status-text,
+    #overall-status-text {
+      font-size: 0.9rem;
+      color: var(--secondary);
+    }
+
     /* Responsive adjustments */
     @media (max-width: 768px) {
       .webdesign-section {
@@ -285,8 +363,8 @@
         font-size: 2rem;
       }
 
-      .contact {
-        padding: 3rem 0;
+      .pricing-cards {
+        grid-template-columns: 1fr;
       }
 
       #cookie-consent-banner {
@@ -331,6 +409,42 @@
   </style>
 </head>
 <body>
+  <!-- Cookie Consent Banner -->
+  <div id="cookie-consent-banner">
+    <div class="cookie-content">
+      <div class="cookie-text">
+        <h3>Vi bruker informasjonskapsler</h3>
+        <p>Vi bruker cookies for å forbedre din opplevelse og analysere bruk. Les mer i vår <a href="/personvern">personvernerklæring</a>.</p>
+      </div>
+      <div class="cookie-buttons">
+        <button id="cookie-accept" class="cookie-btn cookie-accept-btn">Godta</button>
+        <button id="cookie-reject" class="cookie-btn cookie-reject-btn">Avvis</button>
+        <button id="cookie-settings" class="cookie-btn cookie-settings-btn">Innstillinger</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cookie Settings Modal -->
+  <div id="cookie-settings-modal">
+    <div class="cookie-settings-content">
+      <span class="close-modal">×</span>
+      <h2>Cookie-innstillinger</h2>
+      <div class="cookie-option">
+        <label class="toggle-label">
+          Analyse-cookies
+          <input type="checkbox" id="analytics-cookies">
+          <span class="toggle-switch"></span>
+          <span id="analytics-status-text">Av</span>
+        </label>
+        <p>Hjelper oss å forstå hvordan nettstedet brukes.</p>
+      </div>
+      <div class="cookie-option">
+        <p>Status: <span id="overall-status-text">Innstillinger er ikke lagret</span></p>
+      </div>
+      <button class="btn btn-primary" id="save-cookie-settings">Lagre</button>
+    </div>
+  </div>
+
   <!-- Header Include -->
   <div id="header-container"></div>
 
@@ -414,63 +528,36 @@
         <div class="pricing-section">
           <div class="pricing-cards">
             <div class="pricing-card">
-              <div class="price-tag">5000,- <span>engangskostnad</span></div>
-              <div class="price-tag">Årlig kost <span>avhengig av tjenester</span></div>
+              <div class="price-tag">10 000,- <span>oppstartskost</span></div>
               <ul>
                 <li><i class="fas fa-check-circle"></i>Komplett nettsidedesign</li>
                 <li><i class="fas fa-check-circle"></i>Domeneoppsett og registrering</li>
                 <li><i class="fas fa-check-circle"></i>SEO-grunnpakke inkludert</li>
+              </ul>
+            </div>
+            <div class="pricing-card">
+              <div class="price-tag">590,- <span>årlig</span></div>
+              <ul>
+                <li><i class="fas fa-check-circle"></i>Hosting av domene</li>
+                <li><i class="fas fa-check-circle"></i>Domeneoverføring og fornyelse</li>
+                <li><i class="fas fa-check-circle"></i>Konfigurasjon av DNS-innstillinger</li>
+                <li><i class="fas fa-check-circle"></i>Sikring av domene mot kapring</li>
+              </ul>
+            </div>
+            <div class="pricing-card">
+              <div class="price-tag">550,- <span>per time</span></div>
+              <ul>
                 <li><i class="fas fa-check-circle"></i>Support og vedlikehold</li>
+                <li><i class="fas fa-check-circle"></i>Feilretting og oppdateringer</li>
+                <li><i class="fas fa-check-circle"></i>SEO-optimaliseringstjenester</li>
+                <li><i class="fas fa-check-circle"></i>Teknisk konsultasjon</li>
               </ul>
             </div>
           </div>
         </div>
 
-        <section id="contact" class="contact">
-          <div class="section-title">
-            <h2>Kontakt Oss</h2>
-            <p>Få teknisk hjelp raskt og enkelt</p>
-          </div>
-          <div class="contact-form-container">
-            <form id="contact-form" action="https://formspree.io/f/mwpbkjdd" method="POST">
-              <div class="form-group">
-                <label for="name">Navn</label>
-                <input type="text" id="name" name="name" required aria-required="true" aria-label="Ditt navn" autocomplete="name">
-              </div>
-              <div class="form-group">
-                <label for="email">E-post</label>
-                <input type="email" id="email" name="email" required aria-required="true" aria-label="Email" autocomplete="email">
-              </div>
-              <div class="form-group">
-                <label for="service-type">Hva kan vi hjelpe deg med?</label>
-                <select id="service-type" name="service" required aria-required="true" aria-label="Velg type tjeneste" autocomplete="off">
-                  <option value="">Velg en tjeneste...</option>
-                  <option value="feilretting">Feilretting og Vedlikehold</option>
-                  <option value="backup">Backup & Skylagring</option>
-                  <option value="webdesign">Webdesign & Domene</option>
-                  <option value="other">Annet</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="message">Beskriv behovet ditt</label>
-                <textarea id="message" name="message" required aria-required="true" aria-label="Beskrivelse av ditt behov" placeholder="Beskriv utfordringen eller behovet ditt, f.eks. 'trenger ny nettside', 'domeneoppsett', eller 'SEO-optimalisering'. Inkluder detaljer for raskere støtte." autocomplete="off"></textarea>
-              </div>
-              <div style="display: none;">
-                <label for="website">Website (leave blank)</label>
-                <input type="text" id="website" name="_gotcha" autocomplete="off">
-              </div>
-              <input type="hidden" name="_subject" id="email-subject" value="Ny henvendelse fra FixMyTech.no" autocomplete="off">
-              <div class="form-group">
-                <button type="submit" aria-label="Send henvendelse">
-                  <i class="fas fa-paper-plane"></i> Send henvendelse
-                </button>
-              </div>
-              <div class="form-disclaimer">
-                <p><strong>Viktig:</strong></p>
-                <p>Våre eksperter jobber for å levere høykvalitets teknologitjenester. FixMyTech.no er ikke ansvarlig for skader på utstyr eller problemer som kan oppstå under reparasjon, oppsett eller andre tjenester. Kunden aksepterer at all bruk av våre tjenester skjer på eget ansvar.</p>
-              </div>
-            </form>
-          </div>
+        <section id="contact" class="help-button-section">
+          <a href="/kontakt" class="help-button">Få hjelp nå</a>
         </section>
       </section>
     </div>
