@@ -138,27 +138,29 @@
       margin-bottom: 0.5rem;
     }
 
-    .help-button-section {
-      padding: 5rem 0;
+    .cta-section {
       text-align: center;
+      padding: 3rem 0;
+      background: linear-gradient(135deg, #f0f7ff 0%, #e1ecfe 100%);
+      border-radius: var(--border-radius);
+      margin: 3rem 0;
     }
 
-    .help-button {
+    .btn-service {
       background: var(--primary);
       color: white;
-      border: none;
-      padding: 2rem 4rem;
-      border-radius: var(--border-radius);
       font-weight: 600;
-      font-size: 1.8rem;
-      cursor: pointer;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      border-radius: var(--border-radius);
       transition: var(--transition);
       display: inline-block;
+      margin-top: 1.5rem;
       text-decoration: none;
     }
 
-    .help-button:hover {
-      filter: brightness(85%); /* Darkens the primary color */
+    .btn-service:hover {
+      background: var(--secondary);
       transform: translateY(-3px);
     }
 
@@ -563,9 +565,11 @@
           </div>
         </div>
 
-        <section id="contact" class="help-button-section">
-          <a href="/kontakt" class="help-button">Få hjelp nå</a>
-        </section>
+        <div class="cta-section">
+          <h3>Klar til å styrke din digitale tilstedeværelse?</h3>
+          <p>Kontakt oss i dag for en gratis konsultasjon om din nettside eller domenetjenester</p>
+          <a href="/kontakt" class="btn btn-service">Kontakt oss nå</a>
+        </div>
       </section>
     </div>
   </main>
