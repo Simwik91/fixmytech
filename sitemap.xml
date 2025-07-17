@@ -19,12 +19,6 @@
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://fixmytech.no/tjenester</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
     <loc>https://fixmytech.no/tjenester/backup&skylagring</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>yearly</changefreq>
