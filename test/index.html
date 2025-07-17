@@ -78,7 +78,7 @@
       padding: 1.5rem;
       display: flex;
       gap: 1.5rem;
-      align-items: center;
+      align-items: atart;
       transition: var(--transition);
     }
 
@@ -100,6 +100,14 @@
       text-align: center;
     }
 
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
     .pricing-card {
       background: white;
       border-radius: var(--border-radius);
@@ -108,8 +116,6 @@
       text-align: center;
       transition: var(--transition);
       border: 2px solid var(--light-gray);
-      max-width: 500px;
-      margin: 0 auto;
     }
 
     .pricing-card:hover {
@@ -122,6 +128,12 @@
       font-weight: 700;
       color: var(--primary);
       margin-bottom: 0.5rem;
+    }
+
+    .price-tag span {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--secondary);
     }
 
     .help-button-section {
@@ -340,6 +352,10 @@
         font-size: 2rem;
       }
 
+      .pricing-cards {
+        grid-template-columns: 1fr;
+      }
+
       #cookie-consent-banner {
         padding: 1rem;
       }
@@ -501,13 +517,29 @@
         <div class="pricing-section">
           <div class="pricing-cards">
             <div class="pricing-card">
-              <div class="price-tag">5000,- <span>engangskostnad</span></div>
-              <div class="price-tag">Årlig kost <span>avhengig av tjenester</span></div>
+              <div class="price-tag">10 000,- <span>oppstartskost</span></div>
               <ul>
                 <li><i class="fas fa-check-circle"></i>Komplett nettsidedesign</li>
                 <li><i class="fas fa-check-circle"></i>Domeneoppsett og registrering</li>
                 <li><i class="fas fa-check-circle"></i>SEO-grunnpakke inkludert</li>
+              </ul>
+            </div>
+            <div class="pricing-card">
+              <div class="price-tag">590,- <span>årlig</span></div>
+              <ul>
+                <li><i class="fas fa-check-circle"></i>Hosting av domene</li>
+                <li><i class="fas fa-check-circle"></i>Domeneoverføring og fornyelse</li>
+                <li><i class="fas fa-check-circle"></i>Konfigurasjon av DNS-innstillinger</li>
+                <li><i class="fas fa-check-circle"></i>Sikring av domene mot kapring</li>
+              </ul>
+            </div>
+            <div class="pricing-card">
+              <div class="price-tag">550,- <span>per time</span></div>
+              <ul>
                 <li><i class="fas fa-check-circle"></i>Support og vedlikehold</li>
+                <li><i class="fas fa-check-circle"></i>Feilretting og oppdateringer</li>
+                <li><i class="fas fa-check-circle"></i>SEO-optimaliseringstjenester</li>
+                <li><i class="fas fa-check-circle"></i>Teknisk konsultasjon</li>
               </ul>
             </div>
           </div>
