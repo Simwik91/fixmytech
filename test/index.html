@@ -108,7 +108,7 @@
       text-align: center;
       transition: var(--transition);
       border: 2px solid var(--light-gray);
-      max-width: 90%;
+      max-width: 500px;
       margin: 0 auto;
     }
 
@@ -124,6 +124,11 @@
       margin-bottom: 0.5rem;
     }
 
+    .help-button-section {
+      padding: 5rem 0;
+      text-align: center;
+    }
+
     .help-button {
       background: var(--primary);
       color: white;
@@ -134,11 +139,8 @@
       font-size: 1.1rem;
       cursor: pointer;
       transition: var(--transition);
-      text-align: center;
       display: inline-block;
       text-decoration: none;
-      margin: 2rem auto;
-      max-width: 200px;
     }
 
     .help-button:hover {
@@ -256,20 +258,21 @@
 
     .close-modal {
       position: absolute;
-      top: 10px;
-      right: 15px;
+      top: 1rem;
+      right: 1rem;
       font-size: 1.5rem;
       cursor: pointer;
     }
 
     .cookie-option {
-      margin: 1rem 0;
+      margin: 1.5rem 0;
     }
 
     .toggle-label {
       display: flex;
       align-items: center;
       gap: 1rem;
+      font-weight: 500;
       margin-bottom: 0.5rem;
     }
 
@@ -280,6 +283,7 @@
       background: var(--light-gray);
       border-radius: 20px;
       cursor: pointer;
+      transition: var(--transition);
     }
 
     .toggle-switch::before {
@@ -294,12 +298,12 @@
       transition: var(--transition);
     }
 
-    input[type="checkbox"]:checked + .toggle-switch::before {
-      transform: translateX(20px);
-    }
-
     input[type="checkbox"]:checked + .toggle-switch {
       background: var(--primary);
+    }
+
+    input[type="checkbox"]:checked + .toggle-switch::before {
+      transform: translateX(20px);
     }
 
     .btn-primary {
@@ -308,8 +312,10 @@
       border: none;
       padding: 0.75rem 1.5rem;
       border-radius: var(--border-radius);
+      font-weight: 600;
       cursor: pointer;
       transition: var(--transition);
+      width: 100%;
     }
 
     .btn-primary:hover {
@@ -376,9 +382,6 @@
   </style>
 </head>
 <body>
-  <!-- Header Include -->
-  <div id="header-container"></div>
-
   <!-- Cookie Consent Banner -->
   <div id="cookie-consent-banner">
     <div class="cookie-content">
@@ -414,6 +417,9 @@
       <button class="btn btn-primary" id="save-cookie-settings">Lagre</button>
     </div>
   </div>
+
+  <!-- Header Include -->
+  <div id="header-container"></div>
 
   <main id="main-content">
     <div class="container">
@@ -496,19 +502,20 @@
           <div class="pricing-cards">
             <div class="pricing-card">
               <div class="price-tag">5000,- <span>engangskostnad</span></div>
+              <div class="price-tag">Årlig kost <span>avhengig av tjenester</span></div>
               <ul>
                 <li><i class="fas fa-check-circle"></i>Komplett nettsidedesign</li>
                 <li><i class="fas fa-check-circle"></i>Domeneoppsett og registrering</li>
                 <li><i class="fas fa-check-circle"></i>SEO-grunnpakke inkludert</li>
                 <li><i class="fas fa-check-circle"></i>Support og vedlikehold</li>
-                <li><i class="fas fa-check-circle"></i>Årlig kost for domene: 500,-</li>
-                <li><i class="fas fa-check-circle"></i>Support og vedlikehold: 550,- per time</li>
               </ul>
             </div>
           </div>
         </div>
 
-        <a href="/kontakt" class="help-button">Få hjelp nå</a>
+        <section id="contact" class="help-button-section">
+          <a href="/kontakt" class="help-button">Få hjelp nå</a>
+        </section>
       </section>
     </div>
   </main>
@@ -529,70 +536,6 @@
         const script = document.createElement('script');
         script.src = 'https://fixmytech.no/js/main.js';
         document.body.appendChild(script);
-
-        // Cookie consent logic
-        const cookieBanner = document.getElementById('cookie-consent-banner');
-        const cookieSettingsModal = document.getElementById('cookie-settings-modal');
-        const acceptButton = document.getElementById('cookie-accept');
-        const rejectButton = document.getElementById('cookie-reject');
-        const settingsButton = document.getElementById('cookie-settings');
-        const saveSettingsButton = document.getElementById('save-cookie-settings');
-        const closeModal = document.querySelector('.close-modal');
-        const analyticsCheckbox = document.getElementById('analytics-cookies');
-        const analyticsStatusText = document.getElementById('analytics-status-text');
-        const overallStatusText = document.getElementById('overall-status-text');
-
-        // Check if cookie consent has already been given
-        if (localStorage.getItem('cookieConsent')) {
-          cookieBanner.style.display = 'none';
-        }
-
-        // Update status text based on checkbox
-        function updateStatusText() {
-          analyticsStatusText.textContent = analyticsCheckbox.checked ? 'På' : 'Av';
-          overallStatusText.textContent = 'Innstillinger er ikke lagret';
-        }
-
-        // Accept all cookies
-        acceptButton.addEventListener('click', () => {
-          localStorage.setItem('cookieConsent', 'accepted');
-          localStorage.setItem('analyticsCookies', 'true');
-          cookieBanner.style.display = 'none';
-        });
-
-        // Reject all cookies
-        rejectButton.addEventListener('click', () => {
-          localStorage.setItem('cookieConsent', 'rejected');
-          localStorage.setItem('analyticsCookies', 'false');
-          cookieBanner.style.display = 'none';
-        });
-
-        // Open settings modal
-        settingsButton.addEventListener('click', () => {
-          cookieSettingsModal.style.display = 'flex';
-        });
-
-        // Close modal
-        closeModal.addEventListener('click', () => {
-          cookieSettingsModal.style.display = 'none';
-        });
-
-        // Update status when checkbox changes
-        analyticsCheckbox.addEventListener('change', updateStatusText);
-
-        // Save settings
-        saveSettingsButton.addEventListener('click', () => {
-          localStorage.setItem('cookieConsent', 'custom');
-          localStorage.setItem('analyticsCookies', analyticsCheckbox.checked);
-          overallStatusText.textContent = 'Innstillinger lagret';
-          setTimeout(() => {
-            cookieSettingsModal.style.display = 'none';
-            cookieBanner.style.display = 'none';
-          }, 1000);
-        });
-
-        // Initialize status text
-        updateStatusText();
       }).catch(error => {
         console.error('Error loading includes:', error);
       });
