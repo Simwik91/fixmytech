@@ -1,1 +1,16 @@
-
+{
+  "tjenester": [
+    {
+      "name": "Backup & Skylagring",
+      "path": "/verktøy/backup/index.html"
+    },
+    {
+      "name": "Feilretting & Vedlikehold",
+      "path": "/tjenester/feilretting/index.html"
+    },
+    {
+      "name": "Webdesign & Domene",
+      "path": "/verktøy/webdesign/index.html"
+    }
+  ]
+}
