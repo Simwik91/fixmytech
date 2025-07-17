@@ -130,10 +130,12 @@
       margin-bottom: 0.5rem;
     }
 
-    .price-tag span {
+    .price-period {
+      display: block;
       font-size: 1rem;
       font-weight: 400;
-      color: var(--secondary);
+      color: var(--primary);
+      margin-bottom: 0.5rem;
     }
 
     .help-button-section {
@@ -446,7 +448,9 @@
   </div>
 
   <!-- Header Include -->
-  <div id="header-container"></div>
+  <div id="header-container">
+    <header>Fallback Header: Unable to load header content</header>
+  </div>
 
   <main id="main-content">
     <div class="container">
@@ -528,7 +532,8 @@
         <div class="pricing-section">
           <div class="pricing-cards">
             <div class="pricing-card">
-              <div class="price-tag">10 000,- <span>oppstartskost</span></div>
+              <div class="price-tag">10 000,-</div>
+              <div class="price-period">oppstartskost</div>
               <ul>
                 <li><i class="fas fa-check-circle"></i>Komplett nettsidedesign</li>
                 <li><i class="fas fa-check-circle"></i>Domeneoppsett og registrering</li>
@@ -536,7 +541,8 @@
               </ul>
             </div>
             <div class="pricing-card">
-              <div class="price-tag">590,- <span>årlig</span></div>
+              <div class="price-tag">590,-</div>
+              <div class="price-period">årlig</div>
               <ul>
                 <li><i class="fas fa-check-circle"></i>Hosting av domene</li>
                 <li><i class="fas fa-check-circle"></i>Domeneoverføring og fornyelse</li>
@@ -545,7 +551,8 @@
               </ul>
             </div>
             <div class="pricing-card">
-              <div class="price-tag">550,- <span>per time</span></div>
+              <div class="price-tag">550,-</div>
+              <div class="price-period">per time</div>
               <ul>
                 <li><i class="fas fa-check-circle"></i>Support og vedlikehold</li>
                 <li><i class="fas fa-check-circle"></i>Feilretting og oppdateringer</li>
@@ -564,23 +571,37 @@
   </main>
 
   <!-- Footer Include -->
-  <div id="footer-container"></div>
+  <div id="footer-container">
+    <footer>Fallback Footer: Unable to load footer content</footer>
+  </div>
 
   <!-- Script Loading -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       Promise.all([
-        fetch('https://fixmytech.no/includes/header.html').then(res => res.text()),
-        fetch('https://fixmytech.no/includes/footer.html').then(res => res.text())
-      ]).then(([header, footer]) => {
+        fetch('/includes/header.html')
+          .then(res => {
+            if (!res.ok) throw new Error(`Failed to load header: ${res.status} ${res.statusText}`);
+            return res.text();
+          }),
+        fetch('/includes/footer.html')
+          .then(res => {
+            if (!res.ok) throw new Error(`Failed to load footer: ${res.status} ${res.statusText}`);
+            return res.text();
+          })
+      ])
+      .then(([header, footer]) => {
         document.getElementById('header-container').innerHTML = header;
         document.getElementById('footer-container').innerHTML = footer;
         
         const script = document.createElement('script');
         script.src = 'https://fixmytech.no/js/main.js';
+        script.onerror = () => console.error('Error loading main.js');
+        script.onload = () => console.log('main.js loaded successfully');
         document.body.appendChild(script);
-      }).catch(error => {
-        console.error('Error loading includes:', error);
+      })
+      .catch(error => {
+        console.error('Error loading includes:', error.message);
       });
     });
   </script>
