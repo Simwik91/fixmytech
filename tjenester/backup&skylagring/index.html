@@ -34,25 +34,6 @@
       margin-bottom: 2rem;
     }
 
-    .btn-contact {
-      background: var(--primary);
-      color: white;
-      padding: 1rem 2rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      border-radius: var(--border-radius);
-      transition: var(--transition);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-    }
-
-    .btn-contact:hover {
-      background: var(--secondary);
-      transform: translateY(-5px);
-    }
-
     .services-grid {
       margin: 3rem 0;
       display: grid;
@@ -110,8 +91,7 @@
       font-size: 2rem;
       color: var(--warning);
       min-width: 50px;
-      display: flex;
-      justify-content: center;
+      display allem-items: center;
     }
 
     .pricing-section {
@@ -143,6 +123,64 @@
       margin-bottom: 0.5rem;
     }
 
+    .contact {
+      padding: 5rem 0;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    }
+
+    .contact-form-container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: white;
+      padding: 2.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 1rem;
+      border: 1px solid var(--light-gray);
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    }
+
+    .form-group button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      width: 100%;
+    }
+
+    .form-group button:hover {
+      background: var(--secondary);
+      transform: translateY(-3px);
+    }
+
+    .form-disclaimer {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: rgba(220, 38, 38, 0.05);
+      border-left: 4px solid var(--warning);
+      border-radius: var(--border-radius);
+    }
+
     /* Responsive adjustments */
     @media (max-width: 768px) {
       .backup-section {
@@ -160,6 +198,10 @@
       .section-title h2 {
         font-size: 2rem;
       }
+
+      .contact {
+        padding: 3rem 0;
+      }
     }
   </style>
 </head>
@@ -173,9 +215,6 @@
         <div class="section-title">
           <h2>Backup & Skylagring</h2>
           <p>Vi hjelper deg med å sette opp sikre backup- og skylagringsløsninger for å beskytte dine verdifulle data mot tap.</p>
-          <a href="/kontakt/index.html" class="btn btn-contact">
-            <i class="fas fa-paper-plane"></i> Kontakt Oss
-          </a>
         </div>
         <div class="services-grid">
           <div class="service-card">
@@ -261,6 +300,52 @@
             </div>
           </div>
         </div>
+
+        <section id="contact" class="contact">
+          <div class="section-title">
+            <h2>Kontakt Oss</h2>
+            <p>Få teknisk hjelp raskt og enkelt</p>
+          </div>
+          <div class="contact-form-container">
+            <form id="contact-form" action="https://formspree.io/f/mwpbkjdd" method="POST">
+              <div class="form-group">
+                <label for="name">Navn</label>
+                <input type="text" id="name" name="name" required aria-required="true" aria-label="Ditt navn" autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label for="email">E-post</label>
+                <input type="email" id="email" name="email" required aria-required="true" aria-label="Email" autocomplete="email">
+              </div>
+              <div class="form-group">
+                <label for="service-type">Hva kan vi hjelpe deg med?</label>
+                <select id="service-type" name="service" required aria-required="true" aria-label="Velg type tjeneste" autocomplete="off">
+                  <option value="">Velg en tjeneste...</option>
+                  <option value="feilretting">Feilretting og Vedlikehold</option>
+                  <option value="backup">Backup & Skylagring</option>
+                  <option value="other">Annet</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Beskriv behovet ditt</label>
+                <textarea id="message" name="message" required aria-required="true" aria-label="Beskrivelse av ditt behov" placeholder="Beskriv utfordringen eller behovet ditt, f.eks. 'PC starter ikke', 'trenger backup-oppsett', eller 'laptop er veldig treg'. Inkluder detaljer om utstyr eller feilmeldinger for raskere støtte." autocomplete="off"></textarea>
+              </div>
+              <div style="display: none;">
+                <label for="website">Website (leave blank)</label>
+                <input type="text" id="website" name="_gotcha" autocomplete="off">
+              </div>
+              <input type="hidden" name="_subject" id="email-subject" value="Ny henvendelse fra FixMyTech.no" autocomplete="off">
+              <div class="form-group">
+                <button type="submit" aria-label="Send henvendelse">
+                  <i class="fas fa-paper-plane"></i> Send henvendelse
+                </button>
+              </div>
+              <div class="form-disclaimer">
+                <p><strong>Viktig:</strong></p>
+                <p>Våre eksperter jobber for å levere høykvalitets teknologitjenester. FixMyTech.no er ikke ansvarlig for skader på utstyr eller problemer som kan oppstå under reparasjon, oppsett eller andre tjenester. Kunden aksepterer at all bruk av våre tjenester skjer på eget ansvar.</p>
+              </div>
+            </form>
+          </div>
+        </section>
       </section>
     </div>
   </main>
