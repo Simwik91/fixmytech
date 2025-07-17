@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FixMyTech.no - Profesjonelle IT-reparasjoner og programvareløsninger</title>
-  <meta name="description" content="FixMyTech.no tilbyr profesjonell teknisk hjelp for deg. Vi løser programvarefeil, maskinvareproblemer, og beskytter dine data med backup og skylagring.">
-  <meta name="keywords" content="teknisk støtte, teknologihjelp, PC-reparasjon, datasikkerhet, backup, skylagring, virusfjerning, systemoptimalisering">
+  <meta name="description" content="FixMyTech.no tilbyr profesjonell teknisk hjelp, inkludert feilretting, backup, skylagring, webdesign og domenetjenester.">
+  <meta name="keywords" content="teknisk støtte, teknologihjelp, PC-reparasjon, datasikkerhet, backup, skylagring, webdesign, domene">
   <meta name="author" content="FixMyTech.no">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" type="image/x-icon" href="https://fixmytech.no/favicon.ico">
@@ -74,6 +74,9 @@
     
     .process-steps {
       margin-top: 3rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
     }
     
     .step-card {
@@ -134,23 +137,11 @@
       color: var(--secondary);
     }
     
-    .environmental-section {
-      background: linear-gradient(135deg, #e6f4ea 0%, #c8e6c9 100%);
-      padding: 2.5rem;
-      border-radius: var(--border-radius);
-      text-align: center;
-      margin: 3rem 0;
-      border-left: 5px solid var(--success);
-    }
-    
-    .environmental-icon {
-      font-size: 2.5rem;
-      color: var(--success);
-      margin-bottom: 1.5rem;
-    }
-    
     .services-grid {
       margin: 3rem 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
     }
     
     .service-card {
@@ -158,10 +149,13 @@
       border-radius: var(--border-radius);
       box-shadow: var(--shadow);
       padding: 2.5rem;
-      display: flex;
-      gap: 1.5rem;
       transition: var(--transition);
       border-top: 4px solid var(--primary);
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      min-height: 350px;
+      justify-content: space-between;
     }
     
     .service-card:hover {
@@ -170,127 +164,25 @@
     }
     
     .card-icon {
-      font-size: 2.5rem;
-      color: var(--primary);
-      min-width: 60px;
-      display: flex;
-      justify-content: center;
-    }
-    
-    .problem-cards {
-      margin: 3rem 0;
-    }
-    
-    .problem-card {
-      background: white;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-      padding: 1.5rem;
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-      transition: var(--transition);
-    }
-    
-    .problem-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
-    
-    .problem-icon {
-      font-size: 2rem;
-      color: var(--warning);
-      min-width: 50px;
-      display: flex;
-      justify-content: center;
-    }
-    
-    .pricing-section {
-      margin: 3rem 0;
-    }
-    
-    .pricing-card {
-      background: white;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-      padding: 2.5rem;
-      text-align: center;
-      transition: var(--transition);
-      border: 2px solid var(--light-gray);
-    }
-    
-    .pricing-card:hover {
-      transform: scale(1.03);
-      border-color: var(--primary);
-    }
-    
-    .price-tag {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-    
-    .benefits-grid {
-      margin: 3rem 0;
-    }
-    
-    .benefit-card {
-      background: white;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-      padding: 2rem;
-      text-align: center;
-      transition: var(--transition);
-    }
-    
-    .benefit-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    }
-    
-    .benefit-icon {
-      font-size: 2.5rem;
+      font-size: 3rem;
       color: var(--primary);
       margin-bottom: 1.5rem;
     }
     
-    .backup-section {
-      padding: 5rem 0;
-      background: #f9fafb;
+    .service-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
     }
     
-    .everytool-section {
-      padding: 5rem 0;
-      background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
+    .service-card p {
+      font-size: 1.1rem;
+      color: var(--secondary);
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
     }
     
-    .benefits-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin: 3rem 0;
-    }
-    
-    .benefits-cards .benefit-card {
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .benefits-cards .benefit-card h4 {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 1.2rem;
-    }
-    
-    .everytool-button-container {
-      margin-top: 3rem;
-    }
-    
-    .btn-everytool {
-      background: var(--business);
+    .service-card .btn-service {
+      background: var(--primary);
       color: white;
       padding: 1rem 2rem;
       font-size: 1.1rem;
@@ -300,69 +192,74 @@
       display: inline-flex;
       align-items: center;
       gap: 0.75rem;
+      align-self: center;
+    }
+    
+    .service-card .btn-service:hover {
+      background: var(--secondary);
+      transform: translateY(-3px);
+    }
+    
+    .everytool-section {
+      padding: 5rem 0;
+      background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .everytool-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+      z-index: 0;
+    }
+    
+    .everytool-content {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      background: white;
+      padding: 2.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .everytool-content h3 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+    
+    .everytool-content p {
+      font-size: 1.1rem;
+      color: var(--secondary);
+      margin-bottom: 2rem;
+    }
+    
+    .btn-everytool {
+      background: var(--business);
+      color: white;
+      padding: 1.2rem 2.5rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
     
     .btn-everytool:hover {
       background: var(--secondary);
       transform: translateY(-5px);
-    }
-    
-    .contact {
-      padding: 5rem 0;
-      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-    }
-    
-    .contact-form-container {
-      max-width: 700px;
-      margin: 0 auto;
-      background: white;
-      padding: 2.5rem;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-    }
-    
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      padding: 1rem;
-      border: 1px solid var(--light-gray);
-      border-radius: var(--border-radius);
-      font-size: 1rem;
-      transition: var(--transition);
-    }
-    
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      border-color: var(--primary);
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
-    }
-    
-    .form-group button {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 1rem 2rem;
-      border-radius: var(--border-radius);
-      font-weight: 600;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: var(--transition);
-      width: 100%;
-    }
-    
-    .form-group button:hover {
-      background: var(--secondary);
-      transform: translateY(-3px);
-    }
-    
-    .form-disclaimer {
-      margin-top: 2rem;
-      padding: 1.5rem;
-      background: rgba(220, 38, 38, 0.05);
-      border-left: 4px solid var(--warning);
-      border-radius: var(--border-radius);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
     }
     
     /* Responsive adjustments */
@@ -373,6 +270,10 @@
       
       .hero p {
         font-size: 1.1rem;
+      }
+      
+      .everytool-content h3 {
+        font-size: 1.8rem;
       }
     }
     
@@ -385,16 +286,25 @@
         font-size: 2rem;
       }
       
-      .service-section, .backup-section, .everytool-section, .contact {
+      .service-section, .everytool-section {
         padding: 3rem 0;
       }
       
       .service-card {
-        flex-direction: column;
+        min-height: 300px;
       }
       
-      .card-icon {
-        justify-content: flex-start;
+      .everytool-content {
+        padding: 1.5rem;
+      }
+      
+      .everytool-content h3 {
+        font-size: 1.6rem;
+      }
+      
+      .btn-everytool {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
       }
     }
   </style>
@@ -466,7 +376,7 @@
         <div class="hero-content">
           <h1><span>IT-hjelp</span> for deg</h1>
           <p>Profesjonelle tekniske løsninger.</p>
-          <a href="#contact" class="btn btn-hero">Få hjelp nå</a>
+          <a href="/kontakt/index.html" class="btn btn-hero">Få hjelp nå</a>
         </div>
       </section>
 
@@ -479,7 +389,7 @@
           <div class="step-card">
             <div class="step-number">1</div>
             <h3>Kontakt oss</h3>
-            <p>Fortell oss om ditt problem via skjemaet nederst på siden.</p>
+            <p>Fortell oss om ditt problem via skjemaet på kontaktsiden.</p>
           </div>
           <div class="step-card">
             <div class="step-number">2</div>
@@ -521,225 +431,35 @@
         </div>
       </div>
 
-      <section id="feilretting" class="service-section">
+      <section id="services" class="service-section">
         <div class="section-title">
-          <h2>Feilretting og Vedlikehold</h2>
-          <p>Feilsøking og reparasjon av maskinvare og programvare</p>
+          <h2>Våre Tjenester</h2>
+          <p>Utforsk våre profesjonelle IT-løsninger for alle dine teknologibehov</p>
         </div>
-
-        <div class="environmental-section">
-          <div class="environmental-icon">
-            <i class="fas fa-leaf"></i>
-          </div>
-          <h3>Godt for miljøet og lommeboken</h3>
-          <p>Ved å reparere og vedlikeholde utstyr istedenfor å kjøpe nytt, bidrar du til bærekraftig utvikling og reduserer elektronisk avfall. Våre reparasjoner forlenger levetiden til utstyr og sparer deg for unødvendige kostnader.</p>
-        </div>
-
         <div class="services-grid">
           <div class="service-card">
             <div class="card-icon">
-              <i class="fas fa-plug"></i>
+              <i class="fas fa-tools"></i>
             </div>
-            <div class="card-content">
-              <h3>Maskinvare & Utstyr</h3>
-              <ul>
-                <li><i class="fas fa-check"></i>Reparasjon av PC, laptop, nettbrett</li>
-                <li><i class="fas fa-check"></i>Utstyrs-oppgradering (minne, SSD)</li>
-                <li><i class="fas fa-check"></i>Feilsøking av maskinvarefeil</li>
-                <li><i class="fas fa-check"></i>Hente ut data fra ødelagt utstyr</li>
-                <li><i class="fas fa-check"></i>Skjermreparasjoner</li>
-                <li><i class="fas fa-check"></i>Strømforsyningsproblemer</li>
-              </ul>
-            </div>
+            <h3>Feilretting & Vedlikehold</h3>
+            <p>Vi tilbyr feilsøking og reparasjon av maskinvare og programvare, inkludert virusfjerning, systemoptimalisering og oppgraderinger for å forlenge levetiden til utstyret ditt.</p>
+            <a href="/tjenester/feilretting&vedlikehold/index.html" class="btn btn-service">Få hjelp nå</a>
           </div>
           <div class="service-card">
             <div class="card-icon">
-              <i class="fas fa-laptop-code"></i>
-            </div>
-            <div class="card-content">
-              <h3>Programvare & Systemer</h3>
-              <ul>
-                <li><i class="fas fa-check"></i>Fikse programvarefeil</li>
-                <li><i class="fas fa-check"></i>Virus- og malware-fjerning</li>
-                <li><i class="fas fa-check"></i>Systemoptimalisering</li>
-                <li><i class="fas fa-check"></i>Operativsystem-oppdateringer</li>
-                <li><i class="fas fa-check"></i>Gjenoppretting av Operativsystem</li>
-                <li><i class="fas fa-check"></i>Programvareinstallasjon og konfigurasjon</li>
-                <li><i class="fas fa-check"></i>Driver-oppdateringer</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="problem-cards">
-          <div class="problem-card">
-            <div class="problem-icon">
-              <i class="fas fa-bug"></i>
-            </div>
-            <div class="problem-content">
-              <h4>Datavirus og malware</h4>
-              <p>Vi fjerner alle typer skadelig programvare og sikrer at systemet ditt er trygt.</p>
-            </div>
-          </div>
-          <div class="problem-card">
-            <div class="problem-icon">
-              <i class="fas fa-bolt"></i>
-            </div>
-            <div class="problem-content">
-              <h4>Langsom datamaskin</h4>
-              <p>Vi optimaliserer systemet ditt for raskere ytelse og bedre effektivitet.</p>
-            </div>
-          </div>
-          <div class="problem-card">
-            <div class="problem-icon">
-              <i class="fas fa-exclamation-triangle"></i>
-            </div>
-            <div class="problem-content">
-              <h4>Blåskjerm-feil</h4>
-              <p>Vi diagnostiserer årsaken til systemkrasj og implementerer løsninger.</p>
-            </div>
-          </div>
-          <div class="problem-card">
-            <div class="problem-icon">
-              <i class="fas fa-wifi"></i>
-            </div>
-            <div class="problem-content">
-              <h4>Nettverksproblemer</h4>
-              <p>Vi løser Wi-Fi-problemer, nettverkskoblinger og Internett-tilkoblinger.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="pricing-section">
-          <div class="pricing-cards">
-            <div class="pricing-card">
-              <div class="price-tag">550,- <span>per time</span></div>
-              <p class="price-highlight">80% av alle problemer løses innen en time!</p>
-              <ul>
-                <li><i class="fas fa-check-circle"></i>Betaling kun ved løst problem</li>
-                <li><i class="fas fa-check-circle"></i>Ingen skjulte kostnader</li>
-                <li><i class="fas fa-check-circle"></i>Gratis tilbud</li>
-                <li><i class="fas fa-check-circle"></i>Fjernhjelp tilgjengelig</li>
-              </ul>
-            </div>
-          </div>
-          <div class="additional-fee">
-            <p><strong>Merk:</strong> Hvis du har sendt utstyr til oss og vi ikke kan reparere det, kan du velge å få det returnert eller la oss destruere det for en avgift på 500,-.</p>
-          </div>
-        </div>
-
-        <div class="benefits-grid">
-          <div class="benefit-card">
-            <div class="benefit-icon">
-              <i class="fas fa-shield-alt"></i>
-            </div>
-            <h4>Sikkerhet</h4>
-            <p>Vi sikrer at systemet ditt er beskyttet mot trusler og sårbarheter.</p>
-          </div>
-          <div class="benefit-card">
-            <div class="benefit-icon">
-              <i class="fas fa-rocket"></i>
-            </div>
-            <h4>Ytelse</h4>
-            <p>Vi optimaliserer systemet ditt for raskere drift og bedre effektivitet.</p>
-          </div>
-          <div class="benefit-card">
-            <div class="benefit-icon">
-              <i class="fas fa-history"></i>
-            </div>
-            <h4>Stabilitet</h4>
-            <p>Vi eliminerer systemkrasj og uventede feil for en pålitelig opplevelse.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="backup" class="backup-section">
-        <div class="section-title">
-          <h2>Backup & Skylagring</h2>
-          <p>Vi hjelper deg med å sette opp sikre backup- og skylagringsløsninger for å beskytte dine verdifulle data mot tap.</p>
-        </div>
-        <div class="services-grid">
-          <div class="service-card">
-            <div class="card-icon" style="color: var(--success);">
               <i class="fas fa-cloud"></i>
             </div>
-            <div class="card-content">
-              <h3>Beskyttelse mot datatap</h3>
-              <ul>
-                <li><i class="fas fa-check"></i>Oppsett av regelmessige sikkerhetskopier</li>
-                <li><i class="fas fa-check"></i>Konfigurasjon av automatisk backup</li>
-                <li><i class="fas fa-check"></i>Hjelp til gjenoppretting av data</li>
-                <li><i class="fas fa-check"></i>Oppsett av kryptert databehandling</li>
-              </ul>
-            </div>
+            <h3>Backup & Skylagring</h3>
+            <p>Beskytt dine verdifulle data med våre sikre backup- og skylagringsløsninger, inkludert automatisk backup og kryptert databehandling for trygghet mot datatap.</p>
+            <a href="/tjenester/backup&skylagring/index.html" class="btn btn-service">Få hjelp nå</a>
           </div>
           <div class="service-card">
-            <div class="card-icon" style="color: var(--business);">
-              <i class="fas fa-upload"></i>
+            <div class="card-icon">
+              <i class="fas fa-globe"></i>
             </div>
-            <div class="card-content">
-              <h3>Skylagringsløsninger</h3>
-              <ul>
-                <li><i class="fas fa-check"></i>Oppsett av sikker datalagring</li>
-                <li><i class="fas fa-check"></i>Konfigurasjon av automatisk synkronisering</li>
-                <li><i class="fas fa-check"></i>Synkronisering på tvers av enheter</li>
-                <li><i class="fas fa-check"></i>Tilgang fra alle enheter</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="problem-cards">
-          <div class="problem-card">
-            <div class="problem-icon">
-              <i class="fas fa-virus"></i>
-            </div>
-            <div class="problem-content">
-              <h4>Ransomware-angrep</h4>
-              <p>Beskytt deg mot løsepenger-virus som krypterer dataene dine.</p>
-            </div>
-          </div>
-          <div class="problem-card">
-            <div class="problem-icon">
-              <i class="fas fa-hard-drive"></i>
-            </div>
-            <div class="problem-content">
-              <h4>Harddiskfeil</h4>
-              <p>Harddisker har begrenset levetid - backup sikrer dataene mot uventet feil.</p>
-            </div>
-          </div>
-          <div class="problem-card">
-            <div class="problem-icon">
-              <i class="fas fa-user-slash"></i>
-            </div>
-            <div class="problem-content">
-              <h4>Brukerfeil</h4>
-              <p>Gjenopprett filer som er slettet ved en feil eller overskrevet.</p>
-            </div>
-          </div>
-          <div class="problem-card">
-            <div class="problem-icon">
-              <i class="fas fa-fire"></i>
-            </div>
-            <div class="problem-content">
-              <h4>Naturkatastrofer</h4>
-              <p>Skylagring sikrer dataene dine selv ved brann eller flom.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="pricing-section">
-          <div class="pricing-cards">
-            <div class="pricing-card">
-              <div class="price-tag">1500,- <span>engangskostnad</span></div>
-              <div class="price-tag">Årlig kost <span>avhengig av datamengde</span></div>
-              <ul>
-                <li><i class="fas fa-check-circle"></i>Konfigurasjon av automatisk backup</li>
-                <li><i class="fas fa-check-circle"></i>Oppsett av kryptert databehandling</li>
-                <li><i class="fas fa-check-circle"></i>Synkronisering på tvers av enheter</li>
-                <li><i class="fas fa-check-circle"></i>Hjelp til gjenoppretting ved behov</li>
-              </ul>
-            </div>
+            <h3>Webdesign & Domene</h3>
+            <p>Vi skaper moderne, brukervennlige nettsider og håndterer domeneregistrering samt hosting, slik at din digitale tilstedeværelse blir profesjonell og effektiv.</p>
+            <a href="/tjenester/webdesign&domene/index.html" class="btn btn-service">Få hjelp nå</a>
           </div>
         </div>
       </section>
@@ -747,90 +467,14 @@
       <section id="everytool" class="everytool-section">
         <div class="section-title">
           <h2>everytool.io</h2>
-          <p>En verden av gratis verktøy i nettleseren din</p>
         </div>
-  
         <div class="everytool-content">
-          <div class="tool-highlight">
-            <h3>En verden av verktøy i nettleseren din</h3>
-            <p>Vi elsker gratis verktøy og derfor har vi skapt everytool.io. Her får du tilgang til et utvalg av kraftige verktøy rett i nettleseren din – uten kostnad, uten registrering, og uten å måtte installere noe som helst!</p>
-            <p>Vi tror at våre verktøy bør være tilgjengelige for alle, uten at man skal måtte ofre personvernet sitt. Derfor har vi bygget everytool.io som en plattform der du kan utføre oppgaver direkte i nettleseren din, uten at vi lagrer dine data.</p>
-          </div>
-          
-          <div class="benefits-cards">
-            <div class="benefit-card">
-              <h4><i class="fas fa-bolt text-primary"></i> Øk produktiviteten din</h4>
-              <p>Gjør kjedelige oppgaver på sekunder med våre effektive verktøy</p>
-            </div>
-            
-            <div class="benefit-card">
-              <h4><i class="fas fa-shield-alt text-primary"></i> Ditt personvern er viktig</h4>
-              <p>Vi lagrer ingen data – bruk verktøyene med tillit</p>
-            </div>
-            
-            <div class="benefit-card">
-              <h4><i class="fas fa-sync-alt text-primary"></i> Oppdatert kontinuerlig</h4>
-              <p>Nye verktøy og forbedringer legges til regelmessig</p>
-            </div>
-            
-            <div class="benefit-card">
-              <h4><i class="fas fa-mobile-alt text-primary"></i> Tilgjengelig overalt</h4>
-              <p>Fungerer perfekt på mobil, nettbrett og datamaskin</p>
-            </div>
-          </div>
-          
-          <div class="everytool-button-container">
-            <a href="https://everytool.io" class="btn btn-everytool">
-              <i class="fas fa-external-link-alt"></i>
-              Utforsk alle verktøy på everytool.io
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" class="contact">
-        <div class="section-title">
-          <h2>Kontakt Oss</h2>
-          <p>Få teknisk hjelp raskt og enkelt</p>
-        </div>
-        <div class="contact-form-container">
-          <form id="contact-form" action="https://formspree.io/f/mwpbkjdd" method="POST">
-            <div class="form-group">
-              <label for="name">Navn</label>
-              <input type="text" id="name" name="name" required aria-required="true" aria-label="Ditt navn" autocomplete="name">
-            </div>
-            <div class="form-group">
-              <label for="email">E-post</label>
-              <input type="email" id="email" name="email" required aria-required="true" aria-label="Email" autocomplete="email">
-            </div>
-            <div class="form-group">
-              <label for="service-type">Hva kan vi hjelpe deg med?</label>
-              <select id="service-type" name="service" required aria-required="true" aria-label="Velg type tjeneste" autocomplete="off">
-                <option value="">Velg en tjeneste...</option>
-                <option value="feilretting">Feilretting og Vedlikehold</option>
-                <option value="backup">Backup & Skylagring</option>
-                <option value="other">Annet</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="message">Beskriv behovet ditt</label>
-              <textarea id="message" name="message" required aria-required="true" aria-label="Beskrivelse av ditt behov" placeholder="Beskriv utfordringen eller behovet ditt, f.eks. 'PC starter ikke', 'trenger backup-oppsett', eller 'laptop er veldig treg'. Inkluder detaljer om utstyr eller feilmeldinger for raskere støtte." autocomplete="off"></textarea>
-            </div>
-            <div style="display: none;">
-              <label for="website">Website (leave blank)</label>
-              <input type="text" id="website" name="_gotcha" autocomplete="off">
-            </div>
-            <input type="hidden" name="_subject" id="email-subject" value="Ny henvendelse fra FixMyTech.no" autocomplete="off">
-            <div class="form-group">
-              <button type="submit" aria-label="Send henvendelse">
-                <i class="fas fa-paper-plane"></i> Send henvendelse
-              </button>
-            </div>
-            <div class="form-disclaimer">
-              <p><strong>Viktig:</strong></p>
-              <p>Våre eksperter jobber for å levere høykvalitets teknologitjenester. FixMyTech.no er ikke ansvarlig for skader på utstyr eller problemer som kan oppstå under reparasjon, oppsett eller andre tjenester. Kunden aksepterer at all bruk av våre tjenester skjer på eget ansvar.</p>
-            </div>
-          </form>
+          <h3>Utforsk vår samling av gratis verktøy</h3>
+          <p>Vi har utviklet en kraftig samling av gratis verktøy på everytool.io, tilgjengelig direkte i nettleseren din. Ingen registrering, ingen datalagring – bare enkle, effektive løsninger for å øke produktiviteten din.</p>
+          <a href="/fixmytech.no/everytool/" class="btn btn-everytool">
+            <i class="fas fa-external-link-alt"></i>
+            Les mer her!
+          </a>
         </div>
       </section>
     </div>
