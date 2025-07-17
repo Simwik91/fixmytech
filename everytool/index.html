@@ -13,11 +13,203 @@
   <style>
     /* Inline Styles for Main Content (Complementary to /css/styles.css) */
     :root {
-      --primary-light: #3b82f6; /* Derived from --primary: #2563eb */
+      --primary: #2563eb;
+      --primary-light: #3b82f6;
       --medium-gray: #cbd5e1;
       --dark-gray: #64748b;
+      --light-gray: #f1f5f9;
+      --warning: #dc2626;
+      --success: #16a34a;
+      --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+      --border-radius: 12px;
+      --transition: all 0.3s ease;
       --gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    }
+
+    /* Cookie Consent Banner Styles */
+    #cookie-consent-banner {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 800px;
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      z-index: 1000;
+      padding: 1.5rem;
+    }
+
+    .cookie-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .cookie-text {
+      text-align: center;
+    }
+
+    .cookie-text h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .cookie-text p {
+      font-size: 1rem;
+      color: var(--dark-gray);
+    }
+
+    .cookie-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cookie-btn {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .cookie-accept-btn {
+      background: var(--primary);
+      color: white;
+    }
+
+    .cookie-accept-btn:hover {
+      background: var(--primary-light);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .cookie-reject-btn {
+      background: var(--medium-gray);
+      color: var(--dark-gray);
+    }
+
+    .cookie-reject-btn:hover {
+      background: #b0bec5;
+      box-shadow: var(--shadow-hover);
+    }
+
+    .cookie-settings-btn {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .cookie-settings-btn:hover {
+      background: var(--primary);
+      color: white;
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* Cookie Settings Modal Styles */
+    #cookie-settings-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1001;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cookie-settings-content {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      width: 90%;
+      max-width: 500px;
+      position: relative;
+      box-shadow: var(--shadow);
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--dark-gray);
+    }
+
+    .cookie-settings-content h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cookie-option {
+      margin-bottom: 1.5rem;
+    }
+
+    .toggle-label {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 40px;
+      height: 20px;
+      background: var(--medium-gray);
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .toggle-switch::before {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: white;
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+      transition: var(--transition);
+    }
+
+    input[type="checkbox"]:checked + .toggle-switch {
+      background: var(--primary);
+    }
+
+    input[type="checkbox"]:checked + .toggle-switch::before {
+      transform: translateX(20px);
+    }
+
+    .cookie-option p {
+      font-size: 0.95rem;
+      color: var(--dark-gray);
+    }
+
+    #save-cookie-settings {
+      background: var(--primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    #save-cookie-settings:hover {
+      background: var(--primary-light);
+      box-shadow: var(--shadow-hover);
     }
 
     /* Hero Section */
@@ -364,6 +556,59 @@
       text-align: center;
       padding: 1rem;
     }
+
+    /* General Styles */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-title p {
+      font-size: 1.2rem;
+      color: var(--dark-gray);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-light);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+      box-shadow: var(--shadow-hover);
+    }
   </style>
 </head>
 <body>
@@ -579,7 +824,7 @@
         script.src = 'https://everytool.io/js/main.js';
         document.body.appendChild(script);
 
-        // Cookie Consent Logic (matching fixmytech.no behavior)
+        // Cookie Consent Logic
         function getCookie(name) {
           const value = `; ${document.cookie}`;
           const parts = value.split(`; ${name}=`);
@@ -616,10 +861,7 @@
           analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
           overallStatus.textContent = 'Innstillinger lagret';
           cookieBanner.style.display = 'none';
-        } else {
-          setTimeout(() => {
-            cookieBanner.style.display = 'block';
-          }, 1000);
+          cookieModal.style.display = 'none';
         }
 
         // Function to open cookie settings modal
@@ -630,7 +872,7 @@
             analyticsToggle.checked = analytics === 'true';
             analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
           }
-          cookieModal.style.display = 'block';
+          cookieModal.style.display = 'flex';
         }
 
         // Accept cookies
