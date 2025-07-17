@@ -14,7 +14,7 @@
   <style>
     /* Backup section styling */
     .backup-section {
-      padding: 8rem 0 5rem; /* Increased top padding for spacing */
+      padding: 8rem 0 5rem;
       background: #f9fafb;
     }
 
@@ -140,32 +140,28 @@
       padding: 0.5rem 0;
     }
 
-    /* Get Help Button Styling */
-    .get-help-section {
-      padding: 2rem 0;
+    .cta-section {
       text-align: center;
+      padding: 3rem 0;
+      background: linear-gradient(135deg, #f0f7ff 0%, #e1ecfe 100%);
+      border-radius: var(--border-radius);
+      margin: 3rem 0;
     }
 
-    .get-help-button {
+    .btn-service {
       background: var(--primary);
       color: white;
-      border: none;
-      padding: 1.25rem 2.5rem;
-      border-radius: var(--border-radius);
       font-weight: 600;
-      font-size: 1.3rem;
-      cursor: pointer;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      border-radius: var(--border-radius);
       transition: var(--transition);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
+      display: inline-block;
+      margin-top: 1.5rem;
+      text-decoration: none;
     }
 
-    .get-help-button i {
-      font-size: 1.4rem;
-    }
-
-    .get-help-button:hover {
+    .btn-service:hover {
       background: var(--secondary);
       transform: translateY(-3px);
     }
@@ -173,7 +169,7 @@
     /* Responsive adjustments */
     @media (max-width: 768px) {
       .backup-section {
-        padding: 6rem 0 3rem; /* Adjusted for mobile */
+        padding: 6rem 0 3rem;
       }
 
       .service-card {
@@ -188,17 +184,13 @@
         font-size: 2rem;
       }
 
-      .get-help-section {
+      .cta-section {
         padding: 1.5rem 0;
       }
 
-      .get-help-button {
+      .btn-service {
         padding: 1rem 2rem;
         font-size: 1.2rem;
-      }
-
-      .get-help-button i {
-        font-size: 1.3rem;
       }
 
       .setup-free {
@@ -211,6 +203,231 @@
 
       .annual-cost-list {
         font-size: 0.9rem;
+      }
+    }
+
+    /* Cookie Consent Banner Styling */
+    #cookie-consent-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+      padding: 1.5rem;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cookie-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      width: 100%;
+      gap: 1rem;
+    }
+
+    .cookie-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .cookie-text h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .cookie-text p {
+      font-size: 0.9rem;
+      color: var(--secondary);
+    }
+
+    .cookie-buttons {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .cookie-btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--border-radius);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .cookie-accept-btn {
+      background: var(--primary);
+      color: white;
+    }
+
+    .cookie-accept-btn:hover {
+      background: var(--secondary);
+    }
+
+    .cookie-reject-btn {
+      background: var(--light-gray);
+      color: var(--secondary);
+    }
+
+    .cookie-reject-btn:hover {
+      background: #d1d5db;
+    }
+
+    .cookie-settings-btn {
+      background: transparent;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .cookie-settings-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Cookie Settings Modal */
+    #cookie-settings-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1001;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cookie-settings-content {
+      background: white;
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .cookie-option {
+      margin: 1.5rem 0;
+    }
+
+    .toggle-label {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 40px;
+      height: 20px;
+      background: var(--light-gray);
+      border-radius: 20px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .toggle-switch::before {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: white;
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+      transition: var(--transition);
+    }
+
+    input[type="checkbox"]:checked + .toggle-switch {
+      background: var(--primary);
+    }
+
+    input[type="checkbox"]:checked + .toggle-switch::before {
+      transform: translateX(20px);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      width: 100%;
+    }
+
+    .btn-primary:hover {
+      background: var(--secondary);
+    }
+
+    /* Additional styles for cookie status indicators */
+    .off {
+      opacity: 0.5;
+    }
+
+    #analytics-status-text,
+    #overall-status-text {
+      font-size: 0.9rem;
+      color: var(--secondary);
+    }
+
+    /* Responsive adjustments for cookies */
+    @media (max-width: 768px) {
+      #cookie-consent-banner {
+        padding: 1rem;
+      }
+
+      .cookie-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .cookie-text {
+        margin-bottom: 1rem;
+      }
+
+      .cookie-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .cookie-btn {
+       Font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .cookie-text h3 {
+        font-size: 1rem;
+      }
+
+      .cookie-text p {
+        font-size: 0.8rem;
+      }
+
+      .cookie-btn {
+        font-size: 0.8rem;
+        padding: 0.6rem;
       }
     }
   </style>
@@ -352,11 +569,11 @@
           </div>
         </div>
 
-        <section id="get-help" class="get-help-section">
-          <a href="/kontakt/" class="get-help-button" aria-label="Få hjelp nå">
-            <i class="fas fa-paper-plane"></i> Få hjelp nå
-          </a>
-        </section>
+        <div class="cta-section">
+          <h3>Klar til å sikre dine data?</h3>
+          <p>Kontakt oss i dag for en gratis konsultasjon om backup- og skylagringsløsninger</p>
+          <a href="/kontakt" class="btn btn-service">Kontakt oss nå</a>
+        </div>
       </section>
     </div>
   </main>
@@ -381,14 +598,14 @@
           return res.text();
         }).catch(err => {
           console.error('Error loading header:', err);
-          return ''; // Return empty string to continue
+          return '';
         }),
         fetch('/includes/footer.html').then(res => {
           if (!res.ok) throw new Error(`Failed to load footer: ${res.status}`);
           return res.text();
         }).catch(err => {
           console.error('Error loading footer:', err);
-          return ''; // Return empty string to continue
+          return '';
         })
       ]).then(([header, footer]) => {
         const headerContainer = document.getElementById('header-container');
@@ -398,7 +615,7 @@
         loadMainScript();
       }).catch(error => {
         console.error('Error loading includes:', error);
-        loadMainScript(); // Load main.js even if includes fail
+        loadMainScript();
       });
     });
   </script>
