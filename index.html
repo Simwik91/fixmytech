@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FixMyTech.no - Profesjonelle IT-reparasjoner og programvareløsninger</title>
-  <meta name="description" content="FixMyTech.no tilbyr profesjonell teknisk hjelp, inkludert feilretting, backup, skylagring, webdesign og domenetjenester.">
+  <meta name="description" content="FixMyTech.no tilbyr profesjonell teknisk hjelp, inkludert reparasjon, backup, skylagring, webdesign og domenetjenester.">
   <meta name="keywords" content="teknisk støtte, teknologihjelp, PC-reparasjon, datasikkerhet, backup, skylagring, webdesign, domene">
   <meta name="author" content="FixMyTech.no">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,17 +12,41 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fixmytech.no/css/styles.css">
   <style>
+    /* General Reset and Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    :root {
+      --primary: #2563eb;
+      --secondary: #0f172a;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --business: #1e40af;
+      --border-radius: 8px;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
     /* Homepage-specific enhancements */
     .hero {
-      padding: 8rem 0 5rem;
+      padding: 7rem 0 4rem;
       background: #fff;
       color: var(--secondary);
       text-align: center;
     }
     
     .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 1.5rem;
+      font-size: 3.2rem;
+      margin-bottom: 1.2rem;
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
@@ -33,9 +57,9 @@
     }
     
     .hero p {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       max-width: 700px;
-      margin: 0 auto 2rem;
+      margin: 0 auto 1.5rem;
     }
     
     .hero-content {
@@ -47,152 +71,192 @@
       background: var(--primary);
       color: white;
       font-weight: 600;
-      padding: 1rem 2.5rem;
+      padding: 0.9rem 2.2rem;
       font-size: 1.1rem;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
       border-radius: var(--border-radius);
+      text-decoration: none;
     }
     
     .btn-hero:hover {
       background: var(--secondary);
-      transform: translateY(-5px);
+      transform: translateY(-3px);
     }
     
     .section-title h2 {
-      font-size: 2.5rem;
+      font-size: 2.4rem;
       margin-bottom: 1rem;
+      color: var(--primary);
     }
     
     .section-title p {
       font-size: 1.1rem;
       color: var(--secondary);
+      max-width: 600px;
+      margin: 0 auto;
     }
     
     .service-section {
-      padding: 5rem 0;
+      padding: 4rem 0;
     }
     
     .process-steps {
-      margin-top: 3rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
+      margin-top: 2.5rem;
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 1.5rem;
+      justify-content: center;
     }
     
     .step-card {
       background: white;
       border-radius: var(--border-radius);
       box-shadow: var(--shadow);
-      padding: 2rem;
+      padding: 1.8rem;
       transition: var(--transition);
       border-top: 4px solid var(--primary);
+      flex: 1;
+      min-width: 220px;
+      max-width: 320px;
+      text-align: center;
     }
     
     .step-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
     }
     
     .step-number {
       background: var(--primary);
       color: white;
-      width: 50px;
-      height: 50px;
+      width: 45px;
+      height: 45px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 700;
-      margin-bottom: 1.5rem;
+      margin: 0 auto 1.2rem;
     }
     
     .device-icons {
       display: flex;
       justify-content: center;
-      gap: 2rem;
-      padding: 3rem 0;
+      gap: 1.5rem;
+      padding: 2.5rem 0;
       flex-wrap: wrap;
       background: #f9fafb;
-      margin: 4rem 0;
+      margin: 2rem 0;
     }
     
     .device-icon {
-      font-size: 3rem;
+      font-size: 2.8rem;
       color: var(--primary);
       transition: var(--transition);
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 0.5rem;
+      min-width: 100px;
     }
     
     .device-icon:hover {
       color: var(--secondary);
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
     
     .device-icon span {
       font-size: 0.9rem;
       color: var(--secondary);
+      text-align: center;
     }
     
     .services-grid {
-      margin: 3rem 0;
+      margin: 2.5rem 0;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      align-items: stretch;
     }
     
     .service-card {
       background: white;
       border-radius: var(--border-radius);
       box-shadow: var(--shadow);
-      padding: 2.5rem;
+      padding: 2rem;
       transition: var(--transition);
       border-top: 4px solid var(--primary);
       display: flex;
       flex-direction: column;
       text-align: center;
-      min-height: 350px;
+      min-height: 360px;
       justify-content: space-between;
     }
     
     .service-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
     }
     
     .card-icon {
-      font-size: 3rem;
+      font-size: 2.8rem;
       color: var(--primary);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
     
     .service-card h3 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
+      font-size: 1.7rem;
+      margin-bottom: 0.8rem;
     }
     
     .service-card p {
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: var(--secondary);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
       flex-grow: 1;
+    }
+    
+    .service-card ul {
+      list-style: none;
+      padding: 0 1.5rem;
+      margin: 0.8rem 0;
+      text-align: left;
+      font-size: 0.95rem;
+      color: var(--secondary);
+      flex-grow: 1;
+    }
+    
+    .service-card li {
+      padding: 0.6rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      min-height: 32px;
+      line-height: 1.4;
+    }
+    
+    .service-card i.fa-check {
+      color: var(--success);
+      min-width: 20px;
+      font-size: 1rem;
+      margin-top: 0.2rem;
     }
     
     .service-card .btn-service {
       background: var(--primary);
       color: white;
-      padding: 1rem 2rem;
-      font-size: 1.1rem;
+      padding: 0.9rem 1.8rem;
+      font-size: 1rem;
       font-weight: 600;
       border-radius: var(--border-radius);
       transition: var(--transition);
       display: inline-flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.7rem;
       align-self: center;
+      text-decoration: none;
+      margin-top: auto;
     }
     
     .service-card .btn-service:hover {
@@ -201,7 +265,7 @@
     }
     
     .everytool-section {
-      padding: 5rem 0;
+      padding: 4rem 0;
       background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
       text-align: center;
       position: relative;
@@ -225,20 +289,20 @@
       position: relative;
       z-index: 1;
       background: white;
-      padding: 3rem;
+      padding: 2.5rem;
       border-radius: var(--border-radius);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
       transition: var(--transition);
     }
     
     .everytool-content:hover {
       transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
     }
     
     .everytool-content h3 {
-      font-size: 2.2rem;
-      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
       color: var(--primary);
       position: relative;
       padding-bottom: 0.5rem;
@@ -250,21 +314,21 @@
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 100px;
+      width: 80px;
       height: 3px;
       background: var(--primary);
       border-radius: 2px;
     }
     
     .everytool-content p {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: var(--secondary);
-      margin-bottom: 2rem;
+      margin-bottom: 1.8rem;
       line-height: 1.6;
     }
     
     .everytool-icon {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       color: var(--primary);
       margin-bottom: 1rem;
     }
@@ -272,26 +336,27 @@
     .btn-everytool {
       background: var(--business);
       color: white;
-      padding: 1.2rem 2.5rem;
-      font-size: 1.2rem;
+      padding: 1rem 2.2rem;
+      font-size: 1.1rem;
       font-weight: 600;
       border-radius: var(--border-radius);
       transition: var(--transition);
       display: inline-flex;
       align-items: center;
-      gap: 0.75rem;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      gap: 0.7rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      text-decoration: none;
     }
     
     .btn-everytool:hover {
       background: var(--secondary);
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
     }
     
     /* About Us Section */
     .about-section {
-      padding: 5rem 0;
+      padding: 4rem 0;
       text-align: center;
       background: #f9fafb;
     }
@@ -302,27 +367,192 @@
     }
     
     .about-content h2 {
-      font-size: 2.5rem;
+      font-size: 2.4rem;
       color: var(--primary);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
     
     .about-content p {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: var(--secondary);
       line-height: 1.6;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
     
-    /* Style for everytool.io in section-title */
-    .everytool-section .section-title h2 {
-      color: var(--primary); /* Match the blue color used elsewhere */
+    /* Service-specific styles */
+    .service-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
     }
     
-    /* Responsive adjustments */
+    .environmental-section {
+      background: linear-gradient(135deg, #e6f4ea 0%, #c8e6c9 100%);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      text-align: center;
+      margin: 2.5rem 0;
+      border-left: 5px solid var(--success);
+    }
+    
+    .environmental-icon {
+      font-size: 2.2rem;
+      color: var(--success);
+      margin-bottom: 1.2rem;
+    }
+    
+    .problem-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+    }
+    
+    .problem-card {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: var(--transition);
+    }
+    
+    .problem-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .problem-icon {
+      font-size: 1.6rem;
+      color: var(--warning);
+      min-width: 35px;
+      display: flex;
+      justify-content: center;
+      padding-top: 0.3rem;
+    }
+    
+    .pricing-section {
+      background: #f8fafc;
+      padding: 2.5rem;
+      border-radius: var(--border-radius);
+      margin: 2.5rem 0;
+      text-align: center;
+    }
+    
+    .pricing-card {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 2rem;
+      text-align: center;
+    }
+    
+    .price-tag {
+      font-size: 2.3rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .price-highlight {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--success);
+      margin-bottom: 1.2rem;
+    }
+    
+    .pricing-card ul {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    
+    .pricing-card li {
+      padding: 0.6rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      border-bottom: 1px solid #edf2f7;
+    }
+    
+    .pricing-card i.fa-check-circle {
+      color: var(--success);
+    }
+    
+    .additional-fee {
+      margin-top: 1.2rem;
+      padding: 1rem;
+      background: #fffaf0;
+      border-left: 4px solid var(--warning);
+      border-radius: var(--border-radius);
+    }
+    
+    .benefits-grid {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 1.5rem;
+      justify-content: center;
+      margin: 2.5rem 0;
+    }
+    
+    .benefit-card {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 1.8rem;
+      text-align: center;
+      transition: var(--transition);
+      flex: 1;
+      min-width: 220px;
+      max-width: 320px;
+    }
+    
+    .benefit-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .benefit-icon {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 1.2rem;
+    }
+    
+    .cta-section {
+      text-align: center;
+      padding: 2.5rem 0;
+      background: linear-gradient(135deg, #f0f7ff 0%, #e1ecfe 100%);
+      border-radius: var(--border-radius);
+      margin: 0.5rem 0 2.5rem;
+    }
+    
+    .btn-service {
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+      padding: 0.9rem 1.8rem;
+      font-size: 1rem;
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+      display: inline-block;
+      margin-top: 1.2rem;
+      text-decoration: none;
+    }
+    
+    .btn-service:hover {
+      background: var(--secondary);
+      transform: translateY(-3px);
+    }
+    
     @media (max-width: 992px) {
       .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.4rem;
       }
       
       .hero p {
@@ -330,17 +560,29 @@
       }
       
       .everytool-content h3 {
-        font-size: 1.8rem;
+        font-size: 1.7rem;
       }
       
       .about-content h2 {
         font-size: 2rem;
       }
+      
+      .process-steps {
+        flex-wrap: wrap;
+      }
+      
+      .benefits-grid {
+        flex-wrap: wrap;
+      }
+      
+      .device-icons {
+        gap: 1rem;
+      }
     }
     
     @media (max-width: 768px) {
       .hero {
-        padding: 6rem 0 3rem;
+        padding: 5rem 0 3rem;
       }
       
       .hero h1 {
@@ -352,7 +594,7 @@
       }
       
       .service-card {
-        min-height: 300px;
+        min-height: 340px;
       }
       
       .everytool-content {
@@ -360,12 +602,12 @@
       }
       
       .everytool-content h3 {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
       }
       
       .btn-everytool {
-        padding: 1rem 2rem;
-        font-size: 1.1rem;
+        padding: 0.9rem 1.8rem;
+        font-size: 1rem;
       }
       
       .about-content h2 {
@@ -373,7 +615,20 @@
       }
       
       .about-content p {
-        font-size: 1.1rem;
+        font-size: 1rem;
+      }
+      
+      .pricing-section {
+        padding: 1.5rem;
+      }
+      
+      .pricing-card {
+        padding: 1.5rem;
+      }
+      
+      .device-icon {
+        min-width: 80px;
+        font-size: 2.5rem;
       }
     }
   </style>
@@ -420,9 +675,7 @@
 
   <main id="main-content">
     <!-- Scroll to top button -->
-    <button id="scrollTopBtn" title="Go to top" aria-label="Scroll to top" style="display: none;">
-      <i class="fas fa-arrow-up"></i>
-    </button>
+
 
     <!-- Modal -->
     <div id="modal" class="modal" style="display: none;">
@@ -450,63 +703,182 @@
 
       <section id="about-us" class="about-section">
         <div class="about-content">
-          <p>FixMyTech.no ble grunnlagt med en visjon om å gjøre teknologi enkel og tilgjengelig for alle. Vårt team av erfarne IT-eksperter er dedikert til å levere skreddersydde løsninger som møter dine behov.</p>
-          <p>Med fokus på kvalitet, pålitelighet og kundetilfredshet, tilbyr vi alt fra feilsøking og reparasjoner til avanserte skyløsninger og webdesign.</p>
-          <p>Vi tror på å bygge langsiktige relasjoner ved å gi ærlig rådgivning og effektive resultater.</p>
-          <p>La oss hjelpe deg med å navigere i teknologiens verden – vi er her for å gjøre hverdagen din enklere!</p>
+          <div class="service-container">
+            <div class="section-title">
+              <h2>Hvordan jobber vi?</h2>
+              <p>Vår prosess er enkel og effektiv for å sikre rask og teknisk støtte</p>
+              <p></p>
+            </div>
+            <div class="process-steps">
+              <div class="step-card">
+                <div class="step-number">1</div>
+                <h3>Kontakt oss</h3>
+                <p>Fortell oss om ditt problem via skjemaet på kontaktsiden.</p>
+              </div>
+              <div class="step-card">
+                <div class="step-number">2</div>
+                <h3>Vurdering</h3>
+                <p>Vi vurderer forespørselen din, normalt innen 24 timer, og gir et tilbud på løsning.</p>
+              </div>
+              <div class="step-card">
+                <div class="step-number">3</div>
+                <h3>Gjennomføring og Levering</h3>
+                <p>Etter godkjent tilbud løser vi oppdraget via fjernstyring eller returnerer utstyret etter reparasjon.</p>
+              </div>
+            </div>
+            <div class="environmental-section">
+              <div class="environmental-icon">
+                <i class="fas fa-leaf"></i>
+              </div>
+              <h3>Godt for miljøet og lommeboken</h3>
+              <p>Ved å reparere og vedlikeholde utstyr istedenfor å kjøpe nytt, bidrar du til bærekraftig utvikling og reduserer elektronisk avfall. Våre reparasjoner forlenger levetiden til utstyr og sparer deg for unødvendige kostnader.</p>
+            </div>
+            <div class="services-grid">
+              <div class="service-card">
+                <div class="card-icon">
+                  <i class="fas fa-plug"></i>
+                </div>
+                <h3>Maskinvare & Utstyr</h3>
+                <ul>
+                  <li><i class="fas fa-check"></i>Reparasjon av PC, laptop, nettbrett</li>
+                  <li><i class="fas fa-check"></i>Utstyrsoppgradering (minne, SSD)</li>
+                  <li><i class="fas fa-check"></i>Feilsøking av maskinvarefeil</li>
+                  <li><i class="fas fa-check"></i>Hente ut data fra ødelagt utstyr</li>
+                  <li><i class="fas fa-check"></i>Skjermreparasjoner</li>
+                  <li><i class="fas fa-check"></i>Strømforsyningsproblemer</li>
+                </ul>
+              </div>
+              <div class="service-card">
+                <div class="card-icon">
+                  <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3>Programvare & Systemer</h3>
+                <ul>
+                  <li><i class="fas fa-check"></i>Fikse programvarefeil</li>
+                  <li><i class="fas fa-check"></i>Virus- og malware-fjerning</li>
+                  <li><i class="fas fa-check"></i>Systemoptimalisering</li>
+                  <li><i class="fas fa-check"></i>Operativsystemoppdateringer</li>
+                  <li><i class="fas fa-check"></i>Gjenoppretting av operativsystem</li>
+                  <li><i class="fas fa-check"></i>Programvareinstallasjon og -konfigurasjon</li>
+                  <li><i class="fas fa-check"></i>Driveroppdateringer</li>
+                </ul>
+              </div>
+            </div>
+            <div class="problem-cards">
+              <div class="problem-card">
+                <div class="problem-icon">
+                  <i class="fas fa-bug"></i>
+                </div>
+                <div class="problem-content">
+                  <h4>Datavirus og malware</h4>
+                  <p>Vi fjerner alle typer skadelig programvare og sikrer at systemet ditt er trygt.</p>
+                </div>
+              </div>
+              <div class="problem-card">
+                <div class="problem-icon">
+                  <i class="fas fa-bolt"></i>
+                </div>
+                <div class="problem-content">
+                  <h4>Langsom datamaskin</h4>
+                  <p>Vi optimaliserer systemet ditt for raskere ytelse og bedre effektivitet.</p>
+                </div>
+              </div>
+              <div class="problem-card">
+                <div class="problem-icon">
+                  <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="problem-content">
+                  <h4>Blåskjerm-feil</h4>
+                  <p>Vi diagnostiserer årsaken til systemkrasj og implementerer løsninger.</p>
+                </div>
+              </div>
+              <div class="problem-card">
+                <div class="problem-icon">
+                  <i class="fas fa-wifi"></i>
+                </div>
+                <div class="problem-content">
+                  <h4>Nettverksproblemer</h4>
+                  <p>Vi løser Wi-Fi-problemer, nettverkskoblinger og Internett-tilkoblinger.</p>
+                </div>
+              </div>
+            </div>
+            <div class="benefits-grid">
+              <div class="benefit-card">
+                <div class="benefit-icon">
+                  <i class="fas fa-shield-alt"></i>
+                </div>
+                <h4>Sikkerhet</h4>
+                <p>Vi sikrer at systemet ditt er beskyttet mot trusler og sårbarheter.</p>
+              </div>
+              <div class="benefit-card">
+                <div class="benefit-icon">
+                  <i class="fas fa-rocket"></i>
+                </div>
+                <h4>Ytelse</h4>
+                <p>Vi optimaliserer systemet ditt for raskere drift og bedre effektivitet.</p>
+              </div>
+              <div class="benefit-card">
+                <div class="benefit-icon">
+                  <i class="fas fa-history"></i>
+                </div>
+                <h4>Stabilitet</h4>
+                <p>Vi eliminerer systemkrasj og uventede feil for en pålitelig opplevelse.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       <section id="how-we-work" class="service-section">
         <div class="section-title">
-          <h2>Hvordan jobber vi?</h2>
-          <p>Vår prosess er enkel og effektiv for å sikre rask og teknisk støtte</p>
+          <h2>Priser og Betingelser</h2>
+          <p>Transparent prising uten skjulte kostnader</p>
         </div>
-        <div class="process-steps">
-          <div class="step-card">
-            <div class="step-number">1</div>
-            <h3>Kontakt oss</h3>
-            <p>Fortell oss om ditt problem via skjemaet på kontaktsiden.</p>
+        <div class="pricing-card">
+          <div class="price-tag">550,- <span>per time</span></div>
+          <p class="price-highlight">80% av alle problemer løses innen en time!</p>
+          <ul>
+            <li><i class="fas fa-check-circle"></i>Betaling kun ved løst problem</li>
+            <li><i class="fas fa-check-circle"></i>Ingen skjulte kostnader</li>
+            <li><i class="fas fa-check-circle"></i>Gratis tilbud</li>
+            <li><i class="fas fa-check-circle"></i>Fjernhjelp tilgjengelig</li>
+          </ul>
+        </div>
+        <div class="additional-fee">
+          <p><strong>Merk:</strong> Hvis du har sendt utstyr til oss og vi ikke kan reparere det, kan du velge å få det returnert eller la oss destruere det for en avgift på 500,-.</p>
+        </div>
+        <div class="device-icons">
+          <div class="device-icon">
+            <i class="fas fa-laptop"></i>
+            <span>Bærbare datamaskiner</span>
           </div>
-          <div class="step-card">
-            <div class="step-number">2</div>
-            <h3>Vurdering</h3>
-            <p>Vi vurderer forespørselen din, normalt innen 24 timer, og gir et tilbud på løsning.</p>
+          <div class="device-icon">
+            <i class="fas fa-desktop"></i>
+            <span>Stasjonære datamaskiner</span>
           </div>
-          <div class="step-card">
-            <div class="step-number">3</div>
-            <h3>Gjennomføring og Levering</h3>
-            <p>Etter godkjent tilbud løser vi oppdraget via fjernstyring eller returnerer utstyret etter reparasjon.</p>
+          <div class="device-icon">
+            <i class="fas fa-mobile-alt"></i>
+            <span>Mobiltelefoner</span>
           </div>
+          <div class="device-icon">
+            <i class="fas fa-tablet-alt"></i>
+            <span>Nettbrett</span>
+          </div>
+          <div class="device-icon">
+            <i class="fas fa-print"></i>
+            <span>Skrivere</span>
+          </div>
+          <div class="device-icon">
+            <i class="fas fa-server"></i>
+            <span>Servere</span>
+          </div>
+        </div>
+        <div class="cta-section">
+          <h3>Klar til å reparere utstyret ditt?</h3>
+          <p>Kontakt oss i dag for en gratis vurdering av ditt problem</p>
+          <a href="/kontakt" class="btn btn-service">Kontakt oss nå</a>
         </div>
       </section>
-
-      <div class="device-icons">
-        <div class="device-icon">
-          <i class="fas fa-laptop"></i>
-          <span>Bærbare datamaskiner</span>
-        </div>
-        <div class="device-icon">
-          <i class="fas fa-desktop"></i>
-          <span>Stasjonære datamaskiner</span>
-        </div>
-        <div class="device-icon">
-          <i class="fas fa-mobile-alt"></i>
-          <span>Mobiltelefoner</span>
-        </div>
-        <div class="device-icon">
-          <i class="fas fa-tablet-alt"></i>
-          <span>Nettbrett</span>
-        </div>
-        <div class="device-icon">
-          <i class="fas fa-print"></i>
-          <span>Skrivere</span>
-        </div>
-        <div class="device-icon">
-          <i class="fas fa-server"></i>
-          <span>Servere</span>
-        </div>
-      </div>
 
       <section id="services" class="service-section">
         <div class="section-title">
@@ -518,9 +890,9 @@
             <div class="card-icon">
               <i class="fas fa-tools"></i>
             </div>
-            <h3>Feilretting & Vedlikehold</h3>
+            <h3>Reparasjon & Vedlikehold</h3>
             <p>Vi tilbyr feilsøking og reparasjon av maskinvare og programvare, inkludert virusfjerning, systemoptimalisering og oppgraderinger for å forlenge levetiden til utstyret ditt.</p>
-            <a href="/tjenester/feilretting&vedlikehold/" class="btn btn-service">Få hjelp nå</a>
+            <a href="/index.html" class="btn btn-service">Få hjelp nå</a>
           </div>
           <div class="service-card">
             <div class="card-icon">
