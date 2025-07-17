@@ -2,15 +2,15 @@
   "tjenester": [
     {
       "name": "Backup & Skylagring",
-      "path": "/tjenester/backup&skylagring/index.html"
+      "path": "/tjenester/backup&skylagring"
     },
     {
       "name": "Feilretting & Vedlikehold",
-      "path": "/tjenester/feilretting&vedlikehold/index.html"
+      "path": "/tjenester/feilretting&vedlikehold"
     },
     {
       "name": "Webdesign & Domene",
-      "path": "/tjenester/webdesign&domene/index.html"
+      "path": "/tjenester/webdesign&domene"
     }
   ]
 }
