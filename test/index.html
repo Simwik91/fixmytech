@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Backup & Skylagring - FixMyTech.no</title>
-  <meta name="description" content="FixMyTech.no tilbyr sikre backup- og skylagringsløsninger for å beskytte dine verdifulle data mot tap.">
-  <meta name="keywords" content="backup, skylagring, datasikkerhet, databeskyttelse, automatisk backup, kryptert databehandling">
+  <title>Webdesign & Domene - FixMyTech.no</title>
+  <meta name="description" content="FixMyTech.no tilbyr profesjonelle webdesign- og domenetjenester for å skape moderne nettsider og sikre domeneregistrering.">
+  <meta name="keywords" content="webdesign, domeneregistrering, nettsideutvikling, responsiv design, domenehåndtering, SEO">
   <meta name="author" content="FixMyTech.no">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" type="image/x-icon" href="https://fixmytech.no/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fixmytech.no/css/styles.css">
   <style>
-    /* Backup section styling */
-    .backup-section {
-      padding: 8rem 0 5rem; /* Increased top padding for spacing */
+    /* Webdesign section styling */
+    .webdesign-section {
+      padding: 8rem 0 5rem;
       background: #f9fafb;
     }
 
@@ -97,6 +97,7 @@
 
     .pricing-section {
       margin: 3rem 0;
+      text-align: center;
     }
 
     .pricing-card {
@@ -107,6 +108,8 @@
       text-align: center;
       transition: var(--transition);
       border: 2px solid var(--light-gray);
+      max-width: 90%;
+      margin: 0 auto;
     }
 
     .pricing-card:hover {
@@ -114,66 +117,209 @@
       border-color: var(--primary);
     }
 
-    .setup-free {
-      font-size: 1.5rem;
-      font-weight: 600;
+    .price-tag {
+      font-size: 2.5rem;
+      font-weight: 700;
       color: var(--primary);
-      margin-bottom: 1rem;
-      text-align: center;
+      margin-bottom: 0.5rem;
     }
 
-    .annual-cost {
-      margin-top: 1rem;
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--secondary);
-    }
-
-    .annual-cost-list {
-      margin-top: 0.5rem;
-      font-size: 1rem;
-      color: var(--secondary);
-      text-align: left;
-    }
-
-    .annual-cost-list li {
-      padding: 0.5rem 0;
-    }
-
-    /* Get Help Button Styling */
-    .get-help-section {
-      padding: 2rem 0;
-      text-align: center;
-    }
-
-    .get-help-button {
+    .help-button {
       background: var(--primary);
       color: white;
       border: none;
-      padding: 1.25rem 2.5rem;
+      padding: 1rem 2rem;
       border-radius: var(--border-radius);
       font-weight: 600;
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       cursor: pointer;
       transition: var(--transition);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
+      text-align: center;
+      display: inline-block;
+      text-decoration: none;
+      margin: 2rem auto;
+      max-width: 200px;
     }
 
-    .get-help-button i {
-      font-size: 1.4rem;
-    }
-
-    .get-help-button:hover {
+    .help-button:hover {
       background: var(--secondary);
       transform: translateY(-3px);
     }
 
+    /* Cookie Consent Banner Styling */
+    #cookie-consent-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+      padding: 1.5rem;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cookie-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      width: 100%;
+      gap: 1rem;
+    }
+
+    .cookie-text {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .cookie-text h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .cookie-text p {
+      font-size: 0.9rem;
+      color: var(--secondary);
+    }
+
+    .cookie-buttons {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .cookie-btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--border-radius);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .cookie-accept-btn {
+      background: var(--primary);
+      color: white;
+    }
+
+    .cookie-accept-btn:hover {
+      background: var(--secondary);
+    }
+
+    .cookie-reject-btn {
+      background: var(--light-gray);
+      color: var(--secondary);
+    }
+
+    .cookie-reject-btn:hover {
+      background: #d1d5db;
+    }
+
+    .cookie-settings-btn {
+      background: transparent;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .cookie-settings-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Cookie Settings Modal */
+    #cookie-settings-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1001;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cookie-settings-content {
+      background: white;
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .cookie-option {
+      margin: 1rem 0;
+    }
+
+    .toggle-label {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 40px;
+      height: 20px;
+      background: var(--light-gray);
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .toggle-switch::before {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: white;
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+      transition: var(--transition);
+    }
+
+    input[type="checkbox"]:checked + .toggle-switch::before {
+      transform: translateX(20px);
+    }
+
+    input[type="checkbox"]:checked + .toggle-switch {
+      background: var(--primary);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-primary:hover {
+      background: var(--secondary);
+    }
+
     /* Responsive adjustments */
     @media (max-width: 768px) {
-      .backup-section {
-        padding: 6rem 0 3rem; /* Adjusted for mobile */
+      .webdesign-section {
+        padding: 6rem 0 3rem;
       }
 
       .service-card {
@@ -188,34 +334,51 @@
         font-size: 2rem;
       }
 
-      .get-help-section {
-        padding: 1.5rem 0;
+      #cookie-consent-banner {
+        padding: 1rem;
       }
 
-      .get-help-button {
-        padding: 1rem 2rem;
-        font-size: 1.2rem;
+      .cookie-content {
+        flex-direction: column;
+        text-align: center;
       }
 
-      .get-help-button i {
-        font-size: 1.3rem;
+      .cookie-text {
+        margin-bottom: 1rem;
       }
 
-      .setup-free {
-        font-size: 1.3rem;
+      .cookie-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
       }
 
-      .annual-cost {
-        font-size: 1.3rem;
+      .cookie-btn {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .cookie-text h3 {
+        font-size: 1rem;
       }
 
-      .annual-cost-list {
-        font-size: 0.9rem;
+      .cookie-text p {
+        font-size: 0.8rem;
+      }
+
+      .cookie-btn {
+        font-size: 0.8rem;
+        padding: 0.6rem;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Header Include -->
+  <div id="header-container"></div>
+
   <!-- Cookie Consent Banner -->
   <div id="cookie-consent-banner">
     <div class="cookie-content">
@@ -252,42 +415,39 @@
     </div>
   </div>
 
-  <!-- Header Include -->
-  <div id="header-container"></div>
-
   <main id="main-content">
     <div class="container">
-      <section id="backup" class="backup-section">
+      <section id="webdesign" class="webdesign-section">
         <div class="section-title">
-          <h2>Backup & Skylagring</h2>
-          <p>Vi hjelper deg med å sette opp sikre backup- og skylagringsløsninger for å beskytte dine verdifulle data mot tap.</p>
+          <h2>Webdesign & Domene</h2>
+          <p>Vi hjelper deg med å skape moderne, brukervennlige nettsider og håndtere domeneregistrering for en sterk digital tilstedeværelse.</p>
         </div>
         <div class="services-grid">
           <div class="service-card">
             <div class="card-icon" style="color: var(--success);">
-              <i class="fas fa-cloud"></i>
+              <i class="fas fa-paint-brush"></i>
             </div>
             <div class="card-content">
-              <h3>Beskyttelse mot datatap</h3>
+              <h3>Webdesign</h3>
               <ul>
-                <li><i class="fas fa-check"></i>Oppsett av regelmessige sikkerhetskopier</li>
-                <li><i class="fas fa-check"></i>Konfigurasjon av automatisk backup</li>
-                <li><i class="fas fa-check"></i>Hjelp til gjenoppretting av data</li>
-                <li><i class="fas fa-check"></i>Oppsett av kryptert databehandling</li>
+                <li><i class="fas fa-check"></i>Moderne og responsiv nettsidedesign</li>
+                <li><i class="fas fa-check"></i>Brukervennlig navigasjon og layout</li>
+                <li><i class="fas fa-check"></i>SEO-optimalisering for bedre synlighet</li>
+                <li><i class="fas fa-check"></i>Tilpasning til din merkevare</li>
               </ul>
             </div>
           </div>
           <div class="service-card">
             <div class="card-icon" style="color: var(--business);">
-              <i class="fas fa-upload"></i>
+              <i class="fas fa-globe"></i>
             </div>
             <div class="card-content">
-              <h3>Skylagringsløsninger</h3>
+              <h3>Domenetjenester</h3>
               <ul>
-                <li><i class="fas fa-check"></i>Oppsett av sikker datalagring</li>
-                <li><i class="fas fa-check"></i>Konfigurasjon av automatisk synkronisering</li>
-                <li><i class="fas fa-check"></i>Synkronisering på tvers av enheter</li>
-                <li><i class="fas fa-check"></i>Tilgang fra alle enheter</li>
+                <li><i class="fas fa-check"></i>Registrering av domenenavn</li>
+                <li><i class="fas fa-check"></i>Domeneoverføring og fornyelse</li>
+                <li><i class="fas fa-check"></i>Konfigurasjon av DNS-innstillinger</li>
+                <li><i class="fas fa-check"></i>Sikring av domene mot kapring</li>
               </ul>
             </div>
           </div>
@@ -296,20 +456,29 @@
         <div class="problem-cards">
           <div class="problem-card">
             <div class="problem-icon">
-              <i class="fas fa-virus"></i>
+              <i class="fas fa-desktop"></i>
             </div>
             <div class="problem-content">
-              <h4>Ransomware-angrep</h4>
-              <p>Beskytt deg mot løsepenger-virus som krypterer dataene dine.</p>
+              <h4>Utdatert nettside</h4>
+              <p>En gammel eller ikke-responsiv nettside kan skade din merkevare og kundeopplevelse.</p>
             </div>
           </div>
           <div class="problem-card">
             <div class="problem-icon">
-              <i class="fas fa-hard-drive"></i>
+              <i class="fas fa-search"></i>
             </div>
             <div class="problem-content">
-              <h4>Harddiskfeil</h4>
-              <p>Harddisker har begrenset levetid - backup sikrer dataene mot uventet feil.</p>
+              <h4>Dårlig søkemotorrangering</h4>
+              <p>Uten SEO-optimalisering blir nettsiden din vanskelig å finne på Google.</p>
+            </div>
+          </div>
+          <div class="problem-card">
+            <div class="problem-icon">
+              <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <div class="problem-content">
+              <h4>Domeneproblemer</h4>
+              <p>Feilkonfigurert eller tapt domene kan føre til nedetid eller tap av tilgang.</p>
             </div>
           </div>
           <div class="problem-card">
@@ -317,46 +486,29 @@
               <i class="fas fa-user-slash"></i>
             </div>
             <div class="problem-content">
-              <h4>Brukerfeil</h4>
-              <p>Gjenopprett filer som er slettet ved en feil eller overskrevet.</p>
-            </div>
-          </div>
-          <div class="problem-card">
-            <div class="problem-icon">
-              <i class="fas fa-fire"></i>
-            </div>
-            <div class="problem-content">
-              <h4>Naturkatastrofer</h4>
-              <p>Skylagring sikrer dataene dine selv ved brann eller flom.</p>
+              <h4>Kompleks administrasjon</h4>
+              <p>Domene- og hostinghåndtering kan være tidkrevende uten ekspertise.</p>
             </div>
           </div>
         </div>
 
         <div class="pricing-section">
-          <div class="services-grid">
+          <div class="pricing-cards">
             <div class="pricing-card">
-              <div class="setup-free">Gratis oppsett</div>
+              <div class="price-tag">5000,- <span>engangskostnad</span></div>
               <ul>
-                <li><i class="fas fa-check-circle"></i>Konfigurasjon av automatisk backup</li>
-                <li><i class="fas fa-check-circle"></i>Oppsett av kryptert databehandling</li>
-                <li><i class="fas fa-check-circle"></i>Synkronisering på tvers av enheter</li>
-              </ul>
-              <div class="annual-cost">Årlig kost</div>
-              <ul class="annual-cost-list">
-                <li><i class="fas fa-check-circle"></i>Opptil 100 GB: 900,- per år</li>
-                <li><i class="fas fa-check-circle"></i>Opptil 500 GB: 1500,- per år</li>
-                <li><i class="fas fa-check-circle"></i>1 TB: 2500,- per år</li>
-                <li><i class="fas fa-check-circle"></i>Over 1 TB: Skreddersydd tilbud</li>
+                <li><i class="fas fa-check-circle"></i>Komplett nettsidedesign</li>
+                <li><i class="fas fa-check-circle"></i>Domeneoppsett og registrering</li>
+                <li><i class="fas fa-check-circle"></i>SEO-grunnpakke inkludert</li>
+                <li><i class="fas fa-check-circle"></i>Support og vedlikehold</li>
+                <li><i class="fas fa-check-circle"></i>Årlig kost for domene: 500,-</li>
+                <li><i class="fas fa-check-circle"></i>Support og vedlikehold: 550,- per time</li>
               </ul>
             </div>
           </div>
         </div>
 
-        <section id="get-help" class="get-help-section">
-          <a href="/kontakt/" class="get-help-button" aria-label="Få hjelp nå">
-            <i class="fas fa-paper-plane"></i> Få hjelp nå
-          </a>
-        </section>
+        <a href="/kontakt" class="help-button">Få hjelp nå</a>
       </section>
     </div>
   </main>
@@ -367,38 +519,82 @@
   <!-- Script Loading -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Load main.js regardless of header/footer success
-      const loadMainScript = () => {
+      Promise.all([
+        fetch('https://fixmytech.no/includes/header.html').then(res => res.text()),
+        fetch('https://fixmytech.no/includes/footer.html').then(res => res.text())
+      ]).then(([header, footer]) => {
+        document.getElementById('header-container').innerHTML = header;
+        document.getElementById('footer-container').innerHTML = footer;
+        
         const script = document.createElement('script');
         script.src = 'https://fixmytech.no/js/main.js';
-        script.onerror = () => console.error('Error loading main.js');
         document.body.appendChild(script);
-      };
 
-      Promise.all([
-        fetch('/includes/header.html').then(res => {
-          if (!res.ok) throw new Error(`Failed to load header: ${res.status}`);
-          return res.text();
-        }).catch(err => {
-          console.error('Error loading header:', err);
-          return ''; // Return empty string to continue
-        }),
-        fetch('/includes/footer.html').then(res => {
-          if (!res.ok) throw new Error(`Failed to load footer: ${res.status}`);
-          return res.text();
-        }).catch(err => {
-          console.error('Error loading footer:', err);
-          return ''; // Return empty string to continue
-        })
-      ]).then(([header, footer]) => {
-        const headerContainer = document.getElementById('header-container');
-        const footerContainer = document.getElementById('footer-container');
-        if (headerContainer) headerContainer.innerHTML = header || '<p>Header could not be loaded</p>';
-        if (footerContainer) footerContainer.innerHTML = footer || '<p>Footer could not be loaded</p>';
-        loadMainScript();
+        // Cookie consent logic
+        const cookieBanner = document.getElementById('cookie-consent-banner');
+        const cookieSettingsModal = document.getElementById('cookie-settings-modal');
+        const acceptButton = document.getElementById('cookie-accept');
+        const rejectButton = document.getElementById('cookie-reject');
+        const settingsButton = document.getElementById('cookie-settings');
+        const saveSettingsButton = document.getElementById('save-cookie-settings');
+        const closeModal = document.querySelector('.close-modal');
+        const analyticsCheckbox = document.getElementById('analytics-cookies');
+        const analyticsStatusText = document.getElementById('analytics-status-text');
+        const overallStatusText = document.getElementById('overall-status-text');
+
+        // Check if cookie consent has already been given
+        if (localStorage.getItem('cookieConsent')) {
+          cookieBanner.style.display = 'none';
+        }
+
+        // Update status text based on checkbox
+        function updateStatusText() {
+          analyticsStatusText.textContent = analyticsCheckbox.checked ? 'På' : 'Av';
+          overallStatusText.textContent = 'Innstillinger er ikke lagret';
+        }
+
+        // Accept all cookies
+        acceptButton.addEventListener('click', () => {
+          localStorage.setItem('cookieConsent', 'accepted');
+          localStorage.setItem('analyticsCookies', 'true');
+          cookieBanner.style.display = 'none';
+        });
+
+        // Reject all cookies
+        rejectButton.addEventListener('click', () => {
+          localStorage.setItem('cookieConsent', 'rejected');
+          localStorage.setItem('analyticsCookies', 'false');
+          cookieBanner.style.display = 'none';
+        });
+
+        // Open settings modal
+        settingsButton.addEventListener('click', () => {
+          cookieSettingsModal.style.display = 'flex';
+        });
+
+        // Close modal
+        closeModal.addEventListener('click', () => {
+          cookieSettingsModal.style.display = 'none';
+        });
+
+        // Update status when checkbox changes
+        analyticsCheckbox.addEventListener('change', updateStatusText);
+
+        // Save settings
+        saveSettingsButton.addEventListener('click', () => {
+          localStorage.setItem('cookieConsent', 'custom');
+          localStorage.setItem('analyticsCookies', analyticsCheckbox.checked);
+          overallStatusText.textContent = 'Innstillinger lagret';
+          setTimeout(() => {
+            cookieSettingsModal.style.display = 'none';
+            cookieBanner.style.display = 'none';
+          }, 1000);
+        });
+
+        // Initialize status text
+        updateStatusText();
       }).catch(error => {
         console.error('Error loading includes:', error);
-        loadMainScript(); // Load main.js even if includes fail
       });
     });
   </script>
