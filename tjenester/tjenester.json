@@ -5,8 +5,8 @@
       "path": "/tjenester/backup&skylagring"
     },
     {
-      "name": "Feilretting & Vedlikehold",
-      "path": "/tjenester/feilretting&vedlikehold"
+      "name": "Reperasjon & Vedlikehold",
+      "path": "/"
     },
     {
       "name": "Webdesign & Domene",
