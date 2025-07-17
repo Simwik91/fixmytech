@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Backup & Skylagring - FixMyTech.no</title>
+  <meta name="description" content="FixMyTech.no tilbyr sikre backup- og skylagringsløsninger for å beskytte dine verdifulle data mot tap.">
+  <meta name="keywords" content="backup, skylagring, datasikkerhet, databeskyttelse, automatisk backup, kryptert databehandling">
+  <meta name="author" content="FixMyTech.no">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="https://fixmytech.no/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fixmytech.no/css/styles.css">
+  <style>
+    /* Backup section styling */
+    .backup-section {
+      padding: 8rem 0 5rem; /* Increased top padding for spacing */
+      background: #f9fafb;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-title p {
+      font-size: 1.1rem;
+      color: var(--secondary);
+      margin-bottom: 2rem;
+    }
+
+    .btn-contact {
+      background: var(--primary);
+      color: white;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .btn-contact:hover {
+      background: var(--secondary);
+      transform: translateY(-5px);
+    }
+
+    .services-grid {
+      margin: 3rem 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 2.5rem;
+      display: flex;
+      gap: 1.5rem;
+      transition: var(--transition);
+      border-top: 4px solid var(--primary);
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      min-width: 60px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .problem-cards {
+      margin: 3rem 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .problem-card {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      transition: var(--transition);
+    }
+
+    .problem-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .problem-icon {
+      font-size: 2rem;
+      color: var(--warning);
+      min-width: 50px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .pricing-section {
+      margin: 3rem 0;
+      text-align: center;
+    }
+
+    .pricing-card {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 2.5rem;
+      text-align: center;
+      transition: var(--transition);
+      border: 2px solid var(--light-gray);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .pricing-card:hover {
+      transform: scale(1.03);
+      border-color: var(--primary);
+    }
+
+    .price-tag {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .backup-section {
+        padding: 6rem 0 3rem; /* Adjusted for mobile */
+      }
+
+      .service-card {
+        flex-direction: column;
+      }
+
+      .card-icon {
+        justify-content: flex-start;
+      }
+
+      .section-title h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Include -->
+  <div id="header-container"></div>
+
+  <main id="main-content">
+    <div class="container">
+      <section id="backup" class="backup-section">
+        <div class="section-title">
+          <h2>Backup & Skylagring</h2>
+          <p>Vi hjelper deg med å sette opp sikre backup- og skylagringsløsninger for å beskytte dine verdifulle data mot tap.</p>
+          <a href="/kontakt/index.html" class="btn btn-contact">
+            <i class="fas fa-paper-plane"></i> Kontakt Oss
+          </a>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="card-icon" style="color: var(--success);">
+              <i class="fas fa-cloud"></i>
+            </div>
+            <div class="card-content">
+              <h3>Beskyttelse mot datatap</h3>
+              <ul>
+                <li><i class="fas fa-check"></i>Oppsett av regelmessige sikkerhetskopier</li>
+                <li><i class="fas fa-check"></i>Konfigurasjon av automatisk backup</li>
+                <li><i class="fas fa-check"></i>Hjelp til gjenoppretting av data</li>
+                <li><i class="fas fa-check"></i>Oppsett av kryptert databehandling</li>
+              </ul>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="card-icon" style="color: var(--business);">
+              <i class="fas fa-upload"></i>
+            </div>
+            <div class="card-content">
+              <h3>Skylagringsløsninger</h3>
+              <ul>
+                <li><i class="fas fa-check"></i>Oppsett av sikker datalagring</li>
+                <li><i class="fas fa-check"></i>Konfigurasjon av automatisk synkronisering</li>
+                <li><i class="fas fa-check"></i>Synkronisering på tvers av enheter</li>
+                <li><i class="fas fa-check"></i>Tilgang fra alle enheter</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="problem-cards">
+          <div class="problem-card">
+            <div class="problem-icon">
+              <i class="fas fa-virus"></i>
+            </div>
+            <div class="problem-content">
+              <h4>Ransomware-angrep</h4>
+              <p>Beskytt deg mot løsepenger-virus som krypterer dataene dine.</p>
+            </div>
+          </div>
+          <div class="problem-card">
+            <div class="problem-icon">
+              <i class="fas fa-hard-drive"></i>
+            </div>
+            <div class="problem-content">
+              <h4>Harddiskfeil</h4>
+              <p>Harddisker har begrenset levetid - backup sikrer dataene mot uventet feil.</p>
+            </div>
+          </div>
+          <div class="problem-card">
+            <div class="problem-icon">
+              <i class="fas fa-user-slash"></i>
+            </div>
+            <div class="problem-content">
+              <h4>Brukerfeil</h4>
+              <p>Gjenopprett filer som er slettet ved en feil eller overskrevet.</p>
+            </div>
+          </div>
+          <div class="problem-card">
+            <div class="problem-icon">
+              <i class="fas fa-fire"></i>
+            </div>
+            <div class="problem-content">
+              <h4>Naturkatastrofer</h4>
+              <p>Skylagring sikrer dataene dine selv ved brann eller flom.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pricing-section">
+          <div class="pricing-cards">
+            <div class="pricing-card">
+              <div class="price-tag">1500,- <span>engangskostnad</span></div>
+              <div class="price-tag">Årlig kost <span>avhengig av datamengde</span></div>
+              <ul>
+                <li><i class="fas fa-check-circle"></i>Konfigurasjon av automatisk backup</li>
+                <li><i class="fas fa-check-circle"></i>Oppsett av kryptert databehandling</li>
+                <li><i class="fas fa-check-circle"></i>Synkronisering på tvers av enheter</li>
+                <li><i class="fas fa-check-circle"></i>Hjelp til gjenoppretting ved behov</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer Include -->
+  <div id="footer-container"></div>
+
+  <!-- Script Loading -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      Promise.all([
+        fetch('https://fixmytech.no/includes/header.html').then(res => res.text()),
+        fetch('https://fixmytech.no/includes/footer.html').then(res => res.text())
+      ]).then(([header, footer]) => {
+        document.getElementById('header-container').innerHTML = header;
+        document.getElementById('footer-container').innerHTML = footer;
+        
+        const script = document.createElement('script');
+        script.src = 'https://fixmytech.no/js/main.js';
+        document.body.appendChild(script);
+      }).catch(error => {
+        console.error('Error loading includes:', error);
+      });
+    });
+  </script>
+</body>
+</html>
