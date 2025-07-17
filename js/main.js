@@ -1,4 +1,3 @@
-// Main initialization function
 function initMainJS() {
   console.log('Initializing main JavaScript...');
 
@@ -11,6 +10,79 @@ function initMainJS() {
   const modal = document.getElementById('modal');
   const modalClose = document.querySelector('.modal-close');
   const cookieSettingsLink = document.getElementById('cookieSettingsLink');
+
+  // ===== POPULATE DROPDOWN MENU FROM JSON =====
+  function populateServicesDropdown() {
+    const dropdownContainer = document.getElementById('dropdown-services');
+    if (!dropdownContainer) return;
+
+    fetch('/tjenester/tjenester.json')
+      .then(response => {
+        if (!response.ok) throw new Error('Failed to fetch tjenester.json');
+        return response.json();
+      })
+      .then(data => {
+        // Map service names to icons
+        const iconMap = {
+          'Backup & Skylagring': 'fa-cloud',
+          'Feilretting & Vedlikehold': 'fa-wrench',
+          'Webdesign & Domene': 'fa-paint-brush'
+        };
+
+        // Clear existing content
+        dropdownContainer.innerHTML = '';
+
+        // Populate dropdown with services
+        data.tjenester.forEach(service => {
+          const iconClass = iconMap[service.name] || 'fa-cogs'; // Fallback icon
+          const link = document.createElement('a');
+          link.href = service.path;
+          link.setAttribute('aria-label', `Gå til ${service.name}`);
+          link.innerHTML = `<i class="fas ${iconClass}"></i>${service.name}`;
+          dropdownContainer.appendChild(link);
+        });
+
+        // Update navLinks to include new dropdown links for event listeners
+        const newNavLinks = document.querySelectorAll('.main-nav a');
+        updateNavLinkListeners(newNavLinks);
+      })
+      .catch(error => {
+        console.error('Error loading services:', error);
+        // Fallback to static content if JSON fails
+        dropdownContainer.innerHTML = `
+          <a href="/tjenester/feilretting/index.html" aria-label="Feilretting og Vedlikehold"><i class="fas fa-wrench"></i>Feilretting og Vedlikehold</a>
+          <a href="/verktøy/backup/index.html" aria-label="Backup og Skylagring"><i class="fas fa-cloud"></i>Backup & Skylagring</a>
+          <a href="/verktøy/webdesign/index.html" aria-label="Webdesign og Domene"><i class="fas fa-paint-brush"></i>Webdesign & Domene</a>
+        `;
+        const newNavLinks = document.querySelectorAll('.main-nav a');
+        updateNavLinkListeners(newNavLinks);
+      });
+  }
+
+  // ===== UPDATE NAV LINK LISTENERS =====
+  function updateNavLinkListeners(links) {
+    if (links.length > 0 && navMenu && menuToggle) {
+      links.forEach(link => {
+        // Remove existing listeners to avoid duplicates
+        link.removeEventListener('click', handleNavLinkClick);
+        link.addEventListener('click', handleNavLinkClick);
+      });
+    }
+  }
+
+  function handleNavLinkClick() {
+    if (navMenu.classList.contains('active')) {
+      navMenu.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      
+      // Reset hamburger icon
+      const icon = menuToggle.querySelector('i');
+      if (icon) {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    }
+  }
 
   // ===== MOBILE MENU TOGGLE =====
   if (menuToggle && navMenu) {
@@ -33,29 +105,12 @@ function initMainJS() {
     });
   }
 
-  // ===== CLOSE MOBILE MENU WHEN CLICKING LINKS =====
-  if (navLinks.length > 0 && navMenu && menuToggle) {
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        if (navMenu.classList.contains('active')) {
-          navMenu.classList.remove('active');
-          menuToggle.setAttribute('aria-expanded', 'false');
-          
-          // Reset hamburger icon
-          const icon = menuToggle.querySelector('i');
-          if (icon) {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-          }
-        }
-      });
-    });
-  }
+  // Initial nav link listeners
+  updateNavLinkListeners(navLinks);
 
   // ===== SMOOTH SCROLLING =====
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
-      // Skip for dropdowns and external links
       if (this.getAttribute('href') === '#' || this.classList.contains('dropdown-toggle')) return;
       
       e.preventDefault();
@@ -72,6 +127,17 @@ function initMainJS() {
           top: targetPosition,
           behavior: 'smooth'
         });
+      }
+    });
+  });
+
+  // Handle full URL navigation for dropdown links
+  document.querySelectorAll('.dropdown-content a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href && !href.startsWith('#')) {
+        e.preventDefault();
+        window.location.href = href; // Navigate to full URL
       }
     });
   });
@@ -95,7 +161,7 @@ function initMainJS() {
         behavior: 'smooth'
       });
     });
-    toggleScrollTopButton(); // Initial check
+    toggleScrollTopButton();
   }
 
   // ===== FORM VALIDATION =====
@@ -105,11 +171,9 @@ function initMainJS() {
     let isValid = true;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
-    // Reset errors
     const errorElements = form.querySelectorAll('.error');
     errorElements.forEach(el => el.remove());
     
-    // Validate required fields
     const requiredFields = form.querySelectorAll('[required]');
     requiredFields.forEach(field => {
       field.classList.remove('error-border');
@@ -119,7 +183,6 @@ function initMainJS() {
         isValid = false;
       }
       
-      // Email validation
       if (field.type === 'email' && field.value.trim() && !emailRegex.test(field.value)) {
         showError(field, 'Vennligst skriv inn en gyldig e-postadresse');
         isValid = false;
@@ -158,7 +221,6 @@ function initMainJS() {
         message: this.querySelector('[name="message"]').value
       };
       
-      // Show success notification
       const notification = document.getElementById('notification');
       const notificationMessage = document.getElementById('notification-message');
       
@@ -166,13 +228,11 @@ function initMainJS() {
         notificationMessage.textContent = `Vi har mottatt din henvendelse om ${formData.service}. Vi kontakter deg på ${formData.email} snarest.`;
         notification.classList.add('show');
         
-        // Hide notification after 5 seconds
         setTimeout(() => {
           notification.classList.remove('show');
         }, 5000);
       }
       
-      // Reset form
       this.reset();
     });
   }
@@ -187,7 +247,6 @@ function initMainJS() {
           modal.style.display = 'block';
           document.body.style.overflow = 'hidden';
           
-          // Add event listener to any close buttons in the modal content
           const closeButtons = modalContent.querySelectorAll('[onclick*="closeModal"]');
           closeButtons.forEach(button => {
             button.onclick = modalFunctions.closeModal;
@@ -203,7 +262,6 @@ function initMainJS() {
     }
   };
 
-  // Make modal functions available globally
   window.modalFunctions = modalFunctions;
   window.closeModal = modalFunctions.closeModal;
 
@@ -277,7 +335,6 @@ function initMainJS() {
     if (modal) {
       modal.style.display = 'flex';
       
-      // Set toggle based on current settings
       const analyticsConsent = getCookie('analytics_consent');
       const analyticsCheckbox = document.getElementById('analytics-cookies');
       if (analyticsCheckbox) {
@@ -337,13 +394,11 @@ function initMainJS() {
     }
   }
 
-  // Initialize cookie consent
   const cookieConsent = getCookie('cookie_consent');
   if (!cookieConsent) {
     showCookieBanner();
   }
 
-  // Event listeners for cookie buttons
   const cookieAccept = document.getElementById('cookie-accept');
   const cookieReject = document.getElementById('cookie-reject');
   const cookieSettings = document.getElementById('cookie-settings');
@@ -358,7 +413,6 @@ function initMainJS() {
   });
   if (saveCookieSettingsBtn) saveCookieSettingsBtn.addEventListener('click', saveCookieSettings);
   
-  // Cookie settings link in footer
   if (cookieSettingsLink) {
     cookieSettingsLink.addEventListener('click', function(e) {
       e.preventDefault();
@@ -366,7 +420,6 @@ function initMainJS() {
     });
   }
 
-  // Close cookie modal when clicking outside
   window.addEventListener('click', (e) => {
     const cookieModal = document.getElementById('cookie-settings-modal');
     if (cookieModal && e.target === cookieModal) {
@@ -374,14 +427,12 @@ function initMainJS() {
     }
   });
 
-  // Close mobile menu on larger screens if resized
   window.addEventListener('resize', () => {
     if (window.innerWidth > 768 && navMenu && navMenu.classList.contains('active') && menuToggle) {
       navMenu.classList.remove('active');
       menuToggle.classList.remove('active');
       menuToggle.setAttribute('aria-expanded', 'false');
       
-      // Reset hamburger icon
       const icon = menuToggle.querySelector('i');
       if (icon) {
         icon.classList.remove('fa-times');
@@ -390,13 +441,14 @@ function initMainJS() {
     }
   });
 
+  // Initialize dropdown population
+  populateServicesDropdown();
+
   console.log('Main JavaScript initialized successfully');
 }
 
-// Make init function available globally
 window.initMainJS = initMainJS;
 
-// Initialize immediately if DOM is already loaded
 if (document.readyState === 'complete') {
   initMainJS();
 } else {
