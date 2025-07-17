@@ -3,21 +3,132 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kontakt Oss - FixMyTech.no</title>
-  <meta name="description" content="Kontakt FixMyTech.no for profesjonell teknisk hjelp. Fyll ut skjemaet for å få rask støtte med dine IT-problemer.">
-  <meta name="keywords" content="kontakt, teknisk støtte, IT-hjelp, FixMyTech">
+  <title>Backup & Skylagring - FixMyTech.no</title>
+  <meta name="description" content="FixMyTech.no tilbyr sikre backup- og skylagringsløsninger for å beskytte dine verdifulle data mot tap.">
+  <meta name="keywords" content="backup, skylagring, datasikkerhet, databeskyttelse, automatisk backup, kryptert databehandling">
   <meta name="author" content="FixMyTech.no">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" type="image/x-icon" href="https://fixmytech.no/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fixmytech.no/css/styles.css">
   <style>
-    /* Contact-specific styles */
+    /* Backup section styling */
+    .backup-section {
+      padding: 8rem 0 5rem; /* Increased top padding for spacing */
+      background: #f9fafb;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-title p {
+      font-size: 1.1rem;
+      color: var(--secondary);
+      margin-bottom: 2rem;
+    }
+
+    .services-grid {
+      margin: 3rem 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 2.5rem;
+      display: flex;
+      gap: 1.5rem;
+      transition: var(--transition);
+      border-top: 4px solid var(--primary);
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      min-width: 60px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .problem-cards {
+      margin: 3rem 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .problem-card {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      transition: var(--transition);
+    }
+
+    .problem-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .problem-icon {
+      font-size: 2rem;
+      color: var(--warning);
+      min-width: 50px;
+      display: flex;
+      align-items: center;
+    }
+
+    .pricing-section {
+      margin: 3rem 0;
+      text-align: center;
+    }
+
+    .pricing-card {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 2.5rem;
+      text-align: center;
+      transition: var(--transition);
+      border: 2px solid var(--light-gray);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .pricing-card:hover {
+      transform: scale(1.03);
+      border-color: var(--primary);
+    }
+
+    .price-tag {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
     .contact {
       padding: 5rem 0;
       background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
     }
-    
+
     .contact-form-container {
       max-width: 700px;
       margin: 0 auto;
@@ -26,7 +137,7 @@
       border-radius: var(--border-radius);
       box-shadow: var(--shadow);
     }
-    
+
     .form-group input,
     .form-group textarea,
     .form-group select {
@@ -36,7 +147,7 @@
       font-size: 1rem;
       transition: var(--transition);
     }
-    
+
     .form-group input:focus,
     .form-group textarea:focus,
     .form-group select:focus {
@@ -44,7 +155,7 @@
       outline: none;
       box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
     }
-    
+
     .form-group button {
       background: var(--primary);
       color: white;
@@ -57,12 +168,12 @@
       transition: var(--transition);
       width: 100%;
     }
-    
+
     .form-group button:hover {
       background: var(--secondary);
       transform: translateY(-3px);
     }
-    
+
     .form-disclaimer {
       margin-top: 2rem;
       padding: 1.5rem;
@@ -71,198 +182,207 @@
       border-radius: var(--border-radius);
     }
 
-    .section-title {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    
-    .section-title h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    
-    .section-title p {
-      font-size: 1.1rem;
-      color: var(--secondary);
-    }
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .backup-section {
+        padding: 6rem 0 3rem; /* Adjusted for mobile */
+      }
 
-    /* Hero section styles */
-    .hero {
-      padding: 8rem 0 5rem;
-      background: #fff;
-      color: var(--secondary);
-      text-align: center;
-      margin-top: 2rem; /* Added spacing between header and hero */
-    }
-    
-    .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 1.5rem;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    
-    .hero h1 span {
-      color: var(--primary);
-    }
-    
-    .hero p {
-      font-size: 1.25rem;
-      max-width: 700px;
-      margin: 0 auto 2rem;
-    }
-    
-    .hero-content {
-      position: relative;
-      z-index: 1;
-    }
-    
-    .btn-hero {
-      background: var(--primary);
-      color: white;
-      font-weight: 600;
-      padding: 1rem 2.5rem;
-      font-size: 1.1rem;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      border-radius: var(--border-radius);
-    }
-    
-    .btn-hero:hover {
-      background: var(--secondary);
-      transform: translateY(-5px);
-    }
+      .service-card {
+        flex-direction: column;
+      }
 
-    /* Additional spacing between header and content */
-    #main-content {
-      padding-top: 2rem;
-    }
+      .card-icon {
+        justify-content: flex-start;
+      }
 
-    /* Cookie Consent Banner Styles */
-    #cookie-consent-banner {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(0, 0, 0, 0.9);
-      color: white;
-      padding: 1.5rem;
-      z-index: 1000;
-      display: none;
+      .section-title h2 {
+        font-size: 2rem;
+      }
+
+      .contact {
+        padding: 3rem 0;
+      }
     }
-    
-    .cookie-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-    }
-    
-    .cookie-text h3 {
-      margin-bottom: 0.5rem;
-      font-size: 1.2rem;
-    }
-    
-    .cookie-text p {
-      font-size: 0.9rem;
-      line-height: 1.4;
-    }
-    
-    .cookie-text a {
-      color: var(--primary);
-      text-decoration: underline;
-    }
-    
-    .cookie-buttons {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-    
-    .cookie-btn {
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: var(--border-radius);
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-    
-    .cookie-accept-btn {
-      background: var(--primary);
-      color: white;
-    }
-    
-    .cookie-accept-btn:hover {
-      background: var(--secondary);
-    }
-    
-    .cookie-reject-btn {
-      background: var(--light-gray);
-      color: var(--text);
-    }
-    
-    .cookie-reject-btn:hover {
-      background: var(--gray);
-    }
-    
-    .cookie-settings-btn {
-      background: transparent;
-      border: 1px solid white;
-      color: white;
-    }
-    
-    .cookie-settings-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
-    
-    /* Cookie Settings Modal Styles */
-    #cookie-settings-modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1001;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .cookie-settings-content {
-      background: white;
-      padding: 2rem;
-      border-radius: var(--border-radius);
-      max-width: 500px;
-      width: 90%;
-      position: relative;
-    }
-    
-    .close-modal {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-    
-    .cookie-option {
-      margin-bottom: 1.5rem;
-    }
-    
-    .cookie-option p {
-      font-size: 0.9rem;
-      color: var(--gray);
-      margin-top: 0.5rem;
-    }
-    
-    .toggle technologii. FixMyTech.no er ikke ansvarlig for skader på utstyr eller problemer som kan oppstå under reparasjon, oppsett eller andre tjenester. Kunden aksepterer at all bruk av våre tjenester skjer på eget ansvar.</p>
-            </div>
-          </form>
+  </style>
+</head>
+<body>
+  <!-- Cookie Consent Banner -->
+  <div id="cookie-consent-banner">
+    <div class="cookie-content">
+      <div class="cookie-text">
+        <h3>Vi bruker informasjonskapsler</h3>
+        <p>Vi bruker cookies for å forbedre din opplevelse og analysere bruk. Les mer i vår <a href="/personvern">personvernerklæring</a>.</p>
+      </div>
+      <div class="cookie-buttons">
+        <button id="cookie-accept" class="cookie-btn cookie-accept-btn">Godta</button>
+        <button id="cookie-reject" class="cookie-btn cookie-reject-btn">Avvis</button>
+        <button id="cookie-settings" class="cookie-btn cookie-settings-btn">Innstillinger</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cookie Settings Modal -->
+  <div id="cookie-settings-modal">
+    <div class="cookie-settings-content">
+      <span class="close-modal">×</span>
+      <h2>Cookie-innstillinger</h2>
+      <div class="cookie-option">
+        <label class="toggle-label">
+          Analyse-cookies
+          <input type="checkbox" id="analytics-cookies">
+          <span class="toggle-switch"></span>
+          <span id="analytics-status-text">Av</span>
+        </label>
+        <p>Hjelper oss å forstå hvordan nettstedet brukes.</p>
+      </div>
+      <div class="cookie-option">
+        <p>Status: <span id="overall-status-text">Innstillinger er ikke lagret</span></p>
+      </div>
+      <button class="btn btn-primary" id="save-cookie-settings">Lagre</button>
+    </div>
+  </div>
+
+  <!-- Header Include -->
+  <div id="header-container"></div>
+
+  <main id="main-content">
+    <div class="container">
+      <section id="backup" class="backup-section">
+        <div class="section-title">
+          <h2>Backup & Skylagring</h2>
+          <p>Vi hjelper deg med å sette opp sikre backup- og skylagringsløsninger for å beskytte dine verdifulle data mot tap.</p>
         </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="card-icon" style="color: var(--success);">
+              <i class="fas fa-cloud"></i>
+            </div>
+            <div class="card-content">
+              <h3>Beskyttelse mot datatap</h3>
+              <ul>
+                <li><i class="fas fa-check"></i>Oppsett av regelmessige sikkerhetskopier</li>
+                <li><i class="fas fa-check"></i>Konfigurasjon av automatisk backup</li>
+                <li><i class="fas fa-check"></i>Hjelp til gjenoppretting av data</li>
+                <li><i class="fas fa-check"></i>Oppsett av kryptert databehandling</li>
+              </ul>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="card-icon" style="color: var(--business);">
+              <i class="fas fa-upload"></i>
+            </div>
+            <div class="card-content">
+              <h3>Skylagringsløsninger</h3>
+              <ul>
+                <li><i class="fas fa-check"></i>Oppsett av sikker datalagring</li>
+                <li><i class="fas fa-check"></i>Konfigurasjon av automatisk synkronisering</li>
+                <li><i class="fas fa-check"></i>Synkronisering på tvers av enheter</li>
+                <li><i class="fas fa-check"></i>Tilgang fra alle enheter</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="problem-cards">
+          <div class="problem-card">
+            <div class="problem-icon">
+              <i class="fas fa-virus"></i>
+            </div>
+            <div class="problem-content">
+              <h4>Ransomware-angrep</h4>
+              <p>Beskytt deg mot løsepenger-virus som krypterer dataene dine.</p>
+            </div>
+          </div>
+          <div class="problem-card">
+            <div class="problem-icon">
+              <i class="fas fa-hard-drive"></i>
+            </div>
+            <div class="problem-content">
+              <h4>Harddiskfeil</h4>
+              <p>Harddisker har begrenset levetid - backup sikrer dataene mot uventet feil.</p>
+            </div>
+          </div>
+          <div class="problem-card">
+            <div class="problem-icon">
+              <i class="fas fa-user-slash"></i>
+            </div>
+            <div class="problem-content">
+              <h4>Brukerfeil</h4>
+              <p>Gjenopprett filer som er slettet ved en feil eller overskrevet.</p>
+            </div>
+          </div>
+          <div class="problem-card">
+            <div class="problem-icon">
+              <i class="fas fa-fire"></i>
+            </div>
+            <div class="problem-content">
+              <h4>Naturkatastrofer</h4>
+              <p>Skylagring sikrer dataene dine selv ved brann eller flom.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pricing-section">
+          <div class="pricing-cards">
+            <div class="pricing-card">
+              <div class="price-tag">1500,- <span>engangskostnad</span></div>
+              <div class="price-tag">Årlig kost <span>avhengig av datamengde</span></div>
+              <ul>
+                <li><i class="fas fa-check-circle"></i>Konfigurasjon av automatisk backup</li>
+                <li><i class="fas fa-check-circle"></i>Oppsett av kryptert databehandling</li>
+                <li><i class="fas fa-check-circle"></i>Synkronisering på tvers av enheter</li>
+                <li><i class="fas fa-check-circle"></i>Hjelp til gjenoppretting ved behov</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <section id="contact" class="contact">
+          <div class="section-title">
+            <h2>Kontakt Oss</h2>
+            <p>Få teknisk hjelp raskt og enkelt</p>
+          </div>
+          <div class="contact-form-container">
+            <form id="contact-form" action="https://formspree.io/f/mwpbkjdd" method="POST">
+              <div class="form-group">
+                <label for="name">Navn</label>
+                <input type="text" id="name" name="name" required aria-required="true" aria-label="Ditt navn" autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label for="email">E-post</label>
+                <input type="email" id="email" name="email" required aria-required="true" aria-label="Email" autocomplete="email">
+              </div>
+              <div class="form-group">
+                <label for="service-type">Hva kan vi hjelpe deg med?</label>
+                <select id="service-type" name="service" required aria-required="true" aria-label="Velg type tjeneste" autocomplete="off">
+                  <option value="">Velg en tjeneste...</option>
+                  <option value="feilretting">Feilretting og Vedlikehold</option>
+                  <option value="backup">Backup & Skylagring</option>
+                  <option value="other">Annet</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Beskriv behovet ditt</label>
+                <textarea id="message" name="message" required aria-required="true" aria-label="Beskrivelse av ditt behov" placeholder="Beskriv utfordringen eller behovet ditt, f.eks. 'PC starter ikke', 'trenger backup-oppsett', eller 'laptop er veldig treg'. Inkluder detaljer om utstyr eller feilmeldinger for raskere støtte." autocomplete="off"></textarea>
+              </div>
+              <div style="display: none;">
+                <label for="website">Website (leave blank)</label>
+                <input type="text" id="website" name="_gotcha" autocomplete="off">
+              </div>
+              <input type="hidden" name="_subject" id="email-subject" value="Ny henvendelse fra FixMyTech.no" autocomplete="off">
+              <div class="form-group">
+                <button type="submit" aria-label="Send henvendelse">
+                  <i class="fas fa-paper-plane"></i> Send henvendelse
+                </button>
+              </div>
+              <div class="form-disclaimer">
+                <p><strong>Viktig:</strong></p>
+                <p>Våre eksperter jobber for å levere høykvalitets teknologitjenester. FixMyTech.no er ikke ansvarlig for skader på utstyr eller problemer som kan oppstå under reparasjon, oppsett eller andre tjenester. Kunden aksepterer at all bruk av våre tjenester skjer på eget ansvar.</p>
+              </div>
+            </form>
+          </div>
+        </section>
       </section>
     </div>
   </main>
@@ -272,21 +392,39 @@
 
   <!-- Script Loading -->
   <script>
-    // Load header and footer first
     document.addEventListener('DOMContentLoaded', function() {
-      Promise.all([
-        fetch('https://fixmytech.no/includes/header.html').then(res => res.text()),
-        fetch('https://fixmytech.no/includes/footer.html').then(res => res.text())
-      ]).then(([header, footer]) => {
-        document.getElementById('header-container').innerHTML = header;
-        document.getElementById('footer-container').innerHTML = footer;
-        
-        // Now load main.js after DOM is ready
+      // Load main.js regardless of header/footer success
+      const loadMainScript = () => {
         const script = document.createElement('script');
         script.src = 'https://fixmytech.no/js/main.js';
+        script.onerror = () => console.error('Error loading main.js');
         document.body.appendChild(script);
+      };
+
+      Promise.all([
+        fetch('/includes/header.html').then(res => {
+          if (!res.ok) throw new Error(`Failed to load header: ${res.status}`);
+          return res.text();
+        }).catch(err => {
+          console.error('Error loading header:', err);
+          return ''; // Return empty string to continue
+        }),
+        fetch('/includes/footer.html').then(res => {
+          if (!res.ok) throw new Error(`Failed to load footer: ${res.status}`);
+          return res.text();
+        }).catch(err => {
+          console.error('Error loading footer:', err);
+          return ''; // Return empty string to continue
+        })
+      ]).then(([header, footer]) => {
+        const headerContainer = document.getElementById('header-container');
+        const footerContainer = document.getElementById('footer-container');
+        if (headerContainer) headerContainer.innerHTML = header || '<p>Header could not be loaded</p>';
+        if (footerContainer) footerContainer.innerHTML = footer || '<p>Footer could not be loaded</p>';
+        loadMainScript();
       }).catch(error => {
         console.error('Error loading includes:', error);
+        loadMainScript(); // Load main.js even if includes fail
       });
     });
   </script>
