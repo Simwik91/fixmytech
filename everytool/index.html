@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>everytool.io - Gratis Verktøy i Nettleseren Din | FixMyTech</title>
-  <meta name="description" content="everytool.io tilbyr gratis, brukervennlige verktøy direkte i nettleseren din. Øk produktiviteten uten å ofre personvernet – ingen installasjon eller registrering kreves!">
-  <meta name="keywords" content="gratis verktøy, nettleserverktøy, produktivitet, personvern, online verktøy, everytool">
-  <meta name="author" content="FixMyTech">
+  <title>Vilkår for bruk – FixMyTech.no</title>
+  <meta name="description" content="Les våre vilkår for bruk av FixMyTech.no sine tjenester, inkludert teknisk støtte, reparasjoner og skylagring.">
+  <meta name="keywords" content="vilkår for bruk, tjenester, teknisk støtte, reparasjoner, FixMyTech.no">
+  <meta name="author" content="FixMyTech.no">
+  <link rel="canonical" href="https://fixmytech.no/vilkår">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="https://fixmytech.no/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="https://fixmytech.no/css/styles.css">
   <style>
     /* Inline Styles for Main Content (Complementary to /css/styles.css) */
     :root {
@@ -609,6 +611,108 @@
       color: white;
       box-shadow: var(--shadow-hover);
     }
+
+    /* Additional Styles for Terms Page */
+    .privacy-section {
+      padding: 6rem 0 4rem; /* Increased top padding from 4rem to 6rem */
+      background: #f9fafb;
+    }
+    
+    .terms-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--light-gray);
+    }
+    
+    .card-header .card-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+    
+    .card-header h3 {
+      margin-bottom: 0.5rem;
+    }
+    
+    .term-item {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--light-gray);
+    }
+    
+    .term-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    
+    .term-item h4 {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+    
+    .term-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 1rem;
+    }
+    
+    .term-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      padding: 0.5rem 0;
+    }
+    
+    .warning-box {
+      background: rgba(220, 38, 38, 0.05);
+      border-left: 4px solid var(--warning);
+      padding: 1rem;
+      margin: 1rem 0;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    
+    .warning-box i {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      margin-top: 0.25rem;
+    }
+    
+    .text-primary {
+      color: var(--primary);
+    }
+    
+    .text-success {
+      color: var(--success);
+    }
+    
+    .text-warning {
+      color: var(--warning);
+    }
   </style>
 </head>
 <body>
@@ -648,10 +752,11 @@
     </div>
   </div>
 
+  <!-- Skip to Main Content Link -->
+  <a href="#main-content" class="skip-link">Hopp til hovedinnhold</a>
+
   <!-- Header Container -->
-  <div id="header-container">
-    <p class="error-message">Kunne ikke laste header. Vennligst oppdater siden.</p>
-  </div>
+  <div id="header-container"></div>
 
   <main id="main-content">
     <!-- Hero Section -->
@@ -802,29 +907,85 @@
     <p class="error-message">Kunne ikke laste footer. Vennligst oppdater siden.</p>
   </div>
 
-  <!-- Script Loading -->
+  <!-- Script Loading with Debugging -->
   <script>
+    // Load header and footer first
     document.addEventListener('DOMContentLoaded', function() {
-      // Load header and footer
+      console.log('DOMContentLoaded event fired. Starting header and footer fetch...');
+
       Promise.all([
-        fetch('/includes/header.html').then(res => {
-          if (!res.ok) throw new Error('Header fetch failed');
-          return res.text();
-        }),
-        fetch('/includes/footer.html').then(res => {
-          if (!res.ok) throw new Error('Footer fetch failed');
-          return res.text();
-        })
+        fetch('https://fixmytech.no/includes/header.html')
+          .then(res => {
+            console.log('Header fetch status:', res.status, res.statusText);
+            if (!res.ok) throw new Error('Header fetch failed');
+            return res.text();
+          })
+          .then(text => {
+            console.log('Header HTML fetched successfully. Length:', text.length);
+            return text;
+          }),
+        fetch('https://fixmytech.no/includes/footer.html')
+          .then(res => {
+            console.log('Footer fetch status:', res.status, res.statusText);
+            if (!res.ok) throw new Error('Footer fetch failed');
+            return res.text();
+          })
+          .then(text => {
+            console.log('Footer HTML fetched successfully. Length:', text.length);
+            return text;
+          })
       ]).then(([header, footer]) => {
-        document.getElementById('header-container').innerHTML = header;
-        document.getElementById('footer-container').innerHTML = footer;
+        console.log('Header and footer fetched successfully. Inserting into DOM...');
+        const headerContainer = document.getElementById('header-container');
+        const footerContainer = document.getElementById('footer-container');
+        headerContainer.innerHTML = header;
+        footerContainer.innerHTML = footer;
+        console.log('Header and footer inserted into DOM.');
+
+        // Verify header content
+        const tjenesterDropdown = document.getElementById('tjenester-dropdown') || document.querySelector('[id*="dropdown"][id*="tjenester"]');
+        if (tjenesterDropdown) {
+          console.log('Tjenester dropdown found:', tjenesterDropdown);
+          console.log('Dropdown initial content:', tjenesterDropdown.innerHTML);
+        } else {
+          console.warn('Tjenester dropdown not found in header. Check header.html for correct ID or selector.');
+        }
 
         // Load main.js after header and footer are loaded
+        console.log('Creating script element for main.js...');
         const script = document.createElement('script');
-        script.src = 'https://everytool.io/js/main.js';
+        script.src = 'https://fixmytech.no/js/main.js';
+        script.onload = () => {
+          console.log('main.js loaded successfully.');
+          // Attempt to fetch tjenester.json directly for debugging
+          console.log('Attempting to fetch tjenester.json for debugging...');
+          fetch('https://fixmytech.no/tjenester/tjenester.json')
+            .then(res => {
+              console.log('tjenester.json fetch status:', res.status, res.statusText);
+              if (!res.ok) throw new Error('Failed to fetch tjenester.json');
+              return res.json();
+            })
+            .then(data => {
+              console.log('tjenester.json fetched successfully. Data:', data);
+              // Check if dropdown was populated by main.js
+              if (tjenesterDropdown) {
+                console.log('Dropdown content after main.js:', tjenesterDropdown.innerHTML);
+              } else {
+                console.warn('Tjenester dropdown still not found after main.js execution.');
+              }
+            })
+            .catch(error => {
+              console.error('Error fetching tjenester.json:', error);
+            });
+        };
+        script.onerror = () => {
+          console.error('Failed to load main.js from https://fixmytech.no/js/main.js');
+        };
         document.body.appendChild(script);
+        console.log('main.js script appended to body.');
 
         // Cookie Consent Logic
+        console.log('Initializing cookie consent logic...');
         function getCookie(name) {
           const value = `; ${document.cookie}`;
           const parts = value.split(`; ${name}=`);
@@ -839,6 +1000,7 @@
             expires = "; expires=" + date.toUTCString();
           }
           document.cookie = name + "=" + (value || "") + expires + "; path=/;SameSite=Lax";
+          console.log(`Cookie set: ${name}=${value}`);
         }
 
         const cookieBanner = document.getElementById('cookie-consent-banner');
@@ -853,8 +1015,23 @@
         const overallStatus = document.getElementById('overall-status-text');
         const cookieSettingsLink = document.getElementById('cookieSettingsLink');
 
+        console.log('Cookie elements found:', {
+          cookieBanner: !!cookieBanner,
+          cookieModal: !!cookieModal,
+          acceptBtn: !!acceptBtn,
+          rejectBtn: !!rejectBtn,
+          settingsBtn: !!settingsBtn,
+          closeModal: !!closeModal,
+          saveSettingsBtn: !!saveSettingsBtn,
+          analyticsToggle: !!analyticsToggle,
+          analyticsStatus: !!analyticsStatus,
+          overallStatus: !!overallStatus,
+          cookieSettingsLink: !!cookieSettingsLink
+        });
+
         // Check if cookie consent is already given
         const consentGiven = getCookie('cookie_consent_given');
+        console.log('Cookie consent given:', consentGiven);
         if (consentGiven) {
           const analytics = getCookie('analytics_cookies');
           analyticsToggle.checked = analytics === 'true';
@@ -862,6 +1039,7 @@
           overallStatus.textContent = 'Innstillinger lagret';
           cookieBanner.style.display = 'none';
           cookieModal.style.display = 'none';
+          console.log('Cookie consent already given. Banner and modal hidden.');
         }
 
         // Function to open cookie settings modal
@@ -873,6 +1051,7 @@
             analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
           }
           cookieModal.style.display = 'flex';
+          console.log('Cookie settings modal opened.');
         }
 
         // Accept cookies
@@ -884,6 +1063,7 @@
           analyticsToggle.checked = true;
           analyticsStatus.textContent = 'På';
           overallStatus.textContent = 'Innstillinger lagret';
+          console.log('Cookies accepted.');
         });
 
         // Reject cookies
@@ -895,6 +1075,7 @@
           analyticsToggle.checked = false;
           analyticsStatus.textContent = 'Av';
           overallStatus.textContent = 'Innstillinger lagret';
+          console.log('Cookies rejected.');
         });
 
         // Open settings modal from banner
@@ -903,12 +1084,16 @@
         // Open settings modal from footer
         if (cookieSettingsLink) {
           cookieSettingsLink.addEventListener('click', openCookieSettingsModal);
+          console.log('Cookie settings link event listener added.');
+        } else {
+          console.warn('Cookie settings link not found in footer.');
         }
 
         // Close settings modal
         closeModal.addEventListener('click', (event) => {
           event.preventDefault();
           cookieModal.style.display = 'none';
+          console.log('Cookie settings modal closed.');
         });
 
         // Save cookie settings
@@ -920,15 +1105,20 @@
           cookieModal.style.display = 'none';
           analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
           overallStatus.textContent = 'Innstillinger lagret';
+          console.log('Cookie settings saved:', { analytics: analyticsToggle.checked });
         });
 
         // Toggle analytics status text
         analyticsToggle.addEventListener('change', () => {
           analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
+          console.log('Analytics toggle changed:', analyticsToggle.checked);
         });
       }).catch(error => {
         console.error('Error loading includes:', error);
-        document.querySelectorAll('.error-message').forEach(el => el.style.display = 'block');
+        document.querySelectorAll('.error-message').forEach(el => {
+          el.style.display = 'block';
+          console.log('Error message displayed for:', el);
+        });
       });
     });
   </script>
