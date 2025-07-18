@@ -755,7 +755,7 @@
   <!-- Skip to Main Content Link -->
   <a href="#main-content" class="skip-link">Hopp til hovedinnhold</a>
 
-  <!-- Header Include -->
+  <!-- Header Container -->
   <div id="header-container"></div>
 
   <main id="main-content">
@@ -868,7 +868,7 @@
         
         <div class="process-steps">
           <div class="step-card">
-            <div class="step-number">1</div>
+            <div class="step-numberLibreOffice Calc>1</div>
             <h3>Velg verktøy</h3>
             <p>Velg fra vårt utvalg av personvernfokuserte verktøy designet for ulike behov.</p>
           </div>
@@ -912,12 +912,18 @@
     // Load header and footer first
     document.addEventListener('DOMContentLoaded', function() {
       Promise.all([
-        fetch('https://fixmytech.no/includes/header.html').then(res => res.text()),
-        fetch('https://fixmytech.no/includes/footer.html').then(res => res.text())
+        fetch('https://fixmytech.no/includes/header.html').then(res => {
+          if (!res.ok) throw new Error('Header fetch failed');
+          return res.text();
+        }),
+        fetch('https://fixmytech.no/includes/footer.html').then(res => {
+          if (!res.ok) throw new Error('Footer fetch failed');
+          return res.text();
+        })
       ]).then(([header, footer]) => {
         document.getElementById('header-container').innerHTML = header;
         document.getElementById('footer-container').innerHTML = footer;
-        
+
         // Load main.js after header and footer are loaded
         const script = document.createElement('script');
         script.src = 'https://fixmytech.no/js/main.js';
