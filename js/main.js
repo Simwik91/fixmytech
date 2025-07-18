@@ -10,6 +10,7 @@ function initMainJS() {
   const modal = document.getElementById('modal');
   const modalClose = document.querySelector('.modal-close');
   const cookieSettingsLink = document.getElementById('cookieSettingsLink');
+  const dropdownToggle = document.querySelector('.dropdown-toggle'); // Add dropdown toggle selector
 
   // ===== POPULATE DROPDOWN MENU FROM JSON =====
   function populateServicesDropdown() {
@@ -22,19 +23,16 @@ function initMainJS() {
         return response.json();
       })
       .then(data => {
-        // Map service names to icons
         const iconMap = {
           'Backup & Skylagring': 'fa-cloud',
           'Feilretting & Vedlikehold': 'fa-wrench',
           'Webdesign & Domene': 'fa-paint-brush'
         };
 
-        // Clear existing content
         dropdownContainer.innerHTML = '';
 
-        // Populate dropdown with services
         data.tjenester.forEach(service => {
-          const iconClass = iconMap[service.name] || 'fa-cogs'; // Fallback icon
+          const iconClass = iconMap[service.name] || 'fa-cogs';
           const link = document.createElement('a');
           link.href = service.path;
           link.setAttribute('aria-label', `Gå til ${service.name}`);
@@ -42,13 +40,11 @@ function initMainJS() {
           dropdownContainer.appendChild(link);
         });
 
-        // Update navLinks to include new dropdown links for event listeners
         const newNavLinks = document.querySelectorAll('.main-nav a');
         updateNavLinkListeners(newNavLinks);
       })
       .catch(error => {
         console.error('Error loading services:', error);
-        // Fallback to static content if JSON fails
         dropdownContainer.innerHTML = `
           <a href="/tjenester/feilretting/index.html" aria-label="Feilretting og Vedlikehold"><i class="fas fa-wrench"></i>Feilretting og Vedlikehold</a>
           <a href="/verktøy/backup/index.html" aria-label="Backup og Skylagring"><i class="fas fa-cloud"></i>Backup & Skylagring</a>
@@ -63,19 +59,19 @@ function initMainJS() {
   function updateNavLinkListeners(links) {
     if (links.length > 0 && navMenu && menuToggle) {
       links.forEach(link => {
-        // Remove existing listeners to avoid duplicates
         link.removeEventListener('click', handleNavLinkClick);
-        link.addEventListener('click', handleNavLinkClick);
+        // Only add click handler to non-dropdown-toggle links
+        if (!link.classList.contains('dropdown-toggle')) {
+          link.addEventListener('click', handleNavLinkClick);
+        }
       });
     }
   }
 
-  function handleNavLinkClick() {
+  function handleNavLinkClick(e) {
     if (navMenu.classList.contains('active')) {
       navMenu.classList.remove('active');
       menuToggle.setAttribute('aria-expanded', 'false');
-      
-      // Reset hamburger icon
       const icon = menuToggle.querySelector('i');
       if (icon) {
         icon.classList.remove('fa-times');
@@ -84,14 +80,43 @@ function initMainJS() {
     }
   }
 
+  // ===== DROPDOWN TOGGLE HANDLER =====
+  if (dropdownToggle) {
+    dropdownToggle.addEventListener('click', function(e) {
+      e.preventDefault(); // Prevent default anchor behavior
+      e.stopPropagation(); // Prevent event bubbling to parent elements
+      const dropdownContent = document.getElementById('dropdown-services');
+      if (dropdownContent) {
+        const isVisible = dropdownContent.classList.contains('active');
+        dropdownContent.classList.toggle('active', !isVisible);
+        this.setAttribute('aria-expanded', !isVisible);
+        console.log('Dropdown toggled:', !isVisible ? 'open' : 'closed');
+      }
+    });
+  }
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(e) {
+    const dropdownContent = document.getElementById('dropdown-services');
+    if (
+      dropdownContent &&
+      dropdownContent.classList.contains('active') &&
+      !dropdownToggle.contains(e.target) &&
+      !dropdownContent.contains(e.target)
+    ) {
+      dropdownContent.classList.remove('active');
+      dropdownToggle.setAttribute('aria-expanded', 'false');
+      console.log('Dropdown closed due to outside click');
+    }
+  });
+
   // ===== MOBILE MENU TOGGLE =====
   if (menuToggle && navMenu) {
-    menuToggle.addEventListener('click', function() {
+    menuToggle.addEventListener('click', function(e) {
+      e.stopPropagation(); // Prevent bubbling to document
       navMenu.classList.toggle('active');
       const isExpanded = this.getAttribute('aria-expanded') === 'true';
       this.setAttribute('aria-expanded', !isExpanded);
-      
-      // Toggle hamburger icon
       const icon = this.querySelector('i');
       if (icon) {
         if (navMenu.classList.contains('active')) {
@@ -112,9 +137,7 @@ function initMainJS() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       if (this.getAttribute('href') === '#' || this.classList.contains('dropdown-toggle')) return;
-      
       e.preventDefault();
-      
       const targetId = this.getAttribute('href');
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
@@ -122,7 +145,6 @@ function initMainJS() {
         const headerHeight = header ? header.offsetHeight : 0;
         const offset = 20;
         const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - offset;
-        
         window.scrollTo({
           top: targetPosition,
           behavior: 'smooth'
@@ -137,7 +159,7 @@ function initMainJS() {
       const href = this.getAttribute('href');
       if (href && !href.startsWith('#')) {
         e.preventDefault();
-        window.location.href = href; // Navigate to full URL
+        window.location.href = href;
       }
     });
   });
@@ -167,43 +189,34 @@ function initMainJS() {
   // ===== FORM VALIDATION =====
   function validateForm(form) {
     if (!form) return false;
-    
     let isValid = true;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    
     const errorElements = form.querySelectorAll('.error');
     errorElements.forEach(el => el.remove());
-    
     const requiredFields = form.querySelectorAll('[required]');
     requiredFields.forEach(field => {
       field.classList.remove('error-border');
-      
       if (!field.value.trim()) {
         showError(field, 'Dette feltet er påkrevd');
         isValid = false;
       }
-      
       if (field.type === 'email' && field.value.trim() && !emailRegex.test(field.value)) {
         showError(field, 'Vennligst skriv inn en gyldig e-postadresse');
         isValid = false;
       }
     });
-    
     return isValid;
   }
 
   function showError(field, message) {
     if (!field) return;
-    
     field.classList.add('error-border');
-    
     const errorElement = document.createElement('div');
     errorElement.className = 'error';
     errorElement.textContent = message;
     errorElement.style.color = 'var(--warning)';
     errorElement.style.fontSize = '0.8rem';
     errorElement.style.marginTop = '0.25rem';
-    
     field.parentNode.insertBefore(errorElement, field.nextSibling);
   }
 
@@ -211,28 +224,22 @@ function initMainJS() {
   if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
-      
       if (!validateForm(this)) return;
-      
       const formData = {
         name: this.querySelector('[name="name"]').value,
         email: this.querySelector('[name="email"]').value,
         service: this.querySelector('[name="service"]').value,
         message: this.querySelector('[name="message"]').value
       };
-      
       const notification = document.getElementById('notification');
       const notificationMessage = document.getElementById('notification-message');
-      
       if (notification && notificationMessage) {
         notificationMessage.textContent = `Vi har mottatt din henvendelse om ${formData.service}. Vi kontakter deg på ${formData.email} snarest.`;
         notification.classList.add('show');
-        
         setTimeout(() => {
           notification.classList.remove('show');
         }, 5000);
       }
-      
       this.reset();
     });
   }
@@ -246,7 +253,6 @@ function initMainJS() {
           modalContent.innerHTML = content;
           modal.style.display = 'block';
           document.body.style.overflow = 'hidden';
-          
           const closeButtons = modalContent.querySelectorAll('[onclick*="closeModal"]');
           closeButtons.forEach(button => {
             button.onclick = modalFunctions.closeModal;
@@ -334,13 +340,11 @@ function initMainJS() {
     const modal = document.getElementById('cookie-settings-modal');
     if (modal) {
       modal.style.display = 'flex';
-      
       const analyticsConsent = getCookie('analytics_consent');
       const analyticsCheckbox = document.getElementById('analytics-cookies');
       if (analyticsCheckbox) {
         analyticsCheckbox.checked = analyticsConsent === 'true';
       }
-      
       updateStatusIndicators();
     }
   }
@@ -350,14 +354,12 @@ function initMainJS() {
     if (analyticsCheckbox) {
       const analyticsAllowed = analyticsCheckbox.checked;
       setCookie('analytics_consent', analyticsAllowed, 365);
-      
       if (analyticsAllowed) {
         setCookie('cookie_consent', 'accepted', 365);
       } else {
         setCookie('cookie_consent', 'rejected', 365);
       }
     }
-    
     const modal = document.getElementById('cookie-settings-modal');
     if (modal) {
       modal.style.display = 'none';
@@ -372,7 +374,6 @@ function initMainJS() {
     const analyticsStatusText = document.getElementById('analytics-status-text');
     const overallStatus = document.getElementById('overall-status');
     const overallStatusText = document.getElementById('overall-status-text');
-    
     if (analyticsStatus) {
       if (analyticsConsent === 'true') {
         analyticsStatus.classList.remove('off');
@@ -380,11 +381,9 @@ function initMainJS() {
         analyticsStatus.classList.add('off');
       }
     }
-    
     if (analyticsStatusText) {
       analyticsStatusText.textContent = analyticsConsent === 'true' ? 'På' : 'Av';
     }
-    
     if (overallStatusText) {
       if (getCookie('cookie_consent')) {
         overallStatusText.textContent = 'Innstillinger er lagret';
@@ -431,12 +430,17 @@ function initMainJS() {
     if (window.innerWidth > 768 && navMenu && navMenu.classList.contains('active') && menuToggle) {
       navMenu.classList.remove('active');
       menuToggle.classList.remove('active');
-      menuToggle.setAttribute('aria-expanded', 'false');
-      
+      menuToggle.setAttribute('aria-expanded', 'true');
       const icon = menuToggle.querySelector('i');
       if (icon) {
         icon.classList.remove('fa-times');
         icon.classList.add('fa-bars');
+      }
+      // Close dropdown on resize to desktop
+      const dropdownContent = document.getElementById('dropdown-services');
+      if (dropdownContent && dropdownContent.classList.contains('active')) {
+        dropdownContent.classList.remove('active');
+        dropdownToggle.setAttribute('aria-expanded', 'false');
       }
     }
   });
