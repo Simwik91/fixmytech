@@ -11,60 +11,6 @@ function initMainJS() {
   const modalClose = document.querySelector('.modal-close');
   const cookieSettingsLink = document.getElementById('cookieSettingsLink');
 
-  // ===== WAIT FOR HEADER TO LOAD =====
-  function initializeNavigation() {
-    const dropdownToggle = document.querySelector('.dropdown-toggle, #tjenester-dropdown, [aria-label*="Tjenester"]');
-    const dropdownContent = document.getElementById('dropdown-services');
-
-    if (!dropdownToggle || !dropdownContent) {
-      console.warn('Dropdown elements not found. Retrying after header load...');
-      return false;
-    }
-
-    // Remove any existing listeners to prevent duplicates
-    dropdownToggle.removeEventListener('click', handleDropdownToggle);
-    dropdownToggle.removeEventListener('touchstart', handleDropdownToggle);
-
-    // Add click and touchstart listeners
-    ['click', 'touchstart'].forEach(eventType => {
-      dropdownToggle.addEventListener(eventType, handleDropdownToggle);
-    });
-
-    console.log('Dropdown toggle initialized for:', dropdownToggle);
-    return true;
-  }
-
-  function handleDropdownToggle(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    const dropdownContent = document.getElementById('dropdown-services');
-    if (dropdownContent) {
-      const isVisible = dropdownContent.classList.contains('active');
-      dropdownContent.classList.toggle('active', !isVisible);
-      this.setAttribute('aria-expanded', !isVisible);
-      console.log(`Dropdown toggled (${e.type}):`, !isVisible ? 'open' : 'closed');
-    }
-  }
-
-  // Close dropdown on outside click/touch
-  ['click', 'touchstart'].forEach(eventType => {
-    document.addEventListener(eventType, function(e) {
-      const dropdownContent = document.getElementById('dropdown-services');
-      const dropdownToggle = document.querySelector('.dropdown-toggle, #tjenester-dropdown, [aria-label*="Tjenester"]');
-      if (
-        dropdownContent &&
-        dropdownContent.classList.contains('active') &&
-        dropdownToggle &&
-        !dropdownToggle.contains(e.target) &&
-        !dropdownContent.contains(e.target)
-      ) {
-        dropdownContent.classList.remove('active');
-        dropdownToggle.setAttribute('aria-expanded', 'false');
-        console.log(`Dropdown closed due to outside ${e.type}`);
-      }
-    });
-  });
-
   // ===== POPULATE DROPDOWN MENU FROM JSON =====
   function populateServicesDropdown() {
     const dropdownContainer = document.getElementById('dropdown-services');
@@ -97,8 +43,6 @@ function initMainJS() {
         });
 
         updateNavLinkListeners(document.querySelectorAll('.main-nav a'));
-        // Re-initialize dropdown toggle after populating
-        initializeNavigation();
       })
       .catch(error => {
         console.error('Error loading services:', error);
@@ -108,7 +52,6 @@ function initMainJS() {
           <a href="/verktøy/webdesign/index.html" aria-label="Webdesign og Domene"><i class="fas fa-paint-brush"></i>Webdesign & Domene</a>
         `;
         updateNavLinkListeners(document.querySelectorAll('.main-nav a'));
-        initializeNavigation();
       });
   }
 
@@ -118,11 +61,9 @@ function initMainJS() {
       links.forEach(link => {
         link.removeEventListener('click', handleNavLinkClick);
         link.removeEventListener('touchstart', handleNavLinkClick);
-        if (!link.classList.contains('dropdown-toggle') && link.id !== 'tjenester-dropdown') {
-          ['click', 'touchstart'].forEach(eventType => {
-            link.addEventListener(eventType, handleNavLinkClick);
-          });
-        }
+        ['click', 'touchstart'].forEach(eventType => {
+          link.addEventListener(eventType, handleNavLinkClick);
+        });
       });
     }
   }
@@ -135,13 +76,6 @@ function initMainJS() {
       if (icon) {
         icon.classList.remove('fa-times');
         icon.classList.add('fa-bars');
-      }
-      // Close dropdown when navigating
-      const dropdownContent = document.getElementById('dropdown-services');
-      const dropdownToggle = document.querySelector('.dropdown-toggle, #tjenester-dropdown, [aria-label*="Tjenester"]');
-      if (dropdownContent && dropdownToggle) {
-        dropdownContent.classList.remove('active');
-        dropdownToggle.setAttribute('aria-expanded', 'false');
       }
     }
   }
@@ -170,16 +104,12 @@ function initMainJS() {
 
   // ===== INITIALIZE NAVIGATION AFTER HEADER LOAD =====
   document.addEventListener('DOMContentLoaded', () => {
-    // Wait for header to load
     const headerContainer = document.getElementById('header-container');
     if (headerContainer.innerHTML) {
-      initializeNavigation();
       populateServicesDropdown();
     } else {
-      // Retry after header fetch
       const observer = new MutationObserver(() => {
         if (headerContainer.innerHTML) {
-          initializeNavigation();
           populateServicesDropdown();
           observer.disconnect();
         }
@@ -192,7 +122,7 @@ function initMainJS() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     ['click', 'touchstart'].forEach(eventType => {
       anchor.addEventListener(eventType, function(e) {
-        if (this.getAttribute('href') === '#' || this.classList.contains('dropdown-toggle') || this.id === 'tjenester-dropdown') return;
+        if (this.getAttribute('href') === '#') return;
         e.preventDefault();
         const targetId = this.getAttribute('href');
         const targetElement = document.querySelector(targetId);
@@ -492,12 +422,6 @@ function initMainJS() {
       if (icon) {
         icon.classList.remove('fa-times');
         icon.classList.add('fa-bars');
-      }
-      const dropdownContent = document.getElementById('dropdown-services');
-      const dropdownToggle = document.querySelector('.dropdown-toggle, #tjenester-dropdown, [aria-label*="Tjenester"]');
-      if (dropdownContent && dropdownToggle) {
-        dropdownContent.classList.remove('active');
-        dropdownToggle.setAttribute('aria-expanded', 'false');
       }
     }
   });
