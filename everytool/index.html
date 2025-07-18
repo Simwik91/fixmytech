@@ -907,85 +907,40 @@
     <p class="error-message">Kunne ikke laste footer. Vennligst oppdater siden.</p>
   </div>
 
-  <!-- Script Loading with Debugging -->
+  <!-- Script Loading -->
   <script>
-    // Load header and footer first
     document.addEventListener('DOMContentLoaded', function() {
-      console.log('DOMContentLoaded event fired. Starting header and footer fetch...');
-
       Promise.all([
         fetch('https://fixmytech.no/includes/header.html')
           .then(res => {
-            console.log('Header fetch status:', res.status, res.statusText);
             if (!res.ok) throw new Error('Header fetch failed');
             return res.text();
-          })
-          .then(text => {
-            console.log('Header HTML fetched successfully. Length:', text.length);
-            return text;
           }),
         fetch('https://fixmytech.no/includes/footer.html')
           .then(res => {
-            console.log('Footer fetch status:', res.status, res.statusText);
             if (!res.ok) throw new Error('Footer fetch failed');
             return res.text();
           })
-          .then(text => {
-            console.log('Footer HTML fetched successfully. Length:', text.length);
-            return text;
-          })
       ]).then(([header, footer]) => {
-        console.log('Header and footer fetched successfully. Inserting into DOM...');
         const headerContainer = document.getElementById('header-container');
         const footerContainer = document.getElementById('footer-container');
         headerContainer.innerHTML = header;
         footerContainer.innerHTML = footer;
-        console.log('Header and footer inserted into DOM.');
 
-        // Verify header content
         const tjenesterDropdown = document.getElementById('tjenester-dropdown') || document.querySelector('[id*="dropdown"][id*="tjenester"]');
-        if (tjenesterDropdown) {
-          console.log('Tjenester dropdown found:', tjenesterDropdown);
-          console.log('Dropdown initial content:', tjenesterDropdown.innerHTML);
-        } else {
-          console.warn('Tjenester dropdown not found in header. Check header.html for correct ID or selector.');
-        }
-
-        // Load main.js after header and footer are loaded
-        console.log('Creating script element for main.js...');
         const script = document.createElement('script');
         script.src = 'https://fixmytech.no/js/main.js';
         script.onload = () => {
-          console.log('main.js loaded successfully.');
-          // Attempt to fetch tjenester.json directly for debugging
-          console.log('Attempting to fetch tjenester.json for debugging...');
           fetch('https://fixmytech.no/tjenester/tjenester.json')
             .then(res => {
-              console.log('tjenester.json fetch status:', res.status, res.statusText);
               if (!res.ok) throw new Error('Failed to fetch tjenester.json');
               return res.json();
             })
-            .then(data => {
-              console.log('tjenester.json fetched successfully. Data:', data);
-              // Check if dropdown was populated by main.js
-              if (tjenesterDropdown) {
-                console.log('Dropdown content after main.js:', tjenesterDropdown.innerHTML);
-              } else {
-                console.warn('Tjenester dropdown still not found after main.js execution.');
-              }
-            })
-            .catch(error => {
-              console.error('Error fetching tjenester.json:', error);
-            });
+            .catch(error => {});
         };
-        script.onerror = () => {
-          console.error('Failed to load main.js from https://fixmytech.no/js/main.js');
-        };
+        script.onerror = () => {};
         document.body.appendChild(script);
-        console.log('main.js script appended to body.');
 
-        // Cookie Consent Logic
-        console.log('Initializing cookie consent logic...');
         function getCookie(name) {
           const value = `; ${document.cookie}`;
           const parts = value.split(`; ${name}=`);
@@ -1000,7 +955,6 @@
             expires = "; expires=" + date.toUTCString();
           }
           document.cookie = name + "=" + (value || "") + expires + "; path=/;SameSite=Lax";
-          console.log(`Cookie set: ${name}=${value}`);
         }
 
         const cookieBanner = document.getElementById('cookie-consent-banner');
@@ -1015,23 +969,7 @@
         const overallStatus = document.getElementById('overall-status-text');
         const cookieSettingsLink = document.getElementById('cookieSettingsLink');
 
-        console.log('Cookie elements found:', {
-          cookieBanner: !!cookieBanner,
-          cookieModal: !!cookieModal,
-          acceptBtn: !!acceptBtn,
-          rejectBtn: !!rejectBtn,
-          settingsBtn: !!settingsBtn,
-          closeModal: !!closeModal,
-          saveSettingsBtn: !!saveSettingsBtn,
-          analyticsToggle: !!analyticsToggle,
-          analyticsStatus: !!analyticsStatus,
-          overallStatus: !!overallStatus,
-          cookieSettingsLink: !!cookieSettingsLink
-        });
-
-        // Check if cookie consent is already given
         const consentGiven = getCookie('cookie_consent_given');
-        console.log('Cookie consent given:', consentGiven);
         if (consentGiven) {
           const analytics = getCookie('analytics_cookies');
           analyticsToggle.checked = analytics === 'true';
@@ -1039,10 +977,8 @@
           overallStatus.textContent = 'Innstillinger lagret';
           cookieBanner.style.display = 'none';
           cookieModal.style.display = 'none';
-          console.log('Cookie consent already given. Banner and modal hidden.');
         }
 
-        // Function to open cookie settings modal
         function openCookieSettingsModal(event) {
           event.preventDefault();
           const analytics = getCookie('analytics_cookies');
@@ -1051,10 +987,8 @@
             analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
           }
           cookieModal.style.display = 'flex';
-          console.log('Cookie settings modal opened.');
         }
 
-        // Accept cookies
         acceptBtn.addEventListener('click', (event) => {
           event.preventDefault();
           setCookie('cookie_consent_given', 'true', 365);
@@ -1063,10 +997,8 @@
           analyticsToggle.checked = true;
           analyticsStatus.textContent = 'På';
           overallStatus.textContent = 'Innstillinger lagret';
-          console.log('Cookies accepted.');
         });
 
-        // Reject cookies
         rejectBtn.addEventListener('click', (event) => {
           event.preventDefault();
           setCookie('cookie_consent_given', 'true', 365);
@@ -1075,28 +1007,19 @@
           analyticsToggle.checked = false;
           analyticsStatus.textContent = 'Av';
           overallStatus.textContent = 'Innstillinger lagret';
-          console.log('Cookies rejected.');
         });
 
-        // Open settings modal from banner
         settingsBtn.addEventListener('click', openCookieSettingsModal);
 
-        // Open settings modal from footer
         if (cookieSettingsLink) {
           cookieSettingsLink.addEventListener('click', openCookieSettingsModal);
-          console.log('Cookie settings link event listener added.');
-        } else {
-          console.warn('Cookie settings link not found in footer.');
         }
 
-        // Close settings modal
         closeModal.addEventListener('click', (event) => {
           event.preventDefault();
           cookieModal.style.display = 'none';
-          console.log('Cookie settings modal closed.');
         });
 
-        // Save cookie settings
         saveSettingsBtn.addEventListener('click', (event) => {
           event.preventDefault();
           setCookie('cookie_consent_given', 'true', 365);
@@ -1105,19 +1028,14 @@
           cookieModal.style.display = 'none';
           analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
           overallStatus.textContent = 'Innstillinger lagret';
-          console.log('Cookie settings saved:', { analytics: analyticsToggle.checked });
         });
 
-        // Toggle analytics status text
         analyticsToggle.addEventListener('change', () => {
           analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
-          console.log('Analytics toggle changed:', analyticsToggle.checked);
         });
       }).catch(error => {
-        console.error('Error loading includes:', error);
         document.querySelectorAll('.error-message').forEach(el => {
           el.style.display = 'block';
-          console.log('Error message displayed for:', el);
         });
       });
     });
