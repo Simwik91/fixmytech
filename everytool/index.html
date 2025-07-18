@@ -952,27 +952,37 @@
         }
 
         // Load main.js after header and footer are loaded
+        console.log('Creating script element for main.js...');
         const script = document.createElement('script');
         script.src = 'https://fixmytech.no/js/main.js';
         script.onload = () => {
+          console.log('main.js loaded successfully.');
+          // Attempt to fetch tjenester.json directly for debugging
+          console.log('Attempting to fetch tjenester.json for debugging...');
           fetch('https://fixmytech.no/tjenester/tjenester.json')
             .then(res => {
+              console.log('tjenester.json fetch status:', res.status, res.statusText);
               if (!res.ok) throw new Error('Failed to fetch tjenester.json');
               return res.json();
             })
             .then(data => {
+              console.log('tjenester.json fetched successfully. Data:', data);
+              // Check if dropdown was populated by main.js
               if (tjenesterDropdown) {
-                // Optional: You can handle data here if needed
+                console.log('Dropdown content after main.js:', tjenesterDropdown.innerHTML);
+              } else {
+                console.warn('Tjenester dropdown still not found after main.js execution.');
               }
             })
-            .catch(() => {
-              // Silent catch or handle silently
+            .catch(error => {
+              console.error('Error fetching tjenester.json:', error);
             });
         };
         script.onerror = () => {
-          // Silent error handler or remove entirely if not needed
+          console.error('Failed to load main.js from https://fixmytech.no/js/main.js');
         };
         document.body.appendChild(script);
+        console.log('main.js script appended to body.');
 
         // Cookie Consent Logic
         console.log('Initializing cookie consent logic...');
