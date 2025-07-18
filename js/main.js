@@ -10,12 +10,68 @@ function initMainJS() {
   const modal = document.getElementById('modal');
   const modalClose = document.querySelector('.modal-close');
   const cookieSettingsLink = document.getElementById('cookieSettingsLink');
-  const dropdownToggle = document.querySelector('.dropdown-toggle'); // Add dropdown toggle selector
+
+  // ===== WAIT FOR HEADER TO LOAD =====
+  function initializeNavigation() {
+    const dropdownToggle = document.querySelector('.dropdown-toggle, #tjenester-dropdown, [aria-label*="Tjenester"]');
+    const dropdownContent = document.getElementById('dropdown-services');
+
+    if (!dropdownToggle || !dropdownContent) {
+      console.warn('Dropdown elements not found. Retrying after header load...');
+      return false;
+    }
+
+    // Remove any existing listeners to prevent duplicates
+    dropdownToggle.removeEventListener('click', handleDropdownToggle);
+    dropdownToggle.removeEventListener('touchstart', handleDropdownToggle);
+
+    // Add click and touchstart listeners
+    ['click', 'touchstart'].forEach(eventType => {
+      dropdownToggle.addEventListener(eventType, handleDropdownToggle);
+    });
+
+    console.log('Dropdown toggle initialized for:', dropdownToggle);
+    return true;
+  }
+
+  function handleDropdownToggle(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const dropdownContent = document.getElementById('dropdown-services');
+    if (dropdownContent) {
+      const isVisible = dropdownContent.classList.contains('active');
+      dropdownContent.classList.toggle('active', !isVisible);
+      this.setAttribute('aria-expanded', !isVisible);
+      console.log(`Dropdown toggled (${e.type}):`, !isVisible ? 'open' : 'closed');
+    }
+  }
+
+  // Close dropdown on outside click/touch
+  ['click', 'touchstart'].forEach(eventType => {
+    document.addEventListener(eventType, function(e) {
+      const dropdownContent = document.getElementById('dropdown-services');
+      const dropdownToggle = document.querySelector('.dropdown-toggle, #tjenester-dropdown, [aria-label*="Tjenester"]');
+      if (
+        dropdownContent &&
+        dropdownContent.classList.contains('active') &&
+        dropdownToggle &&
+        !dropdownToggle.contains(e.target) &&
+        !dropdownContent.contains(e.target)
+      ) {
+        dropdownContent.classList.remove('active');
+        dropdownToggle.setAttribute('aria-expanded', 'false');
+        console.log(`Dropdown closed due to outside ${e.type}`);
+      }
+    });
+  });
 
   // ===== POPULATE DROPDOWN MENU FROM JSON =====
   function populateServicesDropdown() {
     const dropdownContainer = document.getElementById('dropdown-services');
-    if (!dropdownContainer) return;
+    if (!dropdownContainer) {
+      console.warn('Dropdown container not found');
+      return;
+    }
 
     fetch('/tjenester/tjenester.json')
       .then(response => {
@@ -40,8 +96,9 @@ function initMainJS() {
           dropdownContainer.appendChild(link);
         });
 
-        const newNavLinks = document.querySelectorAll('.main-nav a');
-        updateNavLinkListeners(newNavLinks);
+        updateNavLinkListeners(document.querySelectorAll('.main-nav a'));
+        // Re-initialize dropdown toggle after populating
+        initializeNavigation();
       })
       .catch(error => {
         console.error('Error loading services:', error);
@@ -50,8 +107,8 @@ function initMainJS() {
           <a href="/verktøy/backup/index.html" aria-label="Backup og Skylagring"><i class="fas fa-cloud"></i>Backup & Skylagring</a>
           <a href="/verktøy/webdesign/index.html" aria-label="Webdesign og Domene"><i class="fas fa-paint-brush"></i>Webdesign & Domene</a>
         `;
-        const newNavLinks = document.querySelectorAll('.main-nav a');
-        updateNavLinkListeners(newNavLinks);
+        updateNavLinkListeners(document.querySelectorAll('.main-nav a'));
+        initializeNavigation();
       });
   }
 
@@ -60,9 +117,11 @@ function initMainJS() {
     if (links.length > 0 && navMenu && menuToggle) {
       links.forEach(link => {
         link.removeEventListener('click', handleNavLinkClick);
-        // Only add click handler to non-dropdown-toggle links
-        if (!link.classList.contains('dropdown-toggle')) {
-          link.addEventListener('click', handleNavLinkClick);
+        link.removeEventListener('touchstart', handleNavLinkClick);
+        if (!link.classList.contains('dropdown-toggle') && link.id !== 'tjenester-dropdown') {
+          ['click', 'touchstart'].forEach(eventType => {
+            link.addEventListener(eventType, handleNavLinkClick);
+          });
         }
       });
     }
@@ -77,90 +136,90 @@ function initMainJS() {
         icon.classList.remove('fa-times');
         icon.classList.add('fa-bars');
       }
-    }
-  }
-
-  // ===== DROPDOWN TOGGLE HANDLER =====
-  if (dropdownToggle) {
-    dropdownToggle.addEventListener('click', function(e) {
-      e.preventDefault(); // Prevent default anchor behavior
-      e.stopPropagation(); // Prevent event bubbling to parent elements
+      // Close dropdown when navigating
       const dropdownContent = document.getElementById('dropdown-services');
-      if (dropdownContent) {
-        const isVisible = dropdownContent.classList.contains('active');
-        dropdownContent.classList.toggle('active', !isVisible);
-        this.setAttribute('aria-expanded', !isVisible);
-        console.log('Dropdown toggled:', !isVisible ? 'open' : 'closed');
+      const dropdownToggle = document.querySelector('.dropdown-toggle, #tjenester-dropdown, [aria-label*="Tjenester"]');
+      if (dropdownContent && dropdownToggle) {
+        dropdownContent.classList.remove('active');
+        dropdownToggle.setAttribute('aria-expanded', 'false');
       }
-    });
-  }
-
-  // Close dropdown when clicking outside
-  document.addEventListener('click', function(e) {
-    const dropdownContent = document.getElementById('dropdown-services');
-    if (
-      dropdownContent &&
-      dropdownContent.classList.contains('active') &&
-      !dropdownToggle.contains(e.target) &&
-      !dropdownContent.contains(e.target)
-    ) {
-      dropdownContent.classList.remove('active');
-      dropdownToggle.setAttribute('aria-expanded', 'false');
-      console.log('Dropdown closed due to outside click');
     }
-  });
+  }
 
   // ===== MOBILE MENU TOGGLE =====
   if (menuToggle && navMenu) {
-    menuToggle.addEventListener('click', function(e) {
-      e.stopPropagation(); // Prevent bubbling to document
-      navMenu.classList.toggle('active');
-      const isExpanded = this.getAttribute('aria-expanded') === 'true';
-      this.setAttribute('aria-expanded', !isExpanded);
-      const icon = this.querySelector('i');
-      if (icon) {
-        if (navMenu.classList.contains('active')) {
-          icon.classList.remove('fa-bars');
-          icon.classList.add('fa-times');
-        } else {
-          icon.classList.remove('fa-times');
-          icon.classList.add('fa-bars');
+    ['click', 'touchstart'].forEach(eventType => {
+      menuToggle.addEventListener(eventType, function(e) {
+        e.stopPropagation();
+        navMenu.classList.toggle('active');
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !isExpanded);
+        const icon = this.querySelector('i');
+        if (icon) {
+          if (navMenu.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+          } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+          }
         }
-      }
+      });
     });
   }
 
-  // Initial nav link listeners
-  updateNavLinkListeners(navLinks);
+  // ===== INITIALIZE NAVIGATION AFTER HEADER LOAD =====
+  document.addEventListener('DOMContentLoaded', () => {
+    // Wait for header to load
+    const headerContainer = document.getElementById('header-container');
+    if (headerContainer.innerHTML) {
+      initializeNavigation();
+      populateServicesDropdown();
+    } else {
+      // Retry after header fetch
+      const observer = new MutationObserver(() => {
+        if (headerContainer.innerHTML) {
+          initializeNavigation();
+          populateServicesDropdown();
+          observer.disconnect();
+        }
+      });
+      observer.observe(headerContainer, { childList: true });
+    }
+  });
 
   // ===== SMOOTH SCROLLING =====
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      if (this.getAttribute('href') === '#' || this.classList.contains('dropdown-toggle')) return;
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        const header = document.querySelector('header');
-        const headerHeight = header ? header.offsetHeight : 0;
-        const offset = 20;
-        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - offset;
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth'
-        });
-      }
+    ['click', 'touchstart'].forEach(eventType => {
+      anchor.addEventListener(eventType, function(e) {
+        if (this.getAttribute('href') === '#' || this.classList.contains('dropdown-toggle') || this.id === 'tjenester-dropdown') return;
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          const header = document.querySelector('header');
+          const headerHeight = header ? header.offsetHeight : 0;
+          const offset = 20;
+          const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - offset;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
     });
   });
 
   // Handle full URL navigation for dropdown links
   document.querySelectorAll('.dropdown-content a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const href = this.getAttribute('href');
-      if (href && !href.startsWith('#')) {
-        e.preventDefault();
-        window.location.href = href;
-      }
+    ['click', 'touchstart'].forEach(eventType => {
+      anchor.addEventListener(eventType, function(e) {
+        const href = this.getAttribute('href');
+        if (href && !href.startsWith('#')) {
+          e.preventDefault();
+          window.location.href = href;
+        }
+      });
     });
   });
 
@@ -186,7 +245,7 @@ function initMainJS() {
     toggleScrollTopButton();
   }
 
-  // ===== FORM VALIDATION =====
+  // ===== FORM VALIDATION AND SUBMISSION =====
   function validateForm(form) {
     if (!form) return false;
     let isValid = true;
@@ -220,7 +279,6 @@ function initMainJS() {
     field.parentNode.insertBefore(errorElement, field.nextSibling);
   }
 
-  // ===== FORM SUBMISSION HANDLER =====
   if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
@@ -411,7 +469,7 @@ function initMainJS() {
     document.getElementById('cookie-settings-modal').style.display = 'none';
   });
   if (saveCookieSettingsBtn) saveCookieSettingsBtn.addEventListener('click', saveCookieSettings);
-  
+
   if (cookieSettingsLink) {
     cookieSettingsLink.addEventListener('click', function(e) {
       e.preventDefault();
@@ -429,24 +487,20 @@ function initMainJS() {
   window.addEventListener('resize', () => {
     if (window.innerWidth > 768 && navMenu && navMenu.classList.contains('active') && menuToggle) {
       navMenu.classList.remove('active');
-      menuToggle.classList.remove('active');
-      menuToggle.setAttribute('aria-expanded', 'true');
+      menuToggle.setAttribute('aria-expanded', 'false');
       const icon = menuToggle.querySelector('i');
       if (icon) {
         icon.classList.remove('fa-times');
         icon.classList.add('fa-bars');
       }
-      // Close dropdown on resize to desktop
       const dropdownContent = document.getElementById('dropdown-services');
-      if (dropdownContent && dropdownContent.classList.contains('active')) {
+      const dropdownToggle = document.querySelector('.dropdown-toggle, #tjenester-dropdown, [aria-label*="Tjenester"]');
+      if (dropdownContent && dropdownToggle) {
         dropdownContent.classList.remove('active');
         dropdownToggle.setAttribute('aria-expanded', 'false');
       }
     }
   });
-
-  // Initialize dropdown population
-  populateServicesDropdown();
 
   console.log('Main JavaScript initialized successfully');
 }
