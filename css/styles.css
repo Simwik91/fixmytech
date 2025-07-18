@@ -179,8 +179,7 @@ header {
   transform: translateY(-10px);
 }
 
-/* Show dropdown when main-nav is active (mobile) */
-.main-nav.active .dropdown-content {
+.dropdown-content.active {
   display: block;
   opacity: 1;
   transform: translateY(0);
@@ -238,8 +237,7 @@ header {
     padding: 0.5rem 0;
   }
 
-  /* Show dropdown on hover (desktop) */
-  .dropdown:hover .dropdown-content {
+  .dropdown-content.active {
     display: block;
     opacity: 1;
     transform: translateY(0);
