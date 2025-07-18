@@ -240,6 +240,7 @@ header {
     font-size: 1.1rem;
   }
   .dropdown-content {
+    display: block;
     position: static;
     box-shadow: none;
     background: #f9fafb;
@@ -473,7 +474,7 @@ header {
   margin-bottom: 0.5rem;
 }
 
-.additional-fee {
+.additional6-fee {
   margin-top: 1rem;
   text-align: center;
   color: var(--secondary);
