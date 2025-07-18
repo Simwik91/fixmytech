@@ -3,624 +3,715 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FixMyTech.no - Profesjonelle IT-reparasjoner og programvareløsninger</title>
-  <meta name="description" content="FixMyTech.no tilbyr profesjonell teknisk hjelp, inkludert reparasjon, backup, skylagring, webdesign og domenetjenester.">
-  <meta name="keywords" content="teknisk støtte, teknologihjelp, PC-reparasjon, datasikkerhet, backup, skylagring, webdesign, domene">
+  <title>Vilkår for bruk – FixMyTech.no</title>
+  <meta name="description" content="Les våre vilkår for bruk av FixMyTech.no sine tjenester, inkludert teknisk støtte, reparasjoner og skylagring.">
+  <meta name="keywords" content="vilkår for bruk, tjenester, teknisk støtte, reparasjoner, FixMyTech.no">
   <meta name="author" content="FixMyTech.no">
+  <link rel="canonical" href="https://fixmytech.no/vilkår">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" type="image/x-icon" href="https://fixmytech.no/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fixmytech.no/css/styles.css">
   <style>
-    /* General Reset and Base Styles */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      line-height: 1.6;
-      color: #333;
-    }
-
+    /* Inline Styles for Main Content (Complementary to /css/styles.css) */
     :root {
       --primary: #2563eb;
-      --secondary: #0f172a;
-      --success: #10b981;
-      --warning: #f59e0b;
-      --business: #1e40af;
-      --border-radius: 8px;
-      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --primary-light: #3b82f6;
+      --medium-gray: #cbd5e1;
+      --dark-gray: #64748b;
+      --light-gray: #f1f5f9;
+      --warning: #dc2626;
+      --success: #16a34a;
+      --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+      --border-radius: 12px;
       --transition: all 0.3s ease;
+      --gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
     }
 
-    #main-content {
-      padding-top: 70px; /* Added to account for fixed header */
-    }
-
-    /* Homepage-specific enhancements */
-    .hero {
-      padding: 7rem 0 4rem;
-      background: #fff;
-      color: var(--secondary);
-      text-align: center;
-    }
-    
-    .hero h1 {
-      font-size: 3.2rem;
-      margin-bottom: 1.2rem;
+    /* Cookie Consent Banner Styles */
+    #cookie-consent-banner {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
       max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    
-    .hero h1 span {
-      color: var(--primary);
-    }
-    
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto 1.5rem;
-    }
-    
-    .hero-content {
-      position: relative;
-      z-index: 1;
-    }
-    
-    .btn-hero {
-      background: var(--primary);
-      color: white;
-      font-weight: 600;
-      padding: 0.9rem 2.2rem;
-      font-size: 1.1rem;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-      border-radius: var(--border-radius);
-      text-decoration: none;
-    }
-    
-    .btn-hero:hover {
-      background: var(--secondary);
-      transform: translateY(-3px);
-    }
-    
-    .section-title h2 {
-      font-size: 2.4rem;
-      margin-bottom: 1rem;
-      color: var(--primary);
-    }
-    
-    .section-title p {
-      font-size: 1.1rem;
-      color: var(--secondary);
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    
-    .service-section {
-      padding: 4rem 0;
-    }
-    
-    .process-steps {
-      margin-top: 2.5rem;
-      display: flex;
-      flex-wrap: nowrap;
-      gap: 1.5rem;
-      justify-content: center;
-    }
-    
-    .step-card {
       background: white;
       border-radius: var(--border-radius);
       box-shadow: var(--shadow);
-      padding: 1.8rem;
-      transition: var(--transition);
-      border-top: 4px solid var(--primary);
-      flex: 1;
-      min-width: 220px;
-      max-width: 320px;
+      z-index: 1000;
+      padding: 1.5rem;
+    }
+
+    .cookie-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .cookie-text {
       text-align: center;
     }
-    
-    .step-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+
+    .cookie-text h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
     }
-    
-    .step-number {
+
+    .cookie-text p {
+      font-size: 1rem;
+      color: var(--dark-gray);
+    }
+
+    .cookie-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cookie-btn {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .cookie-accept-btn {
       background: var(--primary);
       color: white;
-      width: 45px;
-      height: 45px;
+    }
+
+    .cookie-accept-btn:hover {
+      background: var(--primary-light);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .cookie-reject-btn {
+      background: var(--medium-gray);
+      color: var(--dark-gray);
+    }
+
+    .cookie-reject-btn:hover {
+      background: #b0bec5;
+      box-shadow: var(--shadow-hover);
+    }
+
+    .cookie-settings-btn {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .cookie-settings-btn:hover {
+      background: var(--primary);
+      color: white;
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* Cookie Settings Modal Styles */
+    #cookie-settings-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1001;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cookie-settings-content {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      width: 90%;
+      max-width: 500px;
+      position: relative;
+      box-shadow: var(--shadow);
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--dark-gray);
+    }
+
+    .cookie-settings-content h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cookie-option {
+      margin-bottom: 1.5rem;
+    }
+
+    .toggle-label {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 40px;
+      height: 20px;
+      background: var(--medium-gray);
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .toggle-switch::before {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: white;
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+      transition: var(--transition);
+    }
+
+    input[type="checkbox"]:checked + .toggle-switch {
+      background: var(--primary);
+    }
+
+    input[type="checkbox"]:checked + .toggle-switch::before {
+      transform: translateX(20px);
+    }
+
+    .cookie-option p {
+      font-size: 0.95rem;
+      color: var(--dark-gray);
+    }
+
+    #save-cookie-settings {
+      background: var(--primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    #save-cookie-settings:hover {
+      background: var(--primary-light);
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 12rem 0 6rem;
+      background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 300px;
+      height: 300px;
+      background: var(--primary-light);
+      border-radius: 50%;
+      opacity: 0.1;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 400px;
+      height: 400px;
+      background: var(--primary);
+      border-radius: 50%;
+      opacity: 0.05;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .btn-hero {
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      box-shadow: var(--shadow);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn-hero:hover {
+      background: var(--secondary);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .btn-hero-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      box-shadow: none;
+      border-radius: 50px;
+    }
+
+    .btn-hero-outline:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* Features Section */
+    .features {
+      background: #fff;
+      padding: 6rem 0;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 2.5rem 2rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--primary);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s ease;
+      z-index: -1;
+    }
+
+    .feature-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .feature-card:hover .feature-icon {
+      transform: scale(1.1);
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card p {
+      font-size: 1rem;
+      color: var(--dark-gray);
+    }
+
+    /* Tools Section */
+    .tools {
+      background: var(--light-gray);
+      padding: 6rem 0;
+    }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .tool-card {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .tool-icon {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      background: rgba(37, 99, 235, 0.1);
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin: 0 auto 1.5rem;
+      transition: var(--transition);
+    }
+
+    .tool-card:hover .tool-icon {
+      background: var(--primary);
+      color: white;
+      transform: rotate(10deg);
+    }
+
+    .tool-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .tool-card p {
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      color: var(--dark-gray);
+    }
+
+    /* How It Works */
+    .process {
+      background: white;
+      padding: 6rem 0;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      counter-reset: step-counter;
+      position: relative;
+    }
+
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--medium-gray);
+      z-index: 0;
+    }
+
+    .step-card {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      transition: var(--transition);
+    }
+
+    .step-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .step-number {
+      width: 60px;
+      height: 60px;
+      background: var(--primary);
+      color: white;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.4rem;
+      margin: 0 auto 1.5rem;
       font-weight: 700;
-      margin: 0 auto 1.2rem;
+      font-size: 1.5rem;
     }
-    
-    .device-icons {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      padding: 2.5rem 0;
-      flex-wrap: wrap;
-      background: #f9fafb;
-      margin: 2rem 0;
-    }
-    
-    .device-icon {
-      font-size: 2.8rem;
-      color: var(--primary);
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      min-width: 100px;
-    }
-    
-    .device-icon:hover {
-      color: var(--secondary);
-      transform: scale(1.1);
-    }
-    
-    .device-icon span {
-      font-size: boast
-      color: var(--secondary);
-      text-align: center;
-    }
-    
-    .services-grid {
-      margin: 2.5rem 0;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.8rem;
-      align-items: stretch;
-    }
-    
-    .service-card {
-      background: white;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-      padding: 2rem;
-      transition: var(--transition);
-      border-top: 4px solid var(--primary);
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      min-height: 360px;
-      justify-content: space-between;
-    }
-    
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-    }
-    
-    .card-icon {
-      font-size: 2.8rem;
-      color: var(--primary);
-      margin-bottom: 1.2rem;
-    }
-    
-    .service-card h3 {
-      font-size: 1.7rem;
-      margin-bottom: 0.8rem;
-    }
-    
-    .service-card p {
-      font-size: 1rem;
-      color: var(--secondary);
-      margin-bottom: 1.2rem;
-      flex-grow: 1;
-    }
-    
-    .service-card ul {
-      list-style: none;
-      padding: 0 1.5rem;
-      margin: 0.8rem 0;
-      text-align: left;
-      font-size: 0.95rem;
-      color: var(--secondary);
-      flex-grow: 1;
-    }
-    
-    .service-card li {
-      padding: 0.6rem 0;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      min-height: 32px;
-      line-height: 1.4;
-    }
-    
-    .service-card i.fa-check {
-      color: var(--success);
-      min-width: 20px;
-      font-size: 1rem;
-      margin-top: 0.2rem;
-    }
-    
-    .service-card .btn-service {
-      background: var(--primary);
+
+    /* CTA Section */
+    .cta {
+      padding: 6rem 0;
+      background: var(--gradient);
       color: white;
-      padding: 0.9rem 1.8rem;
-      font-size: 1rem;
-      font-weight: 600;
-      border-radius: var(--border-radius);
-      transition: var(--transition);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.7rem;
-      align-self: center;
-      text-decoration: none;
-      margin-top: auto;
-    }
-    
-    .service-card .btn-service:hover {
-      background: var(--secondary);
-      transform: translateY(-3px);
-    }
-    
-    .everytool-section {
-      padding: 4rem 0;
-      background: #f9fafb; /* Changed to solid light gray */
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
-    
-    .everytool-content {
-      max-width: 900px;
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+    }
+
+    .cta::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 400px;
+      height: 400px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+    }
+
+    .cta-content {
+      max-width: 700px;
       margin: 0 auto;
       position: relative;
       z-index: 1;
-      background: white;
-      padding: 2.5rem;
-      border-radius: var(--border-radius);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-      transition: var(--transition);
     }
-    
-    .everytool-content:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
-    }
-    
-    .everytool-content h3 {
-      font-size: 2rem;
-      margin-bottom: 1.2rem;
-      color: var(--primary);
-      position: relative;
-      padding-bottom: 0.5rem;
-    }
-    
-    .everytool-content h3::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: var(--primary);
-      border-radius: 2px;
-    }
-    
-    .everytool-content p {
-      font-size: 1.1rem;
-      color: var(--secondary);
-      margin-bottom: 1.8rem;
-      line-height: 1.6;
-    }
-    
-    .everytool-icon {
-      font-size: 2.2rem;
-      color: var(--primary);
-      margin-bottom: 1rem;
-    }
-    
-    .btn-everytool {
-      background: var(--business);
+
+    .cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
       color: white;
-      padding: 1rem 2.2rem;
+    }
+
+    .cta p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .btn-cta {
+      background: white;
+      color: var(--primary);
+      padding: 1rem 2.5rem;
       font-size: 1.1rem;
       font-weight: 600;
-      border-radius: var(--border-radius);
-      transition: var(--transition);
+      border-radius: 50px;
       display: inline-flex;
       align-items: center;
-      gap: 0.7rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      gap: 0.75rem;
+      box-shadow: var(--shadow);
       text-decoration: none;
     }
-    
-    .btn-everytool:hover {
-      background: var(--secondary);
+
+    .btn-cta:hover {
+      background: rgba(255, 255, 255, 0.95);
       transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+      box-shadow: var(--shadow-hover);
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
     }
-    
-    /* About Us Section */
-    .about-section {
-      padding: 4rem 0;
+
+    /* Error Message for Header/Footer */
+    .error-message {
+      display: none;
+      color: var(--warning);
       text-align: center;
+      padding: 1rem;
+    }
+
+    /* General Styles */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-title p {
+      font-size: 1.2rem;
+      color: var(--dark-gray);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-light);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* Additional Styles for Terms Page */
+    .privacy-section {
+      padding: 6rem 0 4rem; /* Increased top padding from 4rem to 6rem */
       background: #f9fafb;
     }
     
-    .about-content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .about-content h2 {
-      font-size: 2.4rem;
-      color: var(--primary);
-      margin-bottom: 1.2rem;
-    }
-    
-    .about-content p {
-      font-size: 1.1rem;
-      color: var(--secondary);
-      line-height: 1.6;
-      margin-bottom: 1.2rem;
-    }
-    
-    /* Service-specific styles */
-    .service-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
-    }
-    
-    .environmental-section {
-      background: linear-gradient(135deg, #e6f4ea 0%, #c8e6c9 100%);
-      padding: 2rem;
-      border-radius: var(--border-radius);
-      text-align: center;
-      margin: 2.5rem 0;
-      border-left: 5px solid var(--success);
-    }
-    
-    .environmental-icon {
-      font-size: 2.2rem;
-      color: var(--success);
-      margin-bottom: 1.2rem;
-    }
-    
-    .problem-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-      margin: 2.5rem 0;
-    }
-    
-    .problem-card {
+    .terms-card {
       background: white;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-      padding: 1.5rem;
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-      transition: var(--transition);
-    }
-    
-    .problem-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
-    
-    .problem-icon {
-      font-size: 1.6rem;
-      color: var(--warning);
-      min-width: 35px;
-      display: flex;
-      justify-content: center;
-      padding-top: 0.3rem;
-    }
-    
-    .pricing-section {
-      background: #f8fafc;
       padding: 2.5rem;
       border-radius: var(--border-radius);
-      margin: 2.5rem 0;
-      text-align: center;
-    }
-    
-    .pricing-card {
-      max-width: 600px;
-      margin: 0 auto;
-      background: white;
-      border-radius: var(--border-radius);
       box-shadow: var(--shadow);
-      padding: 2rem;
-      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
     }
     
-    .price-tag {
-      font-size: 2.3rem;
-      font-weight: 700;
-      color: var(--primary);
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--light-gray);
+    }
+    
+    .card-header .card-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+    
+    .card-header h3 {
       margin-bottom: 0.5rem;
     }
     
-    .price-highlight {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--success);
-      margin-bottom: 1.2rem;
+    .term-item {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--light-gray);
     }
     
-    .pricing-card ul {
-      list-style: none;
-      padding: 0;
-      text-align: left;
-      max-width: 400px;
-      margin: 0 auto;
+    .term-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
     }
     
-    .pricing-card li {
-      padding: 0.6rem 0;
+    .term-item h4 {
       display: flex;
       align-items: center;
-      gap: 0.7rem;
-      border-bottom: 1px solid #edf2f7;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
     }
     
-    .pricing-card i.fa-check-circle {
+    .term-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 1rem;
+    }
+    
+    .term-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      padding: 0.5rem 0;
+    }
+    
+    .warning-box {
+      background: rgba(220, 38, 38, 0.05);
+      border-left: 4px solid var(--warning);
+      padding: 1rem;
+      margin: 1rem 0;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    
+    .warning-box i {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      margin-top: 0.25rem;
+    }
+    
+    .text-primary {
+      color: var(--primary);
+    }
+    
+    .text-success {
       color: var(--success);
     }
     
-    .additional-fee {
-      margin-top: 1.2rem;
-      padding: 1rem;
-      background: #fffaf0;
-      border-left: 4px solid var(--warning);
-      border-radius: var(--border-radius);
-    }
-    
-    .benefits-grid {
-      display: flex;
-      flex-wrap: nowrap;
-      gap: 1.5rem;
-      justify-content: center;
-      margin: 2.5rem 0;
-    }
-    
-    .benefit-card {
-      background: white;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-      padding: 1.8rem;
-      text-align: center;
-      transition: var(--transition);
-      flex: 1;
-      min-width: 220px;
-      max-width: 320px;
-    }
-    
-    .benefit-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
-    
-    .benefit-icon {
-      font-size: 2.2rem;
-      color: var(--primary);
-      margin-bottom: 1.2rem;
-    }
-    
-    .cta-section {
-      text-align: center;
-      padding: 2.5rem 0;
-      background: linear-gradient(135deg, #f0f7ff 0%, #e1ecfe 100%);
-      border-radius: var(--border-radius);
-      margin: 0.5rem 0 2.5rem;
-    }
-    
-    .btn-service {
-      background: var(--primary);
-      color: white;
-      font-weight: 600;
-      padding: 0.9rem 1.8rem;
-      font-size: 1rem;
-      border-radius: var(--border-radius);
-      transition: var(--transition);
-      display: inline-block;
-      margin-top: 1.2rem;
-      text-decoration: none;
-    }
-    
-    .btn-service:hover {
-      background: var(--secondary);
-      transform: translateY(-3px);
-    }
-    
-    @media (max-width: 992px) {
-      .hero h1 {
-        font-size: 2.4rem;
-      }
-      
-      .hero p {
-        font-size: 1.1rem;
-      }
-      
-      .everytool-content h3 {
-        font-size: 1.7rem;
-      }
-      
-      .about-content h2 {
-        font-size: 2rem;
-      }
-      
-      .process-steps {
-        flex-wrap: wrap;
-      }
-      
-      .benefits-grid {
-        flex-wrap: wrap;
-      }
-      
-      .device-icons {
-        gap: 1rem;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .hero {
-        padding: 5rem 0 3rem;
-      }
-      
-      .hero h1 {
-        font-size: 2rem;
-      }
-      
-      .service-section, .everytool-section, .about-section {
-        padding: 3rem 0;
-      }
-      
-      .service-card {
-        min-height: 340px;
-      }
-      
-      .everytool-content {
-        padding: 1.5rem;
-      }
-      
-      .everytool-content h3 {
-        font-size: 1.5rem;
-      }
-      
-      .btn-everytool {
-        padding: 0.9rem 1.8rem;
-        font-size: 1rem;
-      }
-      
-      .about-content h2 {
-        font-size: 1.8rem;
-      }
-      
-      .about-content p {
-        font-size: 1rem;
-      }
-      
-      .pricing-section {
-        padding: 1.5rem;
-      }
-      
-      .pricing-card {
-        padding: 1.5rem;
-      }
-      
-      .device-icon {
-        min-width: 80px;
-        font-size: 2.5rem;
-      }
+    .text-warning {
+      color: var(--warning);
     }
   </style>
 </head>
@@ -661,285 +752,291 @@
     </div>
   </div>
 
-  <!-- Header Include -->
+  <!-- Skip to Main Content Link -->
+  <a href="#main-content" class="skip-link">Hopp til hovedinnhold</a>
+
+  <!-- Header Container -->
   <div id="header-container"></div>
 
   <main id="main-content">
-    <!-- Modal -->
-    <div id="modal" class="modal" style="display: none;">
-      <div class="modal-content">
-        <span class="modal-close">×</span>
-        <!-- Modal content will be inserted here dynamically -->
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="notification" id="notification">
-        <div class="notification-header">
-          <i class="fas fa-check-circle"></i>
-          <h3>Takk for din henvendelse!</h3>
-        </div>
-        <p id="notification-message"></p>
-      </div>
-
-      <section class="hero">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
         <div class="hero-content">
-          <h1><span>IT-hjelp</span> for deg</h1>
-          <p>Profesjonelle tekniske løsninger.</p>
-        </div>
-      </section>
-
-      <section id="about-us" class="about-section">
-        <div class="about-content">
-          <div class="service-container">
-            <div class="section-title">
-              <h2>Hvordan jobber vi?</h2>
-              <p>Vår prosess er enkel og effektiv for å sikre rask og teknisk støtte</p>
-              <p></p>
-            </div>
-            <div class="process-steps">
-              <div class="step-card">
-                <div class="step-number">1</div>
-                <h3>Kontakt oss</h3>
-                <p>Fortell oss om ditt problem via skjemaet på kontaktsiden.</p>
-              </div>
-              <div class="step-card">
-                <div class="step-number">2</div>
-                <h3>Vurdering</h3>
-                <p>Vi vurderer forespørselen din, normalt innen 24 timer, og gir et tilbud på løsning.</p>
-              </div>
-              <div class="step-card">
-                <div class="step-number">3</div>
-                <h3>Gjennomføring og Levering</h3>
-                <p>Etter godkjent tilbud løser vi oppdraget via fjernstyring eller returnerer utstyret etter reparasjon.</p>
-              </div>
-            </div>
-            <div class="environmental-section">
-              <div class="environmental-icon">
-                <i class="fas fa-leaf"></i>
-              </div>
-              <h3>Godt for miljøet og lommeboken</h3>
-              <p>Ved å reparere og vedlikeholde utstyr istedenfor å kjøpe nytt, bidrar du til bærekraftig utvikling og reduserer elektronisk avfall. Våre reparasjoner forlenger levetiden til utstyr og sparer deg for unødvendige kostnader.</p>
-            </div>
-            <div class="services-grid">
-              <div class="service-card">
-                <div class="card-icon">
-                  <i class="fas fa-plug"></i>
-                </div>
-                <h3>Maskinvare & Utstyr</h3>
-                <ul>
-                  <li><i class="fas fa-check"></i>Reparasjon av PC, laptop, nettbrett</li>
-                  <li><i class="fas fa-check"></i>Utstyrsoppgradering (minne, SSD)</li>
-                  <li><i class="fas fa-check"></i>Feilsøking av maskinvarefeil</li>
-                  <li><i class="fas fa-check"></i>Hente ut data fra ødelagt utstyr</li>
-                  <li><i class="fas fa-check"></i>Skjermreparasjoner</li>
-                  <li><i class="fas fa-check"></i>Strømforsyningsproblemer</li>
-                </ul>
-              </div>
-              <div class="service-card">
-                <div class="card-icon">
-                  <i class="fas fa-laptop-code"></i>
-                </div>
-                <h3>Programvare & Systemer</h3>
-                <ul>
-                  <li><i class="fas fa-check"></i>Fikse programvarefeil</li>
-                  <li><i class="fas fa-check"></i>Virus- og malware-fjerning</li>
-                  <li><i class="fas fa-check"></i>Systemoptimalisering</li>
-                  <li><i class="fas fa-check"></i>Operativsystemoppdateringer</li>
-                  <li><i class="fas fa-check"></i>Gjenoppretting av operativsystem</li>
-                  <li><i class="fas fa-check"></i>Programvareinstallasjon og -konfigurasjon</li>
-                  <li><i class="fas fa-check"></i>Driveroppdateringer</li>
-                </ul>
-              </div>
-            </div>
-            <div class="problem-cards">
-              <div class="problem-card">
-                <div class="problem-icon">
-                  <i class="fas fa-bug"></i>
-                </div>
-                <div class="problem-content">
-                  <h4>Datavirus og malware</h4>
-                  <p>Vi fjerner alle typer skadelig programvare og sikrer at systemet ditt er trygt.</p>
-                </div>
-              </div>
-              <div class="problem-card">
-                <div class="problem-icon">
-                  <i class="fas fa-bolt"></i>
-                </div>
-                <div class="problem-content">
-                  <h4>Langsom datamaskin</h4>
-                  <p>Vi optimaliserer systemet ditt for raskere ytelse og bedre effektivitet.</p>
-                </div>
-              </div>
-              <div class="problem-card">
-                <div class="problem-icon">
-                  <i class="fas fa-exclamation-triangle"></i>
-                </div>
-                <div class="problem-content">
-                  <h4>Blåskjerm-feil</h4>
-                  <p>Vi diagnostiserer årsaken til systemkrasj og implementerer løsninger.</p>
-                </div>
-              </div>
-              <div class="problem-card">
-                <div class="problem-icon">
-                  <i class="fas fa-wifi"></i>
-                </div>
-                <div class="problem-content">
-                  <h4>Nettverksproblemer</h4>
-                  <p>Vi løser Wi-Fi-problemer, nettverkskoblinger og Internett-tilkoblinger.</p>
-                </div>
-              </div>
-            </div>
-            <div class="benefits-grid">
-              <div class="benefit-card">
-                <div class="benefit-icon">
-                  <i class="fas fa-shield-alt"></i>
-                </div>
-                <h4>Sikkerhet</h4>
-                <p>Vi sikrer at systemet ditt er beskyttet mot trusler og sårbarheter.</p>
-              </div>
-              <div class="benefit-card">
-                <div class="benefit-icon">
-                  <i class="fas fa-rocket"></i>
-                </div>
-                <h4>Ytelse</h4>
-                <p>Vi optimaliserer systemet ditt for raskere drift og bedre effektivitet.</p>
-              </div>
-              <div class="benefit-card">
-                <div class="benefit-icon">
-                  <i class="fas fa-history"></i>
-                </div>
-                <h4>Stabilitet</h4>
-                <p>Vi eliminerer systemkrasj og uventede feil for en pålitelig opplevelse.</p>
-              </div>
-            </div>
+          <h1><span>everytool.io</span> - Gratis Verktøy i Nettleseren</h1>
+          <p>Øk produktiviteten din med kraftige, brukervennlige verktøy – uten installasjon eller registrering! Alt behandles direkte i nettleseren din for maksimal personvern.</p>
+          <div class="hero-buttons">
+            <a href="#tools" class="btn btn-hero"><i class="fas fa-toolbox"></i> Utforsk verktøyene</a>
+            <a href="#process" class="btn btn-hero btn-hero-outline"><i class="fas fa-play-circle"></i> Se hvordan det fungerer</a>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="how-we-work" class="service-section">
+    <!-- Features Section -->
+    <section id="features" class="features section">
+      <div class="container">
         <div class="section-title">
-          <h2>Priser og Betingelser</h2>
-          <p>Transparent prising uten skjulte kostnader</p>
+          <h2>Hvorfor velge everytool.io?</h2>
+          <p>Vi tilbyr essensielle verktøy uten å ofre personvern eller sikkerhet</p>
         </div>
-        <div class="pricing-card">
-          <div class="price-tag">550,- <span>per time</span></div>
-          <p class="price-highlight">80% av alle problemer løses innen en time!</p>
-          <ul>
-            <li><i class="fas fa-check-circle"></i>Betaling kun ved løst problem</li>
-            <li><i class="fas fa-check-circle"></i>Ingen skjulte kostnader</li>
-            <li><i class="fas fa-check-circle"></i>Gratis tilbud</li>
-            <li><i class="fas fa-check-circle"></i>Fjernhjelp tilgjengelig</li>
-          </ul>
-        </div>
-        <div class="additional-fee">
-          <p><strong>Merk:</strong> Hvis du har sendt utstyr til oss og vi ikke kan reparere det, kan du velge å få det returnert eller la oss destruere det for en avgift på 500,-.</p>
-        </div>
-        <div class="device-icons">
-          <div class="device-icon">
-            <i class="fas fa-laptop"></i>
-            <span>Bærbare datamaskiner</span>
+        
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-lock"></i>
+            </div>
+            <h3>Fullstendig personvern</h3>
+            <p>All behandling skjer direkte i din nettleser. Filene dine forlater aldri enheten din, noe som sikrer fullstendig personvern og sikkerhet.</p>
           </div>
-          <div class="device-icon">
-            <i class="fas fa-desktop"></i>
-            <span>Stasjonære datamaskiner</span>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h3>Umiddelbar behandling</h3>
+            <p>Uansett om du genererer strekkoder eller behandler filer, fungerer våre verktøy med nettleserens hastighet. Ingen opplastinger, ingen venting.</p>
           </div>
-          <div class="device-icon">
-            <i class="fas fa-mobile-alt"></i>
-            <span>Mobiltelefoner</span>
-          </div>
-          <div class="device-icon">
-            <i class="fas fa-tablet-alt"></i>
-            <span>Nettbrett</span>
-          </div>
-          <div class="device-icon">
-            <i class="fas fa-print"></i>
-            <span>Skrivere</span>
-          </div>
-          <div class="device-icon">
-            <i class="fas fa-server"></i>
-            <span>Servere</span>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-tag"></i>
+            </div>
+            <h3>100% gratis</h3>
+            <p>Alle våre verktøy er helt gratis å bruke. Ingen abonnementer, ingen skjulte avgifter, og ingen konto kreves.</p>
           </div>
         </div>
-        <div class="cta-section">
-          <h3>Klar til å få hjelp?</h3>
-          <p>Kontakt oss i dag for en gratis vurdering av ditt problem</p>
-          <a href="/kontakt" class="btn btn-service">Kontakt oss nå</a>
-        </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="services" class="service-section">
+    <!-- Tools Section -->
+    <section id="tools" class="tools section">
+      <div class="container">
         <div class="section-title">
-          <h2>Våre Tjenester</h2>
-          <p>Utforsk våre profesjonelle IT-løsninger for alle dine teknologibehov</p>
+          <h2>Vårt utvalg av verktøy</h2>
+          <p>En verden av verktøy i nettleseren din – uten kostnad og med fokus på personvern</p>
         </div>
-        <div class="services-grid">
-          <div class="service-card">
-            <div class="card-icon">
-              <i class="fas fa-tools"></i>
+        
+        <div class="tool-grid">
+          <div class="tool-card">
+            <div class="tool-icon">
+              <i class="fas fa-file-alt"></i>
             </div>
-            <h3>Reparasjon & feilsøking</h3>
-            <p>Vi tilbyr feilsøking og reparasjon av maskinvare og programvare, inkludert virusfjerning, systemoptimalisering og oppgraderinger for å forlenge levetiden til utstyret ditt.</p>
-            <a href="/" class="btn btn-service">Få hjelp nå</a>
+            <h3>Tekstverktøy</h3>
+            <p>Rediger, konverter og analyser tekst raskt og enkelt. Alt du trenger for tekstbehandling i nettleseren.</p>
           </div>
-          <div class="service-card">
-            <div class="card-icon">
-              <i class="fas fa-cloud"></i>
+          
+          <div class="tool-card">
+            <div class="tool-icon">
+              <i class="fas fa-barcode"></i>
             </div>
-            <h3>Backup & Skylagring</h3>
-            <p>Beskytt dine verdifulle data med våre sikre backup- og skylagringsløsninger, inkludert automatisk backup og kryptert databehandling for trygghet mot datatap.</p>
-            <a href="/tjenester/backup&skylagring/" class="btn btn-service">Få hjelp nå</a>
+            <h3>Strekkodeverktøy</h3>
+            <p>Generer strekkoder for produkter eller lager. Støtter ulike formater og standarder.</p>
           </div>
-          <div class="service-card">
-            <div class="card-icon">
-              <i class="fas fa-globe"></i>
+          
+          <div class="tool-card">
+            <div class="tool-icon">
+              <i class="fas fa-image"></i>
             </div>
-            <h3>Webdesign & Domene</h3>
-            <p>Vi skaper moderne, brukervennlige nettsider og håndterer domeneregistrering samt hosting, slik at din digitale tilstedeværelse blir profesjonell og effektiv.</p>
-            <a href="/tjenester/webdesign&domene/" class="btn btn-service">Få hjelp nå</a>
+            <h3>Bildeverktøy</h3>
+            <p>Komprimer, konverter eller rediger bilder direkte i nettleseren. Behold originalkvaliteten uten opplastinger.</p>
+          </div>
+          
+          <div class="tool-card">
+            <div class="tool-icon">
+              <i class="fas fa-file-pdf"></i>
+            </div>
+            <h3>PDF-verktøy</h3>
+            <p>Slå sammen, del eller konverter PDF-filer uten problemer. Full PDF-behandling uten tredjepartsprogrammer.</p>
           </div>
         </div>
-      </section>
+        
+        <p style="text-align: center; margin-top: 2rem;">Dette er bare et utvalg av de mange verktøyene vi tilbyr.</p>
+        <div style="text-align: center; margin-top: 1rem;">
+          <a href="https://everytool.io/tools" class="btn btn-outline">Se alle verktøyene</a>
+        </div>
+      </div>
+    </section>
 
-      <section id="everytool" class="everytool-section">
+    <!-- How It Works Section -->
+    <section id="process" class="process section">
+      <div class="container">
         <div class="section-title">
-          <h2>everytool.io</h2>
+          <h2>Slik fungerer våre verktøy</h2>
+          <p>Klient-side behandling betyr at dine data aldri forlater din enhet</p>
         </div>
-        <div class="everytool-content">
-          <div class="everytool-icon">
-            <i class="fas fa-tools"></i>
+        
+        <div class="process-steps">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3>Velg verktøy</h3>
+            <p>Velg fra vårt utvalg av personvernfokuserte verktøy designet for ulike behov.</p>
           </div>
-          <h3>Utforsk vår samling av gratis verktøy</h3>
-          <p>Vi har utviklet en kraftig samling av gratis verktøy på everytool.io, tilgjengelig direkte i nettleseren din. Ingen registrering, ingen datalagring – bare enkle, effektive løsninger for å øke produktiviteten din.</p>
-          <a href="everytool/" class="btn btn-everytool">
-            <i class="fas fa-external-link-alt"></i>
-            Les mer her!
+          
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3>Behandle i nettleser</h3>
+            <p>Våre verktøy fungerer direkte i nettleseren din. Ingen data lastes opp til noen server.</p>
+          </div>
+          
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3>Få resultatet</h3>
+            <p>Last ned eller se resultatet ditt umiddelbart. Dine originale data forblir private.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Klar til å komme i gang?</h2>
+          <p>Bli en av tusenvis av brukere som stoler på everytool.io for sine daglige verktøybehov uten å ofre personvernet.</p>
+          <a href="https://everytool.io/tools" class="btn btn-cta">
+            <i class="fas fa-tools"></i> Utforsk alle verktøyene
           </a>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   </main>
 
-  <!-- Footer Include -->
-  <div id="footer-container"></div>
+  <!-- Footer Container -->
+  <div id="footer-container">
+    <p class="error-message">Kunne ikke laste footer. Vennligst oppdater siden.</p>
+  </div>
 
   <!-- Script Loading -->
   <script>
-    // Load header and footer first
     document.addEventListener('DOMContentLoaded', function() {
       Promise.all([
-        fetch('https://fixmytech.no/includes/header.html').then(res => res.text()),
-        fetch('https://fixmytech.no/includes/footer.html').then(res => res.text())
+        fetch('https://fixmytech.no/includes/header.html')
+          .then(res => {
+            if (!res.ok) throw new Error('Header fetch failed');
+            return res.text();
+          }),
+        fetch('https://fixmytech.no/includes/footer.html')
+          .then(res => {
+            if (!res.ok) throw new Error('Footer fetch failed');
+            return res.text();
+          })
       ]).then(([header, footer]) => {
-        document.getElementById('header-container').innerHTML = header;
-        document.getElementById('footer-container').innerHTML = footer;
-        
-        // Now load main.js after DOM is ready
+        const headerContainer = document.getElementById('header-container');
+        const footerContainer = document.getElementById('footer-container');
+        headerContainer.innerHTML = header;
+        footerContainer.innerHTML = footer;
+
+        const tjenesterDropdown = document.getElementById('tjenester-dropdown') || document.querySelector('[id*="dropdown"][id*="tjenester"]');
         const script = document.createElement('script');
         script.src = 'https://fixmytech.no/js/main.js';
+        script.onload = () => {
+          fetch('https://fixmytech.no/tjenester/tjenester.json')
+            .then(res => {
+              if (!res.ok) throw new Error('Failed to fetch tjenester.json');
+              return res.json();
+            })
+            .catch(error => {});
+        };
+        script.onerror = () => {};
         document.body.appendChild(script);
+
+        function getCookie(name) {
+          const value = `; ${document.cookie}`;
+          const parts = value.split(`; ${name}=`);
+          if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+        function setCookie(name, value, days) {
+          let expires = "";
+          if (days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+          }
+          document.cookie = name + "=" + (value || "") + expires + "; path=/;SameSite=Lax";
+        }
+
+        const cookieBanner = document.getElementById('cookie-consent-banner');
+        const cookieModal = document.getElementById('cookie-settings-modal');
+        const acceptBtn = document.getElementById('cookie-accept');
+        const rejectBtn = document.getElementById('cookie-reject');
+        const settingsBtn = document.getElementById('cookie-settings');
+        const closeModal = document.querySelector('.close-modal');
+        const saveSettingsBtn = document.getElementById('save-cookie-settings');
+        const analyticsToggle = document.getElementById('analytics-cookies');
+        const analyticsStatus = document.getElementById('analytics-status-text');
+        const overallStatus = document.getElementById('overall-status-text');
+        const cookieSettingsLink = document.getElementById('cookieSettingsLink');
+
+        const consentGiven = getCookie('cookie_consent_given');
+        if (consentGiven) {
+          const analytics = getCookie('analytics_cookies');
+          analyticsToggle.checked = analytics === 'true';
+          analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
+          overallStatus.textContent = 'Innstillinger lagret';
+          cookieBanner.style.display = 'none';
+          cookieModal.style.display = 'none';
+        }
+
+        function openCookieSettingsModal(event) {
+          event.preventDefault();
+          const analytics = getCookie('analytics_cookies');
+          if (analytics !== undefined) {
+            analyticsToggle.checked = analytics === 'true';
+            analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
+          }
+          cookieModal.style.display = 'flex';
+        }
+
+        acceptBtn.addEventListener('click', (event) => {
+          event.preventDefault();
+          setCookie('cookie_consent_given', 'true', 365);
+          setCookie('analytics_cookies', 'true', 365);
+          cookieBanner.style.display = 'none';
+          analyticsToggle.checked = true;
+          analyticsStatus.textContent = 'På';
+          overallStatus.textContent = 'Innstillinger lagret';
+        });
+
+        rejectBtn.addEventListener('click', (event) => {
+          event.preventDefault();
+          setCookie('cookie_consent_given', 'true', 365);
+          setCookie('analytics_cookies', 'false', 365);
+          cookieBanner.style.display = 'none';
+          analyticsToggle.checked = false;
+          analyticsStatus.textContent = 'Av';
+          overallStatus.textContent = 'Innstillinger lagret';
+        });
+
+        settingsBtn.addEventListener('click', openCookieSettingsModal);
+
+        if (cookieSettingsLink) {
+          cookieSettingsLink.addEventListener('click', openCookieSettingsModal);
+        }
+
+        closeModal.addEventListener('click', (event) => {
+          event.preventDefault();
+          cookieModal.style.display = 'none';
+        });
+
+        saveSettingsBtn.addEventListener('click', (event) => {
+          event.preventDefault();
+          setCookie('cookie_consent_given', 'true', 365);
+          setCookie('analytics_cookies', analyticsToggle.checked.toString(), 365);
+          cookieBanner.style.display = 'none';
+          cookieModal.style.display = 'none';
+          analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
+          overallStatus.textContent = 'Innstillinger lagret';
+        });
+
+        analyticsToggle.addEventListener('change', () => {
+          analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
+        });
       }).catch(error => {
-        console.error('Error loading includes:', error);
+        document.querySelectorAll('.error-message').forEach(el => {
+          el.style.display = 'block';
+        });
       });
     });
   </script>
