@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>everytool.io - Gratis Verktøy i Nettleseren Din | FixMyTech</title>
-  <meta name="description" content="everytool.io tilbyr gratis, brukervennlige verktøy direkte i nettleseren din. Øk produktiviteten uten å ofre personvernet – ingen installasjon eller registrering kreves!">
-  <meta name="keywords" content="gratis verktøy, nettleserverktøy, produktivitet, personvern, online verktøy, everytool">
-  <meta name="author" content="FixMyTech">
+  <title>Vilkår for bruk – FixMyTech.no</title>
+  <meta name="description" content="Les våre vilkår for bruk av FixMyTech.no sine tjenester, inkludert teknisk støtte, reparasjoner og skylagring.">
+  <meta name="keywords" content="vilkår for bruk, tjenester, teknisk støtte, reparasjoner, FixMyTech.no">
+  <meta name="author" content="FixMyTech.no">
+  <link rel="canonical" href="https://fixmytech.no/vilkår">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="https://fixmytech.no/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="https://fixmytech.no/css/styles.css">
   <style>
     /* Inline Styles for Main Content (Complementary to /css/styles.css) */
     :root {
@@ -610,60 +612,106 @@
       box-shadow: var(--shadow-hover);
     }
 
-    /* Dropdown Menu Styles */
-    .dropdown {
-      position: relative;
+    /* Additional Styles for Terms Page */
+    .privacy-section {
+      padding: 6rem 0 4rem; /* Increased top padding from 4rem to 6rem */
+      background: #f9fafb;
     }
-
-    .dropdown-toggle {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
+    
+    .terms-card {
       background: white;
+      padding: 2.5rem;
       border-radius: var(--border-radius);
       box-shadow: var(--shadow);
-      min-width: 200px;
-      z-index: 1000;
+      max-width: 900px;
+      margin: 0 auto;
     }
-
-    .dropdown-content a {
+    
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--light-gray);
+    }
+    
+    .card-header .card-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+    
+    .card-header h3 {
+      margin-bottom: 0.5rem;
+    }
+    
+    .term-item {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--light-gray);
+    }
+    
+    .term-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    
+    .term-item h4 {
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      padding: 0.75rem 1rem;
-      color: var(--dark-gray);
-      text-decoration: none;
-      transition: var(--transition);
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
     }
-
-    .dropdown-content a:hover {
-      background: var(--light-gray);
+    
+    .term-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 1rem;
+    }
+    
+    .term-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      padding: 0.5rem 0;
+    }
+    
+    .warning-box {
+      background: rgba(220, 38, 38, 0.05);
+      border-left: 4px solid var(--warning);
+      padding: 1rem;
+      margin: 1rem 0;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    
+    .warning-box i {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      margin-top: 0.25rem;
+    }
+    
+    .text-primary {
       color: var(--primary);
     }
-
-    .dropdown:hover .dropdown-content {
-      display: block;
+    
+    .text-success {
+      color: var(--success);
     }
-
-    /* Mobile menu adjustments */
-    @media (max-width: 768px) {
-      .main-nav.active .dropdown-content {
-        display: block;
-        position: static;
-        box-shadow: none;
-        background: transparent;
-      }
-
-      .dropdown-content a {
-        padding: 0.5rem 1.5rem;
-      }
+    
+    .text-warning {
+      color: var(--warning);
     }
   </style>
 </head>
@@ -704,10 +752,11 @@
     </div>
   </div>
 
-  <!-- Header Container -->
-  <div id="header-container">
-    <p class="error-message">Kunne ikke laste header. Vennligst oppdater siden.</p>
-  </div>
+  <!-- Skip to Main Content Link -->
+  <a href="#main-content" class="skip-link">Hopp til hovedinnhold</a>
+
+  <!-- Header Include -->
+  <div id="header-container"></div>
 
   <main id="main-content">
     <!-- Hero Section -->
@@ -860,51 +909,18 @@
 
   <!-- Script Loading -->
   <script>
+    // Load header and footer first
     document.addEventListener('DOMContentLoaded', function() {
       Promise.all([
-        fetch('/includes/header.html').then(res => {
-          if (!res.ok) throw new Error('Header fetch failed');
-          return res.text();
-        }),
-        fetch('/includes/footer.html').then(res => {
-          if (!res.ok) throw new Error('Footer fetch failed');
-          return res.text();
-        })
+        fetch('https://fixmytech.no/includes/header.html').then(res => res.text()),
+        fetch('https://fixmytech.no/includes/footer.html').then(res => res.text())
       ]).then(([header, footer]) => {
         document.getElementById('header-container').innerHTML = header;
         document.getElementById('footer-container').innerHTML = footer;
-
-        // Load main.js
+        
+        // Load main.js after header and footer are loaded
         const script = document.createElement('script');
-        script.src = 'https://everytool.io/js/main.js';
-        script.onload = () => {
-          // Explicitly initialize main.js and populate dropdown
-          if (window.initMainJS) {
-            window.initMainJS();
-            if (window.populateServicesDropdown) {
-              window.populateServicesDropdown();
-              // Fallback: Populate dropdown if JSON fetch fails or container is empty
-              setTimeout(() => {
-                const dropdownContainer = document.getElementById('dropdown-services');
-                if (dropdownContainer && !dropdownContainer.hasChildNodes()) {
-                  console.warn('Dropdown is empty, applying fallback content');
-                  dropdownContainer.innerHTML = `
-                    <a href="/tools/text-tools" aria-label="Tekstverktøy"><i class="fas fa-file-alt"></i>Tekstverktøy</a>
-                    <a href="/tools/barcode-tools" aria-label="Strekkodeverktøy"><i class="fas fa-barcode"></i>Strekkodeverktøy</a>
-                    <a href="/tools/image-tools" aria-label="Bildeverktøy"><i class="fas fa-image"></i>Bildeverktøy</a>
-                    <a href="/tools/pdf-tools" aria-label="PDF-verktøy"><i class="fas fa-file-pdf"></i>PDF-verktøy</a>
-                  `;
-                  // Update nav links after fallback
-                  const newNavLinks = document.querySelectorAll('.main-nav a');
-                  newNavLinks.forEach(link => {
-                    link.removeEventListener('click', window.handleNavLinkClick);
-                    link.addEventListener('click', window.handleNavLinkClick);
-                  });
-                }
-              }, 1000); // Delay to allow JSON fetch to complete
-            }
-          }
-        };
+        script.src = 'https://fixmytech.no/js/main.js';
         document.body.appendChild(script);
 
         // Cookie Consent Logic
@@ -1012,21 +1028,6 @@
       }).catch(error => {
         console.error('Error loading includes:', error);
         document.querySelectorAll('.error-message').forEach(el => el.style.display = 'block');
-        // Fallback dropdown content if header fails to load
-        const dropdownContainer = document.getElementById('dropdown-services');
-        if (dropdownContainer) {
-          dropdownContainer.innerHTML = `
-            <a href="/tools/text-tools" aria-label="Tekstverktøy"><i class="fas fa-file-alt"></i>Tekstverktøy</a>
-            <a href="/tools/barcode-tools" aria-label="Strekkodeverktøy"><i class="fas fa-barcode"></i>Strekkodeverktøy</a>
-            <a href="/tools/image-tools" aria-label="Bildeverktøy"><i class="fas fa-image"></i>Bildeverktøy</a>
-            <a href="/tools/pdf-tools" aria-label="PDF-verktøy"><i class="fas fa-file-pdf"></i>PDF-verktøy</a>
-          `;
-          const newNavLinks = document.querySelectorAll('.main-nav a');
-          newNavLinks.forEach(link => {
-            link.removeEventListener('click', window.handleNavLinkClick);
-            link.addEventListener('click', window.handleNavLinkClick);
-          });
-        }
       });
     });
   </script>
