@@ -264,96 +264,6 @@
       transform: translateY(-3px);
     }
     
-    .everytool-section {
-      padding: 4rem 0;
-      background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .everytool-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at center, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
-      z-index: 0;
-    }
-    
-    .everytool-content {
-      max-width: 900px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-      background: white;
-      padding: 2.5rem;
-      border-radius: var(--border-radius);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-      transition: var(--transition);
-    }
-    
-    .everytool-content:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
-    }
-    
-    .everytool-content h3 {
-      font-size: 2rem;
-      margin-bottom: 1.2rem;
-      color: var(--primary);
-      position: relative;
-      padding-bottom: 0.5rem;
-    }
-    
-    .everytool-content h3::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: var(--primary);
-      border-radius: 2px;
-    }
-    
-    .everytool-content p {
-      font-size: 1.1rem;
-      color: var(--secondary);
-      margin-bottom: 1.8rem;
-      line-height: 1.6;
-    }
-    
-    .everytool-icon {
-      font-size: 2.2rem;
-      color: var(--primary);
-      margin-bottom: 1rem;
-    }
-    
-    .btn-everytool {
-      background: var(--business);
-      color: white;
-      padding: 1rem 2.2rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      border-radius: var(--border-radius);
-      transition: var(--transition);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.7rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      text-decoration: none;
-    }
-    
-    .btn-everytool:hover {
-      background: var(--secondary);
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-    }
-    
     /* About Us Section */
     .about-section {
       padding: 4rem 0;
@@ -559,9 +469,6 @@
         font-size: 1.1rem;
       }
       
-      .everytool-content h3 {
-        font-size: 1.7rem;
-      }
       
       .about-content h2 {
         font-size: 2rem;
@@ -589,25 +496,9 @@
         font-size: 2rem;
       }
       
-      .service-section, .everytool-section, .about-section {
-        padding: 3rem 0;
-      }
       
       .service-card {
         min-height: 340px;
-      }
-      
-      .everytool-content {
-        padding: 1.5rem;
-      }
-      
-      .everytool-content h3 {
-        font-size: 1.5rem;
-      }
-      
-      .btn-everytool {
-        padding: 0.9rem 1.8rem;
-        font-size: 1rem;
       }
       
       .about-content h2 {
@@ -879,25 +770,6 @@
           <a href="/kontakt" class="btn btn-service">Kontakt oss nå</a>
         </div>
       </section>
-
-      <section id="everytool" class="everytool-section">
-        <div class="section-title">
-          <h2>everytool.io</h2>
-        </div>
-        <div class="everytool-content">
-          <div class="everytool-icon">
-            <i class="fas fa-tools"></i>
-          </div>
-          <h3>Utforsk vår samling av gratis verktøy</h3>
-          <p>Vi har utviklet en kraftig samling av gratis verktøy på everytool.io, tilgjengelig direkte i nettleseren din. Ingen registrering, ingen datalagring – bare enkle, effektive løsninger for å øke produktiviteten din.</p>
-          <a href="everytool/" class="btn btn-everytool">
-            <i class="fas fa-external-link-alt"></i>
-            Les mer her!
-          </a>
-        </div>
-      </section>
-    </div>
-  </main>
 
   <!-- Footer Include -->
   <div id="footer-container"></div>
