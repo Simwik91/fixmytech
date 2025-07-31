@@ -19,31 +19,7 @@
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://fixmytech.no/tjenester/backup&skylagring</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://fixmytech.no/tjenester/webdesign&domene</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://fixmytech.no/kontakt</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
     <loc>https://fixmytech.no/lisenser</loc>
-    <lastmod>2025-07-17</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://fixmytech.no/everytool</loc>
     <lastmod>2025-07-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>1.0</priority>
