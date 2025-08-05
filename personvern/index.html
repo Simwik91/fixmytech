@@ -12,6 +12,25 @@
   <link rel="icon" type="image/x-icon" href="https://fixmytech.no/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fixmytech.no/css/styles.css">
+  <style>
+    /* Added style for home button */
+    .home-button {
+      display: block;
+      text-align: center;
+      margin: 2rem auto;
+      padding: 0.8rem 1.5rem;
+      background-color: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: var(--border-radius);
+      font-weight: 500;
+      max-width: 200px;
+    }
+
+    .home-button:hover {
+      background-color: var(--secondary);
+    }
+  </style>
 </head>
 <body>
   <!-- Cookie Consent Banner -->
@@ -53,9 +72,6 @@
   <!-- Skip to Main Content Link -->
   <a href="#main-content" class="skip-link">Hopp til hovedinnhold</a>
 
-  <!-- Header Include -->
-  <div id="header-container"></div>
-
   <main id="main-content">
     <section class="privacy-section service-section">
       <div class="container">
@@ -76,6 +92,7 @@
           </div>
           
           <div class="card-content">
+            <!-- [All privacy content remains exactly the same] -->
             <p>Vi i FixMyTech.no tar personvernet ditt på alvor. Denne personvernerklæring forklarer hvilke personopplysninger vi samler inn, hvordan vi bruker dem, og hvilke rettigheter du har.</p>
 
             <div class="privacy-item">
@@ -213,6 +230,9 @@
               <h4><i class="fas fa-exclamation-triangle"></i> 7. Ansvar</h4>
               <p>Ved å bruke kontaktskjemaet eller godta informasjonskapsler godtar du at vi behandler informasjonen din i henhold til denne erklæringen. All tjenestebruk skjer på eget ansvar, som beskrevet i vår ansvarsfraskrivelse under skjemaet på hovedsiden.</p>
             </div>
+
+            <!-- Added home button -->
+            <a href="/" class="home-button">Ta Meg Hjem</a>
           </div>
         </div>
       </div>
@@ -224,22 +244,21 @@
 
   <!-- Script Loading -->
   <script>
-    // Load header and footer first
+    // Load footer
     document.addEventListener('DOMContentLoaded', function() {
-      Promise.all([
-        fetch('https://fixmytech.no/includes/header.html').then(res => res.text()),
-        fetch('https://fixmytech.no/includes/footer.html').then(res => res.text())
-      ]).then(([header, footer]) => {
-        document.getElementById('header-container').innerHTML = header;
-        document.getElementById('footer-container').innerHTML = footer;
-        
-        // Load main.js after header and footer are loaded
-        const script = document.createElement('script');
-        script.src = 'https://fixmytech.no/js/main.js';
-        document.body.appendChild(script);
-      }).catch(error => {
-        console.error('Error loading includes:', error);
-      });
+      fetch('https://fixmytech.no/includes/footer.html')
+        .then(res => res.text())
+        .then(footer => {
+          document.getElementById('footer-container').innerHTML = footer;
+          
+          // Load main.js after footer is loaded
+          const script = document.createElement('script');
+          script.src = 'https://fixmytech.no/js/main.js';
+          document.body.appendChild(script);
+        })
+        .catch(error => {
+          console.error('Error loading footer:', error);
+        });
     });
   </script>
   
