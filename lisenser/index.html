@@ -76,6 +76,23 @@
       color: var(--success);
     }
 
+    .home-button {
+      display: block;
+      text-align: center;
+      margin: 2rem auto;
+      padding: 0.8rem 1.5rem;
+      background-color: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: var(--border-radius);
+      font-weight: 500;
+      max-width: 200px;
+    }
+
+    .home-button:hover {
+      background-color: var(--secondary);
+    }
+
     @media (max-width: 768px) {
       .licenses-section {
         padding: 3rem 0;
@@ -128,9 +145,6 @@
     </div>
   </div>
 
-  <!-- Header Include -->
-  <div id="header-container"></div>
-
   <main id="main-content">
     <div class="container">
       <section class="licenses-section">
@@ -169,6 +183,8 @@
         </div>
 
         <p>Hvis du har spørsmål om lisensene eller bruken av tredjepartsressurser, kontakt oss via <a href="/kontakt">kontaktskjemaet</a>.</p>
+        
+        <a href="/" class="home-button">Ta Meg Hjem</a>
       </section>
     </div>
   </main>
@@ -179,21 +195,14 @@
   <!-- Script Loading -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Load header and footer
-      Promise.all([
-        fetch('https://fixmytech.no/includes/header.html').then(res => {
-          if (!res.ok) throw new Error('Header fetch failed');
-          return res.text();
-        }),
-        fetch('https://fixmytech.no/includes/footer.html').then(res => {
-          if (!res.ok) throw new Error('Footer fetch failed');
-          return res.text();
-        })
-      ]).then(([header, footer]) => {
-        document.getElementById('header-container').innerHTML = header;
+      // Load footer
+      fetch('https://fixmytech.no/includes/footer.html').then(res => {
+        if (!res.ok) throw new Error('Footer fetch failed');
+        return res.text();
+      }).then(footer => {
         document.getElementById('footer-container').innerHTML = footer;
 
-        // Load main.js after header and footer are loaded
+        // Load main.js after footer is loaded
         const script = document.createElement('script');
         script.src = 'https://fixmytech.no/js/main.js';
         document.body.appendChild(script);
@@ -304,7 +313,7 @@
           analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
         });
       }).catch(error => {
-        console.error('Error loading includes:', error);
+        console.error('Error loading footer:', error);
         document.querySelectorAll('.error-message').forEach(el => el.style.display = 'block');
       });
     });
