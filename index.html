@@ -678,8 +678,28 @@
     </div>
   </div>
 
-  <!-- Header Include -->
-  <div id="header-container"></div>
+  <!-- Updated Header with correct contact link -->
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <a href="/" class="logo" aria-label="FixMyTech.no hjemmeside">
+            <i class="fas fa-tools"></i>
+            <span>FixMyTech</span>
+          </a>
+        </div>
+        <div class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <i class="fas fa-bars"></i>
+        </div>
+        <nav class="main-nav">
+          <ul>
+            <li><a href="/" aria-label="Gå til Hjem">Hjem</a></li>
+            <li><a href="#contact" aria-label="Gå til Kontakt skjema">Kontakt</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
 
   <main id="main-content">
     <!-- Scroll to top button -->
@@ -885,7 +905,7 @@
         </div>
       </section>
 
-      <!-- Contact Form Section Added Here -->
+      <!-- Contact Form Section -->
       <section id="contact" class="contact-section">
         <div class="section-title">
           <h2>Kontakt Oss</h2>
@@ -937,7 +957,7 @@
         </div>
       </section>
 
-      <!-- CTA Section moved below contact form -->
+      <!-- CTA Section -->
       <div class="cta-section">
         <h3>Klar til å få hjelp?</h3>
         <p>Kontakt oss i dag for en gratis vurdering av ditt problem</p>
@@ -951,7 +971,7 @@
 
   <!-- Script Loading -->
   <script>
-    // Load header and footer first
+    // Load footer
     document.addEventListener('DOMContentLoaded', function() {
       // Terms checkbox functionality
       const termsCheckbox = document.getElementById('terms-checkbox');
@@ -963,20 +983,19 @@
         });
       }
 
-      Promise.all([
-        fetch('https://fixmytech.no/includes/header.html').then(res => res.text()),
-        fetch('https://fixmytech.no/includes/footer.html').then(res => res.text())
-      ]).then(([header, footer]) => {
-        document.getElementById('header-container').innerHTML = header;
-        document.getElementById('footer-container').innerHTML = footer;
-        
-        // Now load main.js after DOM is ready
-        const script = document.createElement('script');
-        script.src = 'https://fixmytech.no/js/main.js';
-        document.body.appendChild(script);
-      }).catch(error => {
-        console.error('Error loading includes:', error);
-      });
+      fetch('https://fixmytech.no/includes/footer.html')
+        .then(res => res.text())
+        .then(footer => {
+          document.getElementById('footer-container').innerHTML = footer;
+          
+          // Now load main.js after DOM is ready
+          const script = document.createElement('script');
+          script.src = 'https://fixmytech.no/js/main.js';
+          document.body.appendChild(script);
+        })
+        .catch(error => {
+          console.error('Error loading footer:', error);
+        });
     });
   </script>
 </body>
