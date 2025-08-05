@@ -12,6 +12,25 @@
   <link rel="icon" type="image/x-icon" href="https://fixmytech.no/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fixmytech.no/css/styles.css">
+  <style>
+    /* Added style for home button */
+    .home-button {
+      display: block;
+      text-align: center;
+      margin: 2rem auto;
+      padding: 0.8rem 1.5rem;
+      background-color: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: var(--border-radius);
+      font-weight: 500;
+      max-width: 200px;
+    }
+
+    .home-button:hover {
+      background-color: var(--secondary);
+    }
+  </style>
 </head>
 <body>
   <!-- Cookie Consent Banner -->
@@ -52,9 +71,6 @@
 
   <!-- Skip to Main Content Link -->
   <a href="#main-content" class="skip-link">Hopp til hovedinnhold</a>
-
-  <!-- Header Include -->
-  <div id="header-container"></div>
 
   <main id="main-content">
     <section class="privacy-section service-section">
@@ -128,6 +144,9 @@
               <h4><i class="fas fa-envelope"></i> 8. Kontaktinformasjon</h4>
               <p>Hvis du har spørsmål om disse vilkårene, kontakt oss på <a href="mailto:kontakt@fixmytech.no" class="text-primary">kontakt@fixmytech.no</a>.</p>
             </div>
+
+            <!-- Added home button -->
+            <a href="/" class="home-button">Ta Meg Hjem</a>
           </div>
         </div>
       </div>
@@ -139,22 +158,21 @@
 
   <!-- Script Loading -->
   <script>
-    // Load header and footer first
+    // Load footer
     document.addEventListener('DOMContentLoaded', function() {
-      Promise.all([
-        fetch('https://fixmytech.no/includes/header.html').then(res => res.text()),
-        fetch('https://fixmytech.no/includes/footer.html').then(res => res.text())
-      ]).then(([header, footer]) => {
-        document.getElementById('header-container').innerHTML = header;
-        document.getElementById('footer-container').innerHTML = footer;
-        
-        // Load main.js after header and footer are loaded
-        const script = document.createElement('script');
-        script.src = 'https://fixmytech.no/js/main.js';
-        document.body.appendChild(script);
-      }).catch(error => {
-        console.error('Error loading includes:', error);
-      });
+      fetch('https://fixmytech.no/includes/footer.html')
+        .then(res => res.text())
+        .then(footer => {
+          document.getElementById('footer-container').innerHTML = footer;
+          
+          // Load main.js after footer is loaded
+          const script = document.createElement('script');
+          script.src = 'https://fixmytech.no/js/main.js';
+          document.body.appendChild(script);
+        })
+        .catch(error => {
+          console.error('Error loading footer:', error);
+        });
     });
   </script>
   
