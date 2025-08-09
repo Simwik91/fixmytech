@@ -72,18 +72,6 @@
       z-index: 1;
     }
     
-    .repair-highlight {
-      background-color: var(--primary);
-      color: white;
-      padding: 0.5rem 1.5rem;
-      border-radius: 30px;
-      display: inline-block;
-      margin-bottom: 1.5rem;
-      font-weight: 600;
-      font-size: 1.1rem;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-    }
-    
     .btn-hero {
       background: var(--primary);
       color: white;
@@ -103,34 +91,6 @@
       color: var(--primary);
       transform: translateY(-3px);
       box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
-    }
-    
-    .device-icons-hero {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 2rem 0 1rem;
-      flex-wrap: wrap;
-      margin: 2rem auto;
-      max-width: 800px;
-    }
-    
-    .device-icon-hero {
-      font-size: 1.8rem;
-      color: var(--primary);
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      min-width: 80px;
-    }
-    
-    .device-icon-hero span {
-      font-size: 0.9rem;
-      color: var(--secondary);
-      text-align: center;
-      font-weight: 500;
     }
     
     .section-title h2 {
@@ -188,38 +148,6 @@
       font-size: 1.4rem;
       font-weight: 700;
       margin: 0 auto 1.2rem;
-    }
-    
-    .device-icons {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      padding: 2.5rem 0;
-      flex-wrap: wrap;
-      background: #f9fafb;
-      margin: 2rem 0;
-    }
-    
-    .device-icon {
-      font-size: 2.8rem;
-      color: var(--primary);
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      min-width: 100px;
-    }
-    
-    .device-icon:hover {
-      color: var(--secondary);
-      transform: scale(1.1);
-    }
-    
-    .device-icon span {
-      font-size: 0.9rem;
-      color: var(--secondary);
-      text-align: center;
     }
     
     .services-grid {
@@ -393,17 +321,16 @@
       padding-top: 0.3rem;
     }
     
-    .pricing-section {
-      background: #f8fafc;
-      padding: 2.5rem;
-      border-radius: var(--border-radius);
-      margin: 2.5rem 0;
-      text-align: center;
+    .pricing-contact-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
     }
     
     .pricing-card {
-      max-width: 600px;
-      margin: 0 auto;
       background: white;
       border-radius: var(--border-radius);
       box-shadow: var(--shadow);
@@ -512,17 +439,15 @@
 
     /* Contact Form Section */
     .contact-section {
-      padding: 5rem 0;
-      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      padding: 2.5rem;
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
     }
     
     .contact-form-container {
       max-width: 700px;
       margin: 0 auto;
-      background: white;
-      padding: 2.5rem;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
     }
     
     .form-group {
@@ -633,12 +558,9 @@
         flex-wrap: wrap;
       }
       
-      .device-icons {
-        gap: 1rem;
-      }
-      
-      .device-icons-hero {
-        gap: 1.5rem;
+      .pricing-contact-section {
+        grid-template-columns: 1fr;
+        gap: 2rem;
       }
     }
     
@@ -655,10 +577,6 @@
         font-size: 1.1rem;
       }
       
-      .repair-highlight {
-        font-size: 1rem;
-      }
-      
       .service-card {
         min-height: 340px;
       }
@@ -669,28 +587,6 @@
       
       .about-content p {
         font-size: 1rem;
-      }
-      
-      .pricing-section {
-        padding: 1.5rem;
-      }
-      
-      .pricing-card {
-        padding: 1.5rem;
-      }
-      
-      .device-icon {
-        min-width: 80px;
-        font-size: 2.5rem;
-      }
-      
-      .device-icon-hero {
-        min-width: 70px;
-        font-size: 1.5rem;
-      }
-
-      .contact-section {
-        padding: 3rem 0;
       }
       
       .terms-checkbox-container {
@@ -789,35 +685,9 @@
 
       <section class="hero">
         <div class="hero-content">
-          <div class="repair-highlight">
-            <i class="fas fa-tools"></i> Reparasjon & Feilretting
-          </div>
-          <h1>Vi <span>reparerer</span> dine elektroniske enheter</h1>
-          <p>Profesjonell reparasjon av PC, laptop, nettbrett og mobiltelefoner. Rask hjelp til både maskinvare og programvare.</p>
-          <a href="#contact" class="btn-hero">Få reparasjon nå</a>
-          
-          <div class="device-icons-hero">
-            <div class="device-icon-hero">
-              <i class="fas fa-laptop"></i>
-              <span>Laptop</span>
-            </div>
-            <div class="device-icon-hero">
-              <i class="fas fa-desktop"></i>
-              <span>PC</span>
-            </div>
-            <div class="device-icon-hero">
-              <i class="fas fa-mobile-alt"></i>
-              <span>Mobil</span>
-            </div>
-            <div class="device-icon-hero">
-              <i class="fas fa-tablet-alt"></i>
-              <span>Nettbrett</span>
-            </div>
-            <div class="device-icon-hero">
-              <i class="fas fa-hdd"></i>
-              <span>Lagring</span>
-            </div>
-          </div>
+          <h1>Profesjonell <span>reparasjon</span> og <span>vedlikehold</span></h1>
+          <p>Vi løser både maskinvare- og programvareproblemer for alle typer elektroniske enheter.</p>
+          <a href="#contact" class="btn-hero">Få hjelp nå</a>
         </div>
       </section>
 
@@ -827,7 +697,6 @@
             <div class="section-title">
               <h2>Hvordan jobber vi?</h2>
               <p>Vår prosess er enkel og effektiv for å sikre rask og teknisk støtte</p>
-              <p></p>
             </div>
             <div class="process-steps">
               <div class="step-card">
@@ -950,100 +819,75 @@
       </section>
 
       <section id="how-we-work" class="service-section">
-        <div class="section-title">
-          <h2>Priser og Betingelser</h2>
-          <p>Transparent prising uten skjulte kostnader</p>
-        </div>
-        <div class="pricing-card">
-          <div class="price-tag">550,- <span>per time</span></div>
-          <p class="price-highlight">80% av alle problemer løses innen en time!</p>
-          <ul>
-            <li><i class="fas fa-check-circle"></i>Betaling kun ved løst problem</li>
-            <li><i class="fas fa-check-circle"></i>Ingen skjulte kostnader</li>
-            <li><i class="fas fa-check-circle"></i>Gratis tilbud</li>
-            <li><i class="fas fa-check-circle"></i>Fjernhjelp tilgjengelig</li>
-          </ul>
-        </div>
-        <div class="additional-fee">
-          <p><strong>Merk:</strong> Hvis du har sendt utstyr til oss og vi ikke kan reparere det, kan du velge å få det returnert eller la oss destruere det for en avgift på 500,-.</p>
-        </div>
-        <div class="device-icons">
-          <div class="device-icon">
-            <i class="fas fa-laptop"></i>
-            <span>Bærbare datamaskiner</span>
+        <div class="pricing-contact-section">
+          <div class="pricing-card">
+            <div class="section-title">
+              <h2>Priser og Betingelser</h2>
+              <p>Transparent prising uten skjulte kostnader</p>
+            </div>
+            <div class="price-tag">550,- <span>per time</span></div>
+            <p class="price-highlight">80% av alle problemer løses innen en time!</p>
+            <ul>
+              <li><i class="fas fa-check-circle"></i>Betaling kun ved løst problem</li>
+              <li><i class="fas fa-check-circle"></i>Ingen skjulte kostnader</li>
+              <li><i class="fas fa-check-circle"></i>Gratis tilbud</li>
+              <li><i class="fas fa-check-circle"></i>Fjernhjelp tilgjengelig</li>
+            </ul>
+            <div class="additional-fee">
+              <p><strong>Merk:</strong> Hvis du har sendt utstyr til oss og vi ikke kan reparere det, kan du velge å få det returnert eller la oss destruere det for en avgift på 500,-.</p>
+            </div>
           </div>
-          <div class="device-icon">
-            <i class="fas fa-desktop"></i>
-            <span>Stasjonære datamaskiner</span>
-          </div>
-          <div class="device-icon">
-            <i class="fas fa-mobile-alt"></i>
-            <span>Mobiltelefoner</span>
-          </div>
-          <div class="device-icon">
-            <i class="fas fa-tablet-alt"></i>
-            <span>Nettbrett</span>
-          </div>
-          <div class="device-icon">
-            <i class="fas fa-print"></i>
-            <span>Skrivere</span>
-          </div>
-          <div class="device-icon">
-            <i class="fas fa-server"></i>
-            <span>Servere</span>
-          </div>
-        </div>
-      </section>
 
-      <!-- Contact Form Section -->
-      <section id="contact" class="contact-section">
-        <div class="section-title">
-          <h2>Kontakt Oss</h2>
-          <p>Få teknisk hjelp raskt og enkelt</p>
-        </div>
-        <div class="contact-form-container">
-          <form id="contact-form" action="https://formspree.io/f/mwpbkjdd" method="POST">
-            <div class="form-group">
-              <label for="name">Navn</label>
-              <input type="text" id="name" name="name" required aria-required="true" aria-label="Ditt navn" autocomplete="name">
+          <div class="contact-section">
+            <div class="section-title">
+              <h2>Kontakt Oss</h2>
+              <p>Få teknisk hjelp raskt og enkelt</p>
             </div>
-            <div class="form-group">
-              <label for="email">E-post</label>
-              <input type="email" id="email" name="email" required aria-required="true" aria-label="Email" autocomplete="email">
+            <div class="contact-form-container">
+              <form id="contact-form" action="https://formspree.io/f/mwpbkjdd" method="POST">
+                <div class="form-group">
+                  <label for="name">Navn</label>
+                  <input type="text" id="name" name="name" required aria-required="true" aria-label="Ditt navn" autocomplete="name">
+                </div>
+                <div class="form-group">
+                  <label for="email">E-post</label>
+                  <input type="email" id="email" name="email" required aria-required="true" aria-label="Email" autocomplete="email">
+                </div>
+                <div class="form-group">
+                  <label for="service-type">Hva kan vi hjelpe deg med?</label>
+                  <select id="service-type" name="service" required aria-required="true" aria-label="Velg type tjeneste" autocomplete="off">
+                    <option value="">Velg en tjeneste...</option>
+                    <option value="feilretting">Feilretting og Vedlikehold</option>
+                    <option value="other">Annet</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="message">Beskriv behovet ditt</label>
+                  <textarea id="message" name="message" required aria-required="true" aria-label="Beskrivelse av ditt behov" placeholder="Beskriv utfordringen eller behovet ditt, f.eks. 'PC starter ikke', eller 'laptop er veldig treg'. Inkluder detaljer om utstyr eller feilmeldinger for raskere støtte." autocomplete="off"></textarea>
+                </div>
+                <div style="display: none;">
+                  <label for="website">Website (leave blank)</label>
+                  <input type="text" id="website" name="_gotcha" autocomplete="off">
+                </div>
+                <input type="hidden" name="_subject" id="email-subject" value="Ny henvendelse fra FixMyTech.no" autocomplete="off">
+                <div class="form-group">
+                  <div class="terms-checkbox-container">
+                    <input type="checkbox" id="terms-checkbox" aria-label="Godta vilkårene">
+                    <label for="terms-checkbox">Jeg har lest og forstått <a href="/vilkår" target="_blank">vilkårene</a></label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button type="submit" id="submit-button" disabled aria-label="Send henvendelse">
+                    <i class="fas fa-paper-plane"></i> Send henvendelse
+                  </button>
+                </div>
+                <div class="form-disclaimer">
+                  <p><strong>Viktig:</strong></p>
+                  <p>Våre eksperter jobber for å levere høykvalitets teknologitjenester. FixMyTech.no er ikke ansvarlig for skader på utstyr eller problemer som kan oppstå under reparasjon, oppsett eller andre tjenester. Kunden aksepterer at all bruk av våre tjenester skjer på eget ansvar.</p>
+                </div>
+              </form>
             </div>
-            <div class="form-group">
-              <label for="service-type">Hva kan vi hjelpe deg med?</label>
-              <select id="service-type" name="service" required aria-required="true" aria-label="Velg type tjeneste" autocomplete="off">
-                <option value="">Velg en tjeneste...</option>
-                <option value="feilretting">Feilretting og Vedlikehold</option>
-                <option value="other">Annet</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="message">Beskriv behovet ditt</label>
-              <textarea id="message" name="message" required aria-required="true" aria-label="Beskrivelse av ditt behov" placeholder="Beskriv utfordringen eller behovet ditt, f.eks. 'PC starter ikke', eller 'laptop er veldig treg'. Inkluder detaljer om utstyr eller feilmeldinger for raskere støtte." autocomplete="off"></textarea>
-            </div>
-            <div style="display: none;">
-              <label for="website">Website (leave blank)</label>
-              <input type="text" id="website" name="_gotcha" autocomplete="off">
-            </div>
-            <input type="hidden" name="_subject" id="email-subject" value="Ny henvendelse fra FixMyTech.no" autocomplete="off">
-            <div class="form-group">
-              <div class="terms-checkbox-container">
-                <input type="checkbox" id="terms-checkbox" aria-label="Godta vilkårene">
-                <label for="terms-checkbox">Jeg har lest og forstått <a href="/vilkår" target="_blank">vilkårene</a></label>
-              </div>
-            </div>
-            <div class="form-group">
-              <button type="submit" id="submit-button" disabled aria-label="Send henvendelse">
-                <i class="fas fa-paper-plane"></i> Send henvendelse
-              </button>
-            </div>
-            <div class="form-disclaimer">
-              <p><strong>Viktig:</strong></p>
-              <p>Våre eksperter jobber for å levere høykvalitets teknologitjenester. FixMyTech.no er ikke ansvarlig for skader på utstyr eller problemer som kan oppstå under reparasjon, oppsett eller andre tjenester. Kunden aksepterer at all bruk av våre tjenester skjer på eget ansvar.</p>
-            </div>
-          </form>
+          </div>
         </div>
       </section>
 
