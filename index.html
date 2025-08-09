@@ -640,28 +640,8 @@
     </div>
   </div>
 
-  <!-- Updated Header with correct contact link -->
-  <header>
-    <div class="container">
-      <div class="header-content">
-        <div class="logo-container">
-          <a href="/" class="logo" aria-label="FixMyTech.no hjemmeside">
-            <i class="fas fa-tools"></i>
-            <span>FixMyTech</span>
-          </a>
-        </div>
-        <div class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-          <i class="fas fa-bars"></i>
-        </div>
-        <nav class="main-nav">
-          <ul>
-            <li><a href="/" aria-label="Gå til Hjem">Hjem</a></li>
-            <li><a href="#contact" aria-label="Gå til Kontakt skjema">Kontakt</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </header>
+  <!-- Header Include -->
+  <div id="header-container"></div>
 
   <main id="main-content">
     <!-- Scroll to top button -->
@@ -710,7 +690,7 @@
                 <div class="card-icon">
                   <i class="fas fa-plug"></i>
                 </div>
-                <h3>Maskinvare & Utstyr</h3>
+                <h3>Maskinvare</h3>
                 <ul>
                   <li><i class="fas fa-check"></i>Reparasjon av PC, laptop, nettbrett</li>
                   <li><i class="fas fa-check"></i>Utstyrsoppgradering (minne, SSD)</li>
@@ -724,7 +704,7 @@
                 <div class="card-icon">
                   <i class="fas fa-laptop-code"></i>
                 </div>
-                <h3>Programvare & Systemer</h3>
+                <h3>Programvare</h3>
                 <ul>
                   <li><i class="fas fa-check"></i>Fikse programvarefeil</li>
                   <li><i class="fas fa-check"></i>Virus- og malware-fjerning</li>
@@ -843,7 +823,7 @@
               <li><i class="fas fa-check-circle"></i>Fjernhjelp tilgjengelig</li>
             </ul>
             <div class="additional-fee">
-              <p><strong>Merk:</strong> Hvis du har sendt utstyr til oss og vi ikke kan reparere det, kan du velge å få det returnert eller la oss destruere det for en avgift på 500,-.</p>
+              <p><strong>Merk:</strong> Hvis du har sendt utstyr til oss og vi ikke kan reparere det, kan du velge å få det returnert på kundens regning eller la oss destruere det for en avgift på 500,-.</p>
             </div>
           </div>
 
@@ -908,18 +888,19 @@
 
   <!-- Script Loading -->
   <script>
-    // Load footer
+    // Load header and footer
     document.addEventListener('DOMContentLoaded', function() {
-      // Terms checkbox functionality
-      const termsCheckbox = document.getElementById('terms-checkbox');
-      const submitButton = document.getElementById('submit-button');
-
-      if (termsCheckbox && submitButton) {
-        termsCheckbox.addEventListener('change', function() {
-          submitButton.disabled = !this.checked;
+      // Load header
+      fetch('https://fixmytech.no/includes/header.html')
+        .then(res => res.text())
+        .then(header => {
+          document.getElementById('header-container').innerHTML = header;
+        })
+        .catch(error => {
+          console.error('Error loading header:', error);
         });
-      }
 
+      // Load footer
       fetch('https://fixmytech.no/includes/footer.html')
         .then(res => res.text())
         .then(footer => {
@@ -933,6 +914,16 @@
         .catch(error => {
           console.error('Error loading footer:', error);
         });
+
+      // Terms checkbox functionality
+      const termsCheckbox = document.getElementById('terms-checkbox');
+      const submitButton = document.getElementById('submit-button');
+
+      if (termsCheckbox && submitButton) {
+        termsCheckbox.addEventListener('change', function() {
+          submitButton.disabled = !this.checked;
+        });
+      }
     });
   </script>
 </body>
