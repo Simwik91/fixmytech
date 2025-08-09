@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Om Oss - FixMyTech.no</title>
+  <meta name="description" content="Lær mer om FixMyTech.no, vår historie, verdier og forpliktelse til å levere profesjonelle IT-reparasjoner og programvareløsninger.">
+  <meta name="keywords" content="om oss, FixMyTech, IT-reparasjoner, teknisk støtte, bærekraft">
+  <meta name="author" content="FixMyTech.no">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="https://fixmytech.no/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fixmytech.no/css/styles.css">
+  <style>
+    /* General Reset and Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    :root {
+      --primary: #2563eb;
+      --secondary: #0f172a;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --business: #1e40af;
+      --border-radius: 8px;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+      --light-gray: #e5e7eb;
+    }
+
+    /* Header Styles */
+    header {
+      background: white;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--secondary);
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    .logo i {
+      margin-right: 0.5rem;
+      color: var(--primary);
+    }
+
+    .nav-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--primary);
+    }
+
+    .main-nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .main-nav a {
+      text-decoration: none;
+      color: var(--secondary);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .main-nav a:hover {
+      color: var(--primary);
+    }
+
+    /* About Page Specific Styles */
+    .about-hero {
+      padding: 5rem 0 3rem;
+      background: linear-gradient(135deg, #f0f7ff 0%, #d4e3ff 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-hero h1 {
+      font-size: 3rem;
+      color: var(--secondary);
+      margin-bottom: 1.5rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .about-hero h1 span {
+      color: var(--primary);
+    }
+
+    .about-hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      color: var(--secondary);
+      font-weight: 500;
+    }
+
+    .about-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    .about-section {
+      padding: 4rem 0;
+      background: #f9fafb;
+      text-align: center;
+    }
+
+    .about-section h2 {
+      font-size: 2.4rem;
+      color: var(--primary);
+      margin-bottom: 1.2rem;
+    }
+
+    .about-section p {
+      font-size: 1.1rem;
+      color: var(--secondary);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .values-section {
+      padding: 4rem 0;
+      text-align: center;
+      background: white;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
+      margin-top: 2.5rem;
+    }
+
+    .value-card {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 2rem;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .value-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .value-icon {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 1.2rem;
+    }
+
+    .value-card h3 {
+      font-size: 1.6rem;
+      color: var(--secondary);
+      margin-bottom: 0.8rem;
+    }
+
+    .value-card p {
+      font-size: 1rem;
+      color: var(--secondary);
+    }
+
+    .cta-section {
+      text-align: center;
+      padding: 2.5rem 0;
+      background: linear-gradient(135deg, #f0f7ff 0%, #e1ecfe 100%);
+      border-radius: var(--border-radius);
+      margin: 2.5rem 0;
+    }
+
+    .btn-cta {
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      display: inline-block;
+      transition: var(--transition);
+    }
+
+    .btn-cta:hover {
+      background: var(--secondary);
+      transform: translateY(-3px);
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .about-hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .about-hero p {
+        font-size: 1.1rem;
+      }
+
+      .about-section h2 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .about-hero {
+        padding: 3rem 0 2rem;
+      }
+
+      .about-hero h1 {
+        font-size: 2rem;
+      }
+
+      .about-hero p {
+        font-size: 1rem;
+      }
+
+      .about-section h2 {
+        font-size: 1.8rem;
+      }
+
+      .about-section p {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .main-nav ul {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .main-nav {
+        display: none;
+      }
+
+      .main-nav.active {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Cookie Consent Banner -->
+  <div id="cookie-consent-banner">
+    <div class="cookie-content">
+      <div class="cookie-text">
+        <h3>Vi bruker informasjonskapsler</h3>
+        <p>Vi bruker cookies for å forbedre din opplevelse og analysere bruk. Les mer i vår <a href="/personvern">personvernerklæring</a>.</p>
+      </div>
+      <div class="cookie-buttons">
+        <button id="cookie-accept" class="cookie-btn cookie-accept-btn">Godta</button>
+        <button id="cookie-reject" class="cookie-btn cookie-reject-btn">Avvis</button>
+        <button id="cookie-settings" class="cookie-btn cookie-settings-btn">Innstillinger</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cookie Settings Modal -->
+  <div id="cookie-settings-modal">
+    <div class="cookie-settings-content">
+      <span class="close-modal">×</span>
+      <h2>Cookie-innstillinger</h2>
+      <div class="cookie-option">
+        <label class="toggle-label">
+          Analyse-cookies
+          <input type="checkbox" id="analytics-cookies">
+          <span class="toggle-switch"></span>
+          <span id="analytics-status-text">Av</span>
+        </label>
+        <p>Hjelper oss å forstå hvordan nettstedet brukes.</p>
+      </div>
+      <div class="cookie-option">
+        <p>Status: <span id="overall-status-text">Innstillinger er ikke lagret</span></p>
+      </div>
+      <button class="btn btn-primary" id="save-cookie-settings">Lagre</button>
+    </div>
+  </div>
+
+  <!-- header Include -->
+  <div id="header-container"></div>
+
+  <main id="main-content">
+    <!-- Scroll to top button -->
+    <button id="scrollTopBtn" title="Go to top" aria-label="Scroll to top" style="display: none;">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- About Hero Section -->
+    <section class="about-hero">
+      <div class="container">
+        <h1>Om <span>FixMyTech.no</span></h1>
+        <p>Vi er her for å løse dine teknologiproblemer med ekspertise, effektivitet og et snev av finesse.</p>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+      <div class="container">
+        <div class="about-content">
+          <h2>Vår Historie</h2>
+          <p>FixMyTech.no ønsker å gjøre om repareres og vedlikeholdes enkelt og rimeligere enn å kjøpe nytt. Vi startet med en enkel idé: å hjelpe folk med å få mest mulig ut av enhetene sine uten å tømme lommeboken eller skade miljøet. Vår lidenskap for teknologi og bærekraft driver oss til å levere løsninger som holder utstyret ditt i topp stand.</p>
+          <p>Med et team av erfarne teknikere og et fokus på kundetilfredshet, jobber vi for å gjøre teknologi enkel og problemfri for deg.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+      <div class="container">
+        <h2>Våre Verdier</h2>
+        <p>Vi drives av kjerneverdier som sikrer at vi leverer de beste løsningene til våre kunder.</p>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">
+              <i class="fas fa-leaf"></i>
+            </div>
+            <h3>Bærekraft</h3>
+            <p>Vi fremmer miljøvennlige løsninger ved å reparere og gjenbruke teknologi for å redusere elektronisk avfall.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">
+              <i class="fas fa-star"></i>
+            </div>
+            <h3>Kvalitet</h3>
+            <p>Vi leverer høykvalitets reparasjoner og tjenester for å sikre at dine enheter fungerer optimalt.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">
+              <i class="fas fa-wallet"></i>
+            </div>
+            <h3>Ingen løsning, ingen kostnad</h3>
+            <p>Vi belaster deg kun hvis vi løser det avtalte problemet, slik at du kan stole på at vi leverer resultater.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>Klar til å få hjelp?</h2>
+        <p>Kontakt oss i dag for profesjonell teknisk støtte og reparasjoner!</p>
+        <a href="/#contact" class="btn-cta">Kontakt Oss Nå</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Include -->
+  <div id="footer-container"></div>
+
+  <!-- Script Loading -->
+  <script>
+    // Load footer and main.js
+    document.addEventListener('DOMContentLoaded', function() {
+      // Toggle mobile menu
+      const navToggle = document.querySelector('.nav-toggle');
+      const mainNav = document.querySelector('.main-nav');
+
+      if (navToggle && mainNav) {
+        navToggle.addEventListener('click', function() {
+          mainNav.classList.toggle('active');
+          const expanded = mainNav.classList.contains('active');
+          navToggle.setAttribute('aria-expanded', expanded);
+        });
+      }
+
+      fetch('https://fixmytech.no/includes/footer.html')
+        .then(res => res.text())
+        .then(footer => {
+          document.getElementById('footer-container').innerHTML = footer;
+          
+          // Load main.js after footer
+          const script = document.createElement('script');
+          script.src = 'https://fixmytech.no/js/main.js';
+          document.body.appendChild(script);
+        })
+        .catch(error => {
+          console.error('Error loading footer:', error);
+        });
+    });
+  </script>
+</body>
+</html>
