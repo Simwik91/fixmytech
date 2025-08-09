@@ -33,6 +33,9 @@
   </style>
 </head>
 <body>
+  <!-- Header Include -->
+  <div id="header-container"></div>
+
   <!-- Cookie Consent Banner -->
   <div id="cookie-consent-banner">
     <div class="cookie-content">
@@ -158,20 +161,34 @@
 
   <!-- Script Loading -->
   <script>
-    // Load footer
+    // Load header and footer
     document.addEventListener('DOMContentLoaded', function() {
-      fetch('https://fixmytech.no/includes/footer.html')
-        .then(res => res.text())
+      // Load header
+      fetch('https://fixmytech.no/includes/header.html')
+        .then(res => {
+          if (!res.ok) throw new Error('Failed to load header');
+          return res.text();
+        })
+        .then(header => {
+          document.getElementById('header-container').innerHTML = header;
+
+          // Load footer after header
+          return fetch('https://fixmytech.no/includes/footer.html');
+        })
+        .then(res => {
+          if (!res.ok) throw new Error('Failed to load footer');
+          return res.text();
+        })
         .then(footer => {
           document.getElementById('footer-container').innerHTML = footer;
-          
-          // Load main.js after footer is loaded
+
+          // Load main.js after both header and footer are loaded
           const script = document.createElement('script');
           script.src = 'https://fixmytech.no/js/main.js';
           document.body.appendChild(script);
         })
         .catch(error => {
-          console.error('Error loading footer:', error);
+          console.error('Error loading header or footer:', error);
         });
     });
   </script>
