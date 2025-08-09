@@ -198,127 +198,140 @@
   <!-- Script Loading -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Load footer
-      fetch('https://fixmytech.no/includes/footer.html').then(res => {
-        if (!res.ok) throw new Error('Footer fetch failed');
-        return res.text();
-      }).then(footer => {
-        document.getElementById('footer-container').innerHTML = footer;
+      // Load header
+      fetch('https://fixmytech.no/includes/header.html')
+        .then(res => {
+          if (!res.ok) throw new Error('Failed to load header');
+          return res.text();
+        })
+        .then(header => {
+          document.getElementById('header-container').innerHTML = header;
 
-        // Load main.js after footer is loaded
-        const script = document.createElement('script');
-        script.src = 'https://fixmytech.no/js/main.js';
-        document.body.appendChild(script);
+          // Load footer after header
+          return fetch('https://fixmytech.no/includes/footer.html');
+        })
+        .then(res => {
+          if (!res.ok) throw new Error('Failed to load footer');
+          return res.text();
+        })
+        .then(footer => {
+          document.getElementById('footer-container').innerHTML = footer;
 
-        // Cookie Consent Logic (matching fixmytech.no behavior)
-        function getCookie(name) {
-          const value = `; ${document.cookie}`;
-          const parts = value.split(`; ${name}=`);
-          if (parts.length === 2) return parts.pop().split(';').shift();
-        }
+          // Load main.js after both header and footer are loaded
+          const script = document.createElement('script');
+          script.src = 'https://fixmytech.no/js/main.js';
+          document.body.appendChild(script);
 
-        function setCookie(name, value, days) {
-          let expires = "";
-          if (days) {
-            const date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            expires = "; expires=" + date.toUTCString();
+          // Cookie Consent Logic (matching fixmytech.no behavior)
+          function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
           }
-          document.cookie = name + "=" + (value || "") + expires + "; path=/;SameSite=Lax";
-        }
 
-        const cookieBanner = document.getElementById('cookie-consent-banner');
-        const cookieModal = document.getElementById('cookie-settings-modal');
-        const acceptBtn = document.getElementById('cookie-accept');
-        const rejectBtn = document.getElementById('cookie-reject');
-        const settingsBtn = document.getElementById('cookie-settings');
-        const closeModal = document.querySelector('.close-modal');
-        const saveSettingsBtn = document.getElementById('save-cookie-settings');
-        const analyticsToggle = document.getElementById('analytics-cookies');
-        const analyticsStatus = document.getElementById('analytics-status-text');
-        const overallStatus = document.getElementById('overall-status-text');
-        const cookieSettingsLink = document.getElementById('cookieSettingsLink');
+          function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+              const date = new Date();
+              date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+              expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/;SameSite=Lax";
+          }
 
-        // Check if cookie consent is already given
-        const consentGiven = getCookie('cookie_consent_given');
-        if (consentGiven) {
-          const analytics = getCookie('analytics_cookies');
-          analyticsToggle.checked = analytics === 'true';
-          analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
-          overallStatus.textContent = 'Innstillinger lagret';
-          cookieBanner.style.display = 'none';
-        } else {
-          setTimeout(() => {
-            cookieBanner.style.display = 'block';
-          }, 1000);
-        }
+          const cookieBanner = document.getElementById('cookie-consent-banner');
+          const cookieModal = document.getElementById('cookie-settings-modal');
+          const acceptBtn = document.getElementById('cookie-accept');
+          const rejectBtn = document.getElementById('cookie-reject');
+          const settingsBtn = document.getElementById('cookie-settings');
+          const closeModal = document.querySelector('.close-modal');
+          const saveSettingsBtn = document.getElementById('save-cookie-settings');
+          const analyticsToggle = document.getElementById('analytics-cookies');
+          const analyticsStatus = document.getElementById('analytics-status-text');
+          const overallStatus = document.getElementById('overall-status-text');
+          const cookieSettingsLink = document.getElementById('cookieSettingsLink');
 
-        // Function to open cookie settings modal
-        function openCookieSettingsModal(event) {
-          event.preventDefault();
-          const analytics = getCookie('analytics_cookies');
-          if (analytics !== undefined) {
+          // Check if cookie consent is already given
+          const consentGiven = getCookie('cookie_consent_given');
+          if (consentGiven) {
+            const analytics = getCookie('analytics_cookies');
             analyticsToggle.checked = analytics === 'true';
             analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
+            overallStatus.textContent = 'Innstillinger lagret';
+            cookieBanner.style.display = 'none';
+          } else {
+            setTimeout(() => {
+              cookieBanner.style.display = 'block';
+            }, 1000);
           }
-          cookieModal.style.display = 'block';
-        }
 
-        // Accept cookies
-        acceptBtn.addEventListener('click', (event) => {
-          event.preventDefault();
-          setCookie('cookie_consent_given', 'true', 365);
-          setCookie('analytics_cookies', 'true', 365);
-          cookieBanner.style.display = 'none';
-          analyticsToggle.checked = true;
-          analyticsStatus.textContent = 'På';
-          overallStatus.textContent = 'Innstillinger lagret';
+          // Function to open cookie settings modal
+          function openCookieSettingsModal(event) {
+            event.preventDefault();
+            const analytics = getCookie('analytics_cookies');
+            if (analytics !== undefined) {
+              analyticsToggle.checked = analytics === 'true';
+              analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
+            }
+            cookieModal.style.display = 'block';
+          }
+
+          // Accept cookies
+          acceptBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+            setCookie('cookie_consent_given', 'true', 365);
+            setCookie('analytics_cookies', 'true', 365);
+            cookieBanner.style.display = 'none';
+            analyticsToggle.checked = true;
+            analyticsStatus.textContent = 'På';
+            overallStatus.textContent = 'Innstillinger lagret';
+          });
+
+          // Reject cookies
+          rejectBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+            setCookie('cookie_consent_given', 'true', 365);
+            setCookie('analytics_cookies', 'false', 365);
+            cookieBanner.style.display = 'none';
+            analyticsToggle.checked = false;
+            analyticsStatus.textContent = 'Av';
+            overallStatus.textContent = 'Innstillinger lagret';
+          });
+
+          // Open settings modal from banner
+          settingsBtn.addEventListener('click', openCookieSettingsModal);
+
+          // Open settings modal from footer
+          if (cookieSettingsLink) {
+            cookieSettingsLink.addEventListener('click', openCookieSettingsModal);
+          }
+
+          // Close settings modal
+          closeModal.addEventListener('click', (event) => {
+            event.preventDefault();
+            cookieModal.style.display = 'none';
+          });
+
+          // Save cookie settings
+          saveSettingsBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+            setCookie('cookie_consent_given', 'true', 365);
+            setCookie('analytics_cookies', analyticsToggle.checked.toString(), 365);
+            cookieBanner.style.display = 'none';
+            cookieModal.style.display = 'none';
+            analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
+            overallStatus.textContent = 'Innstillinger lagret';
+          });
+
+          // Toggle analytics status text
+          analyticsToggle.addEventListener('change', () => {
+            analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
+          });
+        })
+        .catch(error => {
+          console.error('Error loading header or footer:', error);
+          document.querySelectorAll('.error-message').forEach(el => el.style.display = 'block');
         });
-
-        // Reject cookies
-        rejectBtn.addEventListener('click', (event) => {
-          event.preventDefault();
-          setCookie('cookie_consent_given', 'true', 365);
-          setCookie('analytics_cookies', 'false', 365);
-          cookieBanner.style.display = 'none';
-          analyticsToggle.checked = false;
-          analyticsStatus.textContent = 'Av';
-          overallStatus.textContent = 'Innstillinger lagret';
-        });
-
-        // Open settings modal from banner
-        settingsBtn.addEventListener('click', openCookieSettingsModal);
-
-        // Open settings modal from footer
-        if (cookieSettingsLink) {
-          cookieSettingsLink.addEventListener('click', openCookieSettingsModal);
-        }
-
-        // Close settings modal
-        closeModal.addEventListener('click', (event) => {
-          event.preventDefault();
-          cookieModal.style.display = 'none';
-        });
-
-        // Save cookie settings
-        saveSettingsBtn.addEventListener('click', (event) => {
-          event.preventDefault();
-          setCookie('cookie_consent_given', 'true', 365);
-          setCookie('analytics_cookies', analyticsToggle.checked.toString(), 365);
-          cookieBanner.style.display = 'none';
-          cookieModal.style.display = 'none';
-          analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
-          overallStatus.textContent = 'Innstillinger lagret';
-        });
-
-        // Toggle analytics status text
-        analyticsToggle.addEventListener('change', () => {
-          analyticsStatus.textContent = analyticsToggle.checked ? 'På' : 'Av';
-        });
-      }).catch(error => {
-        console.error('Error loading footer:', error);
-        document.querySelectorAll('.error-message').forEach(el => el.style.display = 'block');
-      });
     });
   </script>
 </body>
