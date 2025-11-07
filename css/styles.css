@@ -699,20 +699,32 @@ form {
 }
 
 /* Footer */
+/* Footer – full width background */
 footer {
   background: var(--secondary);
   color: white;
+  width: 100vw; /* ensure it covers full viewport width */
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw; /* escape container width restriction */
+  margin-right: -50vw;
   padding: 3rem 0;
-  width: 100%;
 }
 
+/* Inside container: keeps content centered and responsive */
+footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Footer content layout */
 .footer-content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
-  padding: 2rem 0;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding-bottom: 2rem;
 }
 
 .footer-section h3 {
@@ -737,15 +749,15 @@ footer {
   color: var(--primary);
 }
 
+/* Bottom text */
 .footer-bottom {
   text-align: center;
   padding-top: 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--light-gray);
   font-size: 0.9rem;
-  max-width: 1200px;
-  margin: 0 auto;
 }
+
 
 /* Error Styles */
 .error-border {
