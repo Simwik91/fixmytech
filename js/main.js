@@ -13,10 +13,20 @@ function initMainJS() {
   const termsCheckbox = document.getElementById('terms-checkbox');
   const submitButton = document.getElementById('submit-button');
 
-  // ===== HEADER/FOOTER LOADING =====
-  function loadHeaderAndFooter() {
-    // Load header
-    fetch('https://fixmytech.no/includes/header.html')
+  // ===== HEADER/FOOTER/COOKIE LOADING =====
+  function loadHeaderAndFooterAndCookie() {
+    // Load cookie consent first (since it appears at the top of the page)
+    fetch('https://fixmytech.no/includes/cookie-consent.html')
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to load cookie consent');
+        return res.text();
+      })
+      .then(cookieHTML => {
+        document.getElementById('cookie-consent-container').innerHTML = cookieHTML;
+        
+        // Load header after cookie consent
+        return fetch('https://fixmytech.no/includes/header.html');
+      })
       .then(res => {
         if (!res.ok) throw new Error('Failed to load header');
         return res.text();
@@ -35,9 +45,12 @@ function initMainJS() {
       .then(footer => {
         document.getElementById('footer-container').innerHTML = footer;
         initializeFooterFunctionality();
+        
+        // Initialize cookie consent functionality AFTER all HTML is loaded
+        initializeCookieConsent();
       })
       .catch(error => {
-        console.error('Error loading header or footer:', error);
+        console.error('Error loading includes:', error);
         document.querySelectorAll('.error-message').forEach(el => el.style.display = 'block');
       });
   }
@@ -498,13 +511,13 @@ function initMainJS() {
 
   // ===== MAIN INITIALIZATION =====
   function initializeAll() {
-    loadHeaderAndFooter();
+    loadHeaderAndFooterAndCookie(); // Updated function name
     initializeSmoothScrolling();
     initializeScrollToTop();
     initializeContactForm();
     initializeTermsCheckbox();
     initializeModal();
-    initializeCookieConsent();
+    // initializeCookieConsent() is now called inside loadHeaderAndFooterAndCookie()
     initializeResponsiveBehavior();
     
     console.log('All JavaScript functionality initialized successfully');
