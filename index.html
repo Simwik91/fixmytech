@@ -295,47 +295,10 @@
   <div id="footer-container"></div>
 
   <!-- Script Loading -->
-  <script>
-    // Load header and footer
-    document.addEventListener('DOMContentLoaded', function() {
-      // Load header
-      fetch('https://fixmytech.no/includes/header.html')
-        .then(res => res.text())
-        .then(header => {
-          document.getElementById('header-container').innerHTML = header;
-        })
-        .catch(error => {
-          console.error('Error loading header:', error);
-        });
-
-      // Load footer
-      fetch('https://fixmytech.no/includes/footer.html')
-        .then(res => res.text())
-        .then(footer => {
-          document.getElementById('footer-container').innerHTML = footer;
-          
-          // Now load main.js after DOM is ready
-          const script = document.createElement('script');
-          script.src = 'https://fixmytech.no/js/main.js';
-          document.body.appendChild(script);
-        })
-        .catch(error => {
-          console.error('Error loading footer:', error);
-        });
-
-      // Terms checkbox functionality
-      const termsCheckbox = document.getElementById('terms-checkbox');
-      const submitButton = document.getElementById('submit-button');
-
-      if (termsCheckbox && submitButton) {
-        termsCheckbox.addEventListener('change', function() {
-          submitButton.disabled = !this.checked;
-        });
-      }
-    });
-  </script>
+  <script src="https://fixmytech.no/js/main.js"></script>
 </body>
 </html>
+
 
 
 
