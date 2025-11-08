@@ -141,38 +141,7 @@
   <div id="footer-container"></div>
 
   <!-- Script Loading -->
-  <script>
-    // Load header and footer
-    document.addEventListener('DOMContentLoaded', function() {
-      // Load header
-      fetch('https://fixmytech.no/includes/header.html')
-        .then(res => {
-          if (!res.ok) throw new Error('Failed to load header');
-          return res.text();
-        })
-        .then(header => {
-          document.getElementById('header-container').innerHTML = header;
-
-          // Load footer after header
-          return fetch('https://fixmytech.no/includes/footer.html');
-        })
-        .then(res => {
-          if (!res.ok) throw new Error('Failed to load footer');
-          return res.text();
-        })
-        .then(footer => {
-          document.getElementById('footer-container').innerHTML = footer;
-
-          // Load main.js after both header and footer are loaded
-          const script = document.createElement('script');
-          script.src = 'https://fixmytech.no/js/main.js';
-          document.body.appendChild(script);
-        })
-        .catch(error => {
-          console.error('Error loading header or footer:', error);
-        });
-    });
-  </script>
+  <script src="https://fixmytech.no/js/main.js"></script>
 
 </body>
 </html>
