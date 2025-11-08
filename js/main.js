@@ -10,6 +10,70 @@ function initMainJS() {
   const modal = document.getElementById('modal');
   const modalClose = document.querySelector('.modal-close');
   const cookieSettingsLink = document.getElementById('cookieSettingsLink');
+  const termsCheckbox = document.getElementById('terms-checkbox');
+  const submitButton = document.getElementById('submit-button');
+
+  // ===== HEADER/FOOTER LOADING =====
+  function loadHeaderAndFooter() {
+    // Load header
+    fetch('https://fixmytech.no/includes/header.html')
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to load header');
+        return res.text();
+      })
+      .then(header => {
+        document.getElementById('header-container').innerHTML = header;
+        initializeHeaderFunctionality();
+        
+        // Load footer after header
+        return fetch('https://fixmytech.no/includes/footer.html');
+      })
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to load footer');
+        return res.text();
+      })
+      .then(footer => {
+        document.getElementById('footer-container').innerHTML = footer;
+        initializeFooterFunctionality();
+      })
+      .catch(error => {
+        console.error('Error loading header or footer:', error);
+        document.querySelectorAll('.error-message').forEach(el => el.style.display = 'block');
+      });
+  }
+
+  function initializeHeaderFunctionality() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const mainNav = document.querySelector('.main-nav');
+    
+    if (navToggle && mainNav) {
+      navToggle.addEventListener('click', function() {
+        mainNav.classList.toggle('active');
+        const expanded = mainNav.classList.contains('active');
+        navToggle.setAttribute('aria-expanded', expanded);
+        
+        // Toggle hamburger icon
+        const icon = navToggle.querySelector('i');
+        if (icon) {
+          if (mainNav.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+          } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+          }
+        }
+      });
+    }
+    
+    // Populate services dropdown
+    populateServicesDropdown();
+  }
+
+  function initializeFooterFunctionality() {
+    // Any footer-specific initialization can go here
+    console.log('Footer loaded and initialized');
+  }
 
   // ===== POPULATE DROPDOWN MENU FROM JSON =====
   function populateServicesDropdown() {
@@ -22,19 +86,16 @@ function initMainJS() {
         return response.json();
       })
       .then(data => {
-        // Map service names to icons
         const iconMap = {
           'Backup & Skylagring': 'fa-cloud',
           'Feilretting & Vedlikehold': 'fa-wrench',
           'Webdesign & Domene': 'fa-paint-brush'
         };
 
-        // Clear existing content
         dropdownContainer.innerHTML = '';
 
-        // Populate dropdown with services
         data.tjenester.forEach(service => {
-          const iconClass = iconMap[service.name] || 'fa-cogs'; // Fallback icon
+          const iconClass = iconMap[service.name] || 'fa-cogs';
           const link = document.createElement('a');
           link.href = service.path;
           link.setAttribute('aria-label', `Gå til ${service.name}`);
@@ -42,20 +103,17 @@ function initMainJS() {
           dropdownContainer.appendChild(link);
         });
 
-        // Update navLinks to include new dropdown links for event listeners
-        const newNavLinks = document.querySelectorAll('.main-nav a');
-        updateNavLinkListeners(newNavLinks);
+        updateNavLinkListeners(document.querySelectorAll('.main-nav a'));
       })
       .catch(error => {
         console.error('Error loading services:', error);
-        // Fallback to static content if JSON fails
+        // Fallback content
         dropdownContainer.innerHTML = `
           <a href="/tjenester/feilretting/index.html" aria-label="Feilretting og Vedlikehold"><i class="fas fa-wrench"></i>Feilretting og Vedlikehold</a>
           <a href="/verktøy/backup/index.html" aria-label="Backup og Skylagring"><i class="fas fa-cloud"></i>Backup & Skylagring</a>
           <a href="/verktøy/webdesign/index.html" aria-label="Webdesign og Domene"><i class="fas fa-paint-brush"></i>Webdesign & Domene</a>
         `;
-        const newNavLinks = document.querySelectorAll('.main-nav a');
-        updateNavLinkListeners(newNavLinks);
+        updateNavLinkListeners(document.querySelectorAll('.main-nav a'));
       });
   }
 
@@ -63,7 +121,6 @@ function initMainJS() {
   function updateNavLinkListeners(links) {
     if (links.length > 0 && navMenu && menuToggle) {
       links.forEach(link => {
-        // Remove existing listeners to avoid duplicates
         link.removeEventListener('click', handleNavLinkClick);
         link.addEventListener('click', handleNavLinkClick);
       });
@@ -71,97 +128,79 @@ function initMainJS() {
   }
 
   function handleNavLinkClick() {
-    if (navMenu.classList.contains('active')) {
+    if (navMenu && navMenu.classList.contains('active')) {
       navMenu.classList.remove('active');
-      menuToggle.setAttribute('aria-expanded', 'false');
-      
-      // Reset hamburger icon
-      const icon = menuToggle.querySelector('i');
-      if (icon) {
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-      }
-    }
-  }
-
-  // ===== MOBILE MENU TOGGLE =====
-  if (menuToggle && navMenu) {
-    menuToggle.addEventListener('click', function() {
-      navMenu.classList.toggle('active');
-      const isExpanded = this.getAttribute('aria-expanded') === 'true';
-      this.setAttribute('aria-expanded', !isExpanded);
-      
-      // Toggle hamburger icon
-      const icon = this.querySelector('i');
-      if (icon) {
-        if (navMenu.classList.contains('active')) {
-          icon.classList.remove('fa-bars');
-          icon.classList.add('fa-times');
-        } else {
+      const menuToggle = document.querySelector('.nav-toggle');
+      if (menuToggle) {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        
+        const icon = menuToggle.querySelector('i');
+        if (icon) {
           icon.classList.remove('fa-times');
           icon.classList.add('fa-bars');
         }
       }
-    });
-  }
-
-  // Initial nav link listeners
-  updateNavLinkListeners(navLinks);
-
-  // ===== SMOOTH SCROLLING =====
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      if (this.getAttribute('href') === '#' || this.classList.contains('dropdown-toggle')) return;
-      
-      e.preventDefault();
-      
-      const targetId = this.getAttribute('href');
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        const header = document.querySelector('header');
-        const headerHeight = header ? header.offsetHeight : 0;
-        const offset = 20;
-        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - offset;
-        
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth'
-        });
-      }
-    });
-  });
-
-  // Handle full URL navigation for dropdown links
-  document.querySelectorAll('.dropdown-content a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const href = this.getAttribute('href');
-      if (href && !href.startsWith('#')) {
-        e.preventDefault();
-        window.location.href = href; // Navigate to full URL
-      }
-    });
-  });
-
-  // ===== SCROLL TO TOP BUTTON =====
-  function toggleScrollTopButton() {
-    if (scrollTopBtn) {
-      if (window.scrollY > 300) {
-        scrollTopBtn.style.display = 'block';
-      } else {
-        scrollTopBtn.style.display = 'none';
-      }
     }
   }
 
-  if (scrollTopBtn) {
-    window.addEventListener('scroll', toggleScrollTopButton);
-    scrollTopBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+  // ===== SMOOTH SCROLLING =====
+  function initializeSmoothScrolling() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        if (this.getAttribute('href') === '#' || this.classList.contains('dropdown-toggle')) return;
+        
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          const header = document.querySelector('header');
+          const headerHeight = header ? header.offsetHeight : 0;
+          const offset = 20;
+          const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - offset;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
       });
     });
-    toggleScrollTopButton();
+
+    // Handle full URL navigation for dropdown links
+    document.querySelectorAll('.dropdown-content a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href && !href.startsWith('#')) {
+          e.preventDefault();
+          window.location.href = href;
+        }
+      });
+    });
+  }
+
+  // ===== SCROLL TO TOP BUTTON =====
+  function initializeScrollToTop() {
+    function toggleScrollTopButton() {
+      if (scrollTopBtn) {
+        if (window.scrollY > 300) {
+          scrollTopBtn.style.display = 'block';
+        } else {
+          scrollTopBtn.style.display = 'none';
+        }
+      }
+    }
+
+    if (scrollTopBtn) {
+      window.addEventListener('scroll', toggleScrollTopButton);
+      scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+      toggleScrollTopButton();
+    }
   }
 
   // ===== FORM VALIDATION =====
@@ -208,33 +247,44 @@ function initMainJS() {
   }
 
   // ===== FORM SUBMISSION HANDLER =====
-  if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      if (!validateForm(this)) return;
-      
-      const formData = {
-        name: this.querySelector('[name="name"]').value,
-        email: this.querySelector('[name="email"]').value,
-        service: this.querySelector('[name="service"]').value,
-        message: this.querySelector('[name="message"]').value
-      };
-      
-      const notification = document.getElementById('notification');
-      const notificationMessage = document.getElementById('notification-message');
-      
-      if (notification && notificationMessage) {
-        notificationMessage.textContent = `Vi har mottatt din henvendelse om ${formData.service}. Vi kontakter deg på ${formData.email} snarest.`;
-        notification.classList.add('show');
+  function initializeContactForm() {
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
         
-        setTimeout(() => {
-          notification.classList.remove('show');
-        }, 5000);
-      }
-      
-      this.reset();
-    });
+        if (!validateForm(this)) return;
+        
+        const formData = {
+          name: this.querySelector('[name="name"]').value,
+          email: this.querySelector('[name="email"]').value,
+          service: this.querySelector('[name="service"]').value,
+          message: this.querySelector('[name="message"]').value
+        };
+        
+        const notification = document.getElementById('notification');
+        const notificationMessage = document.getElementById('notification-message');
+        
+        if (notification && notificationMessage) {
+          notificationMessage.textContent = `Vi har mottatt din henvendelse om ${formData.service}. Vi kontakter deg på ${formData.email} snarest.`;
+          notification.classList.add('show');
+          
+          setTimeout(() => {
+            notification.classList.remove('show');
+          }, 5000);
+        }
+        
+        this.reset();
+      });
+    }
+  }
+
+  // ===== TERMS CHECKBOX FUNCTIONALITY =====
+  function initializeTermsCheckbox() {
+    if (termsCheckbox && submitButton) {
+      termsCheckbox.addEventListener('change', function() {
+        submitButton.disabled = !this.checked;
+      });
+    }
   }
 
   // ===== MODAL FUNCTIONS =====
@@ -262,19 +312,21 @@ function initMainJS() {
     }
   };
 
-  window.modalFunctions = modalFunctions;
-  window.closeModal = modalFunctions.closeModal;
+  function initializeModal() {
+    window.modalFunctions = modalFunctions;
+    window.closeModal = modalFunctions.closeModal;
 
-  if (modal) {
-    window.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modalFunctions.closeModal();
-      }
-    });
-  }
+    if (modal) {
+      window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modalFunctions.closeModal();
+        }
+      });
+    }
 
-  if (modalClose) {
-    modalClose.addEventListener('click', modalFunctions.closeModal);
+    if (modalClose) {
+      modalClose.addEventListener('click', modalFunctions.closeModal);
+    }
   }
 
   // ===== COOKIE MANAGEMENT =====
@@ -317,17 +369,17 @@ function initMainJS() {
   }
 
   function acceptCookies() {
-    setCookie('cookie_consent', 'accepted', 365);
-    setCookie('analytics_consent', 'true', 365);
+    setCookie('cookie_consent_given', 'true', 365);
+    setCookie('analytics_cookies', 'true', 365);
     hideCookieBanner();
-    updateStatusIndicators();
+    updateCookieStatusIndicators();
   }
 
   function rejectCookies() {
-    setCookie('cookie_consent', 'rejected', 365);
-    setCookie('analytics_consent', 'false', 365);
+    setCookie('cookie_consent_given', 'true', 365);
+    setCookie('analytics_cookies', 'false', 365);
     hideCookieBanner();
-    updateStatusIndicators();
+    updateCookieStatusIndicators();
   }
 
   function showCookieSettings() {
@@ -335,13 +387,13 @@ function initMainJS() {
     if (modal) {
       modal.style.display = 'flex';
       
-      const analyticsConsent = getCookie('analytics_consent');
+      const analyticsConsent = getCookie('analytics_cookies');
       const analyticsCheckbox = document.getElementById('analytics-cookies');
       if (analyticsCheckbox) {
         analyticsCheckbox.checked = analyticsConsent === 'true';
       }
       
-      updateStatusIndicators();
+      updateCookieStatusIndicators();
     }
   }
 
@@ -349,13 +401,8 @@ function initMainJS() {
     const analyticsCheckbox = document.getElementById('analytics-cookies');
     if (analyticsCheckbox) {
       const analyticsAllowed = analyticsCheckbox.checked;
-      setCookie('analytics_consent', analyticsAllowed, 365);
-      
-      if (analyticsAllowed) {
-        setCookie('cookie_consent', 'accepted', 365);
-      } else {
-        setCookie('cookie_consent', 'rejected', 365);
-      }
+      setCookie('analytics_cookies', analyticsAllowed.toString(), 365);
+      setCookie('cookie_consent_given', 'true', 365);
     }
     
     const modal = document.getElementById('cookie-settings-modal');
@@ -363,92 +410,114 @@ function initMainJS() {
       modal.style.display = 'none';
     }
     hideCookieBanner();
-    updateStatusIndicators();
+    updateCookieStatusIndicators();
   }
 
-  function updateStatusIndicators() {
-    const analyticsConsent = getCookie('analytics_consent');
-    const analyticsStatus = document.getElementById('analytics-status');
+  function updateCookieStatusIndicators() {
+    const analyticsConsent = getCookie('analytics_cookies');
     const analyticsStatusText = document.getElementById('analytics-status-text');
-    const overallStatus = document.getElementById('overall-status');
     const overallStatusText = document.getElementById('overall-status-text');
-    
-    if (analyticsStatus) {
-      if (analyticsConsent === 'true') {
-        analyticsStatus.classList.remove('off');
-      } else {
-        analyticsStatus.classList.add('off');
-      }
-    }
     
     if (analyticsStatusText) {
       analyticsStatusText.textContent = analyticsConsent === 'true' ? 'På' : 'Av';
     }
     
     if (overallStatusText) {
-      if (getCookie('cookie_consent')) {
-        overallStatusText.textContent = 'Innstillinger er lagret';
+      if (getCookie('cookie_consent_given')) {
+        overallStatusText.textContent = 'Innstillinger lagret';
       } else {
         overallStatusText.textContent = 'Innstillinger er ikke lagret';
       }
     }
   }
 
-  const cookieConsent = getCookie('cookie_consent');
-  if (!cookieConsent) {
-    showCookieBanner();
-  }
+  function initializeCookieConsent() {
+    // Check if cookie consent is already given
+    const consentGiven = getCookie('cookie_consent_given');
+    if (consentGiven) {
+      const analytics = getCookie('analytics_cookies');
+      const analyticsToggle = document.getElementById('analytics-cookies');
+      if (analyticsToggle) {
+        analyticsToggle.checked = analytics === 'true';
+      }
+      updateCookieStatusIndicators();
+    } else {
+      setTimeout(() => {
+        showCookieBanner();
+      }, 1000);
+    }
 
-  const cookieAccept = document.getElementById('cookie-accept');
-  const cookieReject = document.getElementById('cookie-reject');
-  const cookieSettings = document.getElementById('cookie-settings');
-  const saveCookieSettingsBtn = document.getElementById('save-cookie-settings');
-  const closeCookieModal = document.querySelector('.close-modal');
+    // Event listeners for cookie elements
+    const cookieAccept = document.getElementById('cookie-accept');
+    const cookieReject = document.getElementById('cookie-reject');
+    const cookieSettings = document.getElementById('cookie-settings');
+    const saveCookieSettingsBtn = document.getElementById('save-cookie-settings');
+    const closeCookieModal = document.querySelector('.close-modal');
 
-  if (cookieAccept) cookieAccept.addEventListener('click', acceptCookies);
-  if (cookieReject) cookieReject.addEventListener('click', rejectCookies);
-  if (cookieSettings) cookieSettings.addEventListener('click', showCookieSettings);
-  if (closeCookieModal) closeCookieModal.addEventListener('click', () => {
-    document.getElementById('cookie-settings-modal').style.display = 'none';
-  });
-  if (saveCookieSettingsBtn) saveCookieSettingsBtn.addEventListener('click', saveCookieSettings);
-  
-  if (cookieSettingsLink) {
-    cookieSettingsLink.addEventListener('click', function(e) {
-      e.preventDefault();
-      showCookieSettings();
+    if (cookieAccept) cookieAccept.addEventListener('click', acceptCookies);
+    if (cookieReject) cookieReject.addEventListener('click', rejectCookies);
+    if (cookieSettings) cookieSettings.addEventListener('click', showCookieSettings);
+    if (closeCookieModal) closeCookieModal.addEventListener('click', () => {
+      document.getElementById('cookie-settings-modal').style.display = 'none';
+    });
+    if (saveCookieSettingsBtn) saveCookieSettingsBtn.addEventListener('click', saveCookieSettings);
+    
+    if (cookieSettingsLink) {
+      cookieSettingsLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        showCookieSettings();
+      });
+    }
+
+    window.addEventListener('click', (e) => {
+      const cookieModal = document.getElementById('cookie-settings-modal');
+      if (cookieModal && e.target === cookieModal) {
+        cookieModal.style.display = 'none';
+      }
     });
   }
 
-  window.addEventListener('click', (e) => {
-    const cookieModal = document.getElementById('cookie-settings-modal');
-    if (cookieModal && e.target === cookieModal) {
-      cookieModal.style.display = 'none';
-    }
-  });
-
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 768 && navMenu && navMenu.classList.contains('active') && menuToggle) {
-      navMenu.classList.remove('active');
-      menuToggle.classList.remove('active');
-      menuToggle.setAttribute('aria-expanded', 'false');
-      
-      const icon = menuToggle.querySelector('i');
-      if (icon) {
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
+  // ===== RESPONSIVE BEHAVIOR =====
+  function initializeResponsiveBehavior() {
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768 && navMenu && navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        const menuToggle = document.querySelector('.nav-toggle');
+        if (menuToggle) {
+          menuToggle.setAttribute('aria-expanded', 'false');
+          
+          const icon = menuToggle.querySelector('i');
+          if (icon) {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+          }
+        }
       }
-    }
-  });
+    });
+  }
 
-  // Initialize dropdown population
-  populateServicesDropdown();
+  // ===== MAIN INITIALIZATION =====
+  function initializeAll() {
+    loadHeaderAndFooter();
+    initializeSmoothScrolling();
+    initializeScrollToTop();
+    initializeContactForm();
+    initializeTermsCheckbox();
+    initializeModal();
+    initializeCookieConsent();
+    initializeResponsiveBehavior();
+    
+    console.log('All JavaScript functionality initialized successfully');
+  }
 
-  console.log('Main JavaScript initialized successfully');
+  // Start initialization
+  initializeAll();
 }
 
+// Export for global access
 window.initMainJS = initMainJS;
 
+// Auto-initialize based on document ready state
 if (document.readyState === 'complete') {
   initMainJS();
 } else {
