@@ -122,63 +122,6 @@
   <div id="footer-container"></div>
 
   <!-- Script Loading -->
-  <script>
-    // Load header and footer
-    document.addEventListener('DOMContentLoaded', function() {
-      // Load header
-      fetch('https://fixmytech.no/includes/header.html')
-        .then(res => res.text())
-        .then(header => {
-          document.getElementById('header-container').innerHTML = header;
-          
-          // Initialize mobile menu toggle after header loads
-          const navToggle = document.querySelector('.nav-toggle');
-          const mainNav = document.querySelector('.main-nav');
-          
-          if (navToggle && mainNav) {
-            navToggle.addEventListener('click', function() {
-              mainNav.classList.toggle('active');
-              const expanded = mainNav.classList.contains('active');
-              navToggle.setAttribute('aria-expanded', expanded);
-            });
-          }
-        })
-        .catch(error => {
-          console.error('Error loading header:', error);
-        });
-
-      // Load footer
-      fetch('https://fixmytech.no/includes/footer.html')
-        .then(res => res.text())
-        .then(footer => {
-          document.getElementById('footer-container').innerHTML = footer;
-          
-          // Now load main.js after DOM is ready
-          const script = document.createElement('script');
-          script.src = 'https://fixmytech.no/js/main.js';
-          document.body.appendChild(script);
-        })
-        .catch(error => {
-          console.error('Error loading footer:', error);
-        });
-
-      // Scroll to top button functionality
-      window.addEventListener('scroll', function() {
-        const scrollTopBtn = document.getElementById('scrollTopBtn');
-        if (window.pageYOffset > 300) {
-          scrollTopBtn.style.display = 'block';
-        } else {
-          scrollTopBtn.style.display = 'none';
-        }
-      });
-
-      document.getElementById('scrollTopBtn').addEventListener('click', function() {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      });
-    });
-  </script>
+  <script src="https://fixmytech.no/js/main.js"></script>
 </body>
 </html>
