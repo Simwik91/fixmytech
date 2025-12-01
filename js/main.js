@@ -364,14 +364,19 @@ function initMainJS() {
   }
 
   function showCookieBanner() {
+    console.log("Attempting to show cookie banner...");
     const banner = document.getElementById('cookie-consent-banner');
     if (banner) {
       setTimeout(() => {
+        console.log("Showing cookie banner.");
         banner.classList.add('show');
       }, 10);
+    } else {
+      console.error("Cookie consent banner not found!");
     }
   }
   function hideCookieBanner() {
+    console.log("Hiding cookie banner.");
     const banner = document.getElementById('cookie-consent-banner');
     if (banner) {
       banner.classList.remove('show');
@@ -382,6 +387,7 @@ function initMainJS() {
   }
 
   function acceptCookies() {
+    console.log("Accepting cookies.");
     setCookie('cookie_consent_given', 'true', 365);
     setCookie('analytics_cookies', 'true', 365);
     hideCookieBanner();
@@ -389,6 +395,7 @@ function initMainJS() {
   }
 
   function rejectCookies() {
+    console.log("Rejecting cookies.");
     setCookie('cookie_consent_given', 'true', 365);
     setCookie('analytics_cookies', 'false', 365);
     hideCookieBanner();
@@ -396,6 +403,7 @@ function initMainJS() {
   }
 
   function showCookieSettings() {
+    console.log("Showing cookie settings modal.");
     const modal = document.getElementById('cookie-settings-modal');
     if (modal) {
       modal.style.display = 'flex';
@@ -407,10 +415,13 @@ function initMainJS() {
       }
       
       updateCookieStatusIndicators();
+    } else {
+      console.error("Cookie settings modal not found!");
     }
   }
 
   function saveCookieSettings() {
+    console.log("Saving cookie settings.");
     const analyticsCheckbox = document.getElementById('analytics-cookies');
     if (analyticsCheckbox) {
       const analyticsAllowed = analyticsCheckbox.checked;
@@ -427,6 +438,7 @@ function initMainJS() {
   }
 
   function updateCookieStatusIndicators() {
+    console.log("Updating cookie status indicators.");
     const analyticsConsent = getCookie('analytics_cookies');
     const analyticsStatusText = document.getElementById('analytics-status-text');
     const overallStatusText = document.getElementById('overall-status-text');
@@ -445,10 +457,13 @@ function initMainJS() {
   }
 
   function initializeCookieConsent() {
+    console.log("Initializing cookie consent...");
     // Check if cookie consent is already given
     const consentGiven = getCookie('cookie_consent_given');
+    console.log("Cookie consent given: ", consentGiven);
     if (consentGiven) {
       const analytics = getCookie('analytics_cookies');
+      console.log("Analytics cookies: ", analytics);
       const analyticsToggle = document.getElementById('analytics-cookies');
       if (analyticsToggle) {
         analyticsToggle.checked = analytics === 'true';
@@ -467,13 +482,28 @@ function initMainJS() {
     const saveCookieSettingsBtn = document.getElementById('save-cookie-settings');
     const closeCookieModal = document.querySelector('.close-modal');
 
-    if (cookieAccept) cookieAccept.addEventListener('click', acceptCookies);
-    if (cookieReject) cookieReject.addEventListener('click', rejectCookies);
-    if (cookieSettings) cookieSettings.addEventListener('click', showCookieSettings);
-    if (closeCookieModal) closeCookieModal.addEventListener('click', () => {
-      document.getElementById('cookie-settings-modal').style.display = 'none';
-    });
-    if (saveCookieSettingsBtn) saveCookieSettingsBtn.addEventListener('click', saveCookieSettings);
+    if (cookieAccept) {
+      console.log("Adding event listener to accept cookies button.");
+      cookieAccept.addEventListener('click', acceptCookies);
+    }
+    if (cookieReject) {
+      console.log("Adding event listener to reject cookies button.");
+      cookieReject.addEventListener('click', rejectCookies);
+    }
+    if (cookieSettings) {
+      console.log("Adding event listener to cookie settings button.");
+      cookieSettings.addEventListener('click', showCookieSettings);
+    }
+    if (closeCookieModal) {
+      console.log("Adding event listener to close cookie modal button.");
+      closeCookieModal.addEventListener('click', () => {
+        document.getElementById('cookie-settings-modal').style.display = 'none';
+      });
+    }
+    if (saveCookieSettingsBtn) {
+      console.log("Adding event listener to save cookie settings button.");
+      saveCookieSettingsBtn.addEventListener('click', saveCookieSettings);
+    }
     
     window.addEventListener('click', (e) => {
       const cookieModal = document.getElementById('cookie-settings-modal');
