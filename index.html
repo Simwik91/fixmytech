@@ -21,12 +21,12 @@
 
   <main id="main-content">
     <!-- Scroll to top button -->
-    <button id="scrollTopBtn" title="Go to top" aria-label="Scroll to top" style="display: none;">
+    <button id="scrollTopBtn" title="Go to top" aria-label="Scroll to top" class="hidden-by-default">
       <i class="fas fa-arrow-up"></i>
     </button>
 
     <!-- Modal -->
-    <div id="modal" class="modal" style="display: none;">
+    <div id="modal" class="modal hidden-by-default">
       <div class="modal-content">
         <span class="modal-close">×</span>
         <!-- Modal content will be inserted here dynamically -->
@@ -198,7 +198,7 @@
               <li><i class="fas fa-check-circle"></i>Fjernhjelp tilgjengelig</li>
             </ul>
             <div class="additional-fee">
-              <p><strong>Merk:</strong> Hvis du har sendt utstyr til oss og vi ikke kan reparere det, kan du velge å få det returnert på kundens regning eller la oss destruere det for en avgift på 500,-.</p>
+              <p><strong>Merk:</strong> Hvis du har sendt utstyr til oss og vi ikke kan reparere det, kan du velge å få det returnert på kundens regning eller la oss destruere det for en avgift på 200,-.</p>
             </div>
           </div>
 
@@ -229,7 +229,7 @@
                   <label for="message">Beskriv behovet ditt</label>
                   <textarea id="message" name="message" required aria-required="true" aria-label="Beskrivelse av ditt behov" placeholder="Beskriv utfordringen eller behovet ditt, f.eks. 'PC starter ikke', eller 'laptop er veldig treg'. Inkluder detaljer om utstyr eller feilmeldinger for raskere støtte." autocomplete="off"></textarea>
                 </div>
-                <div style="display: none;">
+                <div class="hidden-by-default">
                   <label for="website">Website (leave blank)</label>
                   <input type="text" id="website" name="_gotcha" autocomplete="off">
                 </div>

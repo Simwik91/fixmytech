@@ -2,14 +2,10 @@ function initMainJS() {
   console.log('Initializing main JavaScript...');
 
   // ===== DOM ELEMENTS =====
-  const menuToggle = document.querySelector('.nav-toggle');
-  const navMenu = document.querySelector('.main-nav');
-  const navLinks = document.querySelectorAll('.main-nav a');
   const scrollTopBtn = document.getElementById('scrollTopBtn');
   const contactForm = document.getElementById('contact-form');
   const modal = document.getElementById('modal');
   const modalClose = document.querySelector('.modal-close');
-  const cookieSettingsLink = document.getElementById('cookieSettingsLink');
   const termsCheckbox = document.getElementById('terms-checkbox');
   const submitButton = document.getElementById('submit-button');
 
@@ -84,7 +80,13 @@ function initMainJS() {
   }
 
   function initializeFooterFunctionality() {
-    // Any footer-specific initialization can go here
+    const cookieSettingsLink = document.getElementById('cookieSettingsLink');
+    if (cookieSettingsLink) {
+      cookieSettingsLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        showCookieSettings();
+      });
+    }
     console.log('Footer loaded and initialized');
   }
 
@@ -364,13 +366,11 @@ function initMainJS() {
   function showCookieBanner() {
     const banner = document.getElementById('cookie-consent-banner');
     if (banner) {
-      banner.style.display = 'block';
       setTimeout(() => {
         banner.classList.add('show');
       }, 10);
     }
   }
-
   function hideCookieBanner() {
     const banner = document.getElementById('cookie-consent-banner');
     if (banner) {
@@ -475,13 +475,6 @@ function initMainJS() {
     });
     if (saveCookieSettingsBtn) saveCookieSettingsBtn.addEventListener('click', saveCookieSettings);
     
-    if (cookieSettingsLink) {
-      cookieSettingsLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        showCookieSettings();
-      });
-    }
-
     window.addEventListener('click', (e) => {
       const cookieModal = document.getElementById('cookie-settings-modal');
       if (cookieModal && e.target === cookieModal) {
