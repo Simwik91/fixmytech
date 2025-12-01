@@ -9,20 +9,9 @@ function initMainJS() {
   const termsCheckbox = document.getElementById('terms-checkbox');
   const submitButton = document.getElementById('submit-button');
 
-  // ===== HEADER/FOOTER/COOKIE LOADING =====
-  function loadHeaderAndFooterAndCookie() {
-    // Load cookie consent first (since it appears at the top of the page)
-    fetch('https://fixmytech.no/includes/cookie-consent.html')
-      .then(res => {
-        if (!res.ok) throw new Error('Failed to load cookie consent');
-        return res.text();
-      })
-      .then(cookieHTML => {
-        document.getElementById('cookie-consent-container').innerHTML = cookieHTML;
-        
-        // Load header after cookie consent
-        return fetch('https://fixmytech.no/includes/header.html');
-      })
+  // ===== HEADER/FOOTER LOADING =====
+  function loadHeaderAndFooter() {
+    fetch('/includes/header.html')
       .then(res => {
         if (!res.ok) throw new Error('Failed to load header');
         return res.text();
@@ -31,8 +20,7 @@ function initMainJS() {
         document.getElementById('header-container').innerHTML = header;
         initializeHeaderFunctionality();
         
-        // Load footer after header
-        return fetch('https://fixmytech.no/includes/footer.html');
+        return fetch('/includes/footer.html');
       })
       .then(res => {
         if (!res.ok) throw new Error('Failed to load footer');
@@ -40,10 +28,7 @@ function initMainJS() {
       })
       .then(footer => {
         document.getElementById('footer-container').innerHTML = footer;
-        initializeFooterFunctionality();
-        
-        // Initialize cookie consent functionality AFTER all HTML is loaded
-        initializeCookieConsent();
+        console.log('Footer loaded and initialized');
       })
       .catch(error => {
         console.error('Error loading includes:', error);
@@ -61,33 +46,20 @@ function initMainJS() {
         const expanded = mainNav.classList.contains('active');
         navToggle.setAttribute('aria-expanded', expanded);
         
-        // Toggle hamburger icon
         const icon = navToggle.querySelector('i');
         if (icon) {
           if (mainNav.classList.contains('active')) {
             icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
+            icon.classList.add('fa-xmark');
           } else {
-            icon.classList.remove('fa-times');
+            icon.classList.remove('fa-xmark');
             icon.classList.add('fa-bars');
           }
         }
       });
     }
     
-    // Populate services dropdown
     populateServicesDropdown();
-  }
-
-  function initializeFooterFunctionality() {
-    const cookieSettingsLink = document.getElementById('cookieSettingsLink');
-    if (cookieSettingsLink) {
-      cookieSettingsLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        showCookieSettings();
-      });
-    }
-    console.log('Footer loaded and initialized');
   }
 
   // ===== POPULATE DROPDOWN MENU FROM JSON =====
@@ -122,7 +94,6 @@ function initMainJS() {
       })
       .catch(error => {
         console.error('Error loading services:', error);
-        // Fallback content
         dropdownContainer.innerHTML = `
           <a href="/tjenester/feilretting/index.html" aria-label="Feilretting og Vedlikehold"><i class="fas fa-wrench"></i>Feilretting og Vedlikehold</a>
           <a href="/verktøy/backup/index.html" aria-label="Backup og Skylagring"><i class="fas fa-cloud"></i>Backup & Skylagring</a>
@@ -134,6 +105,8 @@ function initMainJS() {
 
   // ===== UPDATE NAV LINK LISTENERS =====
   function updateNavLinkListeners(links) {
+    const navMenu = document.querySelector('.main-nav');
+    const menuToggle = document.querySelector('.nav-toggle');
     if (links.length > 0 && navMenu && menuToggle) {
       links.forEach(link => {
         link.removeEventListener('click', handleNavLinkClick);
@@ -143,6 +116,7 @@ function initMainJS() {
   }
 
   function handleNavLinkClick() {
+    const navMenu = document.querySelector('.main-nav');
     if (navMenu && navMenu.classList.contains('active')) {
       navMenu.classList.remove('active');
       const menuToggle = document.querySelector('.nav-toggle');
@@ -151,7 +125,7 @@ function initMainJS() {
         
         const icon = menuToggle.querySelector('i');
         if (icon) {
-          icon.classList.remove('fa-times');
+          icon.classList.remove('fa-xmark');
           icon.classList.add('fa-bars');
         }
       }
@@ -182,7 +156,6 @@ function initMainJS() {
       });
     });
 
-    // Handle full URL navigation for dropdown links
     document.querySelectorAll('.dropdown-content a').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
@@ -344,178 +317,10 @@ function initMainJS() {
     }
   }
 
-  // ===== COOKIE MANAGEMENT =====
-  function setCookie(name, value, days) {
-    const d = new Date();
-    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
-    const expires = "expires=" + d.toUTCString();
-    document.cookie = name + "=" + value + ";" + expires + ";path=/;SameSite=Lax";
-  }
-
-  function getCookie(name) {
-    const nameEQ = name + "=";
-    const ca = document.cookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) === ' ') c = c.substring(1);
-      if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-    }
-    return null;
-  }
-
-  function showCookieBanner() {
-    console.log("Attempting to show cookie banner...");
-    const banner = document.getElementById('cookie-consent-banner');
-    if (banner) {
-      setTimeout(() => {
-        console.log("Showing cookie banner.");
-        banner.classList.add('show');
-      }, 10);
-    } else {
-      console.error("Cookie consent banner not found!");
-    }
-  }
-  function hideCookieBanner() {
-    console.log("Hiding cookie banner.");
-    const banner = document.getElementById('cookie-consent-banner');
-    if (banner) {
-      banner.classList.remove('show');
-      setTimeout(() => {
-        banner.style.display = 'none';
-      }, 300);
-    }
-  }
-
-  function acceptCookies() {
-    console.log("Accepting cookies.");
-    setCookie('cookie_consent_given', 'true', 365);
-    setCookie('analytics_cookies', 'true', 365);
-    hideCookieBanner();
-    updateCookieStatusIndicators();
-  }
-
-  function rejectCookies() {
-    console.log("Rejecting cookies.");
-    setCookie('cookie_consent_given', 'true', 365);
-    setCookie('analytics_cookies', 'false', 365);
-    hideCookieBanner();
-    updateCookieStatusIndicators();
-  }
-
-  function showCookieSettings() {
-    console.log("Showing cookie settings modal.");
-    const modal = document.getElementById('cookie-settings-modal');
-    if (modal) {
-      modal.style.display = 'flex';
-      
-      const analyticsConsent = getCookie('analytics_cookies');
-      const analyticsCheckbox = document.getElementById('analytics-cookies');
-      if (analyticsCheckbox) {
-        analyticsCheckbox.checked = analyticsConsent === 'true';
-      }
-      
-      updateCookieStatusIndicators();
-    } else {
-      console.error("Cookie settings modal not found!");
-    }
-  }
-
-  function saveCookieSettings() {
-    console.log("Saving cookie settings.");
-    const analyticsCheckbox = document.getElementById('analytics-cookies');
-    if (analyticsCheckbox) {
-      const analyticsAllowed = analyticsCheckbox.checked;
-      setCookie('analytics_cookies', analyticsAllowed.toString(), 365);
-      setCookie('cookie_consent_given', 'true', 365);
-    }
-    
-    const modal = document.getElementById('cookie-settings-modal');
-    if (modal) {
-      modal.style.display = 'none';
-    }
-    hideCookieBanner();
-    updateCookieStatusIndicators();
-  }
-
-  function updateCookieStatusIndicators() {
-    console.log("Updating cookie status indicators.");
-    const analyticsConsent = getCookie('analytics_cookies');
-    const analyticsStatusText = document.getElementById('analytics-status-text');
-    const overallStatusText = document.getElementById('overall-status-text');
-    
-    if (analyticsStatusText) {
-      analyticsStatusText.textContent = analyticsConsent === 'true' ? 'På' : 'Av';
-    }
-    
-    if (overallStatusText) {
-      if (getCookie('cookie_consent_given')) {
-        overallStatusText.textContent = 'Innstillinger lagret';
-      } else {
-        overallStatusText.textContent = 'Innstillinger er ikke lagret';
-      }
-    }
-  }
-
-  function initializeCookieConsent() {
-    console.log("Initializing cookie consent...");
-    // Check if cookie consent is already given
-    const consentGiven = getCookie('cookie_consent_given');
-    console.log("Cookie consent given: ", consentGiven);
-    if (consentGiven) {
-      const analytics = getCookie('analytics_cookies');
-      console.log("Analytics cookies: ", analytics);
-      const analyticsToggle = document.getElementById('analytics-cookies');
-      if (analyticsToggle) {
-        analyticsToggle.checked = analytics === 'true';
-      }
-      updateCookieStatusIndicators();
-    } else {
-      setTimeout(() => {
-        showCookieBanner();
-      }, 1000);
-    }
-
-    // Event listeners for cookie elements
-    const cookieAccept = document.getElementById('cookie-accept');
-    const cookieReject = document.getElementById('cookie-reject');
-    const cookieSettings = document.getElementById('cookie-settings');
-    const saveCookieSettingsBtn = document.getElementById('save-cookie-settings');
-    const closeCookieModal = document.querySelector('.close-modal');
-
-    if (cookieAccept) {
-      console.log("Adding event listener to accept cookies button.");
-      cookieAccept.addEventListener('click', acceptCookies);
-    }
-    if (cookieReject) {
-      console.log("Adding event listener to reject cookies button.");
-      cookieReject.addEventListener('click', rejectCookies);
-    }
-    if (cookieSettings) {
-      console.log("Adding event listener to cookie settings button.");
-      cookieSettings.addEventListener('click', showCookieSettings);
-    }
-    if (closeCookieModal) {
-      console.log("Adding event listener to close cookie modal button.");
-      closeCookieModal.addEventListener('click', () => {
-        document.getElementById('cookie-settings-modal').style.display = 'none';
-      });
-    }
-    if (saveCookieSettingsBtn) {
-      console.log("Adding event listener to save cookie settings button.");
-      saveCookieSettingsBtn.addEventListener('click', saveCookieSettings);
-    }
-    
-    window.addEventListener('click', (e) => {
-      const cookieModal = document.getElementById('cookie-settings-modal');
-      if (cookieModal && e.target === cookieModal) {
-        cookieModal.style.display = 'none';
-      }
-    });
-  }
-
   // ===== RESPONSIVE BEHAVIOR =====
   function initializeResponsiveBehavior() {
     window.addEventListener('resize', () => {
+      const navMenu = document.querySelector('.main-nav');
       if (window.innerWidth > 768 && navMenu && navMenu.classList.contains('active')) {
         navMenu.classList.remove('active');
         const menuToggle = document.querySelector('.nav-toggle');
@@ -524,23 +329,21 @@ function initMainJS() {
           
           const icon = menuToggle.querySelector('i');
           if (icon) {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-          }
-        }
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                  }        }
       }
     });
   }
 
   // ===== MAIN INITIALIZATION =====
   function initializeAll() {
-    loadHeaderAndFooterAndCookie(); // Updated function name
+    loadHeaderAndFooter();
     initializeSmoothScrolling();
     initializeScrollToTop();
     initializeContactForm();
     initializeTermsCheckbox();
     initializeModal();
-    // initializeCookieConsent() is now called inside loadHeaderAndFooterAndCookie()
     initializeResponsiveBehavior();
     
     console.log('All JavaScript functionality initialized successfully');

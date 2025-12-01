@@ -11,7 +11,12 @@ PORT = 8000
 web_dir = os.path.dirname(os.path.abspath(__file__))
 os.chdir(web_dir)
 
-Handler = http.server.SimpleHTTPRequestHandler
+class MyHttpRequestHandler(http.server.SimpleHTTPRequestHandler):
+    def end_headers(self):
+        self.send_header('Content-type', 'text/html; charset=utf-8')
+        super().end_headers()
+
+Handler = MyHttpRequestHandler
 
 httpd = None
 # Keep trying to create a server on the next available port.
