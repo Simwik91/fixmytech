@@ -116,7 +116,23 @@
         document.getElementById('cookie-consent-accept-all').style.display = 'none';
         document.getElementById('cookie-consent-title').textContent = 'Innstillinger for informasjonskapsler';
 
-        const consent = JSON.parse(getCookie('cookie_consent') || '{}');
+        let consent = {};
+        const cookieValue = getCookie('cookie_consent');
+        if (cookieValue) {
+            try {
+                consent = JSON.parse(cookieValue);
+                // If parsing succeeds, but the result is not an object (e.g., JSON "null"), reset.
+                if (typeof consent !== 'object' || consent === null) {
+                    consent = {};
+                }
+            } catch (e) {
+                // If parsing fails, it's likely a legacy string value like "accepted".
+                // We'll treat this as a fresh start for consent settings.
+                console.warn('Cookie Consent: Could not parse cookie. Resetting to default.');
+                consent = {};
+            }
+        }
+
         document.getElementById('cookie-analytics').checked = consent.analytics || false;
         document.getElementById('cookie-marketing').checked = consent.marketing || false;
 
@@ -170,7 +186,25 @@
      * Initial check to see if the consent banner should be displayed.
      */
     function initializeBanner() {
-        if (!getCookie('cookie_consent')) {
+        const cookieValue = getCookie('cookie_consent');
+        let hasValidConsent = false;
+
+        if (cookieValue) {
+            try {
+                const consent = JSON.parse(cookieValue);
+                // A valid consent is an object created by our script.
+                // We can check for a property that should always exist, like 'necessary'.
+                if (typeof consent === 'object' && consent !== null && consent.hasOwnProperty('necessary')) {
+                    hasValidConsent = true;
+                }
+            } catch (e) {
+                // Parsing failed, so it's an invalid (e.g., legacy) cookie.
+                // Leave hasValidConsent as false to show the banner.
+                console.warn('Cookie Consent: Invalid cookie found. Forcing banner display.');
+            }
+        }
+
+        if (!hasValidConsent) {
             ensureModalLoaded(showBanner);
         }
     }
