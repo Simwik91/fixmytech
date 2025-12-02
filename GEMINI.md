@@ -33,20 +33,19 @@ Adhering to this structure makes projects easier to navigate and maintain.
 This section details recent significant changes and new implementations:
 
 ### Cookie Consent Implementation
--   **Old Implementation Removed:** The previous cookie consent HTML (`includes/cookie-consent.html`), associated JavaScript from `js/main.js`, and CSS from `css/styles.css` were entirely removed to facilitate a fresh start.
--   **New Compliant System:** A new, Norwegian GDPR-compliant cookie consent banner and settings modal has been implemented.
-    -   **HTML:** Encapsulated in `includes/cookie-consent.html`.
-    -   **CSS:** New dedicated styles added to `css/styles.css`.
-    -   **JavaScript:** All logic managed by a new modular script, `js/cookie-consent.js`, providing explicit consent, granular control over cookie categories (analytics, marketing), and a global function (`window.openCookieSettings()`) to reopen settings.
--   **Footer Integration:** A link in `includes/footer.html` now triggers the cookie settings modal.
+-   **Initial Implementation:** A new, Norwegian GDPR-compliant cookie consent banner and settings modal was implemented. This included the creation of `includes/cookie-consent.html`, `css/cookie-consent.css`, and the initial `js/cookie-consent.js`. The system provides granular control and a footer link to manage settings.
+-   **Robust Refactoring:** The `cookie-consent.js` script was significantly refactored to be a self-contained module. It now fetches its own HTML on-demand, resolving a critical race condition that prevented it from working on sub-pages. This "lazy loading" approach ensures the settings modal is available globally and reliably.
+-   **Expanded Options:** The consent banner was updated to include an "Accept necessary only" option, providing users with more granular choice from the first interaction.
 
 ### Technical Enhancements & Fixes
--   **Relative Paths:** All absolute URLs in `index.html` and `includes/header.html` (for `main.js`, `styles.css`, `favicon.ico`, and included HTML fragments) have been converted to relative paths for improved local development compatibility and robustness.
+-   **Global Relative Paths:** All absolute URLs in `index.html` and all sub-page HTML files (`lisenser/`, `om/`, `personvern/`, `vilkår/`) have been converted to root-relative paths (e.g., `/css/styles.css`). This improves local development compatibility and site portability.
 -   **Character Encoding Fix:** The local development server (`start_server.py`) has been modified to explicitly send `Content-Type: text/html; charset=utf-8` headers, resolving issues with garbled Norwegian characters (e.g., 'ø', 'å') in the browser.
 
 ### UI/UX Improvements
--   **Process Steps:** The "process-steps" section in `index.html` has been updated:
-    -   The text "Gjennomføring og Levering" was shortened to "Gjennomføring".
-    -   Numbered step indicators were replaced with visually appealing Font Awesome icons (`fa-file-signature`, `fa-clipboard-check`, `fa-truck-fast`), using a dedicated CSS style in `css/styles.css` for consistent appearance.
--   **Icon Updates:** Outdated Font Awesome 4/5 icon class names throughout the project (in `index.html`, `includes/header.html`, and `js/main.js`) have been upgraded to their Font Awesome 6 equivalents (e.g., `fa-exclamation-triangle` to `fa-triangle-exclamation`, `fa-shield-alt` to `fa-shield-halved`, `fa-history` to `fa-clock-rotate-left`, `fa-tools` to `fa-screwdriver-wrench`, `fa-times` to `fa-xmark`), ensuring icons render correctly.
--   **Problem Cards Layout:** The CSS for the `.problem-cards` section (`css/styles.css`) has been adjusted to display cards in a responsive 2-column grid on wider screens, preventing a single card from wrapping to a new line.
+-   **Layout Overhaul (Pricing & Contact):** The "Priser og Betingelser" and "Kontakt Oss" sections on the main page have been changed from a side-by-side layout to a stacked, single-column layout for improved readability.
+-   **Spacing & Alignment Standardization:**
+    -   The top padding for all main "hero" sections across all pages (`index.html`, `om/index.html`, etc.) has been increased and standardized to `8rem` for a more spacious and consistent look.
+    -   The spacing between card-based elements (`.process-steps`, `.services-grid`, etc.) has been standardized with a consistent `1.8rem` gap.
+    -   Vertical margins and padding between various sections have been adjusted to create a more consistent rhythm.
+-   **Card Hover Effects:** A "pop" hover effect (lift and shadow) was added to the `.pricing-card` and `.contact-section` to match the interactive feel of other cards on the site.
+-   **Icon Updates:** Outdated Font Awesome 4/5 icon class names throughout the project have been upgraded to their Font Awesome 6 equivalents, ensuring all icons render correctly.

@@ -317,6 +317,41 @@ function initMainJS() {
     }
   }
 
+  // ===== FAQ ACCORDION =====
+  function initializeFaqAccordion() {
+    const faqToggles = document.querySelectorAll('.faq-toggle');
+    faqToggles.forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const item = toggle.parentElement;
+        const panel = toggle.nextElementSibling;
+        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+
+        // Close all other panels
+        faqToggles.forEach(otherToggle => {
+          if (otherToggle !== toggle) {
+            otherToggle.setAttribute('aria-expanded', 'false');
+            otherToggle.nextElementSibling.style.maxHeight = null;
+            otherToggle.querySelector('i').classList.remove('fa-minus');
+            otherToggle.querySelector('i').classList.add('fa-plus');
+          }
+        });
+
+        // Open or close the clicked panel
+        if (isExpanded) {
+          toggle.setAttribute('aria-expanded', 'false');
+          panel.style.maxHeight = null;
+          toggle.querySelector('i').classList.remove('fa-minus');
+          toggle.querySelector('i').classList.add('fa-plus');
+        } else {
+          toggle.setAttribute('aria-expanded', 'true');
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+          toggle.querySelector('i').classList.remove('fa-plus');
+          toggle.querySelector('i').classList.add('fa-minus');
+        }
+      });
+    });
+  }
+
   // ===== RESPONSIVE BEHAVIOR =====
   function initializeResponsiveBehavior() {
     window.addEventListener('resize', () => {
@@ -344,6 +379,7 @@ function initMainJS() {
     initializeContactForm();
     initializeTermsCheckbox();
     initializeModal();
+    initializeFaqAccordion();
     initializeResponsiveBehavior();
     
     console.log('All JavaScript functionality initialized successfully');

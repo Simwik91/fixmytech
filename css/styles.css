@@ -1736,3 +1736,96 @@ footer .container {
 #contact.service-section {
   padding-top: 2rem;
 }
+
+/* CTA Banner Section */
+.cta-banner {
+  padding: 4rem 1.5rem;
+  background-color: var(--secondary);
+  color: white;
+  text-align: center;
+  margin: 2.5rem 0;
+  border-radius: var(--border-radius);
+}
+.cta-banner h2 {
+  color: white;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+.cta-banner p {
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+  opacity: 0.9;
+}
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.cta-buttons .btn {
+  padding: 0.8rem 1.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.cta-buttons .btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+.cta-buttons .btn-secondary {
+  background-color: white;
+  color: var(--secondary);
+}
+.cta-buttons .btn-secondary:hover {
+  background-color: var(--light-gray);
+}
+
+/* FAQ Section */
+.faq-section {
+  padding-bottom: 4rem;
+}
+.faq-accordion {
+  max-width: 800px;
+  margin: 2.5rem auto 0;
+  border-top: 1px solid var(--light-gray);
+}
+.faq-item {
+  border-bottom: 1px solid var(--light-gray);
+}
+.faq-toggle {
+  width: 100%;
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 1rem;
+  cursor: pointer;
+  text-align: left;
+}
+.faq-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--secondary);
+}
+.faq-toggle i {
+  color: var(--primary);
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+.faq-toggle[aria-expanded=""true""] i {
+  transform: rotate(45deg);
+}
+.faq-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, padding 0.3s ease;
+  padding: 0 1rem;
+}
+.faq-panel p {
+  padding-bottom: 1.5rem;
+  color: #555;
+  line-height: 1.7;
+}
+
+/* Team Section */
+/* Removed as per user request */
