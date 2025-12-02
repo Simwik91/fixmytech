@@ -282,7 +282,7 @@ header {
 
 .section-title {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .section-title h2 {
@@ -295,12 +295,12 @@ header {
   margin: 0 auto;
 }
 
-/* Process Steps */
 .process-steps {
+  margin-top: 2.5rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  gap: 1.8rem;
+  justify-content: center;
 }
 
 .step-card {
@@ -320,7 +320,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 1rem;
+  margin: 0 auto: 1rem;
   font-weight: 700;
 }
 
@@ -332,8 +332,8 @@ header {
 .device-icons {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
-  padding: 2rem 0;
+  gap: 1.8rem;
+  padding: 2.5rem 0;
   flex-wrap: wrap;
 }
 
@@ -354,7 +354,7 @@ header {
   padding: 2rem;
   border-radius: var(--border-radius);
   text-align: center;
-  margin: 2rem 0;
+  margin: 1rem 0 2.5rem;
 }
 
 .environmental-icon {
@@ -367,8 +367,8 @@ header {
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin: 2rem 0;
+  gap: 1.8rem;
+  margin: 2.5rem 0;
 }
 
 .service-card {
@@ -404,8 +404,8 @@ header {
 .problem-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
+  gap: 1.8rem;
+  margin: 2.5rem 0;
 }
 
 .problem-card {
@@ -428,21 +428,22 @@ header {
 
 /* Pricing Section */
 .pricing-section {
-  margin: 2rem 0;
+  margin: 2.5rem 0;
 }
 
 .pricing-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  gap: 1.8rem;
 }
 
 .pricing-card {
   background: white;
-  padding: 2rem;
+  padding: 2.5rem;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
   text-align: center;
+  transition: var(--transition);
 }
 
 .price-tag {
@@ -477,7 +478,7 @@ header {
 }
 
 .additional-fee {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   text-align: center;
   color: var(--secondary);
 }
@@ -486,8 +487,9 @@ header {
 .benefits-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
+  gap: 1.8rem;
+  justify-content: center;
+  margin: 2.5rem 0;
 }
 
 .benefit-card {
@@ -520,14 +522,14 @@ header {
 }
 
 .tool-highlight {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .benefits-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
+  gap: 1.8rem;
+  margin: 2.5rem 0;
 }
 
 .everytool-button-container {
@@ -535,8 +537,8 @@ header {
 }
 
 /* Contact Section */
-.contact {
-  padding: 4rem 0;
+#contact.service-section {
+  padding-top: 2rem;
 }
 
 .contact-form-container {
@@ -765,7 +767,7 @@ footer .container {
 
 /* Homepage-specific enhancements */
 .hero {
-  padding: 7rem 0 4rem;
+  padding: 8rem 0 4rem;
   background: #fff;
   color: var(--secondary);
   text-align: center;
@@ -830,9 +832,9 @@ footer .container {
 
 .process-steps {
   margin-top: 2.5rem;
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.8rem;
   justify-content: center;
 }
 
@@ -1009,7 +1011,7 @@ footer .container {
 
 .problem-cards {
   display: grid;
-  gap: 1.5rem;
+  gap: 1.8rem;
   margin: 2.5rem 0;
   grid-template-columns: 1fr;
 }
@@ -1047,9 +1049,9 @@ footer .container {
 
 .pricing-contact-section {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  max-width: 1200px;
+  grid-template-columns: 1fr; /* Changed from 1fr 1fr to stack elements */
+  gap: 2.5rem; /* Added gap for spacing between stacked cards */
+  max-width: 900px; /* Constrain width for better readability in single column */
   margin: 0 auto;
   padding: 2rem 1rem;
 }
@@ -1058,8 +1060,9 @@ footer .container {
   background: white;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
-  padding: 2rem;
+  padding: 2.5rem;
   text-align: center;
+  transition: var(--transition);
 }
 
 .price-tag {
@@ -1105,9 +1108,9 @@ footer .container {
 }
 
 .benefits-grid {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.8rem;
   justify-content: center;
   margin: 2.5rem 0;
 }
@@ -1167,6 +1170,7 @@ footer .container {
   background: white;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
+  transition: var(--transition);
 }
 
 .contact-form-container {
@@ -1360,7 +1364,7 @@ footer .container {
 
 /* About Page Specific Styles */
 .about-hero {
-  padding: 5rem 0 3rem;
+  padding: 8rem 0 3rem; /* Increased top padding */
   background: linear-gradient(135deg, #f0f7ff 0%, #d4e3ff 100%);
   text-align: center;
   position: relative;
@@ -1488,7 +1492,7 @@ footer .container {
 /* Privacy & Terms Styles */
 .privacy-section,
 .terms-section {
-  padding: 6rem 0 4rem;
+  padding: 8rem 0 4rem; /* Increased top padding */
   background: #f9fafb;
 }
 
@@ -1720,4 +1724,15 @@ footer .container {
 
 .hidden-by-default {
   display: none;
+}
+
+/* Hover effect for pricing and contact cards */
+.pricing-card:hover, .contact-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Reduced top padding for the contact section */
+#contact.service-section {
+  padding-top: 2rem;
 }
