@@ -36,6 +36,25 @@ function initMainJS() {
       });
   }
 
+  function loadCookieConsent() {
+    fetch('/includes/cookie-consent.html')
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to load cookie consent');
+        return res.text();
+      })
+      .then(consentHTML => {
+        document.getElementById('cookie-consent-container').innerHTML = consentHTML;
+        // The cookie-consent.js will handle the rest
+        if (window.initCookieConsent) {
+          window.initCookieConsent();
+        }
+        console.log('Cookie consent module loaded and initialized.');
+      })
+      .catch(error => {
+        console.error('Error loading cookie consent:', error);
+      });
+  }
+
   function initializeHeaderFunctionality() {
     const navToggle = document.querySelector('.nav-toggle');
     const mainNav = document.querySelector('.main-nav');
@@ -339,6 +358,7 @@ function initMainJS() {
   // ===== MAIN INITIALIZATION =====
   function initializeAll() {
     loadHeaderAndFooter();
+    loadCookieConsent();
     initializeSmoothScrolling();
     initializeScrollToTop();
     initializeContactForm();

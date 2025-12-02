@@ -1,263 +1,155 @@
-// ===== FixMyTech Cookie Consent Management v2.0 =====
+// Function to manage cookie consent
+window.initCookieConsent = function() {
+    // DOM elements
+    const modal = document.getElementById('cookie-consent-modal');
+    const overlay = document.getElementById('cookie-consent-overlay');
+    const acceptAllButton = document.getElementById('cookie-consent-accept-all');
+    const acceptNecessaryButton = document.getElementById('cookie-consent-necessary');
+    const saveButton = document.getElementById('cookie-consent-save');
 
-// --- CONFIGURATION ---
-const COOKIE_NAME = 'fixmytech_cookie_consent';
-const COOKIE_VERSION = '2'; // Increment to invalidate old cookies
-const COOKIE_EXPIRATION_DAYS = 365;
-const CONSENT_CATEGORIES = {
-    necessary: true,
-    analytics: false,
-    marketing: false
-};
+    // Check if consent has already been given
+    const hasConsent = getCookie('cookie_consent');
 
-// --- DOM ELEMENT REFERENCES ---
-let banner, modal, backdrop;
-let acceptAllBtn, rejectAllBtn, openSettingsBtn, saveSettingsBtn, closeModalBtn;
-let consentToggles = {};
-
-// --- CORE FUNCTIONS ---
-
-/**
- * Sets a cookie with a given name, value, and expiration.
- * @param {string} name The name of the cookie.
- * @param {string} value The value of the cookie.
- * @param {number} days The number of days until the cookie expires.
- */
-function setCookie(name, value, days) {
-    const d = new Date();
-    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
-    const expires = "expires=" + d.toUTCString();
-    document.cookie = `${name}=${value};${expires};path=/;SameSite=Lax`;
-}
-
-/**
- * Gets the value of a cookie by its name.
- * @param {string} name The name of the cookie.
- * @returns {string|null} The cookie value or null if not found.
- */
-function getCookie(name) {
-    const nameEQ = name + "=";
-    const ca = document.cookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-    }
-    return null;
-}
-
-/**
- * Gets the user's current consent status from the cookie.
- * If no valid cookie is found, returns the default state.
- * @returns {object} The user's consent preferences.
- */
-function getConsent() {
-    const cookieValue = getCookie(COOKIE_NAME);
-    if (cookieValue) {
-        try {
-            const parsed = JSON.parse(cookieValue);
-            // Invalidate cookie if the version is different
-            if (parsed.version === COOKIE_VERSION) {
-                return parsed.consent;
-            }
-        } catch (e) {
-            console.error("Error parsing cookie consent:", e);
-            return CONSENT_CATEGORIES;
-        }
-    }
-    return null; // No valid consent given yet
-}
-
-/**
- * Saves the user's consent choices to a cookie.
- * @param {object} consent The consent object to save.
- */
-function saveConsent(consent) {
-    const cookieValue = JSON.stringify({
-        version: COOKIE_VERSION,
-        consent: consent
-    });
-    setCookie(COOKIE_NAME, cookieValue, COOKIE_EXPIRATION_DAYS);
-    hideBanner();
-    hideModal();
-    applyConsent(consent);
-}
-
-// --- UI FUNCTIONS ---
-
-/**
- * Shows the cookie consent banner.
- */
-function showBanner() {
-    if (banner) {
-        banner.classList.remove('hidden');
-    }
-}
-
-/**
- * Hides the cookie consent banner.
- */
-function hideBanner() {
-    if (banner) {
-        banner.classList.add('hidden');
-    }
-}
-
-/**
- * Shows the cookie settings modal.
- */
-function showModal() {
-    updateModalToggles();
-    if (modal && backdrop) {
-        backdrop.classList.remove('hidden');
-        modal.classList.remove('hidden');
-    }
-}
-
-/**
- * Hides the cookie settings modal.
- */
-function hideModal() {
-    if (modal && backdrop) {
-        modal.classList.add('hidden');
-        backdrop.classList.add('hidden');
-    }
-}
-
-/**
- * Updates the toggle switches in the modal based on current consent.
- */
-function updateModalToggles() {
-    const currentConsent = getConsent() || CONSENT_CATEGORIES;
-    for (const category in consentToggles) {
-        consentToggles[category].checked = currentConsent[category] || false;
-    }
-}
-
-
-// --- EVENT HANDLERS ---
-
-function handleAcceptAll() {
-    const allConsent = { ...CONSENT_CATEGORIES };
-    for (const category in allConsent) {
-        allConsent[category] = true;
-    }
-    saveConsent(allConsent);
-}
-
-function handleRejectAll() {
-    const noExtraConsent = { ...CONSENT_CATEGORIES };
-    // Necessary is always true, others are set to false
-    for (const category in noExtraConsent) {
-        if (category !== 'necessary') {
-            noExtraConsent[category] = false;
-        }
-    }
-    saveConsent(noExtraConsent);
-}
-
-function handleSaveSettings() {
-    const newConsent = { ...CONSENT_CATEGORIES };
-    for (const category in consentToggles) {
-        newConsent[category] = consentToggles[category].checked;
-    }
-    saveConsent(newConsent);
-}
-
-// --- INITIALIZATION ---
-
-/**
- * Fetches and injects the cookie consent HTML.
- */
-async function loadCookieHTML() {
-    try {
-        const response = await fetch('/includes/cookie-consent.html');
-        if (!response.ok) throw new Error('Cookie HTML not found');
-        const html = await response.text();
-        const container = document.createElement('div');
-        container.id = 'cookie-consent-container';
-        container.innerHTML = html;
-        document.body.appendChild(container);
-    } catch (error) {
-        console.error("Failed to load cookie consent UI:", error);
-    }
-}
-
-/**
- * Binds event listeners to the UI elements.
- */
-function bindUIEvents() {
-    // Get elements
-    banner = document.getElementById('cookie-consent-banner');
-    modal = document.getElementById('cookie-settings-modal');
-    backdrop = document.getElementById('cookie-backdrop');
-    acceptAllBtn = document.getElementById('cookie-accept-all');
-    rejectAllBtn = document.getElementById('cookie-reject-all');
-    openSettingsBtn = document.getElementById('cookie-open-settings');
-    saveSettingsBtn = document.getElementById('cookie-save-settings');
-    closeModalBtn = document.getElementById('cookie-close-modal');
-
-    consentToggles.analytics = document.getElementById('cookie-consent-analytics');
-    consentToggles.marketing = document.getElementById('cookie-consent-marketing');
-    
-    // Check if elements exist
-    if (!banner || !modal || !acceptAllBtn) {
-        console.error("Could not find all required cookie consent elements.");
-        return;
-    }
-
-    // Attach listeners
-    acceptAllBtn.addEventListener('click', handleAcceptAll);
-    rejectAllBtn.addEventListener('click', handleRejectAll);
-    openSettingsBtn.addEventListener('click', showModal);
-    saveSettingsBtn.addEventListener('click', handleSaveSettings);
-    closeModalBtn.addEventListener('click', hideModal);
-    backdrop.addEventListener('click', hideModal);
-    
-    // Also add a global function to open the settings
-    window.openCookieSettings = showModal;
-}
-
-/**
- * Applies consent decisions, e.g., by loading scripts.
- * @param {object} consent The user's consent choices.
- */
-function applyConsent(consent) {
-    console.log("Applying consent:", consent);
-    if (consent.analytics) {
-        // Example: Load Google Analytics
-        // const script = document.createElement('script');
-        // script.src = 'https://www.googletagmanager.com/gtag/js?id=...';
-        // document.head.appendChild(script);
-        console.log("Analytics enabled.");
-    }
-    if (consent.marketing) {
-        // Example: Load Marketing scripts (e.g., Facebook Pixel)
-        console.log("Marketing enabled.");
-    }
-}
-
-/**
- * Main initialization function for the cookie consent script.
- */
-async function initializeCookieConsent() {
-    await loadCookieHTML();
-    bindUIEvents();
-
-    const currentConsent = getConsent();
-    if (currentConsent) {
-        console.log("User has existing consent.", currentConsent);
-        applyConsent(currentConsent);
-        hideBanner();
-    } else {
-        console.log("No valid consent found. Showing banner.");
+    // If no consent has been given, show the banner
+    if (!hasConsent) {
         showBanner();
     }
-}
 
-// Run the script once the DOM is ready.
-if (document.readyState === 'complete') {
-    initializeCookieConsent();
-} else {
-    document.addEventListener('DOMContentLoaded', initializeCookieConsent);
-}
+    // --- Event Listeners ---
+
+    // When "Accept All" is clicked
+    acceptAllButton.addEventListener('click', () => {
+        const consent = {
+            necessary: true,
+            analytics: true,
+            marketing: true,
+            timestamp: new Date().toISOString()
+        };
+        setConsent(consent);
+        hideModal();
+    });
+
+    // When "Accept Necessary" is clicked
+    acceptNecessaryButton.addEventListener('click', () => {
+        const consent = {
+            necessary: true,
+            analytics: false,
+            marketing: false,
+            timestamp: new Date().toISOString()
+        };
+        setConsent(consent);
+        hideModal();
+    });
+
+    // When "Save Settings" is clicked
+    saveButton.addEventListener('click', () => {
+        const consent = {
+            necessary: true,
+            analytics: document.getElementById('cookie-analytics').checked,
+            marketing: document.getElementById('cookie-marketing').checked,
+            timestamp: new Date().toISOString()
+        };
+        setConsent(consent);
+        hideModal();
+    });
+
+    // When the settings button in the footer is clicked
+    // This needs to be robust in case the footer hasn't loaded the button yet
+    document.body.addEventListener('click', function(e) {
+        if (e.target.matches('#cookie-settings-button')) {
+            e.preventDefault();
+            showSettings();
+        }
+    });
+
+    // Allow closing the modal by clicking the overlay
+    overlay.addEventListener('click', () => {
+        hideModal();
+    });
+
+    // --- Functions ---
+
+    /**
+     * Shows the initial consent banner.
+     * The banner is a simplified view of the modal.
+     */
+    function showBanner() {
+        if (!modal || !overlay) return;
+        modal.style.display = 'block';
+        overlay.style.display = 'block';
+        
+        // In banner mode, we hide the detailed toggle settings and save button
+        document.querySelector('.cookie-consent-toggles').style.display = 'none';
+        saveButton.style.display = 'none';
+        acceptNecessaryButton.style.display = 'inline-block';
+        acceptAllButton.style.display = 'inline-block';
+        
+        document.getElementById('cookie-consent-title').textContent = 'Vi bruker informasjonskapsler';
+    }
+
+    /**
+     * Shows the detailed settings modal.
+     * This view allows users to customize their cookie preferences.
+     */
+    function showSettings() {
+        if (!modal || !overlay) return;
+        // Restore modal to its full settings view
+        document.querySelector('.cookie-consent-toggles').style.display = 'block';
+        saveButton.style.display = 'inline-block';
+        // In settings view, we might want to hide the initial accept buttons
+        acceptNecessaryButton.style.display = 'none';
+        acceptAllButton.style.display = 'none';
+        
+        document.getElementById('cookie-consent-title').textContent = 'Innstillinger for informasjonskapsler';
+
+        // Load current settings into the toggles
+        const consent = JSON.parse(getCookie('cookie_consent') || '{}');
+        document.getElementById('cookie-analytics').checked = consent.analytics || false;
+        document.getElementById('cookie-marketing').checked = consent.marketing || false;
+
+        modal.style.display = 'block';
+        overlay.style.display = 'block';
+    }
+
+    /**
+     * Hides the modal and the overlay.
+     */
+    function hideModal() {
+        if (!modal || !overlay) return;
+        modal.style.display = 'none';
+        overlay.style.display = 'none';
+    }
+
+    /**
+     * Sets the user's consent preferences in a cookie.
+     * @param {object} consent - The consent object to save.
+     */
+    function setConsent(consent) {
+        // The cookie will expire in 1 year
+        const expiryDate = new Date();
+        expiryDate.setFullYear(expiryDate.getFullYear() + 1);
+        // The consent object is stored as a JSON string
+        const cookieValue = `cookie_consent=${JSON.stringify(consent)}; expires=${expiryDate.toUTCString()}; path=/; SameSite=Lax`;
+        document.cookie = cookieValue;
+    }
+
+    /**
+     * Retrieves a cookie value by its name.
+     * @param {string} name - The name of the cookie to retrieve.
+     * @returns {string|null} - The value of the cookie or null if not found.
+     */
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) {
+            return parts.pop().split(';').shift();
+        }
+        return null;
+    }
+
+    /**
+     * Exposes the showSettings function globally so it can be called from the footer link.
+     */
+    window.openCookieSettings = showSettings;
+};
+

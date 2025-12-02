@@ -1,68 +1,83 @@
-<!-- Cookie Consent Container: Banner and Modal -->
+<!--
+    Default dark overlay for the modal.
+    The modal backdrop that will cover the main content when the modal is active.
+-->
+<div id="cookie-consent-overlay" class="cookie-consent-overlay"></div>
 
-<!-- Backdrop -->
-<div id="cookie-backdrop" class="hidden"></div>
+<!--
+    The main container for the cookie consent modal.
+    This modal will be used for both the initial banner and the settings panel.
+-->
+<div id="cookie-consent-modal" class="cookie-consent-modal" role="dialog" aria-labelledby="cookie-consent-title" aria-modal="true">
+    <div class="cookie-consent-content">
+        <!--
+            Header section of the modal.
+            Contains the title of the modal.
+        -->
+        <div class="cookie-consent-header">
+            <h2 id="cookie-consent-title" class="cookie-consent-title">Innstillinger for informasjonskapsler</h2>
+        </div>
 
-<!-- Cookie Consent Banner -->
-<div id="cookie-consent-banner" class="hidden">
-    <div class="cookie-banner-content">
-        <h3 class="cookie-title">Vi bruker cookies</h3>
-        <p class="cookie-text">
-            Dette nettstedet bruker informasjonskapsler for å forbedre opplevelsen din. Nødvendige informasjonskapsler er avgjørende for grunnleggende funksjonalitet. Vi bruker også tredjeparts informasjonskapsler for analyse og markedsføring. Du kan velge å godta alle, avvise alle ikke-nødvendige, eller tilpasse innstillingene dine. Les mer i vår <a href="/personvern">personvernerklæring</a>.
-        </p>
-        <div class="cookie-buttons">
-            <button id="cookie-accept-all" class="cookie-btn primary">Godta alle</button>
-            <button id="cookie-reject-all" class="cookie-btn secondary">Avvis alle</button>
-            <button id="cookie-open-settings" class="cookie-btn tertiary">Innstillinger</button>
-        </div>
-    </div>
-</div>
+        <!--
+            Body section of the modal.
+            Contains the main text and cookie category toggles.
+        -->
+        <div class="cookie-consent-body">
+            <p class="cookie-consent-text">
+                Vi bruker informasjonskapsler for å forbedre opplevelsen din. Noen er nødvendige for at nettstedet skal fungere, mens andre hjelper oss med å analysere trafikk og tilpasse innhold. Ved å godta gir du samtykke til vår bruk av informasjonskapsler.
+            </p>
 
-<!-- Cookie Settings Modal -->
-<div id="cookie-settings-modal" class="hidden">
-    <div class="cookie-modal-header">
-        <h3 class="cookie-title">Innstillinger for informasjonskapsler</h3>
-        <button id="cookie-close-modal" class="close-btn" aria-label="Lukk modal">&times;</button>
-    </div>
-    <div class="cookie-modal-body">
-        <p class="cookie-text">
-            Administrer dine samtykker. Noen informasjonskapsler er nødvendige for at nettstedet skal fungere, mens andre hjelper oss med å analysere trafikk og tilpasse innhold.
-        </p>
-        <div class="cookie-category">
-            <div class="cookie-category-header">
-                <h4>Nødvendige</h4>
-                <span class="always-on">Alltid på</span>
+            <!-- Container for the different cookie categories -->
+            <div class="cookie-consent-toggles">
+                <!-- Necessary Cookies -->
+                <div class="cookie-consent-toggle-item">
+                    <div class="cookie-consent-toggle-label">
+                        <strong>Nødvendige</strong>
+                        <p>Disse informasjonskapslene er essensielle for at nettstedet skal fungere korrekt og kan ikke deaktiveres.</p>
+                    </div>
+                    <!-- This switch is permanently on and disabled to indicate that necessary cookies cannot be opted out of. -->
+                    <label class="switch">
+                        <input type="checkbox" id="cookie-necessary" checked disabled>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <!-- Analytics Cookies -->
+                <div class="cookie-consent-toggle-item">
+                    <div class="cookie-consent-toggle-label">
+                        <strong>Analyse</strong>
+                        <p>Disse informasjonskapslene samler inn data for å hjelpe oss med å forstå hvordan besøkende bruker nettstedet vårt.</p>
+                    </div>
+                    <!-- This switch allows the user to opt in or out of analytics cookies. -->
+                    <label class="switch">
+                        <input type="checkbox" id="cookie-analytics">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <!-- Marketing Cookies -->
+                <div class="cookie-consent-toggle-item">
+                    <div class="cookie-consent-toggle-label">
+                        <strong>Markedsføring</strong>
+                        <p>Disse informasjonskapslene brukes til å spore besøkende på tvers av nettsteder for å vise relevante annonser.</p>
+                    </div>
+                    <!-- This switch allows the user to opt in or out of marketing cookies. -->
+                    <label class="switch">
+                        <input type="checkbox" id="cookie-marketing">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
             </div>
-            <p class="cookie-category-text">
-                Disse er essensielle for at nettstedet skal fungere korrekt. De kan ikke deaktiveres og inkluderer funksjoner som navigasjon og tilgang til sikre områder.
-            </p>
         </div>
-        <div class="cookie-category">
-            <div class="cookie-category-header">
-                <h4>Analyse</h4>
-                <label class="toggle-switch">
-                    <input type="checkbox" id="cookie-consent-analytics" data-cookie-category="analytics">
-                    <span class="slider"></span>
-                </label>
-            </div>
-            <p class="cookie-category-text">
-                Disse hjelper oss å forstå hvordan besøkende samhandler med nettstedet ved å samle inn og rapportere informasjon anonymt. Dette lar oss forbedre brukeropplevelsen.
-            </p>
+
+        <!--
+            Footer section of the modal.
+            Contains the action buttons for the user to save their preferences or accept all cookies.
+        -->
+        <div class="cookie-consent-footer">
+            <button id="cookie-consent-save" class="cookie-consent-button">Lagre innstillinger</button>
+            <button id="cookie-consent-necessary" class="cookie-consent-button">Aksepter kun nødvendige</button>
+            <button id="cookie-consent-accept-all" class="cookie-consent-button primary">Godta alle</button>
         </div>
-        <div class="cookie-category">
-            <div class="cookie-category-header">
-                <h4>Markedsføring</h4>
-                <label class="toggle-switch">
-                    <input type="checkbox" id="cookie-consent-marketing" data-cookie-category="marketing">
-                    <span class="slider"></span>
-                </label>
-            </div>
-            <p class="cookie-category-text">
-                Disse brukes til å spore besøkende på tvers av nettsteder. Målet er å vise annonser som er relevante og engasjerende for den enkelte bruker.
-            </p>
-        </div>
-    </div>
-    <div class="cookie-modal-footer">
-        <button id="cookie-save-settings" class="cookie-btn primary">Lagre innstillinger</button>
     </div>
 </div>
