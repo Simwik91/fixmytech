@@ -30,22 +30,39 @@ Adhering to this structure makes projects easier to navigate and maintain.
 
 ## Recent Project Updates (December 2025)
 
-This section details recent significant changes and new implementations:
+This section details recent significant changes and new implementations, divided into two phases.
 
-### Cookie Consent Implementation
--   **Initial Implementation:** A new, Norwegian GDPR-compliant cookie consent banner and settings modal was implemented. This included the creation of `includes/cookie-consent.html`, `css/cookie-consent.css`, and the initial `js/cookie-consent.js`. The system provides granular control and a footer link to manage settings.
--   **Robust Refactoring:** The `cookie-consent.js` script was significantly refactored to be a self-contained module. It now fetches its own HTML on-demand, resolving a critical race condition that prevented it from working on sub-pages. This "lazy loading" approach ensures the settings modal is available globally and reliably.
+---
+
+### Phase 1: Initial Setup & Core Functionality (Cookie Consent & Layout)
+
+#### Cookie Consent Implementation
+-   **Initial Implementation:** A new, Norwegian GDPR-compliant cookie consent banner and settings modal was implemented. This included the creation of `includes/cookie-consent.html`, `css/cookie-consent.css`, and the initial `js/cookie-consent.js`.
+-   **Robust Refactoring:** The `cookie-consent.js` script was significantly refactored to be a self-contained module that fetches its own HTML on-demand. This "lazy loading" approach resolves a critical race condition and ensures the cookie settings modal is available globally and reliably on all sub-pages.
 -   **Expanded Options:** The consent banner was updated to include an "Accept necessary only" option, providing users with more granular choice from the first interaction.
 
-### Technical Enhancements & Fixes
--   **Global Relative Paths:** All absolute URLs in `index.html` and all sub-page HTML files (`lisenser/`, `om/`, `personvern/`, `vilkår/`) have been converted to root-relative paths (e.g., `/css/styles.css`). This improves local development compatibility and site portability.
--   **Character Encoding Fix:** The local development server (`start_server.py`) has been modified to explicitly send `Content-Type: text/html; charset=utf-8` headers, resolving issues with garbled Norwegian characters (e.g., 'ø', 'å') in the browser.
+#### Technical Enhancements & Fixes
+-   **Global Relative Paths:** All absolute URLs in `index.html` and all sub-page HTML files (`lisenser/`, `om/`, `personvern/`, `vilkår/`) were converted to root-relative paths (e.g., `/css/styles.css`) to improve local development compatibility and site portability.
+-   **Character Encoding Fix:** The local development server (`start_server.py`) was modified to explicitly send `Content-Type: text/html; charset=utf-8` headers, resolving issues with garbled Norwegian characters.
 
-### UI/UX Improvements
--   **Layout Overhaul (Pricing & Contact):** The "Priser og Betingelser" and "Kontakt Oss" sections on the main page have been changed from a side-by-side layout to a stacked, single-column layout for improved readability.
--   **Spacing & Alignment Standardization:**
-    -   The top padding for all main "hero" sections across all pages (`index.html`, `om/index.html`, etc.) has been increased and standardized to `8rem` for a more spacious and consistent look.
-    -   The spacing between card-based elements (`.process-steps`, `.services-grid`, etc.) has been standardized with a consistent `1.8rem` gap.
-    -   Vertical margins and padding between various sections have been adjusted to create a more consistent rhythm.
--   **Card Hover Effects:** A "pop" hover effect (lift and shadow) was added to the `.pricing-card` and `.contact-section` to match the interactive feel of other cards on the site.
--   **Icon Updates:** Outdated Font Awesome 4/5 icon class names throughout the project have been upgraded to their Font Awesome 6 equivalents, ensuring all icons render correctly.
+#### UI/UX Improvements
+-   **Layout Overhaul (Pricing & Contact):** The "Priser og Betingelser" and "Kontakt Oss" sections on the main page were changed from a side-by-side layout to a stacked, single-column layout for improved readability.
+-   **Spacing & Alignment Standardization:** A comprehensive pass was done to normalize spacing. Top padding for all page headers was standardized to `8rem`, and gaps/margins for card grids were made consistent.
+-   **Card Hover Effects:** A "pop" hover effect (lift and shadow) was added to the `.pricing-card` and `.contact-section` to match the interactive feel of other cards.
+-   **Icon Updates:** Outdated Font Awesome 4/5 icon class names were upgraded to their Font Awesome 6 equivalents.
+
+---
+
+### Phase 2: UX & Engagement Features
+
+#### Interactive "Problem Solver" FAQ
+-   **Implementation:** A new interactive FAQ section with an accordion interface was added to the homepage under the title "Hva er problemet?".
+-   **Functionality:** Custom JavaScript was added to `js/main.js` to handle the accordion's open/close state, ensuring only one panel is open at a time for a cleaner user experience.
+-   **Content Expansion:** The section was populated with common user problems, including cases that would require sending in hardware, to act as a helpful triage tool for potential clients.
+
+#### Prominent Call-to-Action (CTA) Banner
+-   **Implementation:** A new, visually distinct CTA banner was added to the homepage after the main services grid.
+-   **Low-Friction Options:** The banner provides two clear options: a primary button to scroll to the main contact form ("Få et gratis tilbud") and a secondary, lower-friction `mailto:` link for users who just want to "Still et raskt spørsmål" (Ask a quick question).
+
+#### "About Us" Page Refinement
+-   **Design Iteration:** A "Meet the founder" section was added to the `om/index.html` page to humanize the brand. Upon review, this section was subsequently removed at the user's request to maintain a more direct and service-focused narrative. The corresponding CSS was also removed.
