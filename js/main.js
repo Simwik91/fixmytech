@@ -1,4 +1,4 @@
-function initMainJS() {
+(function() {
   console.log('Initializing main JavaScript...');
 
   // ===== DOM ELEMENTS =====
@@ -387,14 +387,4 @@ function initMainJS() {
 
   // Start initialization
   initializeAll();
-}
-
-// Export for global access
-window.initMainJS = initMainJS;
-
-// Auto-initialize based on document ready state
-if (document.readyState === 'complete') {
-  initMainJS();
-} else {
-  window.addEventListener('DOMContentLoaded', initMainJS);
-}
+})();
