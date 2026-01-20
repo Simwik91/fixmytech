@@ -1,0 +1,30 @@
+[
+  {
+    "category": "EAN Generator",
+    "slug": "ean-generator",
+    "description": "Generer strekkoder for produkter eller inventar.",
+    "icon": "fas fa-barcode",
+    "url": "/tools/eangenerator/"
+  },
+  {
+    "category": "QR-kodegenerator",
+    "slug": "qr-generator",
+    "description": "Lag QR-koder for URL-er, tekst eller kontaktdetaljer.",
+    "icon": "fas fa-qrcode",
+    "url": "/tools/qrgenerator"
+  },
+  {
+    "category": "Bildeverktøy",
+    "slug": "image-tools",
+    "description": "Rediger, endre størrelse på eller konverter bilder enkelt.",
+    "icon": "fas fa-image",
+    "url": "/tools/imagetools"
+  },
+  {
+    "category": "Filkonverterer",
+    "slug": "file-converter",
+    "description": "Konverter filer mellom ulike formater.",
+    "icon": "fas fa-file-export",
+    "url": "/tools/fileconverter"
+  }
+]

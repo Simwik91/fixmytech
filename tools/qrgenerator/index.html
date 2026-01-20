@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR-kodegenerator - FixMyTech</title>
+  <meta name="description" content="Generer tilpassede QR-koder.">
+  
+  <!-- Performance Tuning -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/qrgenerator.css">
+  
+</head>
+<body>
+  <!-- Cookie Consent Include -->
+  <div id="cookie-consent-container"></div>
+  <div id="header-container"></div>
+<main id="main-content">
+  <section class="page-hero">
+    <div class="hero-content">
+      <h1><span>QR</span>-kodegenerator</h1>
+      <p>Generer tilpassede QR-koder.</p>
+    </div>
+  </section>
+  <div class="card">
+      <div class="tabs" role="tablist">
+        <div class="tab active" data-tab="single" role="tab" aria-selected="true" tabindex="0">
+          <i class="fas fa-qrcode"></i> Enkel QR-kode
+        </div>
+        <div class="tab" data-tab="bulk" role="tab" aria-selected="false" tabindex="0">
+          <i class="fas fa-layer-group"></i> Bulk QR koder
+        </div>
+        <div class="tab" data-tab="scan" role="tab" aria-selected="false" tabindex="0">
+          <i class="fas fa-camera"></i> Skann QR-kode
+        </div>
+      </div>
+
+
+      <div class="tab-content active" id="single-tab" role="tabpanel">
+        
+        
+        <label for="qr-type">QR-kodetype:</label>
+        <select id="qr-type" aria-label="Velg QR-kodetype">
+          <option value="numeric">Numerisk</option>
+          <option value="url">URL</option>
+          <option value="text" selected>Tekst</option>
+          <option value="vcard">vCard (Kontakt)</option>
+          <option value="wifi">Wi-Fi</option>
+          <option value="sms">SMS</option>
+          <option value="email">E-post</option>
+        </select>
+
+        <div class="qr-type-fields active" id="numeric-fields">
+          <label for="numeric-input">Skriv inn tall:</label>
+          <input type="text" id="numeric-input" placeholder="1234567890" pattern="[0-9]*" inputmode="numeric" aria-label="Skriv inn tall">
+        </div>
+
+        <div class="qr-type-fields" id="url-fields">
+          <label for="url-input">Skriv inn URL:</label>
+          <input type="url" id="url-input" placeholder="https://example.com" aria-label="Skriv inn URL">
+        </div>
+
+        <div class="qr-type-fields" id="text-fields">
+          <label for="text-input">Skriv inn tekst:</label>
+          <textarea id="text-input" placeholder="Skriv inn hvilken som helst tekst" aria-label="Skriv inn tekst"></textarea>
+        </div>
+
+        <div class="qr-type-fields" id="vcard-fields">
+          <label for="vcard-name">Fullt navn:</label>
+          <input type="text" id="vcard-name" placeholder="Ola Nordmann" aria-label="Skriv inn fullt navn">
+          <label for="vcard-phone">Telefonnummer:</label>
+          <input type="tel" id="vcard-phone" placeholder="+4712345678" aria-label="Skriv inn telefonnummer">
+          <label for="vcard-email">E-post:</label>
+          <input type="email" id="vcard-email" placeholder="ola@example.com" aria-label="Skriv inn e-postadresse">
+        </div>
+
+        <div class="qr-type-fields" id="wifi-fields">
+          <label for="wifi-ssid">Wi-Fi SSID:</label>
+          <input type="text" id="wifi-ssid" placeholder="Nettverksnavn" aria-label="Skriv inn Wi-Fi SSID">
+          <label for="wifi-password">Passord:</label>
+          <input type="text" id="wifi-password" placeholder="Passord" aria-label="Skriv inn Wi-Fi-passord">
+          <label for="wifi-type">Krypteringstype:</label>
+          <select id="wifi-type" aria-label="Velg Wi-Fi-krypteringstype">
+            <option value="WPA">WPA/WPA2</option>
+            <option value="WEP">WEP</option>
+            <option value="nopass">Ingen passord</option>
+          </select>
+        </div>
+
+        <div class="qr-type-fields" id="sms-fields">
+          <label for="sms-phone">Telefonnummer:</label>
+          <input type="tel" id="sms-phone" placeholder="+4712345678" aria-label="Skriv inn telefonnummer for SMS">
+          <label for="sms-message">Melding:</label>
+          <textarea id="sms-message" placeholder="Skriv inn meldingen din" aria-label="Skriv inn SMS-melding"></textarea>
+        </div>
+
+        <div class="qr-type-fields" id="email-fields">
+          <label for="email-address">Mottakers e-post:</label>
+          <input type="email" id="email-address" placeholder="mottaker@example.com" aria-label="Skriv inn mottakers e-post">
+          <label for="email-subject">Emne:</label>
+          <input type="text" id="email-subject" placeholder="Emne" aria-label="Skriv inn e-postemne">
+          <label for="email-body">Brødtekst:</label>
+          <textarea id="email-body" placeholder="Skriv inn e-posttekst" aria-label="Skriv inn e-posttekst"></textarea>
+        </div>
+
+        <div class="error" id="input-error">Vennligst fyll ut alle obligatoriske felt</div>
+
+        <!-- Color Options Section -->
+        <div class="color-options-container">
+          <div class="color-options-header">
+            <i class="fas fa-palette"></i>
+            <h3>Fargevalg</h3>
+          </div>
+          
+          <div class="text-display-toggle">
+            <label class="toggle-label">Tilpass farger</label>
+            <label class="toggle-switch-visual">
+              <input type="checkbox" id="show-color-options">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          
+          <div class="color-options-content" id="color-options-content">
+            <div class="color-group">
+              <div class="color-input">
+                <label for="fg-color">Forgrundsfarge</label>
+                <input type="color" id="fg-color" value="#000000" aria-label="Velg forgrundsfarge">
+              </div>
+              <div class="color-input">
+                <label for="bg-color">Bakgrunnsfarge</label>
+                <input type="color" id="bg-color" value="#FFFFFF" aria-label="Velg bakgrunnsfarge">
+              </div>
+            </div>
+            
+            <div class="toggle-container">
+              <span class="toggle-label">Gjennomsiktig bakgrunn</span>
+              <label class="toggle-switch-visual">
+                <input type="checkbox" id="transparent-bg" aria-label="Gjør bakgrunnen gjennomsiktig">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Logo & Border Options Section -->
+        <div class="logo-options-container">
+          <div class="logo-options-header">
+            <i class="fas fa-image"></i>
+            <h3>Logo og kantlinjevalg</h3>
+          </div>
+          
+          <div class="text-display-toggle">
+            <label class="toggle-label">Legg til logo og kantlinje</label>
+            <label class="toggle-switch-visual">
+              <input type="checkbox" id="show-logo-options">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          
+          <div class="logo-options-content" id="logo-options-content">
+            <div class="logo-upload-container">
+              <div class="logo-upload-area" id="logo-upload-area">
+                <label for="logo-upload" class="visually-hidden">Last opp logo</label>
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Dra og slipp logoen din her<br>eller klikk for å velge en fil</p>
+                <div class="logo-preview" id="logo-preview">
+                  <div class="border-preview">
+                    <div class="logo-placeholder"></div>
+                    <div class="border-indicator" id="border-preview"></div>
+                  </div>
+                </div>
+                <input type="file" id="logo-upload" accept="image/*" style="display:none" aria-label="Last opp logo">
+              </div>
+            </div>
+            
+            <div class="border-controls-container">
+              <div class="border-controls">
+                <div class="border-control">
+                  <label for="border-size">Kantlinjestørrelse:</label>
+                  <div class="size-controls">
+                    <input type="range" id="border-size" class="size-slider" min="0" max="20" value="5" step="1" aria-label="Juster logokantlinjestørrelse">
+                    <div class="size-value" id="border-size-value">5px</div>
+                  </div>
+                </div>
+                <div class="border-control">
+                  <label for="logo-size">Logostørrelse:</label>
+                  <div class="size-controls">
+                    <input type="range" id="logo-size" class="size-slider" min="5" max="25" value="15" step="1" aria-label="Juster logostørrelse">
+                    <div class="size-value" id="logo-size-value">15%</div>
+                  </div>
+                </div>
+                <div class="border-note" id="border-note">
+                  <i class="fas fa-info-circle"></i> Kantlinjeinnstillinger gjelder bare når en logo er lastet opp
+                </div>
+                <div class="border-control">
+                  <label for="border-color">Kantlinjefarge:</label>
+                  <input type="color" id="border-color" value="#FFFFFF" aria-label="Velg logokantlinjefarge">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text Display Options for Single QR -->
+        <div class="text-display-container">
+          <div class="text-display-header">
+            <i class="fas fa-font"></i>
+            <h3>Tekstvisningsalternativer</h3>
+          </div>
+          
+          <div class="text-display-content">
+            <div class="text-display-toggle">
+              <label class="toggle-label">Vis tekst under QR-koden</label>
+              <label class="toggle-switch-visual">
+                <input type="checkbox" id="show-text-display">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            
+            <div class="text-display-group" id="text-display-fields" style="display: none;">
+              <label for="custom-text">Egendefinert tekst (valgfritt, overstyrer QR-innhold):</label>
+              <input type="text" id="custom-text" placeholder="Skriv inn egendefinert tekst som skal vises under QR-koden">
+              
+              <label for="text-prefix">Tekstprefiks (valgfritt):</label>
+              <input type="text" id="text-prefix" placeholder="Prefiks som skal legges til før teksten">
+              
+              <label for="text-suffix">Tekstsuffiks (valgfritt):</label>
+              <input type="text" id="text-suffix" placeholder="Suffiks som skal legges til etter teksten">
+              
+              <div class="text-display-controls">
+                <div class="text-display-control">
+                  <label for="text-color">Tekstfarge:</label>
+                  <input type="color" id="text-color" value="#000000">
+                </div>
+                
+                <div class="text-display-control">
+                  <label for="text-size">Tekststørrelse:</label>
+                  <select id="text-size">
+                    <option value="12px">Liten</option>
+                    <option value="16px" selected>Middels</option>
+                    <option value="20px">Stor</option>
+                    <option value="24px">Ekstra Stor</option>
+                  </select>
+                </div>
+                
+                <div class="text-display-control">
+                  <label for="text-align">Tekstjustering:</label>
+                  <select id="text-align">
+                    <option value="left">Venstre</option>
+                    <option value="center" selected>Senter</option>
+                    <option value="right">Høyre</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="text-display-preview" id="text-preview">
+                Forhåndsvisning vises her
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Size Options Section -->
+        <div class="size-options-container">
+          <div class="size-options-header">
+            <i class="fas fa-ruler"></i>
+            <h3>Størrelsesalternativer</h3>
+          </div>
+          
+          <div class="text-display-toggle">
+            <label class="toggle-label">Tilpass QR-størrelse</label>
+            <label class="toggle-switch-visual">
+              <input type="checkbox" id="show-size-options">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          
+          <div class="size-options-content" id="size-options-content">
+            <div class="size-group">
+              <label for="size-slider">QR-kodestørrelse:</label>
+              <div class="size-controls">
+                <input type="range" id="size-slider" class="size-slider" min="128" max="1024" value="256" step="32" aria-label="Juster QR-kodestørrelse">
+                <div class="size-value" id="size-value">256px</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <button onclick="generateQR()" class="btn" aria-label="Generer QR-kode">
+            <i class="fas fa-bolt"></i> Generer QR-kode
+          </button>
+          <div class="download-buttons" id="download-buttons" style="display:none">
+            <!-- SVG Download Button and Note -->
+            <div class="download-row">
+              <button id="download-svg-btn" onclick="downloadQR('svg')" class="btn btn-secondary" aria-label="Last ned SVG QR-kode">
+                <i class="fas fa-download"></i> Last ned SVG
+              </button>
+              <div class="svg-download-note">
+                <i class="fas fa-info-circle"></i> Merk: SVG-nedlastinger støtter bare fargetilpasning.
+              </div>
+            </div>
+            
+            <!-- PNG Download Button -->
+            <div class="download-row">
+              <button id="download-png-btn" onclick="downloadQR('png')" class="btn" aria-label="Last ned PNG QR-kode">
+                <i class="fas fa-file-archive"></i> Last ned PNG (ZIP)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="loading" id="qr-loading">
+          <div class="spinner"></div>
+          Genererer QR-kode...
+        </div>
+        <div class="error" id="qr-error"></div>
+        <div class="success" id="qr-success"></div>
+
+        <div class="qr-result-container">
+          <canvas id="qr-canvas" width="256" height="256" style="display:none;" aria-label="Generert QR-kode"></canvas>
+          <div class="qr-text-container" id="qr-text-display" style="display: none;"></div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="bulk-tab" role="tabpanel">
+        
+        
+        <div class="input-type-toggle" id="bulk-input-type">
+          <label class="active">
+            <input type="radio" name="bulk-type" value="list" checked>
+            <i class="fas fa-list"></i> Liste
+          </label>
+          <label>
+            <input type="radio" name="bulk-type" value="range">
+            <i class="fas fa-sort-numeric-up"></i> Tallrekke
+          </label>
+          <label>
+            <input type="radio" name="bulk-type" value="csv">
+              <i class="fas fa-file-csv"></i> CSV-opplasting
+            </label>
+        </div>
+        
+        <!-- List Input Fields -->
+        <div id="bulk-list-fields" class="bulk-format-content" style="display: block;">
+          <label for="bulk-input">Skriv inn URL-er eller tekst (én per linje):</label>
+          <textarea id="bulk-input" rows="5" placeholder="https://example.com/side1
+https://example.com/side2
+Enhver tekst eller data" aria-label="Skriv inn URL-er eller tekst for masse-QR-koder"></textarea>
+        </div>
+        
+        <!-- Number Range Input Fields -->
+        <div id="bulk-range-fields" class="bulk-format-content" style="display: none;">
+          <div class="range-controls">
+            <div>
+              <label for="range-prefix">Prefiks (valgfritt):</label>
+              <input type="text" id="range-prefix" placeholder="QR-">
+            </div>
+            <div>
+              <label for="range-start">Startnummer:</label>
+              <input type="number" id="range-start" min="1" value="1" placeholder="1">
+            </div>
+            <div>
+              <label for="range-end">Sluttnummer:</label>
+              <input type="number" id="range-end" min="1" value="10" placeholder="10">
+            </div>
+            <div>
+              <label for="range-suffix">Suffiks (valgfritt):</label>
+              <input type="text" id="range-suffix" placeholder="-kode">
+            </div>
+          </div>
+        </div>
+        
+        <!-- CSV Upload Format -->
+        <div id="bulk-csv-fields" class="bulk-format-content" style="display: none;">
+          <div class="file-upload-container">
+            <label for="bulk-file-upload" class="file-upload-label">
+              <i class="fas fa-cloud-upload-alt"></i>
+              <p>Last opp en CSV-fil med URL-er eller tekst<br>(én per rad)</p>
+            </label>
+            <input type="file" id="bulk-file-upload" class="file-upload-input" accept=".csv" aria-label="Last opp CSV-fil for masse-QR-koder">
+          </div>
+        </div>
+
+        <label for="bulk-filename">Filnavnprefiks:</label>
+        <input type="text" id="bulk-filename" value="qr-koder" aria-label="Skriv inn filnavnprefiks for masse-QR-koder">
+
+        <!-- Color Options for Bulk QR -->
+        <div class="color-options-container">
+          <div class="color-options-header">
+            <i class="fas fa-palette"></i>
+            <h3>Fargevalg</h3>
+          </div>
+          
+          <div class="text-display-toggle">
+            <label class="toggle-label">Tilpass farger</label>
+            <label class="toggle-switch-visual">
+              <input type="checkbox" id="bulk-show-color-options">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          
+          <div class="color-options-content" id="bulk-color-options-content">
+            <div class="color-group">
+              <div class="color-input">
+                <label for="bulk-fg-color">Forgrundsfarge</label>
+                <input type="color" id="bulk-fg-color" value="#000000" aria-label="Velg forgrundsfarge for massegenerering">
+              </div>
+              <div class="color-input">
+                <label for="bulk-bg-color">Bakgrunnsfarge</label>
+                <input type="color" id="bulk-bg-color" value="#FFFFFF" aria-label="Velg bakgrunnsfarge for massegenerering">
+              </div>
+            </div>
+            
+            <div class="toggle-container">
+              <span class="toggle-label">Gjennomsiktig bakgrunn</span>
+              <label class="toggle-switch-visual">
+                <input type="checkbox" id="bulk-transparent-bg" aria-label="Gjør bakgrunnen gjennomsiktig for massegenerering">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Logo & Border Options for Bulk QR -->
+        <div class="logo-options-container">
+          <div class="logo-options-header">
+            <i class="fas fa-image"></i>
+            <h3>Logo og kantlinjevalg</h3>
+          </div>
+          
+          <div class="text-display-toggle">
+            <label class="toggle-label">Legg til logo og kantlinje</label>
+            <label class="toggle-switch-visual">
+              <input type="checkbox" id="bulk-show-logo-options">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          
+          <div class="logo-options-content" id="bulk-logo-options-content">
+            <div class="logo-upload-container">
+              <div class="logo-upload-area" id="bulk-logo-upload-area">
+                <label for="bulk-logo-upload" class="visually-hidden">Last opp logo for massegenerering</label>
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Dra og slipp logoen din her<br>eller klikk for å velge en fil</p>
+                <div class="logo-preview" id="bulk-logo-preview">
+                  <div class="border-preview">
+                    <div class="logo-placeholder"></div>
+                    <div class="border-indicator" id="bulk-border-preview"></div>
+                  </div>
+                </div>
+                <input type="file" id="bulk-logo-upload" accept="image/*" style="display:none" aria-label="Last opp logo for massegenerering">
+              </div>
+            </div>
+            
+            <div class="border-controls-container">
+              <div class="border-controls">
+                <div class="border-control">
+                  <label for="bulk-border-size">Kantlinjestørrelse:</label>
+                  <div class="size-controls">
+                    <input type="range" id="bulk-border-size" class="size-slider" min="0" max="20" value="5" step="1" aria-label="Juster logokantlinjestørrelse for massegenerering">
+                    <div class="size-value" id="bulk-border-size-value">5px</div>
+                  </div>
+                </div>
+                <div class="border-control">
+                  <label for="bulk-logo-size">Logostørrelse:</label>
+                  <div class="size-controls">
+                    <input type="range" id="bulk-logo-size" class="size-slider" min="5" max="25" value="15" step="1" aria-label="Juster logostørrelse for massegenerering">
+                    <div class="size-value" id="bulk-logo-size-value">15%</div>
+                  </div>
+                </div>
+                <div class="border-note" id="bulk-border-note">
+                  <i class="fas fa-info-circle"></i> Kantlinjeinnstillinger gjelder bare når en logo er lastet opp
+                </div>
+                <div class="border-control">
+                  <label for="bulk-border-color">Kantlinjefarge:</label>
+                  <input type="color" id="bulk-border-color" value="#FFFFFF" aria-label="Velg logokantlinjefarge for massegenerering">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text Display Options for Bulk QR -->
+        <div class="text-display-container">
+          <div class="text-display-header">
+            <i class="fas fa-font"></i>
+            <h3>Tekstvisningsalternativer for massegenerering</h3>
+          </div>
+          
+          <div class="text-display-content">
+            <div class="text-display-toggle">
+              <label class="toggle-label">Legg til tekst i alle QR-koder</label>
+              <label class="toggle-switch-visual">
+                <input type="checkbox" id="bulk-show-text-display">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            
+            <div class="text-display-group" id="bulk-text-display-fields" style="display: none;">
+              <label for="bulk-custom-text">Egendefinert tekst (valgfritt, overstyrer QR-innhold):</label>
+              <input type="text" id="bulk-custom-text" placeholder="Skriv inn egendefinert tekst som skal vises under alle QR-koder">
+              
+              <label for="bulk-text-prefix">Tekstprefiks (valgfritt):</label>
+              <input type="text" id="bulk-text-prefix" placeholder="Prefiks som skal legges til før teksten">
+              
+              <label for="bulk-text-suffix">Tekstsuffiks (valgfritt):</label>
+              <input type="text" id="bulk-text-suffix" placeholder="Suffiks som skal legges til etter teksten">
+              
+              <div class="text-display-controls">
+                <div class="text-display-control">
+                  <label for="bulk-text-color">Tekstfarge:</label>
+                  <input type="color" id="bulk-text-color" value="#000000">
+                </div>
+                
+                <div class="text-display-control">
+                  <label for="bulk-text-size">Tekststørrelse:</label>
+                  <select id="bulk-text-size">
+                    <option value="12px">Liten</option>
+                    <option value="16px" selected>Middels</option>
+                    <option value="20px">Stor</option>
+                    <option value="24px">Ekstra Stor</option>
+                  </select>
+                </div>
+                
+                <div class="text-display-control">
+                  <label for="bulk-text-align">Tekstjustering:</label>
+                  <select id="bulk-text-align">
+                    <option value="left">Venstre</option>
+                    <option value="center" selected>Senter</option>
+                    <option value="right">Høyre</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Size Options for Bulk QR -->
+        <div class="size-options-container">
+          <div class="size-options-header">
+            <i class="fas fa-ruler"></i>
+            <h3>Størrelsesalternativer</h3>
+          </div>
+          
+          <div class="text-display-toggle">
+            <label class="toggle-label">Tilpass QR-størrelse</label>
+            <label class="toggle-switch-visual">
+              <input type="checkbox" id="bulk-show-size-options">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          
+          <div class="size-options-content" id="bulk-size-options-content">
+            <div class="size-group">
+              <label for="bulk-size-slider">QR-kodestørrelse:</label>
+              <div class="size-controls">
+                <input type="range" id="bulk-size-slider" class="size-slider" min="128" max="1024" value="256" step="32" aria-label="Juster QR-kodestørrelse for massegenerering">
+                <div class="size-value" id="bulk-size-value">256px</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <div class="download-buttons">
+            <!-- SVG Download Button and Note -->
+            <div class="download-row">
+              <button onclick="generateBulkQR('svg')" class="btn btn-secondary" aria-label="Generer og last ned masse-QR-koder som SVG ZIP">
+                <i class="fas fa-file-archive"></i> Last ned SVG (ZIP)
+              </button>
+              <div class="svg-download-note">
+                <i class="fas fa-info-circle"></i> Merk: SVG-nedlastinger støtter bare fargetilpasning.
+              </div>
+            </div>
+            
+            <!-- PNG Download Button -->
+            <div class="download-row">
+              <button onclick="generateBulkQR('png')" class="btn" aria-label="Generer og last ned masse-QR-koder som PNG ZIP">
+                <i class="fas fa-file-archive"></i> Last ned PNG (ZIP)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="loading" id="bulk-loading">
+          <div class="spinner"></div>
+          <div id="bulk-progress">Genererer QR-koder: 0/0</div>
+        </div>
+
+        <div class="success" id="bulk-success"></div>
+        <div class="error" id="bulk-error"></div>
+      </div>
+
+      <div class="tab-content" id="scan-tab" role="tabpanel">
+        
+
+        <div class="scanner-container">
+          <video id="scanner-video" aria-label="Kamerafeed for QR-kodeskanning"></video>
+          <div class="scanner-overlay" id="scanner-overlay">
+            <div class="scanner-box"></div>
+            <div class="scanner-status" id="scanner-status" style="display:none;"></div>
+            <div class="scanner-guides" id="scanner-guides" style="display:none;"></div>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <button id="start-scan" class="btn" aria-label="Start kameraskanner">
+            <i class="fas fa-play"></i> Start kameraskanner
+          </button>
+          <button id="stop-scan" class="btn btn-secondary" aria-label="Stopp kameraskanner">
+            <i class="fas fa-stop"></i> Stopp skanner
+          </button>
+        </div>
+
+        <h3>Eller skann fra bildefil</h3>
+        <div class="file-upload-container">
+          <label for="file-upload" class="file-upload-label">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p>Dra og slipp et QR-kodebilde her<br>eller klikk for å velge en fil</p>
+          </label>
+          <input type="file" id="file-upload" class="file-upload-input" accept="image/*" aria-label="Last opp QR-kodebilde for skanning">
+        </div>
+
+        <div class="scan-result" id="scan-result" role="region" aria-live="polite">
+          <p>Skanneresultater vises her</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+  <div id="footer-container"></div>
+
+  <!-- JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-image-url/1.0.0/js-image-url.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+
+  <!-- Shared JavaScript -->
+  <script src="/js/cookie-consent.js" defer></script>
+  <script src="/js/main.js" defer></script>
+  <script src="/js/qrgenerator.js"></script>
+</body>
+</html>

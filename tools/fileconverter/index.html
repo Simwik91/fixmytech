@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Konverter bilder, lyd- og videofiler.">
+    <title>Avansert Filkonverterer - FixMyTech</title>
+    
+    <!-- Performance Tuning -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Project Stylesheets -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/fileconverter.css">
+</head>
+<body>
+    <!-- Cookie Consent Include -->
+    <div id="cookie-consent-container"></div>
+    <div id="header-container"></div>
+<main id="main-content">
+  <section class="page-hero">
+    <div class="hero-content">
+      <h1><span>Fil</span>konverterer</h1>
+      <p>Konverter bilder, lyd- og videofiler.</p>
+    </div>
+  </section>
+    <!-- File Converter Content -->
+    <div class="container">
+        <div class="card">
+            <div class="tabs">
+                <div class="tab active" data-tab="image">
+                    <i class="fas fa-image"></i> Bilde
+                </div>
+                <div class="tab" data-tab="audio">
+                    <i class="fas fa-music"></i> Lyd
+                </div>
+                <div class="tab" data-tab="video">
+                    <i class="fas fa-video"></i> Video
+                </div>
+            </div>
+
+            <!-- Image Converter -->
+            <div class="tab-content active" id="image-tab">
+                <p>Konverter mellom ulike bildeformater</p>
+                
+                <div class="file-upload-area" id="imageUploadArea">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Last opp filer</h3>
+                    <p>Dra og slipp filene dine her eller klikk for å bla gjennom</p>
+                    <p class="file-upload-hint">Støtter JPG, PNG, GIF, WEBP, TIFF, BMP</p>
+                    <input type="file" id="imageFileUpload" accept="image/*" multiple>
+                    <div class="supported-formats">
+                        <span class="format-tag">JPG</span>
+                        <span class="format-tag">PNG</span>
+                        <span class="format-tag">GIF</span>
+                        <span class="format-tag">WEBP</span>
+                        <span class="format-tag">TIFF</span>
+                        <span class="format-tag">BMP</span>
+                    </div>
+                </div>
+                
+                <div class="batch-thumbnails" id="imageThumbnails">
+                    <!-- Miniatyrbilder blir lagt til her -->
+                </div>
+                
+                <div class="tool-row">
+                    <div class="tool-col">
+                        <label for="imageFormat">Utdataformat:</label>
+                        <select id="imageFormat">
+                            <option value="jpg">JPG</option>
+                            <option value="png">PNG</option>
+                            <option value="webp">WEBP</option>
+                            <option value="gif">GIF</option>
+                            <option value="bmp">BMP</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="btn-group">
+                    <button id="convertImageBtn">
+                        <i class="fas fa-sync-alt"></i> Konverter enkeltbilde
+                    </button>
+                    <button id="batchConvertBtn">
+                        <i class="fas fa-layer-group"></i> Massekonverter alle
+                    </button>
+                </div>
+            </div>
+
+            <!-- Audio Converter -->
+            <div class="tab-content" id="audio-tab">
+                <p>Konverter lydfiler mellom ulike formater</p>
+                
+                <div class="file-upload-area" id="audioUploadArea">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Last opp fil</h3>
+                    <p>Dra og slipp filen din her eller klikk for å bla gjennom</p>
+                    <p class="file-upload-hint">Støtter MP3, WAV, OGG, FLAC, AAC</p>
+                    <input type="file" id="audioFileUpload" accept="audio/*" multiple>
+                    <div class="supported-formats">
+                        <span class="format-tag">MP3</span>
+                        <span class="format-tag">WAV</span>
+                        <span class="format-tag">OGG</span>
+                        <span class="format-tag">FLAC</span>
+                        <span class="format-tag">AAC</span>
+                    </div>
+                </div>
+                
+                <div class="file-list" id="audioFileList">
+                    <!-- Filer blir listet her -->
+                </div>
+                
+                <div class="tool-row">
+                    <div class="tool-col">
+                        <label for="audioFormat">Utdataformat:</label>
+                        <select id="audioFormat">
+                            <option value="mp3">MP3</option>
+                            <option value="wav">WAV</option>
+                            <option value="ogg">OGG</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button id="convertAudioBtn">
+                    <i class="fas fa-exchange-alt"></i> Konverter lyd
+                </button>
+                
+                <div id="audioProgressContainer" class="progress-modal" style="display: none;">
+                    <div class="progress-modal-header">
+                        <span>Konverteringsprosess</span>
+                        <span id="audioProgressPercent">0%</span>
+                    </div>
+                    <div class="progress-modal-bar">
+                        <div id="audioProgressBar" class="progress-modal-fill"></div>
+                    </div>
+                    <p id="audioProgressMessage" class="progress-modal-message">Initialiserer konvertering...</p>
+                    <button id="audioCancelBtn" class="progress-modal-btn">Avbryt konvertering</button>
+                </div>
+                
+                <div class="preview-container" id="audioPreview">
+                    <audio controls id="audioPlayer" style="width: 100%; margin-top: 20px;"></audio>
+                    <a href="#" class="download-btn" id="downloadAudioBtn">
+                        <i class="fas fa-download"></i> Last ned konvertert lyd
+                    </a>
+                </div>
+            </div>
+
+            <!-- Video Converter -->
+            <div class="tab-content" id="video-tab">
+                <p>Konverter videofiler mellom ulike formater</p>
+                
+                <div class="file-upload-area" id="videoUploadArea">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Last opp fil</h3>
+                    <p>Dra og slipp filen din her eller klikk for å bla gjennom</p>
+                    <p class="file-upload-hint">Støtter MP4, AVI, MOV, MKV, WEBM</p>
+                    <input type="file" id="videoFileUpload" accept="video/*" multiple>
+                    <div class="supported-formats">
+                        <span class="format-tag">MP4</span>
+                        <span class="format-tag">AVI</span>
+                        <span class="format-tag">MOV</span>
+                        <span class="format-tag">MKV</span>
+                        <span class="format-tag">WEBM</span>
+                    </div>
+                </div>
+                
+                <div class="file-list" id="videoFileList">
+                    <!-- Filer blir listet her -->
+                </div>
+                
+                <div class="tool-row">
+                    <div class="tool-col">
+                        <label for="videoFormat">Utdataformat:</label>
+                        <select id="videoFormat">
+                            <option value="mp4">MP4</option>
+                            <option value="webm">WEBM</option>
+                            <option value="gif">GIF</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button id="convertVideoBtn">
+                    <i class="fas fa-exchange-alt"></i> Konverter video
+                </button>
+                
+                <div id="videoProgressContainer" class="progress-modal" style="display: none;">
+                    <div class="progress-modal-header">
+                        <span>Konverteringsprosess</span>
+                        <span id="videoProgressPercent">0%</span>
+                    </div>
+                    <div class="progress-modal-bar">
+                        <div id="videoProgressBar" class="progress-modal-fill"></div>
+                    </div>
+                    <p id="videoProgressMessage" class="progress-modal-message">Initialiserer konvertering...</p>
+                    <button id="videoCancelBtn" class="progress-modal-btn">Avbryt konvertering</button>
+                </div>
+                
+                <div class="preview-container" id="videoPreview">
+                    <video controls id="videoPlayer" style="width: 100%; max-height: 300px; margin-top: 20px;"></video>
+                    <a href="#" class="download-btn" id="downloadVideoBtn">
+                        <i class="fas fa-download"></i> Last ned konvertert video
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+    <div id="footer-container"></div>
+
+    <!-- Script Loading -->
+    <script src="/js/cookie-consent.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script src="/js/fileconverter.js"></script>
+</body>
+</html>

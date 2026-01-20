@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gratis EAN-generator - Lag tilpassede EAN-13, EAN-8, UPC og andre strekkoder for produkter, inventar og detaljhandel.">
+  <title>EAN Generator - FixMyTech</title>
+  
+  <!-- SEO Optimizations -->
+  <meta name="robots" content="index, follow">
+  <meta name="keywords" content="gratis ean generator, strekkodemaker, ean-13, ean-8, upc strekkode, ean generator, fixmytech">
+  <meta property="og:title" content="Gratis EAN Generator - FixMyTech">
+  <meta property="og:description" content="Lag tilpassede strekkoder for produkter, inventar og detaljhandel. Generer EAN-13, EAN-8, UPC og mer. Et gratis verktøy fra FixMyTech.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fixmytech.no/tools/eangenerator">
+  <meta property="og:image" content="https://fixmytech.no/social-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <!-- Performance Optimization -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.rel='stylesheet'">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/eangenerator.css">
+</head>
+<body>
+  <!-- Cookie Consent Include -->
+  <div id="cookie-consent-container"></div>
+  <div id="header-container"></div>
+<main id="main-content">
+  <section class="page-hero">
+    <div class="hero-content">
+      <h1><span>EAN</span> Generator</h1>
+      <p>Lag strekkoder gratis, raskt og enkelt.</p>
+    </div>
+  </section>
+  <div class="card">
+    <div class="tabs" role="tablist">
+      <div class="tab active" data-tab="single" role="tab" aria-selected="true" tabindex="0">
+        Enkel strekkode
+      </div>
+      <div class="tab" data-tab="batch" role="tab" aria-selected="false" tabindex="0">
+        Massegenerering
+      </div>
+    </div>
+
+    <div class="tab-content active" id="single-tab" role="tabpanel">
+      <div class="form-group">
+        <label for="ean-type">Strekkodetype:</label>
+        <select id="ean-type" aria-label="Velg strekkodetype">
+          <option value="ean13" selected>EAN-13</option>
+          <option value="ean8">EAN-8</option>
+          <option value="upc">UPC-A</option>
+          <option value="code128">Code 128</option>
+          <option value="code39">Code 39</option>
+          <option value="itf14">ITF-14</option>
+          <option value="codabar">Codabar</option>
+          <option value="pharmacode">Pharmacode</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="ean-input">Strekkodeverdi:</label>
+        <input id="ean-input" type="text" placeholder="Skriv inn strekkode eller la stå tom for å generere automatisk" autofocus aria-label="Skriv inn strekkodeverdi">
+        <p id="ean-input-feedback" class="feedback-text"></p>
+        <div class="error" id="single-error" style="display: none;"></div>
+      </div>
+      
+      <div class="success" id="single-success"></div>
+      <div class="button-group">
+        <button id="generate-single-btn" class="btn" aria-label="Generer strekkode">
+          <i class="fas fa-bolt"></i> Generer strekkode
+        </button>
+        <button id="download-btn" class="btn btn-secondary" style="display:none" aria-label="Last ned strekkode">
+          <i class="fas fa-download"></i> Last ned PNG
+        </button>
+        <button id="download-svg-btn" class="btn btn-secondary" style="display:none" aria-label="Last ned SVG">
+          <i class="fas fa-file-code"></i> Last ned SVG
+        </button>
+        <button id="copy-btn" class="btn btn-secondary" style="display:none" aria-label="Kopier verdi">
+          <i class="fas fa-copy"></i> Kopier verdi
+        </button>
+        <div class="copy-success" id="copy-success" style="display: none;">Kopiert!</div>
+      </div>
+      <div class="loading" id="single-loading">
+        <div class="spinner"></div>
+        Genererer strekkode...
+      </div>
+      <div id="ean-output">
+        <canvas id="ean-canvas" style="display: none;" aria-label="Generert strekkode"></canvas>
+      </div>
+    </div>
+
+    <div class="tab-content" id="batch-tab" role="tabpanel">
+      <div class="form-group">
+        <label for="batch-ean-type">Strekkodetype:</label>
+        <select id="batch-ean-type" aria-label="Velg strekkodetype for massegenerering">
+          <option value="ean13" selected>EAN-13</option>
+          <option value="ean8">EAN-8</option>
+          <option value="upc">UPC-A</option>
+          <option value="code128">Code 128</option>
+          <option value="code39">Code 39</option>
+          <option value="itf14">ITF-14</option>
+          <option value="codabar">Codabar</option>
+          <option value="pharmacode">Pharmacode</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="batch-amount">Antall strekkoder:</label>
+        <input id="batch-amount" type="number" min="1" max="100" value="10" placeholder="Skriv inn antall koder (1–100)" aria-label="Skriv inn antall strekkoder">
+      </div>
+      
+      <div class="button-group">
+        <button id="generate-batch-png-btn" class="btn" aria-label="Generer og last ned massestrekkoder som PNG-er">
+          <i class="fas fa-file-archive"></i> Last ned som PNG-er (ZIP)
+        </button>
+        <button id="generate-batch-svg-btn" class="btn" aria-label="Generer og last ned massestrekkoder som SVG-er">
+          <i class="fas fa-file-archive"></i> Last ned som SVG-er (ZIP)
+        </button>
+      </div>
+      <div class="loading" id="batch-loading">
+        <div class="spinner"></div>
+        <div id="batch-progress">Genererer strekkoder: 0/0</div>
+      </div>
+      <div class="success" id="batch-success" style="display: none;"></div>
+      <div class="error" id="batch-error" style="display: none;"></div>
+    </div>
+  </div>
+</main>
+  <div id="footer-container"></div>
+
+  <!-- JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+  <!-- Shared JavaScript -->
+  <script src="/js/cookie-consent.js" defer></script>
+  <script src="/js/main.js" defer></script>
+  <script src="/js/eangenerator.js"></script>
+</body>
+</html>

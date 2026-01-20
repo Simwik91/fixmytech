@@ -10,7 +10,6 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
-  <script src="/js/cookie-consent.js" defer></script>
 </head>
 <body>
   <!-- Cookie Consent Include -->
@@ -20,19 +19,21 @@
   <div id="header-container"></div>
 
   <main id="main-content">
+    <section class="page-hero">
+      <div class="hero-content">
+        <h1><span>Lisens</span>informasjon</h1>
+        <p>Informasjon om tredjepartsressurser brukt på FixMyTech.no.</p>
+      </div>
+    </section>
     <div class="container">
-      <section class="licenses-section">
-        <h1>Lisensinformasjon</h1>
-        <p>FixMyTech.no bruker flere tredjepartsressurser for å gi en optimal brukeropplevelse. Nedenfor finner du informasjon om lisensene for disse ressursene.</p>
+      <section class="licenses-section" style="padding-top: 0;">
 
         <div class="license-item">
           <h2>Font Awesome</h2>
           <p>Vi bruker Font Awesome Free 6.4.0 for ikoner på nettstedet vårt. Font Awesome er lisensiert under følgende vilkår:</p>
-          <ul>
-            <li>Ikoner: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International (CC BY 4.0)</a></li>
-            <li>Kode (CSS/JS): <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a></li>
-            <li>Skjermfonter: <a href="https://scripts.sil.org/OFL" target="_blank">SIL Open Font License 1.1</a></li>
-          </ul>
+          <p>Ikoner: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International (CC BY 4.0)</a></p>
+          <p>Kode (CSS/JS): <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a></p>
+          <p>Skjermfonter: <a href="https://scripts.sil.org/OFL" target="_blank">SIL Open Font License 1.1</a></p>
           <p>Mer informasjon finner du på <a href="https://fontawesome.com/license/free" target="_blank">Font Awesome sin lisensside</a>.</p>
         </div>
 
@@ -40,15 +41,46 @@
           <h2>Google Fonts (Poppins og Roboto)</h2>
           <p>Vi bruker Poppins og Roboto fonter fra Google Fonts. Begge fonter er lisensiert under <a href="https://scripts.sil.org/OFL" target="_blank">SIL Open Font License 1.1</a>.</p>
           <p>Mer informasjon om disse fontene finner du på:</p>
-          <ul>
-            <li><a href="https://fonts.google.com/specimen/Poppins" target="_blank">Poppins på Google Fonts</a></li>
-            <li><a href="https://fonts.google.com/specimen/Roboto" target="_blank">Roboto på Google Fonts</a></li>
-          </ul>
+          <p><a href="https://fonts.google.com/specimen/Poppins" target="_blank">Poppins på Google Fonts</a></p>
+          <p><a href="https://fonts.google.com/specimen/Roboto" target="_blank">Roboto på Google Fonts</a></p>
         </div>
 
         <div class="license-item">
           <h2>Formspree</h2>
           <p>Vi bruker Formspree for å håndtere kontaktskjemaet vårt. Tjenesten er levert av <a href="https://formspree.io/" target="_blank">Formspree</a>. Se deres <a href="https://formspree.io/legal/terms-of-service" target="_blank">vilkår for bruk</a> for mer informasjon.</p>
+        </div>
+
+        <div class="license-item">
+          <h2>Verktøy</h2>
+          <p>Følgende verktøy bruker spesifikke JavaScript-biblioteker og ressurser for funksjonalitet:</p>
+          <p>
+            <strong>EAN Generator:</strong> Denne verktøyen bruker:
+            JsBarcode for strekkodegenerering (MIT License).
+            JSZip for filarkivering (MIT or GPLv3 License).
+            FileSaver.js for lagring av filer (MIT License).
+          </p>
+          <p>
+            <strong>QR-kodegenerator:</strong> Denne verktøyen bruker:
+            qrcode.js for QR-kodegenerering (MIT License).
+            jsQR for QR-kodelesing (Apache-2.0 License).
+            JSZip for filarkivering (MIT or GPLv3 License).
+            FileSaver.js for lagring av filer (MIT License).
+            PapaParse for CSV-parsing (MIT License).
+          </p>
+          <p>
+            <strong>Bildeverktøy:</strong> Denne verktøyen bruker:
+            heic2any for HEIC/HEIF-konvertering (MIT License, with LGPL-licensed dependencies).
+            Native browser APIs for de fleste bildebehandlingsoperasjoner.
+          </p>
+          <p>
+            <strong>Videoverktøy:</strong> Denne verktøyen bruker:
+            @ffmpeg/ffmpeg for videokonvertering og -behandling (LGPL 2.1+ License).
+          </p>
+          <p>
+            <strong>Filkonverterer:</strong> Denne verktøyen bruker:
+            @ffmpeg/ffmpeg for lyd- og videokonvertering (LGPL 2.1+ License).
+            Tesseract.js for tekstgjenkjenning (OCR) (Apache-2.0 License).
+          </p>
         </div>
 
         <p>Hvis du har spørsmål om lisensene eller bruken av tredjepartsressurser, kontakt oss via <a href="/#contact">kontaktskjemaet</a>.</p>
@@ -62,6 +94,7 @@
   <div id="footer-container"></div>
 
   <!-- Script Loading -->
-  <script src="/js/main.js"></script>
+  <script src="/js/cookie-consent.js" defer></script>
+  <script src="/js/main.js" defer></script>
 </body>
 </html>

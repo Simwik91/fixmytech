@@ -1,5 +1,4 @@
 (function() {
-  console.log('Initializing main JavaScript...');
 
   // ===== DOM ELEMENTS =====
   const scrollTopBtn = document.getElementById('scrollTopBtn');
@@ -28,7 +27,6 @@
       })
       .then(footer => {
         document.getElementById('footer-container').innerHTML = footer;
-        console.log('Footer loaded and initialized');
       })
       .catch(error => {
         console.error('Error loading includes:', error);
@@ -59,7 +57,37 @@
       });
     }
     
-    populateServicesDropdown();
+    populateToolsDropdown();
+  }
+
+  // ===== POPULATE TOOLS DROPDOWN FROM JSON =====
+  function populateToolsDropdown() {
+    const dropdownContainer = document.getElementById('tools-dropdown');
+    if (!dropdownContainer) return;
+
+    fetch('/tools/tools.json')
+      .then(response => {
+        if (!response.ok) throw new Error('Failed to fetch tools.json');
+        return response.json();
+      })
+      .then(data => {
+        dropdownContainer.innerHTML = '';
+
+        data.forEach(tool => {
+          const link = document.createElement('a');
+          link.href = tool.url;
+          link.setAttribute('aria-label', `Gå til ${tool.category}`);
+          link.innerHTML = `<i class="${tool.icon}"></i>${tool.category}`;
+          dropdownContainer.appendChild(link);
+        });
+
+        updateNavLinkListeners(document.querySelectorAll('.main-nav a'));
+      })
+      .catch(error => {
+        console.error('Error loading tools:', error);
+        dropdownContainer.innerHTML = `<a href="/tools/" aria-label="Error">Error loading tools</a>`;
+        updateNavLinkListeners(document.querySelectorAll('.main-nav a'));
+      });
   }
 
   // ===== POPULATE DROPDOWN MENU FROM JSON =====
@@ -82,11 +110,10 @@
         dropdownContainer.innerHTML = '';
 
         data.tjenester.forEach(service => {
-          const iconClass = iconMap[service.name] || 'fa-cogs';
           const link = document.createElement('a');
           link.href = service.path;
           link.setAttribute('aria-label', `Gå til ${service.name}`);
-          link.innerHTML = `<i class="fas ${iconClass}"></i>${service.name}`;
+          link.innerHTML = `<i class="fas ${iconMap[service.name] || 'fa-cogs'}"></i>${service.name}`;
           dropdownContainer.appendChild(link);
         });
 
@@ -145,8 +172,14 @@
         if (targetElement) {
           const header = document.querySelector('header');
           const headerHeight = header ? header.offsetHeight : 0;
-          const offset = 20;
-          const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - offset;
+          let targetPosition;
+
+          if (targetId === '#contact') {
+            targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+          } else {
+            const offset = 20;
+            targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - offset;
+          }
           
           window.scrollTo({
             top: targetPosition,
@@ -382,7 +415,6 @@
     initializeFaqAccordion();
     initializeResponsiveBehavior();
     
-    console.log('All JavaScript functionality initialized successfully');
   }
 
   // Start initialization

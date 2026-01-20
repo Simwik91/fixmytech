@@ -15,11 +15,11 @@
 /* Modal Container */
 .cookie-consent-modal {
     position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 500px;
+    bottom: 0;
+    left: 0;
+    transform: translateX(0%);
+    width: 100%;
+    max-width: 100%;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -39,18 +39,21 @@
     border-bottom: 1px solid #eee;
     padding-bottom: 15px;
     margin-bottom: 15px;
+    text-align: center;
 }
 
 .cookie-consent-title {
     font-size: 1.2em;
     font-weight: bold;
     margin: 0;
+    text-align: center;
 }
 
 .cookie-consent-text {
     font-size: 0.9em;
     line-height: 1.5;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 /* --- Toggles / Switches --- */
@@ -63,12 +66,17 @@
 
 .cookie-consent-toggle-item {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Align text left, switch right */
     align-items: center;
     padding: 10px;
     background-color: #f9f9f9;
     border-radius: 5px;
     gap: 15px; /* Add gap for spacing */
+}
+
+.cookie-consent-toggle-label {
+    text-align: left; /* Ensure text within label is left-aligned */
+    flex-grow: 1; /* Allow label to take available space */
 }
 
 .cookie-consent-toggle-label p {
@@ -132,7 +140,7 @@ input:checked + .slider:before {
 
 .cookie-consent-footer {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
     gap: 10px;
     margin-top: 20px;
