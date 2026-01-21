@@ -51,14 +51,13 @@
                     <i class="fas fa-cloud-upload-alt"></i>
                     <h3>Last opp filer</h3>
                     <p>Dra og slipp filene dine her eller klikk for å bla gjennom</p>
-                    <p class="file-upload-hint">Støtter JPG, PNG, GIF, WEBP, TIFF, BMP</p>
+                    <p class="file-upload-hint">Støtter JPG, PNG, GIF, WEBP, BMP</p>
                     <input type="file" id="imageFileUpload" accept="image/*" multiple>
                     <div class="supported-formats">
                         <span class="format-tag">JPG</span>
                         <span class="format-tag">PNG</span>
                         <span class="format-tag">GIF</span>
                         <span class="format-tag">WEBP</span>
-                        <span class="format-tag">TIFF</span>
                         <span class="format-tag">BMP</span>
                     </div>
                 </div>
@@ -80,14 +79,12 @@
                     </div>
                 </div>
                 
-                <div class="btn-group">
-                    <button id="convertImageBtn">
-                        <i class="fas fa-sync-alt"></i> Konverter enkeltbilde
-                    </button>
-                    <button id="batchConvertBtn">
-                        <i class="fas fa-layer-group"></i> Massekonverter alle
+                <div class="center-btn-container">
+                    <button id="confirmConvertImageBtn" class="convert-now-btn">
+                        <i class="fas fa-sync-alt"></i> KONVERTER NÅ
                     </button>
                 </div>
+
             </div>
 
             <!-- Audio Converter -->
@@ -98,14 +95,12 @@
                     <i class="fas fa-cloud-upload-alt"></i>
                     <h3>Last opp fil</h3>
                     <p>Dra og slipp filen din her eller klikk for å bla gjennom</p>
-                    <p class="file-upload-hint">Støtter MP3, WAV, OGG, FLAC, AAC</p>
+                    <p class="file-upload-hint">Støtter MP3, WAV, OGG</p>
                     <input type="file" id="audioFileUpload" accept="audio/*" multiple>
                     <div class="supported-formats">
                         <span class="format-tag">MP3</span>
                         <span class="format-tag">WAV</span>
                         <span class="format-tag">OGG</span>
-                        <span class="format-tag">FLAC</span>
-                        <span class="format-tag">AAC</span>
                     </div>
                 </div>
                 
@@ -124,9 +119,11 @@
                     </div>
                 </div>
                 
-                <button id="convertAudioBtn">
-                    <i class="fas fa-exchange-alt"></i> Konverter lyd
-                </button>
+                <div class="center-btn-container">
+                    <button id="confirmConvertAudioBtn" class="convert-now-btn">
+                        <i class="fas fa-exchange-alt"></i> KONVERTER NÅ
+                    </button>
+                </div>
                 
                 <div id="audioProgressContainer" class="progress-modal" style="display: none;">
                     <div class="progress-modal-header">
@@ -137,12 +134,12 @@
                         <div id="audioProgressBar" class="progress-modal-fill"></div>
                     </div>
                     <p id="audioProgressMessage" class="progress-modal-message">Initialiserer konvertering...</p>
-                    <button id="audioCancelBtn" class="progress-modal-btn">Avbryt konvertering</button>
+
                 </div>
                 
                 <div class="preview-container" id="audioPreview">
                     <audio controls id="audioPlayer" style="width: 100%; margin-top: 20px;"></audio>
-                    <a href="#" class="download-btn" id="downloadAudioBtn">
+                    <a href="#" class="download-btn" id="downloadAudioBtn" data-smooth-scroll="false">
                         <i class="fas fa-download"></i> Last ned konvertert lyd
                     </a>
                 </div>
@@ -156,14 +153,12 @@
                     <i class="fas fa-cloud-upload-alt"></i>
                     <h3>Last opp fil</h3>
                     <p>Dra og slipp filen din her eller klikk for å bla gjennom</p>
-                    <p class="file-upload-hint">Støtter MP4, AVI, MOV, MKV, WEBM</p>
+                    <p class="file-upload-hint">Støtter MP4, WEBM, GIF</p>
                     <input type="file" id="videoFileUpload" accept="video/*" multiple>
                     <div class="supported-formats">
                         <span class="format-tag">MP4</span>
-                        <span class="format-tag">AVI</span>
-                        <span class="format-tag">MOV</span>
-                        <span class="format-tag">MKV</span>
                         <span class="format-tag">WEBM</span>
+                        <span class="format-tag">GIF</span>
                     </div>
                 </div>
                 
@@ -182,9 +177,11 @@
                     </div>
                 </div>
                 
-                <button id="convertVideoBtn">
-                    <i class="fas fa-exchange-alt"></i> Konverter video
-                </button>
+                <div class="center-btn-container">
+                    <button id="confirmConvertVideoBtn" class="convert-now-btn">
+                        <i class="fas fa-exchange-alt"></i> KONVERTER NÅ
+                    </button>
+                </div>
                 
                 <div id="videoProgressContainer" class="progress-modal" style="display: none;">
                     <div class="progress-modal-header">
@@ -195,12 +192,12 @@
                         <div id="videoProgressBar" class="progress-modal-fill"></div>
                     </div>
                     <p id="videoProgressMessage" class="progress-modal-message">Initialiserer konvertering...</p>
-                    <button id="videoCancelBtn" class="progress-modal-btn">Avbryt konvertering</button>
+
                 </div>
                 
                 <div class="preview-container" id="videoPreview">
                     <video controls id="videoPlayer" style="width: 100%; max-height: 300px; margin-top: 20px;"></video>
-                    <a href="#" class="download-btn" id="downloadVideoBtn">
+                    <a href="#" class="download-btn" id="downloadVideoBtn" data-smooth-scroll="false">
                         <i class="fas fa-download"></i> Last ned konvertert video
                     </a>
                 </div>
@@ -211,6 +208,7 @@
     <div id="footer-container"></div>
 
     <!-- Script Loading -->
+    <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.10.0/dist/ffmpeg.min.js"></script>
     <script src="/js/cookie-consent.js" defer></script>
     <script src="/js/main.js" defer></script>
     <script src="/js/fileconverter.js"></script>

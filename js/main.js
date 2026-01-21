@@ -161,8 +161,13 @@
 
   // ===== SMOOTH SCROLLING =====
   function initializeSmoothScrolling() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('a[href^="#"]:not([data-smooth-scroll="false"])').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
+        // Add an early return for blob URLs
+        if (this.getAttribute('href').startsWith('blob:')) {
+            return;
+        }
+
         if (this.getAttribute('href') === '#' || this.classList.contains('dropdown-toggle')) return;
         
         e.preventDefault();
