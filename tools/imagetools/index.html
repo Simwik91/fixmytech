@@ -27,18 +27,291 @@
       <p>Beskjær, endre størrelse, konverter og plukk farger fra bilder.</p>
     </div>
   </section>
-  <div class="card">
-
-
-
-
-
-
-
-
-
-    </div>
-</main>
+      <div class="card">
+              <div class="tabs">
+                <button class="tab active" data-tab="crop"><i class="fas fa-crop-alt"></i>Beskjær</button>
+                <button class="tab" data-tab="resize"><i class="fas fa-expand-arrows-alt"></i>Endre størrelse</button>
+                <button class="tab" data-tab="convert"><i class="fas fa-exchange-alt"></i>Konverter</button>
+                <button class="tab" data-tab="color"><i class="fas fa-palette"></i>Fargevelger</button>
+              </div>
+        
+                    <!-- Crop Tab -->
+        
+                    <div id="crop-tab" class="tab-content active">
+        
+                                            <div id="cropDragArea" class="file-upload-area">
+        
+                                              <i class="fas fa-cloud-upload-alt"></i>
+        
+                                              <h3>Last opp bilde</h3>
+        
+                                              <p>Dra og slipp et bilde her, eller klikk for å velge</p>
+        
+                                              <input type="file" id="cropUpload" accept="image/*" hidden>
+        
+                                            </div>
+        
+                                            <div class="image-workspace" id="crop-workspace" style="display:none;">
+                                                <canvas id="cropCanvas" width="300" height="200" style="display:none;"></canvas>
+                                                <div class="tool-controls" id="crop-controls">
+            
+                                                    <div class="controls">
+            
+                                                      <button id="cropBtn">Beskjær</button>
+            
+                                                      <button id="downloadCrop" style="display:none;">Last ned</button>
+            
+                                                      <button id="resetCrop">Tilbakestill</button>
+            
+                                                    </div>
+            
+                                                    <div class="quality-control">
+            
+                                                      <label for="cropQuality">Kvalitet:</label>
+            
+                                                      <input type="range" id="cropQuality" class="quality-slider" min="10" max="100" value="80">
+            
+                                                      <span id="cropQualityValue">80%</span>
+            
+                                                    </div>
+            
+                                                    <div id="crop-file-size" class="file-size-info"></div>
+            
+                                                </div>
+                                            </div>
+        
+                              
+        
+                                            <div id="crop-loading" class="loading" style="display:none;">Laster...</div>
+        
+                                            <div id="crop-error" class="error" style="display:none;"></div>
+        
+                                            <div id="crop-success" class="success"></div>
+        
+                                          </div>
+        
+                              
+        
+                                    
+        
+                                          <!-- Resize Tab -->
+        
+                                          <div id="resize-tab" class="tab-content">
+        
+                                            <div id="resizeDragArea" class="file-upload-area">
+        
+                                              <i class="fas fa-cloud-upload-alt"></i>
+        
+                                              <h3>Last opp bilde</h3>
+        
+                                              <p>Dra og slipp et bilde her, eller klikk for å velge</p>
+        
+                                              <input type="file" id="resizeUpload" accept="image/*" hidden>
+        
+                                            </div>
+        
+                                            <div class="image-workspace" id="resize-workspace" style="display:none;">
+                                                <canvas id="resizeCanvas" width="300" height="200" style="display:none;"></canvas>
+                                                <div class="tool-controls" id="resize-controls">
+            
+                                                    <div class="resize-inputs">
+            
+                                                        <div>
+            
+                                                            <label for="resizeWidth">Bredde</label>
+            
+                                                            <input type="number" id="resizeWidth" placeholder="px">
+            
+                                                        </div>
+            
+                                                        <div>
+            
+                                                            <label for="resizeHeight">Høyde</label>
+            
+                                                            <input type="number" id="resizeHeight" placeholder="px">
+            
+                                                        </div>
+            
+                                                    </div>
+            
+                                                    <div class="controls">
+            
+                                                      <button id="resizeBtn">Endre størrelse</button>
+            
+                                                      <button id="downloadResize" style="display:none;">Last ned</button>
+            
+                                                      <button id="resetResize">Tilbakestill</button>
+            
+                                                    </div>
+            
+                                                    <div class="quality-control">
+            
+                                                      <label for="resizeQuality">Kvalitet:</label>
+            
+                                                      <input type="range" id="resizeQuality" class="quality-slider" min="10" max="100" value="80">
+            
+                                                      <span id="resizeQualityValue">80%</span>
+            
+                                                    </div>
+            
+                                                    <div id="resize-file-size" class="file-size-info"></div>
+            
+                                                </div>
+                                            </div>
+        
+                              
+        
+                                            <div id="resize-loading" class="loading" style="display:none;">Laster...</div>
+        
+                                            <div id="resize-error" class="error" style="display:none;"></div>
+        
+                                            <div id="resize-success" class="success"></div>
+        
+                                          </div>
+        
+                              
+        
+                                    
+        
+                                          <!-- Convert Tab -->
+        
+                                          <div id="convert-tab" class="tab-content">
+        
+                                            <div id="convertDragArea" class="file-upload-area">
+        
+                                              <i class="fas fa-cloud-upload-alt"></i>
+        
+                                              <h3>Last opp bilde</h3>
+        
+                                              <p>Dra og slipp et bilde her, eller klikk for å velge</p>
+        
+                                              <input type="file" id="convertUpload" accept="image/*" hidden>
+        
+                                            </div>
+        
+                                            <div class="image-workspace" id="convert-workspace" style="display:none;">
+                                                <canvas id="convertCanvas" width="300" height="200" style="display:none;"></canvas>
+                                                <div class="tool-controls" id="convert-controls">
+            
+                                                    <div class="controls">
+            
+                                                      <select id="outputFormat">
+            
+                                                        <option value="jpeg">JPEG</option>
+            
+                                                        <option value="png">PNG</option>
+            
+                                                        <option value="webp">WEBP</option>
+            
+                                                        <option value="bmp">BMP</option>
+            
+                                                        <option value="gif">GIF</option>
+            
+                                                      </select>
+            
+                                                      <button id="convertBtn">Konverter & Last ned</button>
+            
+                                                    </div>
+            
+                                                    <div class="quality-control">
+            
+                                                      <label for="convertQuality">Kvalitet:</label>
+            
+                                                      <input type="range" id="convertQuality" class="quality-slider" min="10" max="100" value="80">
+            
+                                                      <span id="convertQualityValue">80%</span>
+            
+                                                    </div>
+            
+                                                    <div id="convert-file-size" class="file-size-info"></div>
+            
+                                                </div>
+                                            </div>
+        
+                              
+        
+                                            <div id="convert-loading" class="loading" style="display:none;">Laster...</div>
+        
+                                            <div id="convert-error" class="error" style="display:none;"></div>
+        
+                                            <div id="convert-success" class="success"></div>
+        
+                                          </div>
+        
+                              
+        
+                                    
+        
+                                          <!-- Color Picker Tab -->
+        
+                                          <div id="color-tab" class="tab-content">
+        
+                                            <div id="colorDragArea" class="file-upload-area">
+        
+                                              <i class="fas fa-cloud-upload-alt"></i>
+        
+                                              <h3>Last opp bilde</h3>
+        
+                                              <p>Dra og slipp et bilde her, eller klikk for å velge</p>
+        
+                                              <input type="file" id="colorUpload" accept="image/*" hidden>
+        
+                                            </div>
+        
+                                            <div class="image-workspace" id="color-workspace" style="display:none;">
+                                                <canvas id="colorCanvas" width="300" height="200" style="display:none;"></canvas>
+                                                <div class="tool-controls" id="color-controls">
+            
+                                                    <div class="controls">
+            
+                                                    </div>
+            
+                                                    <div id="color-picker-results">
+            
+                                                      <div id="colorDisplay"></div>
+            
+                                                      <div class="color-values">
+            
+                                                          <div class="color-value-box">
+            
+                                                              <span class="color-value-title">HEX</span>
+            
+                                                              <span id="colorValueHex" class="color-value-content"></span>
+            
+                                                          </div>
+            
+                                                          <div class="color-value-box">
+            
+                                                              <span class="color-value-title">RGB</span>
+            
+                                                              <span id="colorValueRgb" class="color-value-content"></span>
+            
+                                                          </div>
+            
+                                                          <div class="color-value-box">
+            
+                                                              <span class="color-value-title">HSL</span>
+            
+                                                              <span id="colorValueHsl" class="color-value-content"></span>
+            
+                                                          </div>
+            
+                                                      </div>
+            
+                                                    </div>
+            
+                                                </div>
+                                            </div>
+        
+                              
+        
+                                            <div id="color-loading" class="loading" style="display:none;">Laster...</div>
+        
+                                            <div id="color-error" class="error" style="display:none;"></div>
+        
+                                            <div id="color-success" class="success"></div>
+        
+                                          </div>      </div></main>
   <div id="footer-container"></div>
 
   <!-- JavaScript Libraries -->

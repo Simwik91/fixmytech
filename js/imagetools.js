@@ -150,6 +150,14 @@
       canvas.width = 300;
       canvas.height = 200;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      canvas.style.display = 'none';
+
+      // Hide tool controls
+      const section = canvasId.replace('Canvas', '');
+      const workspace = document.getElementById(`${section}-workspace`);
+      if (workspace) {
+        workspace.style.display = 'none';
+      }
     }
     
     function clamp(value) {
@@ -161,7 +169,7 @@
       if (stateTab.initialImage) {
         stateTab.originalImage = stateTab.initialImage;
         drawImageOnCanvas(stateTab.initialImage, `${tab}Canvas`);
-        showSuccess(document.getElementById(`${tab}-success`), 'Reset to original image!');
+
       }
     }
 
@@ -274,10 +282,9 @@
       document.getElementById('colorValueHsl').textContent = hsl;
       
       // Show success message
-      showSuccess(document.getElementById('color-success'), `Color picked: ${hex}`);
+
     }
 
-    // Initialize Image Tools
     function initializeImageTools() {
       // Tabs
       document.querySelectorAll('.tab').forEach(tab => {
@@ -293,7 +300,9 @@
 
       // Setup drag and drop functionality
       function setupDragAndDrop(dragArea, fileInput, section) {
-        dragArea.addEventListener('click', () => fileInput.click());
+        dragArea.addEventListener('click', (e) => {
+            fileInput.click();
+        });
         dragArea.addEventListener('dragover', (e) => {
           e.preventDefault();
           dragArea.classList.add('drag-over');
@@ -330,15 +339,18 @@
         if (!file) return;
         hideElements('crop');
         showLoading('crop');
+        const workspace = document.getElementById('crop-workspace');
+        const canvas = document.getElementById('cropCanvas');
         try {
           const img = await loadImage(file);
+          workspace.style.display = 'block';
+          canvas.style.display = 'block';
+          document.getElementById('crop-controls').style.display = 'flex';
+          
           state.crop.originalImage = img;
           state.crop.initialImage = img;
           drawImageOnCanvas(img, 'cropCanvas');
-          cropBtn.style.display = 'inline-block';
-          resetCrop.style.display = 'inline-block';
           updateFileSizeDisplay('crop', cropCanvas, 'jpeg');
-          showSuccess(document.getElementById('crop-success'), 'Image loaded successfully!');
         } catch (err) {
           showError(document.getElementById('crop-error'), err.message);
           resetCanvas('cropCanvas');
@@ -407,7 +419,7 @@
             drawImageOnCanvas(croppedCanvas, 'cropCanvas');
             downloadCrop.style.display = 'inline-block';
             updateFileSizeDisplay('crop', croppedCanvas, 'jpeg');
-            showSuccess(document.getElementById('crop-success'), 'Image cropped successfully!');
+
           } catch (err) {
             showError(document.getElementById('crop-error'), 'Error cropping image: ' + err.message);
           } finally {
@@ -423,8 +435,7 @@
           const quality = state.crop.quality / 100;
           link.href = state.crop.croppedImage.toDataURL('image/jpeg', quality);
           link.click();
-          showSuccess(document.getElementById('crop-success'), 'Image downloaded successfully!');
-        } else {
+                  } else {
           showError(document.getElementById('crop-error'), 'No cropped image available for download.');
         }
       });
@@ -448,15 +459,18 @@
         if (!file) return;
         hideElements('resize');
         showLoading('resize');
+        const workspace = document.getElementById('resize-workspace');
+        const canvas = document.getElementById('resizeCanvas');
         try {
           const img = await loadImage(file);
+          workspace.style.display = 'block';
+          canvas.style.display = 'block';
+          document.getElementById('resize-controls').style.display = 'flex';
+
           state.resize.originalImage = img;
           state.resize.initialImage = img;
           drawImageOnCanvas(img, 'resizeCanvas');
-          resizeBtn.style.display = 'inline-block';
-          resetResize.style.display = 'inline-block';
           updateFileSizeDisplay('resize', resizeCanvas, 'jpeg');
-          showSuccess(document.getElementById('resize-success'), 'Image loaded successfully!');
         } catch (err) {
           showError(document.getElementById('resize-error'), err.message);
           resetCanvas('resizeCanvas');
@@ -489,7 +503,7 @@
             drawImageOnCanvas(state.resize.resizedImage, 'resizeCanvas');
             downloadResize.style.display = 'inline-block';
             updateFileSizeDisplay('resize', canvas, 'jpeg');
-            showSuccess(document.getElementById('resize-success'), 'Image resized successfully!');
+
           } catch (err) {
             showError(document.getElementById('resize-error'), 'Error resizing image: ' + err.message);
           } finally {
@@ -505,8 +519,7 @@
           const quality = state.resize.quality / 100;
           link.href = state.resize.resizedImage.toDataURL('image/jpeg', quality);
           link.click();
-          showSuccess(document.getElementById('resize-success'), 'Image downloaded successfully!');
-        } else {
+                  } else {
           showError(document.getElementById('resize-error'), 'No resized image available for download.');
         }
       });
@@ -528,14 +541,18 @@
         if (!file) return;
         hideElements('convert');
         showLoading('convert');
+        const workspace = document.getElementById('convert-workspace');
+        const canvas = document.getElementById('convertCanvas');
         try {
           const img = await loadImage(file);
+          workspace.style.display = 'block';
+          canvas.style.display = 'block';
+          document.getElementById('convert-controls').style.display = 'flex';
+
           state.convert.originalImage = img;
           state.convert.initialImage = img;
           drawImageOnCanvas(img, 'convertCanvas');
-          convertBtn.style.display = 'inline-block';
           updateFileSizeDisplay('convert', convertCanvas, document.getElementById('outputFormat').value);
-          showSuccess(document.getElementById('convert-success'), 'Image loaded successfully!');
         } catch (err) {
           showError(document.getElementById('convert-error'), err.message);
           resetCanvas('convertCanvas');
@@ -602,7 +619,6 @@
             link.download = `converted-image.${fileExtension}`;
             link.href = dataUrl;
             link.click();
-            showSuccess(document.getElementById('convert-success'), `Image converted to ${format.toUpperCase()} successfully!`);
           } catch (err) {
             showError(document.getElementById('convert-error'), 'Error converting image: ' + err.message);
           } finally {
@@ -614,7 +630,6 @@
       // Color Picker Functionality
       const colorUpload = document.getElementById('colorUpload');
       const colorCanvas = document.getElementById('colorCanvas');
-      const resetColor = document.getElementById('resetColor');
       
       setupDragAndDrop(document.getElementById('colorDragArea'), colorUpload, 'color');
       
@@ -623,13 +638,17 @@
         if (!file) return;
         hideElements('color');
         showLoading('color');
+        const workspace = document.getElementById('color-workspace');
+        const canvas = document.getElementById('colorCanvas');
         try {
           const img = await loadImage(file);
+          workspace.style.display = 'block';
+          canvas.style.display = 'block';
+          document.getElementById('color-controls').style.display = 'flex';
+          
           state.color.originalImage = img;
           state.color.initialImage = img;
           drawImageOnCanvas(img, 'colorCanvas');
-          resetColor.style.display = 'inline-block';
-          showSuccess(document.getElementById('color-success'), 'Image loaded successfully! Click on the image to pick colors.');
           
           // Add click event listener to canvas for color picking
           colorCanvas.addEventListener('click', (e) => {
@@ -641,10 +660,6 @@
         } finally {
           hideLoading('color');
         }
-      });
-
-      resetColor.addEventListener('click', () => {
-        resetToInitial('color');
       });
 
       // Initialize quality controls
