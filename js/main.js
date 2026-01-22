@@ -38,6 +38,11 @@
     const navToggle = document.querySelector('.nav-toggle');
     const mainNav = document.querySelector('.main-nav');
     
+    // Initialize the theme switcher now that the header is loaded
+    if (window.initializeTheme) {
+      window.initializeTheme();
+    }
+    
     if (navToggle && mainNav) {
       navToggle.addEventListener('click', function() {
         mainNav.classList.toggle('active');

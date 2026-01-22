@@ -1,0 +1,344 @@
+/* Dark Mode Styles */
+body.dark-mode {
+  --primary: #3b82f6; /* A slightly brighter blue for dark mode */
+  --secondary: #e2e8f0; /* Light gray for text */
+  --light-gray: #334155; /* Darker gray for backgrounds/borders */
+  --background-color: #0f172a;
+  --surface-color: #1e293b;
+  --text-color: #e2e8f0;
+  --heading-color: #ffffff;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+
+  color: var(--text-color);
+  background: var(--background-color);
+}
+
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4,
+.dark-mode h5,
+.dark-mode h6 {
+  color: var(--heading-color);
+}
+
+.dark-mode .logo span,
+.dark-mode .logo,
+.dark-mode .main-nav a,
+.dark-mode .nav-toggle {
+    color: var(--heading-color);
+}
+
+.dark-mode .main-nav a,
+.dark-mode .dropdown-content a {
+    background: transparent;
+}
+
+.dark-mode .main-nav a:hover {
+    background: transparent; /* Ensure no background box on hover in dark mode for main nav */
+    border-bottom: 2px solid var(--primary); /* Keep the border bottom from original styles */
+}
+
+.dark-mode .main-nav a:hover,
+.dark-mode .logo:hover,
+.dark-mode .dropdown-content a:hover,
+.dark-mode .nav-toggle:hover {
+    color: var(--primary);
+    background: transparent; /* Explicitly transparent for hover */
+}
+
+.dark-mode .theme-switch-btn {
+  background-color: var(--light-gray); /* Use dark version of light-gray */
+  color: var(--text-color); /* Light text for dark button */
+}
+
+.dark-mode .theme-switch-btn:hover {
+  background-color: #4b5563; /* Slightly darker hover */
+}
+
+/* Styles for when the button itself indicates light mode */
+.dark-mode .theme-switch-btn.light-mode-btn {
+  background-color: white; /* White background for high contrast */
+  color: black; /* Black text for high contrast */
+}
+
+.dark-mode .theme-switch-btn.light-mode-btn:hover {
+  background-color: #eee; /* Slightly darker white on hover */
+}
+
+/* Styles for when the button itself indicates dark mode */
+.dark-mode .theme-switch-btn.dark-mode-btn {
+  background-color: black; /* Black background for high contrast */
+  color: white; /* White text for high contrast */
+}
+
+.dark-mode .theme-switch-btn.dark-mode-btn:hover {
+  background-color: #333; /* Slightly lighter black on hover */
+}
+
+/* Override sections for Om oss page */
+.dark-mode .about-section {
+  background: var(--background-color);
+}
+
+.dark-mode .values-section {
+  background: var(--background-color);
+}
+
+.dark-mode .value-card {
+  background: var(--surface-color);
+}
+
+.dark-mode .cta-section {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+}
+
+.dark-mode header,
+.dark-mode .main-nav {
+  background: var(--surface-color);
+  box-shadow: var(--shadow);
+}
+
+.dark-mode .dropdown-content {
+    background: var(--surface-color);
+    box-shadow: var(--shadow);
+}
+
+.dark-mode .hero,
+.dark-mode .page-hero {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+}
+
+.dark-mode .hero p,
+.dark-mode .page-hero p,
+.dark-mode .section-title p {
+    color: var(--heading-color);
+}
+
+.dark-mode .step-card,
+.dark-mode .service-card,
+.dark-mode .problem-card,
+.dark-mode .pricing-card,
+.dark-mode .benefit-card,
+.dark-mode .value-card,
+.dark-mode .contact-section,
+.dark-mode .privacy-card,
+.dark-mode .terms-card,
+.dark-mode .modal-content,
+.dark-mode .notification {
+  background: var(--surface-color);
+  box-shadow: var(--shadow);
+}
+
+.dark-mode .environmental-section {
+    background: #1e3a2a;
+    border-left-color: var(--success);
+}
+
+.dark-mode .everytool-section,
+.dark-mode .about-section,
+.dark-mode .privacy-section,
+.dark-mode .terms-section {
+    background: #1a2433;
+}
+
+.dark-mode .form-group label,
+.dark-mode .form-disclaimer,
+.dark-mode .footer-bottom,
+.dark-mode .terms-checkbox-container {
+  color: var(--heading-color);
+}
+
+.dark-mode .additional-fee {
+  color: var(--text-color);
+  background: rgba(220, 38, 38, 0.1); /* Using a transparent warning color for the background */
+  border-left-color: var(--warning);
+}
+
+
+.dark-mode .form-group input,
+.dark-mode .form-group textarea,
+.dark-mode .form-group select {
+  background-color: var(--background-color);
+  border-color: var(--light-gray);
+  color: var(--text-color);
+}
+
+.dark-mode .form-group input:focus,
+.dark-mode .form-group textarea:focus,
+.dark-mode .form-group select:focus {
+  border-color: var(--primary);
+  background-color: var(--surface-color);
+}
+
+.dark-mode footer {
+  background: #0b1220;
+}
+
+.dark-mode .footer-section h3 {
+    color: var(--heading-color);
+}
+
+.dark-mode .footer-section p,
+.dark-mode .footer-section a,
+.dark-mode .footer-section ul {
+    color: var(--heading-color);
+}
+
+.dark-mode .footer-section a:hover {
+    color: var(--primary);
+}
+
+.dark-mode .cta-banner {
+    background-color: var(--surface-color);
+}
+
+.dark-mode .cta-banner h2 {
+    color: var(--heading-color);
+}
+
+.dark-mode .faq-toggle {
+    background: none;
+}
+
+.dark-mode .faq-title {
+    color: var(--heading-color);
+}
+
+.dark-mode .faq-panel p {
+    color: var(--heading-color); /* Pure white for better contrast */
+}
+
+.dark-mode .licenses-section {
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
+.dark-mode .licenses-section .license-item p {
+    color: var(--heading-color);
+}
+
+.dark-mode .card {
+    background-color: var(--surface-color);
+}
+
+.dark-mode .card p,
+.dark-mode .card span,
+.dark-mode .card label,
+.dark-mode .card li {
+  color: var(--heading-color); /* Ensure text is white for better contrast */
+}
+
+/* Tool Tab Overrides */
+.dark-mode .tabs {
+    border-bottom-color: var(--light-gray);
+}
+
+.dark-mode .tab {
+    color: var(--heading-color); /* White text for tabs */
+}
+
+.dark-mode .tab:hover {
+    background-color: var(--light-gray); /* Darker background on hover */
+    color: var(--primary); /* Keep primary color for hover text */
+}
+
+.dark-mode .tab.active {
+    color: var(--primary); /* Primary color for active tab text */
+    border-bottom-color: var(--primary); /* Primary color for active tab border */
+}
+
+/* Tool Options Header Overrides (Fargevalg, Logo og kantlinjevalg) */
+.dark-mode .options-header h3 {
+    color: var(--heading-color); /* White text for options headers */
+}
+
+/* Form Labels and Upload Area Text Overrides */
+.dark-mode .form-group label,
+.dark-mode .file-upload-area h3 {
+    color: var(--heading-color); /* White text for form labels and upload area headers */
+}
+
+.dark-mode .file-upload-area p,
+.dark-mode .file-upload-hint {
+    color: var(--text-color); /* Light gray for hints/descriptions */
+}
+
+.dark-mode .format-tag {
+    background-color: var(--light-gray);
+    color: var(--text-color);
+}
+
+/* Feedback/Status Texts */
+.dark-mode .feedback-text,
+.dark-mode .loading,
+.dark-mode .scan-result,
+.dark-mode .copy-success {
+    color: var(--text-color);
+}
+
+.dark-mode .loading .spinner {
+    border-top-color: var(--primary);
+}
+
+.dark-mode .scan-result {
+    background-color: var(--background-color);
+    border-color: var(--light-gray);
+}
+
+/* Image tools specific text */
+.dark-mode .resize-inputs label,
+.dark-mode .quality-control label,
+.dark-mode .color-value-title,
+.dark-mode .color-value-content {
+    color: var(--text-color);
+}
+
+.dark-mode .tool-controls {
+    background-color: var(--surface-color);
+    border-color: var(--light-gray);
+}
+
+.dark-mode #ean-output,
+.dark-mode #custom-output {
+    background-color: var(--background-color);
+    border-color: var(--light-gray);
+}
+
+.dark-mode .copy-container {
+    background-color: var(--background-color);
+    border-color: var(--light-gray);
+}
+
+.dark-mode .preview-container {
+    background-color: var(--background-color);
+    border-color: var(--light-gray);
+}
+
+.dark-mode .status-processing {
+    background-color: #0d324f;
+    color: var(--primary);
+    border-color: #1a4f7e;
+}
+
+.dark-mode .status-completed {
+    background-color: #1a3a2a;
+    color: var(--success);
+    border-color: #216a3a;
+}
+
+.dark-mode .card p,
+.dark-mode .card span,
+.dark-mode .card label,
+.dark-mode .card li {
+  color: var(--heading-color); /* Ensure text is white for better contrast */
+}
+
+@media (max-width: 768px) {
+  .dark-mode .main-nav {
+    background: var(--surface-color); /* Override hardcoded #fff */
+  }
+  .dark-mode .dropdown-content {
+    background: var(--background-color); /* Override hardcoded #f9fafb */
+  }
+}
