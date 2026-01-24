@@ -117,6 +117,10 @@
     min-height: 100px;
 }
 
+.spaced-form-grid {
+    margin-top: 1.5rem;
+}
+
 /* Error Styling */
 .error {
     color: #d9534f;
@@ -185,9 +189,22 @@
 
 .options-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     cursor: pointer;
+    position: relative;
+}
+
+.options-header > .fa-chevron-down {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+}
+
+.options-header.open > .fa-chevron-down {
+    transform: translateY(-50%) rotate(180deg);
 }
 
 .options-header h3 {
@@ -202,6 +219,10 @@
     display: none;
     padding-top: 1.5rem;
     animation: fadeIn 0.5s;
+}
+
+.options-content .form-group {
+    text-align: center;
 }
 
 /* Toggle Switch */

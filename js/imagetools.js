@@ -485,12 +485,17 @@
           showError(document.getElementById('resize-error'), 'Please upload an image first.');
           return;
         }
-        const targetWidth = parseInt(document.getElementById('resizeWidth').value);
-        const targetHeight = parseInt(document.getElementById('resizeHeight').value);
-        if (isNaN(targetWidth) || isNaN(targetHeight) || targetWidth <= 0 || targetHeight <= 0) {
-          showError(document.getElementById('resize-error'), 'Please enter valid width and height values.');
+        let targetWidth = parseInt(document.getElementById('resizeWidth').value);
+        let targetHeight = parseInt(document.getElementById('resizeHeight').value);
+
+        if (isNaN(targetWidth) && isNaN(targetHeight)) {
+            targetWidth = state.resize.originalImage.width;
+            targetHeight = state.resize.originalImage.height;
+        } else if (isNaN(targetWidth) || isNaN(targetHeight) || targetWidth <= 0 || targetHeight <= 0) {
+          showError(document.getElementById('resize-error'), 'Please enter valid width and height values, or leave both empty to resize based on quality alone.');
           return;
         }
+        
         showLoading('resize');
         setTimeout(() => {
           try {

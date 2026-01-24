@@ -196,6 +196,7 @@ header {
   padding: 0.5rem 0;
   display: block;
   transition: var(--transition);
+  text-transform: uppercase;
 }
 
 .main-nav a:hover {
@@ -206,7 +207,6 @@ header {
 .theme-switch-btn {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
   background-color: black; /* Completely black background for high contrast */
   color: white; /* White text for high contrast */
   border: none;
@@ -214,7 +214,7 @@ header {
   border-radius: var(--border-radius);
   cursor: pointer;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 700;
   transition: var(--transition);
   margin-left: 1rem;
 }
@@ -222,10 +222,6 @@ header {
 .theme-switch-btn:hover {
   background-color: #333; /* Slightly lighter black on hover */
   transform: translateY(-2px);
-}
-
-.theme-switch-btn i {
-  font-size: 1.2rem;
 }
 
 .dropdown-content {
@@ -1539,11 +1535,75 @@ footer .container {
   transform: translateY(-3px);
 }
 
+.legal-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.legal-content h3 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.legal-content h4 {
+  font-size: 1.4rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--secondary);
+}
+
+.legal-content h5 {
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--secondary);
+}
+
+.legal-content ul {
+  list-style: disc; /* Ensure bullets are visible */
+  list-style-position: inside; /* Keeps the marker inside the content flow */
+  text-align: left; /* Align text within the list item to the left */
+  padding-left: 0; /* Remove default padding to control alignment */
+  max-width: fit-content; /* Allow the ul to shrink to content width */
+  margin: 1rem auto; /* Center the list itself if it's smaller than legal-content */
+}
+
+.legal-content li {
+  margin-bottom: 0.5rem;
+}
+
+.legal-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem auto; /* Center the table */
+  text-align: left;
+  max-width: 800px; /* Constrain table width */
+}
+
+.legal-content th,
+.legal-content td {
+  border: 1px solid var(--light-gray);
+  padding: 0.8rem;
+}
+
+.legal-content th {
+  background-color: var(--primary);
+  color: white;
+  font-weight: 600;
+}
+
+.legal-content tr:nth-child(even) {
+  background-color: #f9fafb; /* Light stripe effect */
+}
+
 /* Privacy & Terms Styles */
 .privacy-section,
-.terms-section {
-  padding: 8rem 0 4rem; /* Increased top padding */
+.terms-section,
+.licenses-section {
+  padding: 4rem 0;
   background: #f9fafb;
+  text-align: center;
 }
 
 .privacy-card,

@@ -236,6 +236,11 @@
     flex-wrap: wrap;
 }
 
+
+.spaced-tool-row {
+    margin-top: 1.5rem;
+}
+
 .tool-col {
     display: flex;
     flex-direction: column;

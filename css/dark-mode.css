@@ -92,10 +92,13 @@ body.dark-mode .theme-switch-btn.dark-mode-btn {
   background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
 }
 
-.dark-mode header,
+.dark-mode header {
+  background: var(--surface-color);
+  box-shadow: var(--shadow);
+}
+
 .dark-mode .main-nav {
   background: transparent;
-  box-shadow: none;
 }
 
 .dark-mode .dropdown-content {
@@ -158,7 +161,7 @@ body.dark-mode .theme-switch-btn.dark-mode-btn {
 .dark-mode .form-group input,
 .dark-mode .form-group textarea,
 .dark-mode .form-group select {
-  background-color: var(--background-color);
+  background-color: transparent;
   border-color: var(--light-gray);
   color: var(--text-color);
 }
@@ -289,6 +292,11 @@ body.dark-mode .theme-switch-btn.dark-mode-btn {
 .dark-mode .resize-inputs label,
 .dark-mode .quality-control label,
 
+.dark-mode .file-upload-area {
+    background-color: var(--background-color);
+    border-color: var(--light-gray);
+}
+
 .dark-mode .file-upload-area:hover {
     background-color: var(--light-gray);
     border-color: var(--primary);
@@ -328,8 +336,21 @@ body.dark-mode .theme-switch-btn.dark-mode-btn {
     cursor: pointer;
 }
 
+.dark-mode .resize-inputs div,
 .dark-mode .quality-control {
-    background-color: transparent;
+    background-color: var(--background-color) !important; /* Use main body background */
+}
+
+.dark-mode .resize-inputs input[type="number"],
+.dark-mode .quality-control input[type="range"] {
+    background-color: var(--background-color) !important; /* Use main body background */
+    color: var(--text-color) !important; /* Ensure text is light */
+    border-color: var(--light-gray) !important; /* Consistent border */
+    box-shadow: none !important; /* No shadows */
+}
+
+.dark-mode .quality-control span { /* For the "80%" text next to the slider */
+    color: var(--text-color) !important;
 }
 
 .dark-mode .quality-control label {
@@ -379,6 +400,95 @@ body.dark-mode .theme-switch-btn.dark-mode-btn {
 .dark-mode .card label,
 .dark-mode .card li {
   color: var(--heading-color); /* Ensure text is white for better contrast */
+}
+
+.dark-mode .legal-content th {
+  background-color: var(--surface-color);
+  color: var(--heading-color);
+}
+
+.dark-mode .legal-content td {
+  border-color: var(--light-gray);
+}
+
+.dark-mode .legal-content tr:nth-child(even) {
+  background-color: #1a2433; /* A slightly different shade for stripes */
+}
+
+.dark-mode .warning-box {
+  background: rgba(220, 38, 38, 0.1);
+  border-left-color: var(--warning);
+}
+
+.dark-mode .warning-box p {
+  color: var(--text-color);
+}
+
+/* Cookie Consent Modal Dark Mode */
+.dark-mode .cookie-consent-modal {
+  background-color: var(--surface-color);
+  color: var(--text-color);
+  box-shadow: var(--shadow);
+}
+
+.dark-mode .cookie-consent-header {
+  border-bottom-color: var(--light-gray);
+}
+
+.dark-mode .cookie-consent-title {
+  color: var(--heading-color);
+}
+
+.dark-mode .cookie-consent-text {
+  color: var(--text-color);
+}
+
+.dark-mode .cookie-consent-toggle-item {
+  background-color: var(--background-color);
+}
+
+.dark-mode .cookie-consent-toggle-label {
+  color: var(--text-color);
+}
+
+.dark-mode .cookie-consent-toggle-label p {
+  color: var(--text-color);
+}
+
+.dark-mode .switch .slider {
+  background-color: var(--light-gray);
+}
+
+.dark-mode .switch input:checked + .slider {
+  background-color: var(--primary);
+}
+
+.dark-mode .switch input:disabled + .slider {
+  background-color: var(--light-gray);
+}
+
+.dark-mode .cookie-consent-footer {
+  border-top-color: var(--light-gray);
+}
+
+.dark-mode .cookie-consent-button {
+  border-color: var(--light-gray);
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.dark-mode .cookie-consent-button:hover {
+  background-color: var(--light-gray);
+}
+
+.dark-mode .cookie-consent-button.primary {
+  background-color: var(--primary);
+  color: var(--heading-color);
+  border-color: var(--primary);
+}
+
+.dark-mode .cookie-consent-button.primary:hover {
+  background-color: #0056b3;
 }
 
 @media (max-width: 768px) {

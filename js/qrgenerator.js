@@ -404,19 +404,7 @@ function getBulkFileName(baseName) {
     return fileName;
 }
 
-function toggleOptions(optionsId) {
-    const optionsContent = document.getElementById(optionsId);
-    const icon = optionsContent.previousElementSibling.querySelector('i:last-child');
-    if (optionsContent.style.display === 'block') {
-        optionsContent.style.display = 'none';
-        icon.classList.remove('fa-chevron-up');
-        icon.classList.add('fa-chevron-down');
-    } else {
-        optionsContent.style.display = 'block';
-        icon.classList.remove('fa-chevron-down');
-        icon.classList.add('fa-chevron-up');
-    }
-}
+
 
 function toggleQRTypeFields() {
   document.querySelectorAll('.qr-type-fields').forEach(field => {
@@ -605,23 +593,19 @@ document.addEventListener('DOMContentLoaded', () => {
       if(stopScanBtn) stopScanBtn.addEventListener('click', stopScanner);
       if(fileUpload) fileUpload.addEventListener('change', handleFileSelect);
 
-      const optionsHeaders = document.querySelectorAll('.options-header');
-      if(optionsHeaders)
-          optionsHeaders.forEach(header => {
-              header.addEventListener('click', () => {
-                  const content = header.nextElementSibling;
-                  const icon = header.querySelector('i:last-child');
-                  if (content.style.display === "block") {
-                      content.style.display = "none";
-                      icon.classList.remove('fa-chevron-up');
-                      icon.classList.add('fa-chevron-down');
-                  } else {
-                      content.style.display = "block";
-                      icon.classList.remove('fa-chevron-down');
-                      icon.classList.add('fa-chevron-up');
-                  }
-              });
+      const optionsToggles = document.querySelectorAll('.options-toggle');
+      if(optionsToggles) {
+        optionsToggles.forEach(toggle => {
+          toggle.addEventListener('change', () => {
+            const content = toggle.parentElement.nextElementSibling;
+            if (toggle.checked) {
+              content.classList.remove('hidden');
+            } else {
+              content.classList.add('hidden');
+            }
           });
+        });
+      }
     }
 
     setupEventListeners();
