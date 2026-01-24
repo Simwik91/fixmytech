@@ -56,10 +56,9 @@ body.dark-mode {
   background-color: #4b5563; /* Slightly darker hover */
 }
 
-/* Styles for when the button itself indicates light mode */
-.dark-mode .theme-switch-btn.light-mode-btn {
-  background-color: white; /* White background for high contrast */
-  color: black; /* Black text for high contrast */
+body.dark-mode .theme-switch-btn.light-mode-btn {
+  background-color: white !important;
+  color: black !important;
 }
 
 .dark-mode .theme-switch-btn.light-mode-btn:hover {
@@ -67,9 +66,9 @@ body.dark-mode {
 }
 
 /* Styles for when the button itself indicates dark mode */
-.dark-mode .theme-switch-btn.dark-mode-btn {
-  background-color: black; /* Black background for high contrast */
-  color: white; /* White text for high contrast */
+body.dark-mode .theme-switch-btn.dark-mode-btn {
+  background-color: black !important;
+  color: white !important;
 }
 
 .dark-mode .theme-switch-btn.dark-mode-btn:hover {
@@ -95,8 +94,8 @@ body.dark-mode {
 
 .dark-mode header,
 .dark-mode .main-nav {
-  background: var(--surface-color);
-  box-shadow: var(--shadow);
+  background: transparent;
+  box-shadow: none;
 }
 
 .dark-mode .dropdown-content {
@@ -289,6 +288,54 @@ body.dark-mode {
 /* Image tools specific text */
 .dark-mode .resize-inputs label,
 .dark-mode .quality-control label,
+
+.dark-mode .file-upload-area:hover {
+    background-color: var(--light-gray);
+    border-color: var(--primary);
+}
+
+.dark-mode .color-value-box {
+    background-color: var(--surface-color);
+    border-color: var(--light-gray);
+}
+
+.dark-mode .quality-slider {
+    background-color: var(--light-gray); /* Darker gray for the slider track */
+    -webkit-appearance: none; /* Remove default styling for WebKit browsers */
+    appearance: none;
+    height: 8px; /* Adjust height as needed */
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity .2s;
+}
+
+.dark-mode .quality-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary);
+    cursor: pointer;
+}
+
+.dark-mode .quality-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary);
+    cursor: pointer;
+}
+
+.dark-mode .quality-control {
+    background-color: transparent;
+}
+
+.dark-mode .quality-control label {
+    color: var(--heading-color) !important;
+}
+
 .dark-mode .color-value-title,
 .dark-mode .color-value-content {
     color: var(--text-color);
