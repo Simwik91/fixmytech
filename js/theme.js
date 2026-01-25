@@ -7,14 +7,14 @@ window.initializeTheme = () => {
     const applyTheme = (theme) => {
         if (theme === 'dark') {
             body.classList.add('dark-mode');
-            themeSwitchBtn.classList.remove('dark-mode-btn');
             themeSwitchBtn.classList.add('light-mode-btn');
-            if (themeSwitchText) themeSwitchText.textContent = 'LYS MODUS';
+            themeSwitchBtn.classList.remove('dark-mode-btn');
+            if (themeSwitchText) themeSwitchText.textContent = window.i18n.translate('theme_light_mode');
         } else {
             body.classList.remove('dark-mode');
-            themeSwitchBtn.classList.remove('light-mode-btn');
             themeSwitchBtn.classList.add('dark-mode-btn');
-            if (themeSwitchText) themeSwitchText.textContent = 'MØRK MODUS';
+            themeSwitchBtn.classList.remove('light-mode-btn');
+            if (themeSwitchText) themeSwitchText.textContent = window.i18n.translate('theme_dark_mode');
         }
     };
 
@@ -27,13 +27,13 @@ window.initializeTheme = () => {
         });
     }
 
-    // --- Initial Theme Application ---
-    const savedTheme = localStorage.getItem('theme');
-
-    // Default to light theme if no preference is saved
-    if (savedTheme) {
-        applyTheme(savedTheme);
-    } else {
-        applyTheme('light'); // Default to light theme as requested.
-    }
+    // Expose a function to set the initial theme after translations are loaded
+    window.setInitialTheme = () => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            applyTheme(savedTheme);
+        } else {
+            applyTheme('light'); // Default to light theme.
+        }
+    };
 };

@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Gratis EAN-generator - Lag tilpassede EAN-13, EAN-8, UPC og andre strekkoder for produkter, inventar og detaljhandel.">
-  <title>EAN Generator - FixMyTech</title>
+  <meta name="description" data-translate-content="eangenerator_meta_description">
+  <title data-translate="eangenerator_page_title"></title>
   
   <!-- SEO Optimizations -->
   <meta name="robots" content="index, follow">
-  <meta name="keywords" content="gratis ean generator, strekkodemaker, ean-13, ean-8, upc strekkode, ean generator, fixmytech">
-  <meta property="og:title" content="Gratis EAN Generator - FixMyTech">
-  <meta property="og:description" content="Lag tilpassede strekkoder for produkter, inventar og detaljhandel. Generer EAN-13, EAN-8, UPC og mer. Et gratis verktøy fra FixMyTech.">
+  <meta name="keywords" data-translate-content="eangenerator_meta_keywords">
+  <meta property="og:title" data-translate-content="eangenerator_og_title">
+  <meta property="og:description" data-translate-content="eangenerator_og_description">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://fixmytech.no/tools/eangenerator">
   <meta property="og:image" content="https://fixmytech.no/social-preview.jpg">
@@ -35,23 +35,23 @@
 <main id="main-content">
   <section class="page-hero">
     <div class="hero-content">
-      <h1><span>EAN</span> Generator</h1>
-      <p>Lag strekkoder gratis, raskt og enkelt.</p>
+      <h1 data-translate-html="eangenerator_hero_title"></h1>
+      <p data-translate="eangenerator_hero_subtitle"></p>
     </div>
   </section>
   <div class="card">
     <div class="tabs" role="tablist">
       <div class="tab active" data-tab="single" role="tab" aria-selected="true" tabindex="0">
-        Enkel strekkode
+        <span data-translate="eangenerator_tab_single"></span>
       </div>
       <div class="tab" data-tab="batch" role="tab" aria-selected="false" tabindex="0">
-        Massegenerering
+        <span data-translate="eangenerator_tab_batch"></span>
       </div>
     </div>
 
     <div class="tab-content active" id="single-tab" role="tabpanel">
       <div class="form-group">
-        <label for="ean-type">Strekkodetype:</label>
+        <label for="ean-type" data-translate="eangenerator_label_ean_type"></label>
         <select id="ean-type" aria-label="Velg strekkodetype">
           <option value="ean13" selected>EAN-13</option>
           <option value="ean8">EAN-8</option>
@@ -64,8 +64,8 @@
         </select>
       </div>
       <div class="form-group">
-        <label for="ean-input">Strekkodeverdi:</label>
-        <input id="ean-input" type="text" placeholder="Skriv inn strekkode eller la stå tom for å generere automatisk" autofocus aria-label="Skriv inn strekkodeverdi">
+        <label for="ean-input" data-translate="eangenerator_label_ean_input"></label>
+        <input id="ean-input" type="text" data-translate-placeholder="eangenerator_placeholder_ean_input" autofocus aria-label="Skriv inn strekkodeverdi">
         <p id="ean-input-feedback" class="feedback-text"></p>
         <div class="error" id="single-error" style="display: none;"></div>
       </div>
@@ -73,22 +73,22 @@
       <div class="success" id="single-success"></div>
       <div class="button-group">
         <button id="generate-single-btn" class="btn" aria-label="Generer strekkode">
-          <i class="fas fa-bolt"></i> Generer strekkode
+          <i class="fas fa-bolt"></i> <span data-translate="eangenerator_btn_generate"></span>
         </button>
         <button id="download-btn" class="btn btn-secondary" style="display:none" aria-label="Last ned strekkode">
-          <i class="fas fa-download"></i> Last ned PNG
+          <i class="fas fa-download"></i> <span data-translate="eangenerator_btn_download_png"></span>
         </button>
         <button id="download-svg-btn" class="btn btn-secondary" style="display:none" aria-label="Last ned SVG">
-          <i class="fas fa-file-code"></i> Last ned SVG
+          <i class="fas fa-file-code"></i> <span data-translate="eangenerator_btn_download_svg"></span>
         </button>
         <button id="copy-btn" class="btn btn-secondary" style="display:none" aria-label="Kopier verdi">
-          <i class="fas fa-copy"></i> Kopier verdi
+          <i class="fas fa-copy"></i> <span data-translate="eangenerator_btn_copy_value"></span>
         </button>
-        <div class="copy-success" id="copy-success" style="display: none;">Kopiert!</div>
+        <div class="copy-success" id="copy-success" style="display: none;" data-translate="eangenerator_copy_success"></div>
       </div>
       <div class="loading" id="single-loading">
         <div class="spinner"></div>
-        Genererer strekkode...
+        <span data-translate="eangenerator_loading_generate"></span>
       </div>
       <div id="ean-output">
         <canvas id="ean-canvas" style="display: none;" aria-label="Generert strekkode"></canvas>
@@ -97,7 +97,7 @@
 
     <div class="tab-content" id="batch-tab" role="tabpanel">
       <div class="form-group">
-        <label for="batch-ean-type">Strekkodetype:</label>
+        <label for="batch-ean-type" data-translate="eangenerator_batch_label_ean_type"></label>
         <select id="batch-ean-type" aria-label="Velg strekkodetype for massegenerering">
           <option value="ean13" selected>EAN-13</option>
           <option value="ean8">EAN-8</option>
@@ -110,21 +110,21 @@
         </select>
       </div>
       <div class="form-group">
-        <label for="batch-amount">Antall strekkoder:</label>
-        <input id="batch-amount" type="number" min="1" max="100" value="10" placeholder="Skriv inn antall koder (1–100)" aria-label="Skriv inn antall strekkoder">
+        <label for="batch-amount" data-translate="eangenerator_batch_label_amount"></label>
+        <input id="batch-amount" type="number" min="1" max="100" value="10" data-translate-placeholder="eangenerator_batch_placeholder_amount" aria-label="Skriv inn antall strekkoder">
       </div>
       
       <div class="button-group">
         <button id="generate-batch-png-btn" class="btn" aria-label="Generer og last ned massestrekkoder som PNG-er">
-          <i class="fas fa-file-archive"></i> Last ned som PNG-er (ZIP)
+          <i class="fas fa-file-archive"></i> <span data-translate="eangenerator_batch_btn_download_png_zip"></span>
         </button>
         <button id="generate-batch-svg-btn" class="btn" aria-label="Generer og last ned massestrekkoder som SVG-er">
-          <i class="fas fa-file-archive"></i> Last ned som SVG-er (ZIP)
+          <i class="fas fa-file-archive"></i> <span data-translate="eangenerator_batch_btn_download_svg_zip"></span>
         </button>
       </div>
       <div class="loading" id="batch-loading">
         <div class="spinner"></div>
-        <div id="batch-progress">Genererer strekkoder: 0/0</div>
+        <div id="batch-progress" data-translate="eangenerator_batch_loading_generate"></div>
       </div>
       <div class="success" id="batch-success" style="display: none;"></div>
       <div class="error" id="batch-error" style="display: none;"></div>
@@ -141,6 +141,7 @@
   <!-- Shared JavaScript -->
   <script src="/js/theme.js" defer></script>
   <script src="/js/cookie-consent.js" defer></script>
+  <script src="/js/i18n.js" defer></script>
   <script src="/js/main.js" defer></script>
   <script src="/js/eangenerator.js"></script>
 </body>

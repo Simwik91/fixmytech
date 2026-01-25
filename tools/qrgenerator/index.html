@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QR-kodegenerator - FixMyTech</title>
-  <meta name="description" content="Generer tilpassede QR-koder.">
+  <title data-translate="qrgenerator_page_title"></title>
+  <meta name="description" data-translate-content="qrgenerator_meta_description">
   
   <!-- Performance Tuning -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -30,20 +30,20 @@
 <main id="main-content">
   <section class="page-hero">
     <div class="hero-content">
-      <h1><span>QR</span>-kodegenerator</h1>
-      <p>Generer tilpassede QR-koder.</p>
+      <h1 data-translate-html="qrgenerator_hero_title"></h1>
+      <p data-translate="qrgenerator_hero_subtitle"></p>
     </div>
   </section>
   <div class="card">
       <div class="tabs" role="tablist">
         <div class="tab active" data-tab="single" role="tab" aria-selected="true" tabindex="0">
-          <i class="fas fa-qrcode"></i> Enkel QR-kode
+          <i class="fas fa-qrcode"></i> <span data-translate="qrgenerator_tab_single"></span>
         </div>
         <div class="tab" data-tab="bulk" role="tab" aria-selected="false" tabindex="0">
-          <i class="fas fa-layer-group"></i> Bulk QR koder
+          <i class="fas fa-layer-group"></i> <span data-translate="qrgenerator_tab_bulk"></span>
         </div>
         <div class="tab" data-tab="scan" role="tab" aria-selected="false" tabindex="0">
-          <i class="fas fa-camera"></i> Skann QR-kode
+          <i class="fas fa-camera"></i> <span data-translate="qrgenerator_tab_scan"></span>
         </div>
       </div>
 
@@ -51,120 +51,120 @@
       <div class="tab-content active" id="single-tab" role="tabpanel">
         
         <div class="form-group">
-          <label for="qr-type">QR-kodetype:</label>
+          <label for="qr-type" data-translate="qrgenerator_label_qr_type"></label>
           <select id="qr-type" aria-label="Velg QR-kodetype">
-            <option value="text" selected>Egendefinert</option>
-            <option value="numeric">Numerisk</option>
-            <option value="url">URL</option>
-            <option value="vcard">vCard (Kontakt)</option>
-            <option value="wifi">Wi-Fi</option>
-            <option value="sms">SMS</option>
-            <option value="email">E-post</option>
+            <option value="text" selected data-translate="qrgenerator_option_custom"></option>
+            <option value="numeric" data-translate="qrgenerator_option_numeric"></option>
+            <option value="url" data-translate="qrgenerator_option_url"></option>
+            <option value="vcard" data-translate="qrgenerator_option_vcard"></option>
+            <option value="wifi" data-translate="qrgenerator_option_wifi"></option>
+            <option value="sms" data-translate="qrgenerator_option_sms"></option>
+            <option value="email" data-translate="qrgenerator_option_email"></option>
           </select>
         </div>
 
         <div class="form-grid">
             <div class="qr-type-fields" id="text-fields">
               <div class="form-group">
-                <label for="text-input">Skriv inn data:</label>
-                <textarea id="text-input" placeholder="Skriv inn data" aria-label="Skriv inn tekst"></textarea>
+                <label for="text-input" data-translate="qrgenerator_label_text_input"></label>
+                <textarea id="text-input" data-translate-placeholder="qrgenerator_placeholder_text_input" aria-label="Skriv inn tekst"></textarea>
               </div>
             </div>
 
             <div class="qr-type-fields" id="numeric-fields" style="display: none;">
               <div class="form-group">
-                <label for="numeric-input">Skriv inn tall:</label>
-                <input type="text" id="numeric-input" placeholder="1234567890" pattern="[0-9]*" inputmode="numeric" aria-label="Skriv inn tall">
+                <label for="numeric-input" data-translate="qrgenerator_label_numeric_input"></label>
+                <input type="text" id="numeric-input" data-translate-placeholder="qrgenerator_placeholder_numeric_input" pattern="[0-9]*" inputmode="numeric" aria-label="Skriv inn tall">
               </div>
             </div>
 
             <div class="qr-type-fields" id="url-fields" style="display: none;">
               <div class="form-group">
-                <label for="url-input">Skriv inn URL:</label>
-                <input type="url" id="url-input" placeholder="https://example.com" aria-label="Skriv inn URL">
+                <label for="url-input" data-translate="qrgenerator_label_url_input"></label>
+                <input type="url" id="url-input" data-translate-placeholder="qrgenerator_placeholder_url_input" aria-label="Skriv inn URL">
               </div>
             </div>
 
             <div class="qr-type-fields" id="vcard-fields" style="display: none;">
               <div class="form-group">
-                <label for="vcard-name">Fullt navn:</label>
-                <input type="text" id="vcard-name" placeholder="Ola Nordmann" aria-label="Skriv inn fullt navn">
+                <label for="vcard-name" data-translate="qrgenerator_label_vcard_name"></label>
+                <input type="text" id="vcard-name" data-translate-placeholder="qrgenerator_placeholder_vcard_name" aria-label="Skriv inn fullt navn">
               </div>
               <div class="form-group">
-                <label for="vcard-phone">Telefonnummer:</label>
-                <input type="tel" id="vcard-phone" placeholder="+4712345678" aria-label="Skriv inn telefonnummer">
+                <label for="vcard-phone" data-translate="qrgenerator_label_vcard_phone"></label>
+                <input type="tel" id="vcard-phone" data-translate-placeholder="qrgenerator_placeholder_vcard_phone" aria-label="Skriv inn telefonnummer">
               </div>
               <div class="form-group">
-                <label for="vcard-email">E-post:</label>
-                <input type="email" id="vcard-email" placeholder="ola@example.com" aria-label="Skriv inn e-postadresse">
+                <label for="vcard-email" data-translate="qrgenerator_label_vcard_email"></label>
+                <input type="email" id="vcard-email" data-translate-placeholder="qrgenerator_placeholder_vcard_email" aria-label="Skriv inn e-postadresse">
               </div>
             </div>
 
             <div class="qr-type-fields" id="wifi-fields" style="display: none;">
               <div class="form-group">
-                <label for="wifi-ssid">Wi-Fi SSID:</label>
-                <input type="text" id="wifi-ssid" placeholder="Nettverksnavn" aria-label="Skriv inn Wi-Fi SSID">
+                <label for="wifi-ssid" data-translate="qrgenerator_label_wifi_ssid"></label>
+                <input type="text" id="wifi-ssid" data-translate-placeholder="qrgenerator_placeholder_wifi_ssid" aria-label="Skriv inn Wi-Fi SSID">
               </div>
               <div class="form-group">
-                <label for="wifi-password">Passord:</label>
-                <input type="text" id="wifi-password" placeholder="Passord" aria-label="Skriv inn Wi-Fi-passord">
+                <label for="wifi-password" data-translate="qrgenerator_label_wifi_password"></label>
+                <input type="text" id="wifi-password" data-translate-placeholder="qrgenerator_placeholder_wifi_password" aria-label="Skriv inn Wi-Fi-passord">
               </div>
               <div class="form-group">
-                <label for="wifi-type">Krypteringstype:</label>
+                <label for="wifi-type" data-translate="qrgenerator_label_wifi_type"></label>
                 <select id="wifi-type" aria-label="Velg Wi-Fi-krypteringstype">
-                  <option value="WPA">WPA/WPA2</option>
-                  <option value="WEP">WEP</option>
-                  <option value="nopass">Ingen passord</option>
+                  <option value="WPA" data-translate="qrgenerator_option_wifi_wpa"></option>
+                  <option value="WEP" data-translate="qrgenerator_option_wifi_wep"></option>
+                  <option value="nopass" data-translate="qrgenerator_option_wifi_nopass"></option>
                 </select>
               </div>
             </div>
 
             <div class="qr-type-fields" id="sms-fields" style="display: none;">
               <div class="form-group">
-                <label for="sms-phone">Telefonnummer:</label>
-                <input type="tel" id="sms-phone" placeholder="+4712345678" aria-label="Skriv inn telefonnummer for SMS">
+                <label for="sms-phone" data-translate="qrgenerator_label_sms_phone"></label>
+                <input type="tel" id="sms-phone" data-translate-placeholder="qrgenerator_placeholder_sms_phone" aria-label="Skriv inn telefonnummer for SMS">
               </div>
               <div class="form-group">
-                <label for="sms-message">Melding:</label>
-                <textarea id="sms-message" placeholder="Skriv inn meldingen din" aria-label="Skriv inn SMS-melding"></textarea>
+                <label for="sms-message" data-translate="qrgenerator_label_sms_message"></label>
+                <textarea id="sms-message" data-translate-placeholder="qrgenerator_placeholder_sms_message" aria-label="Skriv inn SMS-melding"></textarea>
               </div>
             </div>
 
             <div class="qr-type-fields" id="email-fields" style="display: none;">
               <div class="form-group">
-                <label for="email-address">Mottakers e-post:</label>
-                <input type="email" id="email-address" placeholder="mottaker@example.com" aria-label="Skriv inn mottakers e-post">
+                <label for="email-address" data-translate="qrgenerator_label_email_address"></label>
+                <input type="email" id="email-address" data-translate-placeholder="qrgenerator_placeholder_email_address" aria-label="Skriv inn mottakers e-post">
               </div>
               <div class="form-group">
-                <label for="email-subject">Emne:</label>
-                <input type="text" id="email-subject" placeholder="Emne" aria-label="Skriv inn e-postemne">
+                <label for="email-subject" data-translate="qrgenerator_label_email_subject"></label>
+                <input type="text" id="email-subject" data-translate-placeholder="qrgenerator_placeholder_email_subject" aria-label="Skriv inn e-postemne">
               </div>
               <div class="form-group">
-                <label for="email-body">Brødtekst:</label>
-                <textarea id="email-body" placeholder="Skriv inn e-posttekst" aria-label="Skriv inn e-posttekst"></textarea>
+                <label for="email-body" data-translate="qrgenerator_label_email_body"></label>
+                <textarea id="email-body" data-translate-placeholder="qrgenerator_placeholder_email_body" aria-label="Skriv inn e-posttekst"></textarea>
               </div>
             </div>
         </div>
 
-        <div class="error" id="input-error" style="display: none;">Vennligst fyll ut alle obligatoriske felt</div>
+        <div class="error" id="input-error" style="display: none;" data-translate="qrgenerator_error_fill_fields"></div>
 
         <div class="options-container">
             <div class="options-header">
                 <input type="checkbox" id="toggle-color-options" class="options-toggle">
-                <label for="toggle-color-options" class="options-title"><h3><i class="fas fa-palette"></i> Fargevalg</h3></label>
+                <label for="toggle-color-options" class="options-title"><h3 data-translate="qrgenerator_options_color_h3"><i class="fas fa-palette"></i> </h3></label>
             </div>
             <div class="options-content hidden" id="color-options">
                 <div class="form-grid">
                     <div class="form-group">
-                        <label for="fg-color">Forgrundsfarge</label>
+                        <label for="fg-color" data-translate="qrgenerator_label_fg_color"></label>
                         <input type="color" id="fg-color" value="#000000" aria-label="Velg forgrundsfarge">
                     </div>
                     <div class="form-group">
-                        <label for="bg-color">Bakgrunnsfarge</label>
+                        <label for="bg-color" data-translate="qrgenerator_label_bg_color"></label>
                         <input type="color" id="bg-color" value="#FFFFFF" aria-label="Velg bakgrunnsfarge">
                     </div>
                     <div class="form-group">
-                        <label for="transparent-bg">Gjennomsiktig bakgrunn</label>
+                        <label for="transparent-bg" data-translate="qrgenerator_label_transparent_bg"></label>
                         <label class="toggle-switch">
                             <input type="checkbox" id="transparent-bg">
                             <span class="slider"></span>
@@ -177,13 +177,13 @@
         <div class="options-container">
             <div class="options-header">
                 <input type="checkbox" id="toggle-logo-options" class="options-toggle">
-                <label for="toggle-logo-options" class="options-title"><h3><i class="fas fa-image"></i> Logo og kantlinjevalg</h3></label>
+                <label for="toggle-logo-options" class="options-title"><h3 data-translate="qrgenerator_options_logo_h3"><i class="fas fa-image"></i> </h3></label>
             </div>
             <div class="options-content hidden" id="logo-options">
                 <div class="file-upload-area" id="logo-upload-area">
                     <i class="fas fa-cloud-upload-alt"></i>
-                    <h3>Last opp logo</h3>
-                    <p>Dra og slipp logoen din her eller klikk for å velge en fil</p>
+                    <h3 data-translate="qrgenerator_upload_logo_h3"></h3>
+                    <p data-translate="qrgenerator_upload_logo_p1"></p>
                     <input type="file" id="logo-upload" accept="image/*" aria-label="Last opp logo">
                 </div>
                 <div class="logo-preview" id="logo-preview" style="display: none; margin-top: 1rem; text-align: center;">
@@ -193,11 +193,11 @@
                                 <div class="form-grid spaced-form-grid">                        <input type="range" id="logo-size" min="5" max="25" value="15">
                     </div>
                     <div class="form-group">
-                        <label for="border-color">Kantlinjefarge:</label>
+                        <label for="border-color" data-translate="qrgenerator_label_border_color"></label>
                         <input type="color" id="border-color" value="#ffffff">
                     </div>
                     <div class="form-group">
-                        <label for="border-width">Kantlinjebredde:</label>
+                        <label for="border-width" data-translate="qrgenerator_label_border_width"></label>
                         <input type="range" id="border-width" min="0" max="10" value="0">
                     </div>
                 </div>
@@ -206,18 +206,18 @@
 
         <div class="btn-group">
           <button onclick="generateQR()" class="btn" aria-label="Generer QR-kode">
-            <i class="fas fa-bolt"></i> Generer QR-kode
+            <i class="fas fa-bolt"></i> <span data-translate="qrgenerator_btn_generate"></span>
           </button>
           <div class="download-buttons" id="download-buttons" style="display: none;">
               <button id="download-png-btn" onclick="downloadQR('png')" class="btn btn-secondary" aria-label="Last ned PNG QR-kode">
-                <i class="fas fa-download"></i> Last ned PNG
+                <i class="fas fa-download"></i> <span data-translate="qrgenerator_btn_download_png"></span>
               </button>
             </div>
         </div>
 
         <div class="loading" id="qr-loading" style="display: none;">
           <div class="spinner"></div>
-          Genererer QR-kode...
+          <span data-translate="qrgenerator_loading_generate"></span>
         </div>
         <div class="error" id="qr-error" style="display: none;"></div>
         <div class="success" id="qr-success" style="display: none;"></div>
@@ -229,31 +229,29 @@
 
       <div class="tab-content" id="bulk-tab" role="tabpanel">
         <div class="form-group">
-            <label for="bulk-input-type">Inndatatype:</label>
+            <label for="bulk-input-type" data-translate="qrgenerator_bulk_label_input_type"></label>
             <select id="bulk-input-type" aria-label="Velg inndatatype for masse-QR-koder">
-                <option value="list" selected>Liste</option>
-                <option value="range">Tallrekke</option>
-                <option value="csv">CSV-opplasting</option>
+                <option value="list" selected data-translate="qrgenerator_bulk_option_list"></option>
+                <option value="range" data-translate="qrgenerator_bulk_option_range"></option>
+                <option value="csv" data-translate="qrgenerator_bulk_option_csv"></option>
             </select>
         </div>
         
         <div id="bulk-list-fields" class="bulk-format-content">
           <div class="form-group">
-            <label for="bulk-input">Skriv inn URL-er eller tekst (én per linje):</label>
-            <textarea id="bulk-input" rows="5" placeholder="https://example.com/side1
-https://example.com/side2
-Enhver tekst eller data" aria-label="Skriv inn URL-er eller tekst for masse-QR-koder"></textarea>
+            <label for="bulk-input" data-translate="qrgenerator_bulk_label_list_input"></label>
+            <textarea id="bulk-input" rows="5" data-translate-placeholder="qrgenerator_bulk_placeholder_list_input" aria-label="Skriv inn URL-er eller tekst for masse-QR-koder"></textarea>
           </div>
         </div>
         
         <div id="bulk-range-fields" class="bulk-format-content" style="display: none;">
           <div class="form-grid">
             <div class="form-group">
-              <label for="range-start">Startnummer:</label>
+              <label for="range-start" data-translate="qrgenerator_bulk_label_range_start"></label>
               <input type="number" id="range-start" min="1" value="1" placeholder="1">
             </div>
             <div class="form-group">
-              <label for="range-end">Sluttnummer:</label>
+              <label for="range-end" data-translate="qrgenerator_bulk_label_range_end"></label>
               <input type="number" id="range-end" min="1" value="10" placeholder="10">
             </div>
           </div>
@@ -262,8 +260,8 @@ Enhver tekst eller data" aria-label="Skriv inn URL-er eller tekst for masse-QR-k
         <div id="bulk-csv-fields" class="bulk-format-content" style="display: none;">
           <div class="file-upload-area" id="csv-upload-area">
               <i class="fas fa-cloud-upload-alt"></i>
-              <h3>Last opp CSV-fil</h3>
-              <p>Dra og slipp filen din her eller klikk for å bla gjennom</p>
+              <h3 data-translate="qrgenerator_bulk_upload_csv_h3"></h3>
+              <p data-translate="qrgenerator_bulk_upload_csv_p1"></p>
               <input type="file" id="bulk-file-upload" accept=".csv" aria-label="Last opp CSV-fil for masse-QR-koder">
           </div>
         </div>
@@ -271,20 +269,20 @@ Enhver tekst eller data" aria-label="Skriv inn URL-er eller tekst for masse-QR-k
         <div class="options-container">
             <div class="options-header">
                 <input type="checkbox" id="toggle-bulk-color-options" class="options-toggle">
-                <label for="toggle-bulk-color-options" class="options-title"><h3><i class="fas fa-palette"></i> Fargevalg</h3></label>
+                <label for="toggle-bulk-color-options" class="options-title"><h3 data-translate="qrgenerator_bulk_options_color_h3"><i class="fas fa-palette"></i> </h3></label>
             </div>
             <div class="options-content hidden" id="bulk-color-options">
                 <div class="form-grid">
                     <div class="form-group">
-                        <label for="bulk-fg-color">Forgrundsfarge</label>
+                        <label for="bulk-fg-color" data-translate="qrgenerator_bulk_label_fg_color"></label>
                         <input type="color" id="bulk-fg-color" value="#000000" aria-label="Velg forgrundsfarge">
                     </div>
                     <div class="form-group">
-                        <label for="bulk-bg-color">Bakgrunnsfarge</label>
+                        <label for="bulk-bg-color" data-translate="qrgenerator_bulk_label_bg_color"></label>
                         <input type="color" id="bulk-bg-color" value="#FFFFFF" aria-label="Velg bakgrunnsfarge">
                     </div>
                     <div class="form-group">
-                        <label for="bulk-transparent-bg">Gjennomsiktig bakgrunn</label>
+                        <label for="bulk-transparent-bg" data-translate="qrgenerator_bulk_label_transparent_bg"></label>
                         <label class="toggle-switch">
                             <input type="checkbox" id="bulk-transparent-bg">
                             <span class="slider"></span>
@@ -297,13 +295,13 @@ Enhver tekst eller data" aria-label="Skriv inn URL-er eller tekst for masse-QR-k
         <div class="options-container">
             <div class="options-header">
                 <input type="checkbox" id="toggle-bulk-logo-options" class="options-toggle">
-                <label for="toggle-bulk-logo-options" class="options-title"><h3><i class="fas fa-image"></i> Logo og kantlinjevalg</h3></label>
+                <label for="toggle-bulk-logo-options" class="options-title"><h3 data-translate="qrgenerator_bulk_options_logo_h3"><i class="fas fa-image"></i> </h3></label>
             </div>
             <div class="options-content hidden" id="bulk-logo-options">
                 <div class="file-upload-area" id="bulk-logo-upload-area">
                     <i class="fas fa-cloud-upload-alt"></i>
-                    <h3>Last opp logo</h3>
-                    <p>Dra og slipp logoen din her eller klikk for å velge en fil</p>
+                    <h3 data-translate="qrgenerator_bulk_upload_logo_h3"></h3>
+                    <p data-translate="qrgenerator_bulk_upload_logo_p1"></p>
                     <input type="file" id="bulk-logo-upload" accept="image/*" aria-label="Last opp logo">
                 </div>
                 <div class="logo-preview" id="bulk-logo-preview" style="display: none; margin-top: 1rem; text-align: center;">
@@ -312,15 +310,15 @@ Enhver tekst eller data" aria-label="Skriv inn URL-er eller tekst for masse-QR-k
 
                 <div class="form-grid spaced-form-grid">
                     <div class="form-group">
-                        <label for="bulk-logo-size">Logostørrelse:</label>
+                        <label for="bulk-logo-size" data-translate="qrgenerator_bulk_label_logo_size"></label>
                         <input type="range" id="bulk-logo-size" min="5" max="25" value="15">
                     </div>
                     <div class="form-group">
-                        <label for="bulk-border-color">Kantlinjefarge:</label>
+                        <label for="bulk-border-color" data-translate="qrgenerator_bulk_label_border_color"></label>
                         <input type="color" id="bulk-border-color" value="#ffffff">
                     </div>
                     <div class="form-group">
-                        <label for="bulk-border-width">Kantlinjebredde:</label>
+                        <label for="bulk-border-width" data-translate="qrgenerator_bulk_label_border_width"></label>
                         <input type="range" id="bulk-border-width" min="0" max="10" value="0">
                     </div>
                 </div>
@@ -330,21 +328,21 @@ Enhver tekst eller data" aria-label="Skriv inn URL-er eller tekst for masse-QR-k
         <div class="options-container">
             <div class="options-header">
                 <input type="checkbox" id="toggle-bulk-naming-options" class="options-toggle">
-                <label for="toggle-bulk-naming-options" class="options-title"><h3><i class="fas fa-file-signature"></i> Alternativer for filnavn</h3></label>
+                <label for="toggle-bulk-naming-options" class="options-title"><h3 data-translate="qrgenerator_bulk_options_naming_h3"><i class="fas fa-file-signature"></i> </h3></label>
             </div>
             <div class="options-content hidden" id="bulk-naming-options">
                 <div class="form-grid">
                     <div class="form-group">
-                      <label for="bulk-file-prefix">Prefiks (valgfritt):</label>
-                      <input type="text" id="bulk-file-prefix" placeholder="F.eks. 'Produkt-'">
+                      <label for="bulk-file-prefix" data-translate="qrgenerator_bulk_label_prefix"></label>
+                      <input type="text" id="bulk-file-prefix" data-translate-placeholder="qrgenerator_bulk_placeholder_prefix">
                     </div>
                     <div class="form-group">
-                      <label for="bulk-file-name">Navn (valgfritt):</label>
-                      <input type="text" id="bulk-file-name" placeholder="Standard er QR-innhold">
+                      <label for="bulk-file-name" data-translate="qrgenerator_bulk_label_name"></label>
+                      <input type="text" id="bulk-file-name" data-translate-placeholder="qrgenerator_bulk_placeholder_name">
                     </div>
                     <div class="form-group">
-                      <label for="bulk-file-affix">Affiks (valgfritt):</label>
-                      <input type="text" id="bulk-file-affix" placeholder="F.eks. '-ID'">
+                      <label for="bulk-file-affix" data-translate="qrgenerator_bulk_label_affix"></label>
+                      <input type="text" id="bulk-file-affix" data-translate-placeholder="qrgenerator_bulk_placeholder_affix">
                     </div>
                 </div>
             </div>
@@ -352,13 +350,13 @@ Enhver tekst eller data" aria-label="Skriv inn URL-er eller tekst for masse-QR-k
 
         <div class="btn-group">
           <button onclick="generateBulkQR('png')" class="btn" aria-label="Generer og last ned masse-QR-koder som PNG ZIP">
-            <i class="fas fa-file-archive"></i> Last ned PNG (ZIP)
+            <i class="fas fa-file-archive"></i> <span data-translate="qrgenerator_bulk_btn_download_png_zip"></span>
           </button>
         </div>
 
         <div class="loading" id="bulk-loading" style="display: none;">
           <div class="spinner"></div>
-          <div id="bulk-progress">Genererer QR-koder: 0/0</div>
+          <span data-translate="qrgenerator_bulk_loading_generate"></span>
         </div>
 
         <div class="success" id="bulk-success" style="display: none;"></div>
@@ -367,7 +365,7 @@ Enhver tekst eller data" aria-label="Skriv inn URL-er eller tekst for masse-QR-k
 
       <div class="tab-content" id="scan-tab" role="tabpanel">
         <div class="scanner-container">
-          <video id="scanner-video" aria-label="Kamerafeed for QR-kodeskanning"></video>
+          <video id="scanner-video" data-translate-attr="aria-label:qrgenerator_scan_video_aria_label"></video>
           <div class="scanner-overlay" id="scanner-overlay">
             <div class="scanner-box"></div>
           </div>
@@ -375,25 +373,25 @@ Enhver tekst eller data" aria-label="Skriv inn URL-er eller tekst for masse-QR-k
 
         <div class="btn-group" style="justify-content: center; margin-top: 2rem;">
           <button id="start-scan" class="btn btn-primary btn-lg" aria-label="Start kameraskanner">
-            <i class="fas fa-camera"></i> Start Kameraskanner
+            <i class="fas fa-camera"></i> <span data-translate="qrgenerator_scan_btn_start_scanner"></span>
           </button>
         </div>
         
         <div class="file-upload-area" id="scan-upload-area" style="margin-top: 2rem;">
             <i class="fas fa-cloud-upload-alt"></i>
-            <h3>Last opp QR-kodebilde</h3>
-            <p>Dra og slipp et bilde her eller klikk for å velge en fil</p>
-            <input type="file" id="file-upload" accept="image/*" aria-label="Last opp QR-kodebilde for skanning">
+            <h3 data-translate="qrgenerator_scan_upload_image_h3"></h3>
+            <p data-translate="qrgenerator_scan_upload_image_p1"></p>
+            <input type="file" id="file-upload" accept="image/*" data-translate-attr="aria-label:qrgenerator_scan_upload_image_aria_label">
         </div>
 
         <div id="stop-scan-container" class="btn-group" style="justify-content: center; margin-top: 1rem; display: none;">
             <button id="stop-scan" class="btn btn-secondary" aria-label="Stopp kameraskanner">
-              <i class="fas fa-stop"></i> Stopp skanner
+              <i class="fas fa-stop"></i> <span data-translate="qrgenerator_scan_btn_stop_scanner"></span>
             </button>
         </div>
 
         <div class="scan-result" id="scan-result" role="region" aria-live="polite" style="display: none; margin-top: 1rem;">
-          <p>Skanneresultater vises her</p>
+          <p data-translate="qrgenerator_scan_result_p1"></p>
         </div>
       </div>
     </div>
@@ -413,6 +411,7 @@ Enhver tekst eller data" aria-label="Skriv inn URL-er eller tekst for masse-QR-k
   <!-- Shared JavaScript -->
   <script src="/js/theme.js" defer></script>
   <script src="/js/cookie-consent.js" defer></script>
+  <script src="/js/i18n.js" defer></script>
   <script src="/js/main.js" defer></script>
   <script src="/js/qrgenerator.js"></script>
 </body>

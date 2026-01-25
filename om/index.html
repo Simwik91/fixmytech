@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Om Oss - FixMyTech.no</title>
-  <meta name="description" content="Lær mer om FixMyTech.no, vår historie, verdier og forpliktelse til å levere profesjonelle IT-reparasjoner og programvareløsninger.">
-  <meta name="keywords" content="om oss, FixMyTech, IT-reparasjoner, teknisk støtte, bærekraft">
+  <title data-translate="about_page_title"></title>
+  <meta name="description" data-translate-content="about_meta_description">
+  <meta name="keywords" data-translate-content="about_meta_keywords">
   <meta name="author" content="FixMyTech.no">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -23,13 +23,13 @@
 
   <main id="main-content">
     <!-- Scroll to top button -->
-    <button id="scrollTopBtn" title="Go to top" aria-label="Scroll to top" class="hidden-by-default">
+    <button id="scrollTopBtn" data-translate-title="scroll_to_top" data-translate-attr="aria-label:scroll_to_top" class="hidden-by-default">
       <i class="fas fa-arrow-up"></i>
     </button>
         <section class="page-hero">
       <div class="hero-content">
-        <h1><span>Om</span> oss</h1>
-        <p>Vi løser dine teknologiproblemer med ekspertise og effektivitet.</p>
+        <h1 data-translate-html="about_hero_title"></h1>
+        <p data-translate="about_hero_subtitle"></p>
       </div>
     </section>
 
@@ -37,9 +37,9 @@
     <section class="about-section">
       <div class="container">
         <div class="about-content">
-          <h2>Vår Historie</h2>
-          <p>FixMyTech.no ønsker å gjøre om repareres og vedlikeholdes enkelt og rimeligere enn å kjøpe nytt. Vi startet med en enkel idé: å hjelpe folk med å få mest mulig ut av enhetene sine uten å tømme lommeboken eller skade miljøet. Vår lidenskap for teknologi og bærekraft driver oss til å levere løsninger som holder utstyret ditt i topp stand.</p>
-          <p>Med et team av erfarne teknikere og et fokus på kundetilfredshet, jobber vi for å gjøre teknologi enkel og problemfri for deg.</p>
+          <h2 data-translate="about_history_title"></h2>
+          <p data-translate="about_history_p1"></p>
+          <p data-translate="about_history_p2"></p>
         </div>
       </div>
     </section>
@@ -47,29 +47,29 @@
     <!-- Values Section -->
     <section class="values-section">
       <div class="container">
-        <h2>Våre Verdier</h2>
-        <p>Vi drives av kjerneverdier som sikrer at vi leverer de beste løsningene til våre kunder.</p>
+        <h2 data-translate="about_values_title"></h2>
+        <p data-translate="about_values_subtitle"></p>
         <div class="values-grid">
           <div class="value-card">
             <div class="value-icon">
               <i class="fas fa-leaf"></i>
             </div>
-            <h3>Bærekraft</h3>
-            <p>Vi fremmer miljøvennlige løsninger ved å reparere og gjenbruke teknologi for å redusere elektronisk avfall.</p>
+            <h3 data-translate="about_value_sustainability_title"></h3>
+            <p data-translate="about_value_sustainability_description"></p>
           </div>
           <div class="value-card">
             <div class="value-icon">
               <i class="fas fa-star"></i>
             </div>
-            <h3>Kvalitet</h3>
-            <p>Vi leverer høykvalitets reparasjoner og tjenester for å sikre at dine enheter fungerer optimalt.</p>
+            <h3 data-translate="about_value_quality_title"></h3>
+            <p data-translate="about_value_quality_description"></p>
           </div>
           <div class="value-card">
             <div class="value-icon">
               <i class="fas fa-wallet"></i>
             </div>
-            <h3>Ingen løsning, ingen kostnad</h3>
-            <p>Vi belaster deg kun hvis vi løser det avtalte problemet, slik at du kan stole på at vi leverer resultater.</p>
+            <h3 data-translate="about_value_cost_title"></h3>
+            <p data-translate="about_value_cost_description"></p>
           </div>
         </div>
       </div>
@@ -78,9 +78,9 @@
     <!-- CTA Section -->
     <section class="cta-section">
       <div class="container">
-        <h2>Klar til å få hjelp?</h2>
-        <p>Kontakt oss i dag for profesjonell teknisk støtte og reparasjoner!</p>
-        <a href="https://fixmytech.no/#contact" class="btn-cta">Kontakt Oss Nå</a>
+        <h2 data-translate="about_cta_title"></h2>
+        <p data-translate="about_cta_subtitle"></p>
+        <a href="https://fixmytech.no/#contact" class="btn-cta" data-translate="about_cta_button"></a>
       </div>
     </section>
   </main>
@@ -90,6 +90,8 @@
 
   <!-- Script Loading -->
   <script src="/js/theme.js" defer></script>
-  <script src="/js/main.js"></script>
+  <script src="/js/cookie-consent.js" defer></script>
+  <script src="/js/i18n.js" defer></script>
+  <script src="/js/main.js" defer></script>
 </body>
 </html>

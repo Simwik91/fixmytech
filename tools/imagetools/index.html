@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bildeverktøy - FixMyTech</title>
-  <meta name="description" content="Beskjær, endre størrelse, konverter og plukk farger fra bilder.">
+<title data-translate="imagetools_page_title"></title>
+  <meta name="description" data-translate-content="imagetools_meta_description">
   
   <!-- Performance Tuning -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -24,16 +24,16 @@
   <main id="main-content">
   <section class="page-hero">
     <div class="hero-content">
-      <h1><span>Bilde</span>verktøy</h1>
-      <p>Beskjær, endre størrelse, konverter og plukk farger fra bilder.</p>
+      <h1 data-translate-html="imagetools_hero_title"></h1>
+      <p data-translate="imagetools_hero_subtitle"></p>
     </div>
   </section>
       <div class="card">
               <div class="tabs">
-                <button class="tab active" data-tab="crop"><i class="fas fa-crop-alt"></i>Beskjær</button>
-                <button class="tab" data-tab="resize"><i class="fas fa-expand-arrows-alt"></i>Endre størrelse</button>
-                <button class="tab" data-tab="convert"><i class="fas fa-exchange-alt"></i>Konverter</button>
-                <button class="tab" data-tab="color"><i class="fas fa-palette"></i>Fargevelger</button>
+                <button class="tab active" data-tab="crop"><i class="fas fa-crop-alt"></i><span data-translate="imagetools_tab_crop"></span></button>
+                <button class="tab" data-tab="resize"><i class="fas fa-expand-arrows-alt"></i><span data-translate="imagetools_tab_resize"></span></button>
+                <button class="tab" data-tab="convert"><i class="fas fa-exchange-alt"></i><span data-translate="imagetools_tab_convert"></span></button>
+                <button class="tab" data-tab="color"><i class="fas fa-palette"></i><span data-translate="imagetools_tab_color_picker"></span></button>
               </div>
         
                     <!-- Crop Tab -->
@@ -44,9 +44,9 @@
         
                                               <i class="fas fa-cloud-upload-alt"></i>
         
-                                              <h3>Last opp bilde</h3>
+                                              <h3 data-translate="imagetools_upload_image_h3"></h3>
         
-                                              <p>Dra og slipp et bilde her, eller klikk for å velge</p>
+                                              <p data-translate="imagetools_upload_image_p1"></p>
         
                                               <input type="file" id="cropUpload" accept="image/*" hidden>
         
@@ -58,17 +58,17 @@
             
                                                     <div class="controls">
             
-                                                      <button id="cropBtn">Beskjær</button>
+                                                      <button id="cropBtn" data-translate="imagetools_crop_btn"></button>
             
-                                                      <button id="downloadCrop" style="display:none;">Last ned</button>
+                                                      <button id="downloadCrop" style="display:none;" data-translate="imagetools_download_btn"></button>
             
-                                                      <button id="resetCrop">Tilbakestill</button>
+                                                      <button id="resetCrop" data-translate="imagetools_reset_btn"></button>
             
                                                     </div>
             
                                                     <div class="quality-control">
             
-                                                      <label for="cropQuality">Kvalitet:</label>
+                                                      <label for="cropQuality" data-translate="imagetools_quality_label"></label>
             
                                                       <input type="range" id="cropQuality" class="quality-slider" min="10" max="100" value="80">
             
@@ -83,7 +83,7 @@
         
                               
         
-                                            <div id="crop-loading" class="loading" style="display:none;">Laster...</div>
+                                            <div id="crop-loading" class="loading" style="display:none;" data-translate="imagetools_loading_text"></div>
         
                                             <div id="crop-error" class="error" style="display:none;"></div>
         
@@ -103,9 +103,9 @@
         
                                               <i class="fas fa-cloud-upload-alt"></i>
         
-                                              <h3>Last opp bilde</h3>
+                                              <h3 data-translate="imagetools_upload_image_h3"></h3>
         
-                                              <p>Dra og slipp et bilde her, eller klikk for å velge</p>
+                                              <p data-translate="imagetools_upload_image_p1"></p>
         
                                               <input type="file" id="resizeUpload" accept="image/*" hidden>
         
@@ -119,7 +119,7 @@
             
                                                         <div>
             
-                                                            <label for="resizeWidth">Bredde</label>
+                                                            <label for="resizeWidth" data-translate="imagetools_label_width"></label>
             
                                                             <input type="number" id="resizeWidth" placeholder="px">
             
@@ -127,7 +127,7 @@
             
                                                         <div>
             
-                                                            <label for="resizeHeight">Høyde</label>
+                                                            <label for="resizeHeight" data-translate="imagetools_label_height"></label>
             
                                                             <input type="number" id="resizeHeight" placeholder="px">
             
@@ -137,17 +137,17 @@
             
                                                     <div class="controls">
             
-                                                      <button id="resizeBtn">Endre størrelse</button>
+                                                      <button id="resizeBtn" data-translate="imagetools_resize_btn"></button>
             
-                                                      <button id="downloadResize" style="display:none;">Last ned</button>
+                                                      <button id="downloadResize" style="display:none;" data-translate="imagetools_download_btn"></button>
             
-                                                      <button id="resetResize">Tilbakestill</button>
+                                                      <button id="resetResize" data-translate="imagetools_reset_btn"></button>
             
                                                     </div>
             
                                                     <div class="quality-control">
             
-                                                      <label for="resizeQuality">Kvalitet:</label>
+                                                      <label for="resizeQuality" data-translate="imagetools_quality_label"></label>
             
                                                       <input type="range" id="resizeQuality" class="quality-slider" min="10" max="100" value="80">
             
@@ -162,7 +162,7 @@
         
                               
         
-                                            <div id="resize-loading" class="loading" style="display:none;">Laster...</div>
+                                            <div id="resize-loading" class="loading" style="display:none;" data-translate="imagetools_loading_text"></div>
         
                                             <div id="resize-error" class="error" style="display:none;"></div>
         
@@ -182,9 +182,9 @@
         
                                               <i class="fas fa-cloud-upload-alt"></i>
         
-                                              <h3>Last opp bilde</h3>
+                                              <h3 data-translate="imagetools_upload_image_h3"></h3>
         
-                                              <p>Dra og slipp et bilde her, eller klikk for å velge</p>
+                                              <p data-translate="imagetools_upload_image_p1"></p>
         
                                               <input type="file" id="convertUpload" accept="image/*" hidden>
         
@@ -210,13 +210,13 @@
             
                                                       </select>
             
-                                                      <button id="convertBtn">Konverter & Last ned</button>
+                                                      <button id="convertBtn" data-translate="imagetools_convert_btn"></button>
             
                                                     </div>
             
                                                     <div class="quality-control">
             
-                                                      <label for="convertQuality">Kvalitet:</label>
+                                                      <label for="convertQuality" data-translate="imagetools_quality_label"></label>
             
                                                       <input type="range" id="convertQuality" class="quality-slider" min="10" max="100" value="80">
             
@@ -231,7 +231,7 @@
         
                               
         
-                                            <div id="convert-loading" class="loading" style="display:none;">Laster...</div>
+                                            <div id="convert-loading" class="loading" style="display:none;" data-translate="imagetools_loading_text"></div>
         
                                             <div id="convert-error" class="error" style="display:none;"></div>
         
@@ -251,9 +251,9 @@
         
                                               <i class="fas fa-cloud-upload-alt"></i>
         
-                                              <h3>Last opp bilde</h3>
+                                              <h3 data-translate="imagetools_upload_image_h3"></h3>
         
-                                              <p>Dra og slipp et bilde her, eller klikk for å velge</p>
+                                              <p data-translate="imagetools_upload_image_p1"></p>
         
                                               <input type="file" id="colorUpload" accept="image/*" hidden>
         
@@ -275,7 +275,7 @@
             
                                                           <div class="color-value-box">
             
-                                                              <span class="color-value-title">HEX</span>
+                                                              <span class="color-value-title" data-translate="imagetools_color_hex"></span>
             
                                                               <span id="colorValueHex" class="color-value-content"></span>
             
@@ -283,7 +283,7 @@
             
                                                           <div class="color-value-box">
             
-                                                              <span class="color-value-title">RGB</span>
+                                                              <span class="color-value-title" data-translate="imagetools_color_rgb"></span>
             
                                                               <span id="colorValueRgb" class="color-value-content"></span>
             
@@ -291,7 +291,7 @@
             
                                                           <div class="color-value-box">
             
-                                                              <span class="color-value-title">HSL</span>
+                                                              <span class="color-value-title" data-translate="imagetools_color_hsl"></span>
             
                                                               <span id="colorValueHsl" class="color-value-content"></span>
             
@@ -306,7 +306,7 @@
         
                               
         
-                                            <div id="color-loading" class="loading" style="display:none;">Laster...</div>
+                                            <div id="color-loading" class="loading" style="display:none;" data-translate="imagetools_loading_text"></div>
         
                                             <div id="color-error" class="error" style="display:none;"></div>
         
@@ -323,6 +323,7 @@
   <!-- Shared JavaScript -->
   <script src="/js/theme.js" defer></script>
   <script src="/js/cookie-consent.js" defer></script>
+  <script src="/js/i18n.js" defer></script>
   <script src="/js/main.js" defer></script>
   <script src="/js/imagetools.js"></script>
 </body>

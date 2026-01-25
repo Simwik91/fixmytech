@@ -217,6 +217,8 @@ header {
   font-weight: 700;
   transition: var(--transition);
   margin-left: 1rem;
+  text-transform: uppercase;
+  margin: auto 0; /* Align vertically in flex container */
 }
 
 .theme-switch-btn:hover {
@@ -1192,20 +1194,19 @@ footer .container {
   margin: 0.5rem 0 2.5rem;
 }
 
-.btn-service {
+.btn-cta {
   background: var(--primary);
   color: white;
   font-weight: 600;
-  padding: 0.9rem 1.8rem;
-  font-size: 1rem;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
   border-radius: var(--border-radius);
-  transition: var(--transition);
-  display: inline-block;
-  margin-top: 1.2rem;
   text-decoration: none;
+  display: inline-block;
+  transition: var(--transition);
 }
 
-.btn-service:hover {
+.btn-cta:hover {
   background: var(--secondary);
   transform: translateY(-3px);
 }
@@ -1963,3 +1964,7 @@ footer .container {
 
 /* Team Section */
 /* Removed as per user request */
+
+
+
+

@@ -9,29 +9,26 @@
   const submitButton = document.getElementById('submit-button');
 
   // ===== HEADER/FOOTER LOADING =====
-  function loadHeaderAndFooter() {
-    fetch('/includes/header.html')
-      .then(res => {
-        if (!res.ok) throw new Error('Failed to load header');
-        return res.text();
-      })
-      .then(header => {
-        document.getElementById('header-container').innerHTML = header;
-        initializeHeaderFunctionality();
-        
-        return fetch('/includes/footer.html');
-      })
-      .then(res => {
-        if (!res.ok) throw new Error('Failed to load footer');
-        return res.text();
-      })
-      .then(footer => {
-        document.getElementById('footer-container').innerHTML = footer;
-      })
-      .catch(error => {
-        console.error('Error loading includes:', error);
-        document.querySelectorAll('.error-message').forEach(el => el.style.display = 'block');
-      });
+  async function loadHeaderAndFooter() {
+    try {
+      const headerResponse = await fetch('/includes/header.html');
+      if (!headerResponse.ok) throw new Error(window.i18n.translate('error_loading_header'));
+      const headerHtml = await headerResponse.text();
+      document.getElementById('header-container').innerHTML = headerHtml;
+      initializeHeaderFunctionality();
+
+      // Set language selector value based on current i18n language
+      // Removed old language selector logic
+
+      const footerResponse = await fetch('/includes/footer.html');
+      if (!footerResponse.ok) throw new Error(window.i18n.translate('error_loading_footer'));
+      const footerHtml = await footerResponse.text();
+      document.getElementById('footer-container').innerHTML = footerHtml;
+
+    } catch (error) {
+      console.error('Error loading includes:', error);
+      document.querySelectorAll('.error-message').forEach(el => el.style.display = 'block');
+    }
   }
 
   function initializeHeaderFunctionality() {
@@ -63,6 +60,7 @@
     }
     
     populateToolsDropdown();
+    populateLanguageDropdown();
   }
 
   // ===== POPULATE TOOLS DROPDOWN FROM JSON =====
@@ -78,59 +76,21 @@
       .then(data => {
         dropdownContainer.innerHTML = '';
 
-        data.forEach(tool => {
-          const link = document.createElement('a');
-          link.href = tool.url;
-          link.setAttribute('aria-label', `Gå til ${tool.category}`);
-          link.innerHTML = `<i class="${tool.icon}"></i>${tool.category}`;
-          dropdownContainer.appendChild(link);
-        });
+                  data.forEach(tool => {
+                    const translationKey = `tool_category_${tool.slug.replace(/-/g, '_')}`; // e.g., 'ean-generator' -> 'tool_category_ean_generator'
+                    const translatedCategory = window.i18n.translate(translationKey);
 
+                    const link = document.createElement('a');
+                    link.href = tool.url;
+                    link.setAttribute('aria-label', window.i18n.translate('go_to_category_aria', { category: translatedCategory }));
+                    link.innerHTML = `<i class="${tool.icon}"></i>${translatedCategory}`;
+                    dropdownContainer.appendChild(link);
+                  });
         updateNavLinkListeners(document.querySelectorAll('.main-nav a'));
       })
       .catch(error => {
         console.error('Error loading tools:', error);
-        dropdownContainer.innerHTML = `<a href="/tools/" aria-label="Error">Error loading tools</a>`;
-        updateNavLinkListeners(document.querySelectorAll('.main-nav a'));
-      });
-  }
-
-  // ===== POPULATE DROPDOWN MENU FROM JSON =====
-  function populateServicesDropdown() {
-    const dropdownContainer = document.getElementById('dropdown-services');
-    if (!dropdownContainer) return;
-
-    fetch('/tjenester/tjenester.json')
-      .then(response => {
-        if (!response.ok) throw new Error('Failed to fetch tjenester.json');
-        return response.json();
-      })
-      .then(data => {
-        const iconMap = {
-          'Backup & Skylagring': 'fa-cloud',
-          'Feilretting & Vedlikehold': 'fa-wrench',
-          'Webdesign & Domene': 'fa-paint-brush'
-        };
-
-        dropdownContainer.innerHTML = '';
-
-        data.tjenester.forEach(service => {
-          const link = document.createElement('a');
-          link.href = service.path;
-          link.setAttribute('aria-label', `Gå til ${service.name}`);
-          link.innerHTML = `<i class="fas ${iconMap[service.name] || 'fa-cogs'}"></i>${service.name}`;
-          dropdownContainer.appendChild(link);
-        });
-
-        updateNavLinkListeners(document.querySelectorAll('.main-nav a'));
-      })
-      .catch(error => {
-        console.error('Error loading services:', error);
-        dropdownContainer.innerHTML = `
-          <a href="/tjenester/feilretting/index.html" aria-label="Feilretting og Vedlikehold"><i class="fas fa-wrench"></i>Feilretting og Vedlikehold</a>
-          <a href="/verktøy/backup/index.html" aria-label="Backup og Skylagring"><i class="fas fa-cloud"></i>Backup & Skylagring</a>
-          <a href="/verktøy/webdesign/index.html" aria-label="Webdesign og Domene"><i class="fas fa-paint-brush"></i>Webdesign & Domene</a>
-        `;
+        dropdownContainer.innerHTML = `<a href="/tools/" aria-label="${window.i18n.translate('error_loading_tools_aria')}">${window.i18n.translate('error_loading_tools')}</a>`;
         updateNavLinkListeners(document.querySelectorAll('.main-nav a'));
       });
   }
@@ -249,12 +209,12 @@
       field.classList.remove('error-border');
       
       if (!field.value.trim()) {
-        showError(field, 'Dette feltet er påkrevd');
+        showError(field, window.i18n.translate('form_field_required'));
         isValid = false;
       }
       
       if (field.type === 'email' && field.value.trim() && !emailRegex.test(field.value)) {
-        showError(field, 'Vennligst skriv inn en gyldig e-postadresse');
+        showError(field, window.i18n.translate('form_invalid_email'));
         isValid = false;
       }
     });
@@ -296,7 +256,7 @@
         const notificationMessage = document.getElementById('notification-message');
         
         if (notification && notificationMessage) {
-          notificationMessage.textContent = `Vi har mottatt din henvendelse om ${formData.service}. Vi kontakter deg på ${formData.email} snarest.`;
+          notificationMessage.textContent = `${window.i18n.translate('notification_message', { service: formData.service, email: formData.email })}`;
           notification.classList.add('show');
           
           setTimeout(() => {
@@ -414,9 +374,62 @@
     });
   }
 
+
+  // ===== POPULATE LANGUAGE DROPDOWN =====
+  function populateLanguageDropdown() {
+    const dropdownContainer = document.getElementById('language-dropdown');
+    if (!dropdownContainer) return;
+
+    dropdownContainer.innerHTML = ''; // Clear existing content
+
+    // Create language options
+    const languages = [
+      { code: 'no', name_key: 'lang_norwegian' },
+      { code: 'en', name_key: 'lang_english' }
+    ];
+
+    languages.forEach(lang => {
+      const link = document.createElement('a');
+      link.href = "javascript:void(0);";
+      link.textContent = window.i18n.translate(lang.name_key);
+      link.onclick = () => {
+        window.i18n.setLanguage(lang.code);
+        // Optionally, close the dropdown after selection
+        const parentDropdown = link.closest('.dropdown');
+        if (parentDropdown) {
+          parentDropdown.classList.remove('open'); // Assuming an 'open' class for dropdown visibility
+        }
+      };
+      link.setAttribute('data-lang-code', lang.code); // Store language code
+      dropdownContainer.appendChild(link);
+    });
+
+    // Highlight the current language
+    const currentLangLink = dropdownContainer.querySelector(`[data-lang-code="${window.i18n.currentLang}"]`);
+    if (currentLangLink) {
+      currentLangLink.classList.add('active'); // Add 'active' class for styling
+    }
+  }
+
   // ===== MAIN INITIALIZATION =====
-  function initializeAll() {
-    loadHeaderAndFooter();
+  async function initializeAll() {
+    await window.i18n.init(); // Initialize i18n first
+    await loadHeaderAndFooter(); // Ensure header/footer are loaded before applying translations
+    window.i18n.applyTranslations(); // Apply translations after all initial content is in DOM
+    // The language dropdown population now handles its own active state.
+    if (window.setInitialTheme) {
+        window.setInitialTheme(); // Set initial theme after translations are loaded
+    }
+    
+    // Removed: window.addEventListener('langChange', updateLanguageButtons);
+
+    window.addEventListener('langChange', () => {
+        populateLanguageDropdown(); // Re-populate to update active state and translated names
+        if (window.setInitialTheme) {
+            window.setInitialTheme(); // Re-set theme to update button text with new language
+        }
+    });
+
     initializeSmoothScrolling();
     initializeScrollToTop();
     initializeContactForm();
@@ -424,7 +437,6 @@
     initializeModal();
     initializeFaqAccordion();
     initializeResponsiveBehavior();
-    
   }
 
   // Start initialization

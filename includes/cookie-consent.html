@@ -15,7 +15,7 @@
             Contains the title of the modal.
         -->
         <div class="cookie-consent-header">
-            <h2 id="cookie-consent-title" class="cookie-consent-title">Innstillinger for informasjonskapsler</h2>
+            <h2 id="cookie-consent-title" class="cookie-consent-title" data-translate="cookie_consent_title"></h2>
         </div>
 
         <!--
@@ -23,8 +23,7 @@
             Contains the main text and cookie category toggles.
         -->
         <div class="cookie-consent-body">
-            <p class="cookie-consent-text">
-                Vi bruker informasjonskapsler for å forbedre opplevelsen din. Noen er nødvendige for at nettstedet skal fungere, mens andre hjelper oss med å analysere trafikk og tilpasse innhold. Ved å godta gir du samtykke til vår bruk av informasjonskapsler.
+            <p class="cookie-consent-text" data-translate="cookie_consent_main_text">
             </p>
 
             <!-- Container for the different cookie categories -->
@@ -32,8 +31,8 @@
                 <!-- Necessary Cookies -->
                 <div class="cookie-consent-toggle-item">
                     <div class="cookie-consent-toggle-label">
-                        <strong>Nødvendige</strong>
-                        <p>Disse informasjonskapslene er essensielle for at nettstedet skal fungere korrekt og kan ikke deaktiveres.</p>
+                        <strong data-translate="cookie_necessary_title"></strong>
+                        <p data-translate="cookie_necessary_text"></p>
                     </div>
                     <!-- This switch is permanently on and disabled to indicate that necessary cookies cannot be opted out of. -->
                     <label class="switch">
@@ -45,8 +44,8 @@
                 <!-- Analytics Cookies -->
                 <div class="cookie-consent-toggle-item">
                     <div class="cookie-consent-toggle-label">
-                        <strong>Analyse</strong>
-                        <p>Disse informasjonskapslene samler inn data for å hjelpe oss med å forstå hvordan besøkende bruker nettstedet vårt.</p>
+                        <strong data-translate="cookie_analytics_title"></strong>
+                        <p data-translate="cookie_analytics_text"></p>
                     </div>
                     <!-- This switch allows the user to opt in or out of analytics cookies. -->
                     <label class="switch">
@@ -58,8 +57,8 @@
                 <!-- Marketing Cookies -->
                 <div class="cookie-consent-toggle-item">
                     <div class="cookie-consent-toggle-label">
-                        <strong>Markedsføring</strong>
-                        <p>Disse informasjonskapslene brukes til å spore besøkende på tvers av nettsteder for å vise relevante annonser.</p>
+                        <strong data-translate="cookie_marketing_title"></strong>
+                        <p data-translate="cookie_marketing_text"></p>
                     </div>
                     <!-- This switch allows the user to opt in or out of marketing cookies. -->
                     <label class="switch">
@@ -75,9 +74,9 @@
             Contains the action buttons for the user to save their preferences or accept all cookies.
         -->
         <div class="cookie-consent-footer">
-            <button id="cookie-consent-save" class="cookie-consent-button">Lagre innstillinger</button>
-            <button id="cookie-consent-necessary" class="cookie-consent-button">Aksepter kun nødvendige</button>
-            <button id="cookie-consent-accept-all" class="cookie-consent-button primary">Godta alle</button>
+            <button id="cookie-consent-save" class="cookie-consent-button" data-translate="cookie_save_settings"></button>
+            <button id="cookie-consent-necessary" class="cookie-consent-button" data-translate="cookie_accept_necessary"></button>
+            <button id="cookie-consent-accept-all" class="cookie-consent-button primary" data-translate="cookie_accept_all"></button>
         </div>
     </div>
 </div>

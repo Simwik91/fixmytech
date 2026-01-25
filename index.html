@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IT-hjelp for deg - FixMyTech.no</title>
-  <meta name="description"
-    content="Profesjonell IT-hjelp for PC, Mac, nettbrett og mobil. Feilretting, virusfjerning, oppgradering og vedlikehold.">
-  <meta name="keywords"
-    content="IT-hjelp, PC-reparasjon, Mac-support, virusfjerning, datareparasjon, teknisk support, FixMyTech">
+  <title data-translate="page_title"></title>
+  <meta name="description" data-translate-content="meta_description">
+  <meta name="keywords" data-translate-content="meta_keywords">
   <meta name="author" content="FixMyTech.no">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -30,7 +28,7 @@
 
   <main id="main-content">
     <!-- Scroll to top button -->
-    <button id="scrollTopBtn" title="Go to top" aria-label="Scroll to top" class="hidden-by-default">
+    <button id="scrollTopBtn" data-translate-title="scroll_to_top" data-translate-attr="aria-label:scroll_to_top" class="hidden-by-default">
       <i class="fas fa-arrow-up"></i>
     </button>
 
@@ -44,15 +42,15 @@
 
         <section class="page-hero">
       <div class="hero-content">
-        <h1><span>IT-hjelp</span> for deg</h1>
-        <p>Profesjonell teknisk hjelp for alle dine digitale enheter og utfordringer.</p>
+        <h1 data-translate-html="hero_title"></h1>
+        <p data-translate="hero_subtitle"></p>
       </div>
     </section>
 
     <div class="notification" id="notification">
         <div class="notification-header">
           <i class="fas fa-check-circle"></i>
-          <h3>Takk for din henvendelse!</h3>
+          <h3 data-translate="notification_header"></h3>
         </div>
         <p id="notification-message"></p>
       </div>
@@ -64,39 +62,37 @@
               <div class="environmental-icon">
                 <i class="fas fa-leaf"></i>
               </div>
-              <h3>Godt for miljøet og lommeboken</h3>
-              <p>Ved å reparere og vedlikeholde utstyr istedenfor å kjøpe nytt, bidrar du til bærekraftig utvikling og
-                reduserer elektronisk avfall. Våre reparasjoner forlenger levetiden til utstyr og sparer deg for
-                unødvendige kostnader.</p>
+              <h3 data-translate="environmental_title"></h3>
+              <p data-translate="environmental_description"></p>
             </div>
             <div class="services-grid">
               <div class="service-card">
                 <div class="card-icon">
                   <i class="fas fa-plug"></i>
                 </div>
-                <h3>Maskinvare</h3>
+                <h3 data-translate="hardware_title"></h3>
                 <ul>
-                  <li><i class="fas fa-check"></i>Reparasjon av PC, laptop, nettbrett</li>
-                  <li><i class="fas fa-check"></i>Utstyrsoppgradering (minne, SSD)</li>
-                  <li><i class="fas fa-check"></i>Feilsøking av maskinvarefeil</li>
-                  <li><i class="fas fa-check"></i>Hente ut data fra ødelagt utstyr</li>
-                  <li><i class="fas fa-check"></i>Skjermreparasjoner</li>
-                  <li><i class="fas fa-check"></i>Strømforsyningsproblemer</li>
+                  <li data-translate-html="hardware_item_1"></li>
+                  <li data-translate-html="hardware_item_2"></li>
+                  <li data-translate-html="hardware_item_3"></li>
+                  <li data-translate-html="hardware_item_4"></li>
+                  <li data-translate-html="hardware_item_5"></li>
+                  <li data-translate-html="hardware_item_6"></li>
                 </ul>
               </div>
               <div class="service-card">
                 <div class="card-icon">
                   <i class="fas fa-laptop-code"></i>
                 </div>
-                <h3>Programvare</h3>
+                <h3 data-translate="software_title"></h3>
                 <ul>
-                  <li><i class="fas fa-check"></i>Fikse programvarefeil</li>
-                  <li><i class="fas fa-check"></i>Virus- og malware-fjerning</li>
-                  <li><i class="fas fa-check"></i>Systemoptimalisering</li>
-                  <li><i class="fas fa-check"></i>Operativsystemoppdateringer</li>
-                  <li><i class="fas fa-check"></i>Gjenoppretting av operativsystem</li>
-                  <li><i class="fas fa-check"></i>Programvareinstallasjon og -konfigurasjon</li>
-                  <li><i class="fas fa-check"></i>Driveroppdateringer</li>
+                  <li data-translate-html="software_item_1"></li>
+                  <li data-translate-html="software_item_2"></li>
+                  <li data-translate-html="software_item_3"></li>
+                  <li data-translate-html="software_item_4"></li>
+                  <li data-translate-html="software_item_5"></li>
+                  <li data-translate-html="software_item_6"></li>
+                  <li data-translate-html="software_item_7"></li>
                 </ul>
               </div>
             </div>
@@ -106,8 +102,8 @@
                   <i class="fas fa-bug"></i>
                 </div>
                 <div class="problem-content">
-                  <h4>Datavirus og malware</h4>
-                  <p>Vi fjerner alle typer skadelig programvare og sikrer at systemet ditt er trygt.</p>
+                  <h4 data-translate="problem_virus_title"></h4>
+                  <p data-translate="problem_virus_description"></p>
                 </div>
               </div>
               <div class="problem-card">
@@ -115,8 +111,8 @@
                   <i class="fas fa-bolt"></i>
                 </div>
                 <div class="problem-content">
-                  <h4>Langsom datamaskin</h4>
-                  <p>Vi optimaliserer systemet ditt for raskere ytelse og bedre effektivitet.</p>
+                  <h4 data-translate="problem_slow_pc_title"></h4>
+                  <p data-translate="problem_slow_pc_description"></p>
                 </div>
               </div>
               <div class="problem-card">
@@ -124,8 +120,8 @@
                   <i class="fas fa-triangle-exclamation"></i>
                 </div>
                 <div class="problem-content">
-                  <h4>Blåskjerm-feil</h4>
-                  <p>Vi diagnostiserer årsaken til systemkrasj og implementerer løsninger.</p>
+                  <h4 data-translate="problem_bluescreen_title"></h4>
+                  <p data-translate="problem_bluescreen_description"></p>
                 </div>
               </div>
               <div class="problem-card">
@@ -133,8 +129,8 @@
                   <i class="fas fa-wifi"></i>
                 </div>
                 <div class="problem-content">
-                  <h4>Nettverksproblemer</h4>
-                  <p>Vi løser Wi-Fi-problemer, nettverkskoblinger og Internett-tilkoblinger.</p>
+                  <h4 data-translate="problem_network_title"></h4>
+                  <p data-translate="problem_network_description"></p>
                 </div>
               </div>
             </div>
@@ -143,22 +139,22 @@
                 <div class="benefit-icon">
                   <i class="fas fa-shield-halved"></i>
                 </div>
-                <h4>Sikkerhet</h4>
-                <p>Vi sikrer at systemet ditt er beskyttet mot trusler og sårbarheter.</p>
+                <h4 data-translate="benefit_security_title"></h4>
+                <p data-translate="benefit_security_description"></p>
               </div>
               <div class="benefit-card">
                 <div class="benefit-icon">
                   <i class="fas fa-rocket"></i>
                 </div>
-                <h4>Ytelse</h4>
-                <p>Vi optimaliserer systemet ditt for raskere drift og bedre effektivitet.</p>
+                <h4 data-translate="benefit_performance_title"></h4>
+                <p data-translate="benefit_performance_description"></p>
               </div>
               <div class="benefit-card">
                 <div class="benefit-icon">
                   <i class="fas fa-clock-rotate-left"></i>
                 </div>
-                <h4>Stabilitet</h4>
-                <p>Vi eliminerer systemkrasj og uventede feil for en pålitelig opplevelse.</p>
+                <h4 data-translate="benefit_stability_title"></h4>
+                <p data-translate="benefit_stability_description"></p>
               </div>
             </div>
           </div>
@@ -168,10 +164,10 @@
       <!-- Prominent CTA Banner -->
       <section class="cta-banner">
         <div class="container">
-          <h2>Klar til å fikse problemet?</h2>
-          <p>Ta kontakt for et uforpliktende tilbud!.</p>
+          <h2 data-translate="cta_banner_title"></h2>
+          <p data-translate="cta_banner_subtitle"></p>
           <div class="cta-buttons">
-            <a href="#contact" class="btn btn-primary">Ta kontakt</a>
+            <a href="#contact" class="btn btn-primary" data-translate="cta_button"></a>
           </div>
         </div>
       </section>
@@ -179,31 +175,30 @@
       <section class="service-section">
         <div class="service-container">
           <div class="section-title">
-            <h2>Hvordan jobber vi?</h2>
-            <p>Vår prosess er enkel og effektiv for å sikre rask og teknisk støtte</p>
+            <h2 data-translate="how_we_work_title"></h2>
+            <p data-translate="how_we_work_subtitle"></p>
           </div>
           <div class="process-steps">
             <div class="step-card">
               <div class="card-icon">
                 <i class="fas fa-file-signature"></i>
               </div>
-              <h3>Kontakt oss</h3>
-              <p>Fortell oss om ditt problem via skjemaet på kontaktsiden.</p>
+              <h3 data-translate="step_contact_title"></h3>
+              <p data-translate="step_contact_description"></p>
             </div>
             <div class="step-card">
               <div class="card-icon">
                 <i class="fas fa-clipboard-check"></i>
               </div>
-              <h3>Vurdering</h3>
-              <p>Vi vurderer forespørselen din, normalt innen 24 timer, og gir et tilbud på løsning.</p>
+              <h3 data-translate="step_evaluation_title"></h3>
+              <p data-translate="step_evaluation_description"></p>
             </div>
             <div class="step-card">
               <div class="card-icon">
                 <i class="fas fa-truck-fast"></i>
               </div>
-              <h3>Gjennomføring</h3>
-              <p>Etter godkjent tilbud løser vi oppdraget via fjernstyring eller returnerer utstyret etter reparasjon.
-              </p>
+              <h3 data-translate="step_execution_title"></h3>
+              <p data-translate="step_execution_description"></p>
             </div>
           </div>
         </div>
@@ -213,66 +208,53 @@
       <section id="faq" class="faq-section service-section">
         <div class="container">
           <div class="section-title">
-            <h2>Hva er problemet?</h2>
-            <p>Finn svar på vanlige spørsmål og se hvordan vi kan hjelpe deg.</p>
+            <h2 data-translate="faq_title"></h2>
+            <p data-translate="faq_subtitle"></p>
           </div>
           <div class="faq-accordion">
             <div class="faq-item">
               <button class="faq-toggle" aria-expanded="false">
-                <span class="faq-title">Min datamaskin er veldig treg. Hva kan gjøres?</span>
+                <span class="faq-title" data-translate="faq_question_1_title"></span>
                 <i class="fas fa-plus"></i>
               </button>
               <div class="faq-panel">
-                <p>En treg datamaskin kan skyldes mange ting, fra for lite minne (RAM) til en full eller gammel
-                  harddisk, og unødvendig programvare som kjører i bakgrunnen. Vi kan diagnostisere problemet og foreslå
-                  den beste løsningen, som kan være å oppgradere til en raskere SSD, øke minnet, eller rydde opp i
-                  programvaren for å gjenopprette ytelsen.</p>
+                <p data-translate="faq_question_1_answer"></p>
               </div>
             </div>
             <div class="faq-item">
               <button class="faq-toggle" aria-expanded="false">
-                <span class="faq-title">Jeg tror jeg har fått et virus. Kan dere fjerne det?</span>
+                <span class="faq-title" data-translate="faq_question_2_title"></span>
                 <i class="fas fa-plus"></i>
               </button>
               <div class="faq-panel">
-                <p>Absolutt. Vi bruker avanserte verktøy for å identifisere og fjerne alle typer skadelig programvare,
-                  inkludert virus, spyware og ransomware. Etter fjerning sikrer vi også systemet ditt med oppdatert
-                  sikkerhetsprogramvare for å forhindre fremtidige infeksjoner.</p>
+                <p data-translate="faq_question_2_answer"></p>
               </div>
             </div>
             <div class="faq-item">
               <button class="faq-toggle" aria-expanded="false">
-                <span class="faq-title">Datamaskinen vil ikke starte. Er alle filene mine tapt?</span>
+                <span class="faq-title" data-translate="faq_question_3_title"></span>
                 <i class="fas fa-plus"></i>
               </button>
               <div class="faq-panel">
-                <p>Ikke nødvendigvis. Selv om maskinen ikke starter, er det ofte mulig å hente ut data fra harddisken.
-                  Vi kan forsøke å reparere oppstartsproblemet, eller vi kan trygt overføre filene dine til en ny
-                  datamaskin eller en ekstern harddisk.</p>
+                <p data-translate="faq_question_3_answer"></p>
               </div>
             </div>
             <div class="faq-item">
               <button class="faq-toggle" aria-expanded="false">
-                <span class="faq-title">Skjermen er knust / har ingen bilde. Kan det fikses?</span>
+                <span class="faq-title" data-translate="faq_question_4_title"></span>
                 <i class="fas fa-plus"></i>
               </button>
               <div class="faq-panel">
-                <p>Ja, i de fleste tilfeller kan knuste eller ikke-fungerende skjermer repareres eller byttes ut. Dette
-                  gjelder alt fra laptoper og nettbrett til eksterne skjermer. Vi vil vurdere skaden og gi deg et
-                  kostnadsestimat for reparasjon, som ofte er et rimeligere og mer miljøvennlig alternativ enn å kjøpe
-                  nytt.</p>
+                <p data-translate="faq_question_4_answer"></p>
               </div>
             </div>
             <div class="faq-item">
               <button class="faq-toggle" aria-expanded="false">
-                <span class="faq-title">Hva om dere ikke kan reparere utstyret mitt?</span>
+                <span class="faq-title" data-translate="faq_question_5_title"></span>
                 <i class="fas fa-plus"></i>
               </button>
               <div class="faq-panel">
-                <p>Vi utfører en grundig diagnose før vi starter reparasjonen. Hvis det viser seg at utstyret ikke kan
-                  repareres, eller at kostnaden blir for høy, vil vi informere deg om dette. Du kan da velge å få
-                  utstyret returnert på egen regning, eller vi kan destruere det på en forsvarlig måte mot et mindre
-                  gebyr, som spesifisert i våre priser og betingelser.</p>
+                <p data-translate="faq_question_5_answer"></p>
               </div>
             </div>
           </div>
@@ -283,72 +265,67 @@
         <div class="pricing-contact-section">
           <div class="pricing-card">
             <div class="section-title">
-              <h2>Priser og Betingelser</h2>
-              <p>Transparent prising uten skjulte kostnader</p>
+              <h2 data-translate="pricing_title"></h2>
+              <p data-translate="pricing_subtitle"></p>
             </div>
-            <div class="price-tag">550,- <span>per time</span></div>
-            <p class="price-highlight">80% av alle problemer løses innen en time!</p>
+            <div class="price-tag" data-translate-html="price_tag"></div>
+            <p class="price-highlight" data-translate="price_highlight"></p>
             <ul>
-              <li><i class="fas fa-check-circle"></i>Betaling kun ved løst problem</li>
-              <li><i class="fas fa-check-circle"></i>Ingen skjulte kostnader</li>
-              <li><i class="fas fa-check-circle"></i>Gratis tilbud</li>
-              <li><i class="fas fa-check-circle"></i>Fjernhjelp tilgjengelig</li>
+              <li data-translate-html="pricing_benefit_1"></li>
+              <li data-translate-html="pricing_benefit_2"></li>
+              <li data-translate-html="pricing_benefit_3"></li>
+              <li data-translate-html="pricing_benefit_4"></li>
             </ul>
             <div class="additional-fee">
-              <p><strong>Merk:</strong> Hvis du har sendt utstyr til oss og vi ikke kan reparere det, kan du velge å få
-                det returnert på kundens regning eller la oss destruere det for en avgift på 200,-.</p>
+              <p data-translate-html="pricing_additional_fee"></p>
             </div>
           </div>
 
           <div class="contact-section">
             <div class="section-title">
-              <h2>Kontakt Oss</h2>
-              <p>Få teknisk hjelp raskt og enkelt</p>
+              <h2 data-translate="contact_form_title"></h2>
+              <p data-translate="contact_form_subtitle"></p>
             </div>
             <div class="contact-form-container">
               <form id="contact-form" action="https://formspree.io/f/mwpbkjdd" method="POST">
                 <div class="form-group">
-                  <label for="name">Navn</label>
-                  <input type="text" id="name" name="name" required aria-required="true" aria-label="Ditt navn"
-                    autocomplete="name">
+                  <label for="name" data-translate="form_label_name"></label>
+                  <input type="text" id="name" name="name" required aria-required="true" data-translate-attr="aria-label:form_aria_label_name" autocomplete="name">
                 </div>
                 <div class="form-group">
-                  <label for="email">E-post</label>
-                  <input type="email" id="email" name="email" required aria-required="true" aria-label="Email"
-                    autocomplete="email">
+                  <label for="email" data-translate="form_label_email"></label>
+                  <input type="email" id="email" name="email" required aria-required="true" data-translate-attr="aria-label:form_aria_label_email" autocomplete="email">
                 </div>
                 <div class="form-group">
-                  <label for="service-type">Hva kan vi hjelpe deg med?</label>
-                  <select id="service-type" name="service" required aria-required="true" aria-label="Velg type tjeneste"
-                    autocomplete="off">
-                    <option value="">Velg en tjeneste...</option>
-                    <option value="feilretting">Feilretting og Vedlikehold</option>
-                    <option value="other">Annet</option>
+                  <label for="service-type" data-translate="form_label_service_type"></label>
+                  <select id="service-type" name="service" required aria-required="true" data-translate-attr="aria-label:form_aria_label_select_service" autocomplete="off">
+                    <option value="" data-translate="form_option_select_service"></option>
+                    <option value="feilretting" data-translate="form_option_repair_maintenance"></option>
+                    <option value="other" data-translate="form_option_other"></option>
                   </select>
                 </div>
                 <div class="form-group">
-                  <label for="message">Beskriv behovet ditt</label>
+                  <label for="message" data-translate="form_label_message"></label>
                   <textarea id="message" name="message" required aria-required="true"
-                    aria-label="Beskrivelse av ditt behov"
-                    placeholder="Beskriv utfordringen eller behovet ditt, f.eks. 'PC starter ikke', eller 'laptop er veldig treg'. Inkluder detaljer om utstyr eller feilmeldinger for raskere støtte."
+                    data-translate-attr="aria-label:form_aria_label_message_description"
+                    data-translate-placeholder="form_placeholder_message"
                     autocomplete="off"></textarea>
                 </div>
                 <div class="hidden-by-default">
-                  <label for="website">Website (leave blank)</label>
+                  <label for="website" data-translate="form_label_website_leave_blank"></label>
                   <input type="text" id="website" name="_gotcha" autocomplete="off">
                 </div>
-                <input type="hidden" name="_subject" id="email-subject" value="Ny henvendelse fra FixMyTech.no"
+                <input type="hidden" name="_subject" id="email-subject" data-translate-value="email_subject"
                   autocomplete="off">
                 <div class="form-group">
                   <div class="terms-checkbox-container">
-                    <input type="checkbox" id="terms-checkbox" aria-label="Godta vilkårene">
-                    <label for="terms-checkbox">Jeg har lest og forstått <a href="/vilkår"
-                        target="_blank">vilkårene</a></label>
+                    <input type="checkbox" id="terms-checkbox" data-translate-attr="aria-label:form_aria_label_accept_terms">
+                    <label for="terms-checkbox" data-translate-html="form_label_accept_terms"></label>
                   </div>
                 </div>
                 <div class="form-group">
-                  <button type="submit" id="submit-button" disabled aria-label="Send henvendelse">
-                    <i class="fas fa-paper-plane"></i> Send henvendelse
+                  <button type="submit" id="submit-button" disabled data-translate-attr="aria-label:form_aria_label_send_inquiry">
+                    <i class="fas fa-paper-plane"></i> <span data-translate="form_button_send_inquiry"></span>
                   </button>
                 </div>
               </form>
@@ -358,10 +335,8 @@
 
         <div class="disclaimer-section">
           <div class="disclaimer-box">
-            <p><strong>Viktig:</strong></p>
-            <p>Våre eksperter jobber for å levere høykvalitets teknologitjenester. FixMyTech.no er ikke ansvarlig for
-              skader på utstyr eller problemer som kan oppstå under reparasjon, oppsett eller andre tjenester. Kunden
-              aksepterer at all bruk av våre tjenester skjer på eget ansvar.</p>
+            <p data-translate-html="disclaimer_important_title"></p>
+            <p data-translate="disclaimer_content"></p>
           </div>
         </div>
       </section>
@@ -376,6 +351,7 @@
   <!-- Script Loading -->
   <script src="/js/theme.js" defer></script>
   <script src="/js/cookie-consent.js" defer></script>
+  <script src="/js/i18n.js" defer></script>
   <script src="/js/main.js" defer></script>
 </body>
 

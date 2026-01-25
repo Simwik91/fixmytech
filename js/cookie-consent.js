@@ -138,7 +138,7 @@
         if (acceptAllBtn) acceptAllBtn.style.display = 'inline-block';
         
         const title = document.getElementById('cookie-consent-title');
-        if (title) title.textContent = 'Vi bruker informasjonskapsler';
+        if (title) title.textContent = window.i18n.translate('cookie_banner_title');
 
         modal.style.display = 'block';
         overlay.style.display = 'block';
@@ -166,7 +166,7 @@
         if (acceptAllBtn) acceptAllBtn.style.display = 'none';
 
         const title = document.getElementById('cookie-consent-title');
-        if (title) title.textContent = 'Innstillinger for informasjonskapsler';
+        if (title) title.textContent = window.i18n.translate('cookie_consent_title');
 
         let consent = {};
         const cookieValue = getCookie('cookie_consent');

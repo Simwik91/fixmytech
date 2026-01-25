@@ -2,29 +2,35 @@
   <div class="container">
     <div class="header-content">
       <div class="logo-container">
-        <a href="/" class="logo" aria-label="FixMyTech.no hjemmeside">
+        <a href="/" class="logo" data-translate-attr="aria-label:header_aria_label_home">
           <i class="fas fa-screwdriver-wrench"></i>
           <span>FixMyTech</span>
         </a>
       </div>
-      <div class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <div class="nav-toggle" data-translate-attr="aria-label:header_aria_label_toggle_nav" aria-expanded="false">
         <i class="fas fa-bars"></i>
       </div>
       <nav class="main-nav">
         <ul>
-          <li><a href="/" aria-label="Gå til Hjem">Hjem</a></li>
-          <li><a href="/#contact" aria-label="Gå til Kontakt skjema">Kontakt</a></li>
-          <li><a href="/#contact" aria-label="Priser og Betingelser">Pris</a></li>
+          <li><a href="/" data-translate-attr="aria-label:header_aria_label_home_nav" data-translate="header_nav_home"></a></li>
+          <li><a href="/#contact" data-translate-attr="aria-label:header_aria_label_contact_form_nav" data-translate="header_nav_contact"></a></li>
+          <li><a href="/#contact" data-translate-attr="aria-label:header_aria_label_pricing_terms_nav" data-translate="header_nav_pricing"></a></li>
           <li class="dropdown">
-            <a href="javascript:void(0);" class="dropdown-toggle" aria-label="Gå til Verktøy">Verktøy</a>
+            <a href="javascript:void(0);" class="dropdown-toggle" data-translate-attr="aria-label:header_aria_label_tools_nav" data-translate="header_nav_tools"></a>
             <div class="dropdown-content" id="tools-dropdown">
               <!-- Tools will be populated by JavaScript -->
             </div>
           </li>
-          <li><a href="/om/" aria-label="Gå til Om oss">Om oss</a></li>
+          <li><a href="/om/" data-translate-attr="aria-label:header_aria_label_about_us_nav" data-translate="header_nav_about_us"></a></li>
+          <li class="dropdown">
+            <a href="javascript:void(0);" class="dropdown-toggle" data-translate-attr="aria-label:header_aria_label_language_nav" data-translate="header_nav_language"></a>
+            <div class="dropdown-content" id="language-dropdown">
+              <!-- Language options will be populated by JavaScript -->
+            </div>
+          </li>
         </ul>
       </nav>
-      <button id="theme-toggle" class="theme-switch-btn" aria-label="Toggle theme">
+      <button id="theme-toggle" class="theme-switch-btn" data-translate-attr="aria-label:theme_toggle_aria_label">
         <span class="theme-switch-text"></span>
       </button>
     </div>
