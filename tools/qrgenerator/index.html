@@ -155,11 +155,11 @@
             </div>
             <div class="options-content hidden" id="color-options">
                 <div class="form-grid">
-                    <div class="form-group">
+                    <div class="form-group color-input-wrapper">
                         <label for="fg-color" data-translate="qrgenerator_label_fg_color"></label>
                         <input type="color" id="fg-color" value="#000000" aria-label="Velg forgrundsfarge">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group color-input-wrapper">
                         <label for="bg-color" data-translate="qrgenerator_label_bg_color"></label>
                         <input type="color" id="bg-color" value="#FFFFFF" aria-label="Velg bakgrunnsfarge">
                     </div>
@@ -187,12 +187,15 @@
                     <input type="file" id="logo-upload" accept="image/*" aria-label="Last opp logo">
                 </div>
                 <div class="logo-preview" id="logo-preview" style="display: none; margin-top: 1rem; text-align: center;">
-                                    <img id="logo-preview-img" src="#" alt="Logo Preview" style="max-width: 100px; max-height: 100px; display: block; margin: 0 auto;" />
-                                </div>
+                    <img id="logo-preview-img" src="#" alt="Logo Preview" style="max-width: 100px; max-height: 100px; display: block; margin: 0 auto;" />
+                </div>
                 
-                                <div class="form-grid spaced-form-grid">                        <input type="range" id="logo-size" min="5" max="25" value="15">
-                    </div>
+                <div class="form-grid spaced-form-grid">
                     <div class="form-group">
+                        <label for="logo-size" data-translate="qrgenerator_label_logo_size"></label>
+                        <input type="range" id="logo-size" min="5" max="25" value="15">
+                    </div>
+                    <div class="form-group color-input-wrapper">
                         <label for="border-color" data-translate="qrgenerator_label_border_color"></label>
                         <input type="color" id="border-color" value="#ffffff">
                     </div>
@@ -211,6 +214,9 @@
           <div class="download-buttons" id="download-buttons" style="display: none;">
               <button id="download-png-btn" onclick="downloadQR('png')" class="btn btn-secondary" aria-label="Last ned PNG QR-kode">
                 <i class="fas fa-download"></i> <span data-translate="qrgenerator_btn_download_png"></span>
+              </button>
+              <button id="copy-qr-btn" class="btn btn-secondary" aria-label="Kopier QR-kode">
+                <i class="fas fa-copy"></i> <span data-translate="qrgenerator_btn_copy_value"></span>
               </button>
             </div>
         </div>
