@@ -29,6 +29,7 @@ const qrLoading = document.getElementById('qr-loading');
 const qrError = document.getElementById('qr-error');
 const qrSuccess = document.getElementById('qr-success');
 const downloadButtons = document.getElementById('download-buttons');
+const generateSingleBtn = document.getElementById('generate-qr-btn'); // New DOM element
 const video = document.getElementById('scanner-video');
 const scanResult = document.getElementById('scan-result');
 const startScanBtn = document.getElementById('start-scan');
@@ -528,6 +529,7 @@ function resetSingleQRTab() {
         qrSuccess.style.display = 'none';
     }
     logoImage = null; // Reset logo image
+    if (generateSingleBtn) generateSingleBtn.style.display = 'none'; // Hide generate button
 }
 
 window.initQrGenerator = function() {
@@ -618,6 +620,8 @@ window.initQrGenerator = function() {
               // Reset single QR tab content when switching away from it
               if (tabName !== 'single') {
                   resetSingleQRTab();
+              } else {
+                  if (generateSingleBtn) generateSingleBtn.style.display = 'inline-flex'; // Show when single tab is active
               }
             });
         });
