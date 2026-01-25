@@ -364,6 +364,7 @@
   "qrgenerator_label_border_width": "Kantlinjebredde:",
   "qrgenerator_btn_generate": "Generer QR-kode",
   "qrgenerator_btn_download_png": "Last ned PNG",
+  "qrgenerator_btn_copy_value": "Kopier QR",
   "qrgenerator_loading_generate": "Genererer QR-kode...",
   "qrgenerator_bulk_label_input_type": "Inndatatype:",
   "qrgenerator_bulk_option_list": "Liste",
