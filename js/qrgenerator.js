@@ -165,6 +165,8 @@ function generateQR() {
     const type = qrType.value;
     const content = getQRContent(type);
     
+    console.log('generateQR: logoImage value:', logoImage); // Debugging line
+    
     if (!content) {
         qrError.textContent = "Please enter content for the QR code";
         qrError.style.display = 'block';
@@ -203,6 +205,7 @@ function generateQR() {
             };
 
             if(logoImage) {
+                console.log('generateQR: Drawing logo and border logic executed.'); // Debugging line
                 const logo = new Image();
                 logo.src = logoImage;
                 logo.onload = function() {
@@ -453,8 +456,10 @@ function handleLogoUpload(event, previewElement, imgElement, type) {
     reader.onload = (e) => {
         if(type === 'single') {
             logoImage = e.target.result;
+            console.log('handleLogoUpload: single logoImage set to', logoImage);
         } else {
             bulkLogoImage = e.target.result;
+            console.log('handleLogoUpload: bulk logoImage set to', bulkLogoImage);
         }
         imgElement.src = e.target.result;
         previewElement.style.display = 'block';
@@ -509,7 +514,7 @@ function preventDefaults(e) {
     e.stopPropagation();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+window.initQrGenerator = function() {
 
     function setupEventListeners() {
       if(qrType) qrType.addEventListener('change', toggleQRTypeFields);
@@ -582,10 +587,17 @@ document.addEventListener('DOMContentLoaded', () => {
         tabs.forEach(tab => {
             tab.addEventListener('click', () => {
               const tabName = tab.dataset.tab;
+              console.log('Tab clicked:', tabName); // Debugging
               tabs.forEach(t => t.classList.remove('active'));
               tab.classList.add('active');
               tabContents.forEach(c => c.classList.remove('active'));
-              document.getElementById(`${tabName}-tab`).classList.add('active');
+              const targetTabContent = document.getElementById(`${tabName}-tab`);
+              if (targetTabContent) {
+                targetTabContent.classList.add('active');
+                console.log('Tab content activated:', `${tabName}-tab`); // Debugging
+              } else {
+                console.warn('Target tab content not found:', `${tabName}-tab`); // Debugging
+              }
             });
         });
       
@@ -593,15 +605,20 @@ document.addEventListener('DOMContentLoaded', () => {
       if(stopScanBtn) stopScanBtn.addEventListener('click', stopScanner);
       if(fileUpload) fileUpload.addEventListener('change', handleFileSelect);
 
-      const optionsToggles = document.querySelectorAll('.options-toggle');
-      if(optionsToggles) {
-        optionsToggles.forEach(toggle => {
-          toggle.addEventListener('change', () => {
-            const content = toggle.parentElement.nextElementSibling;
-            if (toggle.checked) {
-              content.classList.remove('hidden');
-            } else {
-              content.classList.add('hidden');
+      // New options toggle logic
+      const newOptionsToggles = document.querySelectorAll('.options-toggle-btn');
+      if (newOptionsToggles) {
+        newOptionsToggles.forEach(toggleBtn => {
+          toggleBtn.addEventListener('click', () => {
+            const optionsContainer = toggleBtn.closest('.options-container');
+            const optionsContent = optionsContainer.querySelector('.options-content');
+            const toggleIcon = toggleBtn.querySelector('.toggle-icon');
+
+            optionsContainer.classList.toggle('open');
+
+
+            if (toggleIcon) {
+              toggleIcon.classList.toggle('rotate');
             }
           });
         });
@@ -622,4 +639,4 @@ document.addEventListener('DOMContentLoaded', () => {
     if (bulkBorderColor) bulkBorderColor.disabled = true;
     if (bulkBorderWidth) bulkBorderWidth.disabled = true;
     if (bulkBorderUnavailableMessage && !bulkLogoImage) bulkBorderUnavailableMessage.style.display = 'block';
-});
+};

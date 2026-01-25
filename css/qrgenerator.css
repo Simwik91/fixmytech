@@ -46,7 +46,8 @@
 .tab-content {
     display: none;
     animation: fadeIn 0.5s;
-    text-align: left; /* Changed to left for better form layout */
+    margin: 0 auto; /* Center the content */
+    max-width: 700px; /* Give it a defined width to center */
 }
 
 .tab-content.active {
@@ -189,36 +190,44 @@
 
 .options-header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between; /* Distribute items */
     align-items: center;
+    padding: 0.75rem 0; /* Add some padding */
     cursor: pointer;
-    position: relative;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent; /* Visual cue for clickable area */
 }
 
-.options-header > .fa-chevron-down {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+.options-header:hover {
+    color: #0056b3;
+    border-bottom: 1px solid #0056b3;
+}
+
+.options-header .options-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.options-header .toggle-icon {
     transition: transform 0.3s ease;
 }
 
-.options-header.open > .fa-chevron-down {
-    transform: translateY(-50%) rotate(180deg);
-}
-
-.options-header h3 {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 1.2rem;
-    color: #333;
+.options-container.open .options-header .toggle-icon {
+    transform: rotate(180deg);
 }
 
 .options-content {
-    display: none;
+    display: none; /* Hidden by default */
     padding-top: 1.5rem;
     animation: fadeIn 0.5s;
+}
+
+.options-container.open .options-content {
+    display: block; /* Show when open */
 }
 
 .options-content .form-group {

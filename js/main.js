@@ -421,10 +421,19 @@
         window.setInitialTheme(); // Set initial theme after translations are loaded
     }
     
+    // Initialize specific tool functionalities
+    if (typeof window.initBarcodeGenerator === 'function') {
+        window.initBarcodeGenerator();
+    }
+    if (typeof window.initQrGenerator === 'function') {
+        window.initQrGenerator();
+    }
+    
     // Removed: window.addEventListener('langChange', updateLanguageButtons);
 
     window.addEventListener('langChange', () => {
         populateLanguageDropdown(); // Re-populate to update active state and translated names
+        window.i18n.applyTranslations(); // Re-apply all translations to the DOM
         if (window.setInitialTheme) {
             window.setInitialTheme(); // Re-set theme to update button text with new language
         }
