@@ -411,11 +411,15 @@
     }
   }
 
+  async function loadAndTranslateContent() {
+    await loadHeaderAndFooter();
+    window.i18n.applyTranslations();
+  }
+
   // ===== MAIN INITIALIZATION =====
   async function initializeAll() {
     await window.i18n.init(); // Initialize i18n first
-    await loadHeaderAndFooter(); // Ensure header/footer are loaded before applying translations
-    window.i18n.applyTranslations(); // Apply translations after all initial content is in DOM
+    await loadAndTranslateContent(); // Load content and apply translations
     // The language dropdown population now handles its own active state.
     if (window.setInitialTheme) {
         window.setInitialTheme(); // Set initial theme after translations are loaded
@@ -431,9 +435,9 @@
     
     // Removed: window.addEventListener('langChange', updateLanguageButtons);
 
-    window.addEventListener('langChange', () => {
-        populateLanguageDropdown(); // Re-populate to update active state and translated names
-        window.i18n.applyTranslations(); // Re-apply all translations to the DOM
+    window.addEventListener('langChange', async () => {
+        await window.i18n.loadTranslations(window.i18n.currentLang);
+        await loadAndTranslateContent(); // Reload content and re-apply all translations
         if (window.setInitialTheme) {
             window.setInitialTheme(); // Re-set theme to update button text with new language
         }

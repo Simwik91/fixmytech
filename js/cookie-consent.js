@@ -190,6 +190,12 @@
 
         modal.style.display = 'block';
         overlay.style.display = 'block';
+        
+        // Apply translations to the newly visible modal content
+        if (window.i18n) {
+            window.i18n.applyTranslations();
+        }
+        
         console.log(`COOKIE_CONSENT_DEBUG: Modal display set to: "${modal.style.display}", Overlay display set to: "${overlay.style.display}".`); // NEW LOG
         console.log('COOKIE_CONSENT_DEBUG: Settings displayed.');
     }
