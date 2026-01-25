@@ -49,8 +49,7 @@
 .tab-content {
     display: none;
     animation: fadeIn 0.5s;
-    margin: 0 auto; /* Center the content */
-    max-width: 700px; /* Give it a defined width to center */
+    text-align: center;
 }
 
 .tab-content.active {
@@ -346,6 +345,7 @@ input:checked + .slider:before {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     background-color: #0056b3;
     color: #fff;
+    min-width: 150px;
 }
 
 .btn:hover {
