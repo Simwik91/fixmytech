@@ -514,6 +514,22 @@ function preventDefaults(e) {
     e.stopPropagation();
 }
 
+function resetSingleQRTab() {
+    const qrResultContainer = document.querySelector('.qr-result-container');
+    if (qrResultContainer) qrResultContainer.style.display = 'none';
+    if (downloadButtons) downloadButtons.style.display = 'none';
+    if (qrCanvas) qrCanvas.innerHTML = ''; // Clear generated QR code
+    if (qrError) {
+        qrError.textContent = '';
+        qrError.style.display = 'none';
+    }
+    if (qrSuccess) {
+        qrSuccess.textContent = '';
+        qrSuccess.style.display = 'none';
+    }
+    logoImage = null; // Reset logo image
+}
+
 window.initQrGenerator = function() {
 
     function setupEventListeners() {
@@ -597,6 +613,11 @@ window.initQrGenerator = function() {
                 console.log('Tab content activated:', `${tabName}-tab`); // Debugging
               } else {
                 console.warn('Target tab content not found:', `${tabName}-tab`); // Debugging
+              }
+
+              // Reset single QR tab content when switching away from it
+              if (tabName !== 'single') {
+                  resetSingleQRTab();
               }
             });
         });
