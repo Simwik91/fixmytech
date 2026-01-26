@@ -11,6 +11,7 @@
   --border-radius: 8px;
   --transition: all 0.3s ease;
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --card-background-color: #fff;
 }
 
 /* General Styles */

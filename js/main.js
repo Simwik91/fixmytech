@@ -58,9 +58,27 @@
         }
       });
     }
+
+    // Toggle settings dropdown visibility
+    const settingsToggle = document.querySelector('.settings-toggle');
+    const settingsDropdown = document.querySelector('.settings-dropdown');
+
+    if (settingsToggle && settingsDropdown) {
+        settingsToggle.addEventListener('click', (event) => {
+            event.stopPropagation(); // Prevent document click from closing immediately
+            settingsDropdown.style.display = settingsDropdown.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Close dropdown if clicked outside
+        document.addEventListener('click', (event) => {
+            if (!settingsDropdown.contains(event.target) && settingsDropdown.style.display === 'block') {
+                settingsDropdown.style.display = 'none';
+            }
+        });
+    }
     
     populateToolsDropdown();
-    populateLanguageDropdown();
+    populateSettingsDropdown();
   }
 
   // ===== POPULATE TOOLS DROPDOWN FROM JSON =====
@@ -376,11 +394,17 @@
 
 
   // ===== POPULATE LANGUAGE DROPDOWN =====
-  function populateLanguageDropdown() {
-    const dropdownContainer = document.getElementById('language-dropdown');
+  function populateSettingsDropdown() {
+    const dropdownContainer = document.getElementById('language-options');
     if (!dropdownContainer) return;
 
     dropdownContainer.innerHTML = ''; // Clear existing content
+
+    // Add Language header
+    const langHeader = document.createElement('div');
+    langHeader.className = 'settings-header';
+    langHeader.textContent = window.i18n.translate('header_nav_language');
+    dropdownContainer.appendChild(langHeader);
 
     // Create language options
     const languages = [
@@ -395,9 +419,10 @@
       link.onclick = () => {
         window.i18n.setLanguage(lang.code);
         // Optionally, close the dropdown after selection
-        const parentDropdown = link.closest('.dropdown');
+        const parentDropdown = link.closest('.settings-dropdown');
         if (parentDropdown) {
-          parentDropdown.classList.remove('open'); // Assuming an 'open' class for dropdown visibility
+          parentDropdown.style.display = 'none';
+          setTimeout(() => parentDropdown.style.display = '', 200);
         }
       };
       link.setAttribute('data-lang-code', lang.code); // Store language code

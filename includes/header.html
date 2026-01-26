@@ -21,18 +21,22 @@
               <!-- Tools will be populated by JavaScript -->
             </div>
           </li>
-          <li><a href="/om/" data-translate-attr="aria-label:header_aria_label_about_us_nav" data-translate="header_nav_about_us"></a></li>
-          <li class="dropdown">
-            <a href="javascript:void(0);" class="dropdown-toggle" data-translate-attr="aria-label:header_aria_label_language_nav" data-translate="header_nav_language"></a>
-            <div class="dropdown-content" id="language-dropdown">
-              <!-- Language options will be populated by JavaScript -->
-            </div>
-          </li>
         </ul>
       </nav>
-      <button id="theme-toggle" class="theme-switch-btn" data-translate-attr="aria-label:theme_toggle_aria_label">
-        <span class="theme-switch-text"></span>
-      </button>
+      <div class="settings-menu">
+        <button class="settings-toggle" data-translate-attr="aria-label:settings_menu_aria_label">
+          <i class="fas fa-cog"></i>
+        </button>
+        <div class="settings-dropdown">
+          <div id="language-options">
+            <!-- Language options will be populated by JavaScript -->
+          </div>
+          <div class="settings-header" data-translate="theme_header"></div>
+          <div id="theme-options">
+            <!-- Theme options will be populated by JavaScript -->
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </header>

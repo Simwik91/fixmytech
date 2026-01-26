@@ -1,0 +1,72 @@
+/* Settings Menu */
+.settings-menu {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .settings-toggle {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+  
+  .settings-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: var(--card-background-color);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+    padding: 10px 0;
+    border: 1px solid var(--border-color);
+  }
+  
+  .settings-dropdown.show {
+    display: block;
+  }
+  
+  .settings-header {
+    padding: 8px 16px;
+    font-weight: bold;
+    color: var(--heading-color); /* Use variable for theme adaptation */
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 5px;
+  }
+
+  .settings-dropdown a, .settings-dropdown .theme-switch-btn {
+    color: var(--text-color); /* Use variable for theme adaptation */
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+  }
+  
+  .settings-dropdown a:hover, .settings-dropdown .theme-switch-btn:hover {
+    background-color: var(--hover-color);
+  }
+
+  .settings-dropdown a.active {
+    font-weight: bold;
+    color: var(--primary); /* Active items should use primary color for highlight */
+  }
+  
+  .theme-switch-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .theme-switch-text {
+    margin-left: 10px;
+  }
