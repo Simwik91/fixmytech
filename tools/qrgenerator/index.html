@@ -208,10 +208,10 @@
         </div>
 
         <div class="btn-group">
-          <button id="generate-qr-btn" onclick="generateQR()" class="btn" aria-label="Generer QR-kode">
-            <i class="fas fa-bolt"></i> <span data-translate="qrgenerator_btn_generate"></span>
-          </button>
-          <div class="download-buttons" id="download-buttons" style="display: none;">
+          <div class="download-buttons" id="download-buttons">
+              <button id="generate-qr-btn" onclick="generateQR()" class="btn" aria-label="Generer QR-kode">
+                <i class="fas fa-bolt"></i> <span data-translate="qrgenerator_btn_generate"></span>
+              </button>
               <button id="download-png-btn" onclick="downloadQR('png')" class="btn btn-secondary" aria-label="Last ned PNG QR-kode">
                 <i class="fas fa-download"></i> <span data-translate="qrgenerator_btn_download_png"></span>
               </button>

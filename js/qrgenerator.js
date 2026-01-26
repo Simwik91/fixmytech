@@ -226,7 +226,8 @@ function generateQR() {
                 validateQrCodeReadability(newCanvas, content);
                 qrLoading.style.display = 'none';
                 document.querySelector('.qr-result-container').style.display = 'block';
-                downloadButtons.style.display = 'flex';
+                document.getElementById('download-png-btn').style.display = 'inline-flex';
+                document.getElementById('copy-qr-btn').style.display = 'inline-flex';
             };
 
             if(logoImage) {
@@ -546,7 +547,6 @@ function preventDefaults(e) {
 function resetSingleQRTab() {
     const qrResultContainer = document.querySelector('.qr-result-container');
     if (qrResultContainer) qrResultContainer.style.display = 'none';
-    if (downloadButtons) downloadButtons.style.display = 'none';
     if (qrCanvas) qrCanvas.innerHTML = ''; // Clear generated QR code
     if (qrError) {
         qrError.textContent = '';
@@ -557,7 +557,8 @@ function resetSingleQRTab() {
         qrSuccess.style.display = 'none';
     }
     logoImage = null; // Reset logo image
-    if (generateSingleBtn) generateSingleBtn.style.display = 'none'; // Hide generate button
+    if (document.getElementById('download-png-btn')) document.getElementById('download-png-btn').style.display = 'none';
+    if (document.getElementById('copy-qr-btn')) document.getElementById('copy-qr-btn').style.display = 'none';
 }
 
 window.initQrGenerator = function() {
@@ -648,8 +649,6 @@ window.initQrGenerator = function() {
               // Reset single QR tab content when switching away from it
               if (tabName !== 'single') {
                   resetSingleQRTab();
-              } else {
-                  if (generateSingleBtn) generateSingleBtn.style.display = 'inline-flex'; // Show when single tab is active
               }
             });
         });
