@@ -184,6 +184,16 @@ header {
   display: flex;
   gap: 2rem;
   list-style: none;
+  align-items: center; /* Align items vertically */
+}
+
+.nav-separator {
+  color: var(--secondary); /* Default color for light mode */
+  font-size: 1.5rem; /* Increased size */
+  margin: 0 0.5rem;
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Vertically center the pipe */
+  height: 100%; /* Ensure it takes full height of parent li for alignment */
 }
 
 .main-nav li {

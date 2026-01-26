@@ -30,6 +30,10 @@ body.dark-mode {
     color: var(--heading-color);
 }
 
+.dark-mode .nav-separator {
+    color: var(--heading-color);
+}
+
 .dark-mode .main-nav a,
 .dark-mode .dropdown-content a {
     background: transparent;
