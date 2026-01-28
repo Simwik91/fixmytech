@@ -77,8 +77,9 @@
         });
     }
     
-    populateToolsDropdown();
     populateSettingsDropdown();
+    populateToolsDropdown();
+    window.i18n.applyTranslations();
   }
 
   // ===== POPULATE TOOLS DROPDOWN FROM JSON =====
@@ -112,6 +113,12 @@
         updateNavLinkListeners(document.querySelectorAll('.main-nav a'));
       });
   }
+
+
+
+  // ===== UPDATE NAV LINK LISTENERS =====
+
+  // ===== UPDATE NAV LINK LISTENERS =====
 
   // ===== UPDATE NAV LINK LISTENERS =====
   function updateNavLinkListeners(links) {

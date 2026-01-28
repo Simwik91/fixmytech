@@ -31,6 +31,10 @@
     max-width: 900px;
 }
 
+header .header-content {
+    align-items: center; /* Ensure vertical alignment of header items */
+}
+
 .tabs {
     display: flex;
     border-bottom: 2px solid #e0e0e0;
@@ -271,7 +275,7 @@
     outline: none;
 }
 
-button {
+.card button {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
